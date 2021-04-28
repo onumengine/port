@@ -1,4 +1,4 @@
-import 'package:port/model/';
+import 'package:port/model/student.dart';
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
 

@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
-import 'package:port/generic_response.dart';
+import 'package:port/model/generic_response.dart';
 import 'package:port/repository/user_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'event.dart';

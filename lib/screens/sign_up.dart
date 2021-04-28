@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:port/bloc/sign_up/bloc.dart';
 import 'package:port/bloc/sign_up/event.dart';
 import 'package:port/bloc/sign_up/state.dart';
+import 'package:port/model/student.dart';
 import 'package:port/utility/style.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
