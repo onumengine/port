@@ -68,7 +68,10 @@ class UserRepository extends UserService {
   @override
   Future<LoginResponse> signInWithEmailAndPassword(
       String username, String password) async {
-    var body = <String, dynamic>{'id': username, 'password': password};
+    var body = <String, dynamic>{
+      'username': username,
+      'password': password
+    };
     var response =
         await _apiClient.postForm(Constants.LOGIN_STRING_REQUEST, body);
     print("loginResponse : " + response);
@@ -76,15 +79,15 @@ class UserRepository extends UserService {
     return LoginResponse.fromJson(data);
   }
 
-  @override
-  Future<GenericResponse> resetPassword(String id) async {
-    User user = await getCurrentUser();
-    var body = <String, dynamic>{'id': id, 'actor': user.id};
-    var response = await _apiClient.postForm(Constants.RESET_PASSWORD, body);
-    print("suspendAccount : " + response);
-    var data = json.decode(response);
-    return GenericResponse.fromJson(data);
-  }
+//  @override
+//  Future<GenericResponse> resetPassword(String id) async {
+//    User user = await getCurrentUser();
+//    var body = <String, dynamic>{'id': id, 'actor': user.id};
+//    var response = await _apiClient.postForm(Constants.RESET_PASSWORD, body);
+//    print("suspendAccount : " + response);
+//    var data = json.decode(response);
+//    return GenericResponse.fromJson(data);
+//  }
 
 
 

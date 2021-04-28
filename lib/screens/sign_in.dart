@@ -91,7 +91,7 @@ class _SignInScreenState extends State<SignInScreen> {
               }
             },
             child: Container(
-              color: Color(0xff4E73DF),
+              color: Color(0xFF222B45),
               child: Center(
                 child: SingleChildScrollView(
                   child: Padding(
@@ -121,7 +121,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(
-                                    color: Colors.indigoAccent.withOpacity(0.5),
+                                    color: Color(0xFF222B45).withOpacity(0.5),
                                     blurRadius: 5,
                                     spreadRadius: 10)
                               ],
@@ -141,7 +141,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                     enabledBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
                                             color: Colors.grey[300])),
-                                    labelText: 'Staff Id',
+                                    labelText: 'username',
                                     labelStyle: TextStyle(
                                         color: Color(0xffA1A1A1), fontSize: 13),
                                     prefixIcon: Padding(
@@ -191,7 +191,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                     child: Container(
                                       height: 50,
                                       decoration: BoxDecoration(
-                                          color: Color(0xff4E73DF),
+                                          color: Color(0xFF222B45),
                                           borderRadius:
                                               BorderRadius.circular(5)),
                                       child: Center(

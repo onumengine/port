@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-const  colorPrimary =  Colors.black;
+const  colorPrimary = Colors.white;
 const  colorGrey= Color(0xff707070);
 const  colorOrangeAccent= Color(0xffFF8C1C);
 const  colorScaffold = Color(0xffF5F5F9);

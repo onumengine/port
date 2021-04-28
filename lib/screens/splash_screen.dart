@@ -54,9 +54,7 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor:Color(0xFF222B45),
       body: Center(
         child: Container(
-//                color: Colors.red,
-          height: 250,
-          child: Text("PORT",style:TextStyle(color:Colors.white,fontSize: 25,fontWeight: FontWeight.w800))
+          child: Text("PORT",style:TextStyle(color:Colors.white,fontSize: 50,fontWeight: FontWeight.w800))
         ),
       ),
     );
