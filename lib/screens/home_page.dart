@@ -33,6 +33,18 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       body: Container(),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.menu_outlined),
+            label: "Options",
+          ),
+        ],
+      ),
     );
   }
 }
