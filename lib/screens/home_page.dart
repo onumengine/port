@@ -19,6 +19,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("PORT"),
+        automaticallyImplyLeading: false,
       ),
       body: Container(),
     );
