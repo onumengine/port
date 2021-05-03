@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:port/utility/colors_main.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -20,7 +21,8 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text("PORT"),
         automaticallyImplyLeading: false,
-        elevation: 0,
+        elevation: Theme.of(context).appBarTheme.elevation,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.notifications_outlined),

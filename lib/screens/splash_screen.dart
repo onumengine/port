@@ -35,26 +35,38 @@ class _SplashScreenState extends State<SplashScreen> {
   route() {
     if (!isUserLoggedIn) {
       Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (context) => BlocProvider<SignInBloc>(
-                    create: (context) =>
-                        SignInBloc(userRepository: UserRepository()),
-                    child: SignInScreen(),
-                  )));
+        context,
+        MaterialPageRoute(
+          builder: (context) => BlocProvider<SignInBloc>(
+            create: (context) => SignInBloc(userRepository: UserRepository()),
+            child: SignInScreen(),
+          ),
+        ),
+      );
     } else {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => MyHomePage()));
+        context,
+        MaterialPageRoute(
+          builder: (context) => MyHomePage(),
+        ),
+      );
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:Color(0xFF222B45),
+      backgroundColor: Color(0xFF222B45),
       body: Center(
         child: Container(
-          child: Text("PORT",style:TextStyle(color:Colors.white,fontSize: 50,fontWeight: FontWeight.w800))
+          child: Text(
+            "PORT",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 50,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
         ),
       ),
     );
