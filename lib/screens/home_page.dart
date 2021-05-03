@@ -20,6 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text("PORT"),
         automaticallyImplyLeading: false,
+        elevation: 0,
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.notifications_outlined),
