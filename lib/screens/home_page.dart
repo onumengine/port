@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -33,6 +34,15 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       body: Container(),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: opPrimaryColor,
+        foregroundColor: white,
+        child: Icon(Icons.add),
+        onPressed: () {
+          print("Pressed the FAB");
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
