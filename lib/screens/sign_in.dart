@@ -65,7 +65,7 @@ class _SignInScreenState extends State<SignInScreen> {
       preferredSize: Size(screenSize.width, 1000),
       child: Scaffold(
           backgroundColor: Colors.grey[100],
-          resizeToAvoidBottomPadding: false,
+          resizeToAvoidBottomInset: false,
           body: BlocListener<SignInBloc, SignInState>(
             listener: (context, state) {
               if (state is SignInPostingState) {
