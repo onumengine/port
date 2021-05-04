@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -33,7 +34,32 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      body: Container(),
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              height: 180,
+              width: 180,
+              padding: EdgeInsets.all(50),
+              decoration: BoxDecoration(
+                color: opPrimaryColor,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(500),
+                ),
+              ),
+              child: SvgPicture.asset(
+                "lib/images/empty_home_img.svg",
+                semanticsLabel: "New Logo",
+              ),
+            ),
+            Text(
+              "You have not added any appointments yet,\nclick the add button below to get\nstarted",
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: opPrimaryColor,
         foregroundColor: white,
