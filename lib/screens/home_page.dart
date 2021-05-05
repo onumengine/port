@@ -64,6 +64,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
+            SizedBox(
+              height: 20
+            ),
             Text(
               "You have not added any appointments yet,\nclick the add button below to get\nstarted",
               textAlign: TextAlign.center,
