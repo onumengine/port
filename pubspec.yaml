@@ -54,9 +54,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - lib/images/empty_home_img.svg
-    - lib/images/home_icon.svg
-    - lib/images/options_icon.svg
+    - lib/vectors/empty_home_img.svg
+    - lib/vectors/home_icon.svg
+    - lib/vectors/options_icon.svg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
