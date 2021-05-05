@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:port/components/empty_appointments_comp.dart';
 import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -13,10 +14,8 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
   String title;
 
-  final tabs = [
-    Container(
-      child: Text("Tab 1"),
-    ),
+  final _tabs = [
+    EmptyAppointmentsComponent(),
     Container(
       child: Text("Tab 2"),
     ),
@@ -53,44 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Stack(
-              alignment: AlignmentDirectional.center,
-              children: <Widget>[
-                Container(
-                  height: 221,
-                  width: 221,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Color(0xD222B45),
-                  ),
-                ),
-                Container(
-                  height: 180,
-                  width: 180,
-                  padding: EdgeInsets.all(50),
-                  decoration: BoxDecoration(
-                    color: opPrimaryColor.withOpacity(0.8),
-                    shape: BoxShape.circle,
-                  ),
-                  child: SvgPicture.asset(
-                    "lib/vectors/empty_home_img.svg",
-                    semanticsLabel: "New Logo",
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 20),
-            Text(
-              "You have not added any appointments yet,\nclick the add button below to get\nstarted",
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
-      ),
+      body: _tabs[_currentIndex],
       floatingActionButton: FloatingActionButton(
         backgroundColor: opPrimaryColor,
         foregroundColor: white,
