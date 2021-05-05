@@ -91,12 +91,16 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
+            icon: SvgPicture.asset(
+              "lib/vectors/home_icon_light.svg",
+            ),
             label: "Home",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.menu_outlined),
-            label: "Options",
+            icon: SvgPicture.asset(
+              "lib/vectors/options_icon.svg",
+            ),
+            label: "",
           ),
         ],
       ),
