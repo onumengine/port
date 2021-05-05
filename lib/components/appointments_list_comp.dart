@@ -8,14 +8,27 @@ class AppointmentsListComponent extends StatefulWidget {
 }
 
 class _AppointmentsListComponentState extends State<AppointmentsListComponent> {
+  double _getHorizontalPadding(double screenWidth) {
+    if (screenWidth < 592)
+      return 20;
+    else if (screenWidth > 592 && screenWidth < 1000)
+      return 40;
+    else if (screenWidth > 1000) return 3;
+  }
+
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
 
     return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: _getHorizontalPadding(screenSize.width),
+      ),
       width: screenSize.width,
       child: ListView.separated(
-        itemBuilder: (context, index) => AppointmentCard(index),
+        itemBuilder: (context, index) => AppointmentCard(
+          organizationName: "Access Bank",
+        ),
         separatorBuilder: (context, index) => SizedBox(height: 10),
         itemCount: 10,
       ),
