@@ -71,7 +71,7 @@ class _SignInScreenState extends State<SignInScreen> {
               if (state is SignInPostingState) {
                 showloader(true);
               } else if (state is SignInPostingError) {
-                Scaffold.of(context).showSnackBar(SnackBar(
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   content: Text(state.error,
                       style: TextStyle(color: Colors.black87)),
                   backgroundColor: Colors.white,
