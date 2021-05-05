@@ -78,7 +78,19 @@ class _MoreComponentState extends State<MoreComponent> {
               ),
             ),
           ),
-          Container(),
+          PhysicalModel(
+            color: opBackgroundColor,
+            shadowColor: colorCardShadow,
+            elevation: 10,
+            borderRadius: BorderRadius.circular(8),
+            child: ListTile(
+              leading: SvgPicture.asset(
+                "lib/vectors/appointments_icon.svg",
+                semanticsLabel: "Appointments icon",
+              ),
+              title: Text("Appointments"),
+            ),
+          ),
           Container(),
           Container(),
           Container(),
