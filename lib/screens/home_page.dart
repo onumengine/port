@@ -21,13 +21,20 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("PORT"),
+        title: Text("PORT",
+            style: TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 24,
+            )),
         automaticallyImplyLeading: false,
         elevation: Theme.of(context).appBarTheme.elevation,
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.notifications_outlined),
+            icon: Icon(
+              Icons.notifications_outlined,
+              size: 30,
+            ),
             onPressed: () {
               print("Pressed Notification Button");
             },
@@ -64,9 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
-            SizedBox(
-              height: 20
-            ),
+            SizedBox(height: 20),
             Text(
               "You have not added any appointments yet,\nclick the add button below to get\nstarted",
               textAlign: TextAlign.center,
