@@ -54,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 180,
                   padding: EdgeInsets.all(50),
                   decoration: BoxDecoration(
-                    color: opPrimaryColor,
+                    color: opPrimaryColor.withOpacity(0.8),
                     shape: BoxShape.circle,
                   ),
                   child: SvgPicture.asset(
