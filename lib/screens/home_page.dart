@@ -10,7 +10,17 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _navBarIndex;
+  int _currentIndex = 0;
   String title;
+
+  final tabs = [
+    Container(
+      child: Text("Tab 1"),
+    ),
+    Container(
+      child: Text("Tab 2"),
+    ),
+  ];
 
   @override
   void initState() {
@@ -21,11 +31,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("PORT",
-            style: TextStyle(
-              fontWeight: FontWeight.w700,
-              fontSize: 24,
-            )),
+        title: Text(
+          "PORT",
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 24,
+          ),
+        ),
         automaticallyImplyLeading: false,
         elevation: Theme.of(context).appBarTheme.elevation,
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
@@ -89,10 +101,17 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (int selectedIndex) {
+          setState(() {
+            _currentIndex = selectedIndex;
+          });
+          print(_currentIndex);
+        },
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              "lib/vectors/home_icon_light.svg",
+              "lib/vectors/home_icon.svg",
             ),
             label: "Home",
           ),
