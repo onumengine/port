@@ -38,20 +38,31 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              height: 180,
-              width: 180,
-              padding: EdgeInsets.all(50),
-              decoration: BoxDecoration(
-                color: opPrimaryColor,
-                borderRadius: BorderRadius.all(
-                  Radius.circular(500),
+            Stack(
+              alignment: AlignmentDirectional.center,
+              children: <Widget>[
+                Container(
+                  height: 221,
+                  width: 221,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Color(0xD222B45),
+                  ),
                 ),
-              ),
-              child: SvgPicture.asset(
-                "lib/images/empty_home_img.svg",
-                semanticsLabel: "New Logo",
-              ),
+                Container(
+                  height: 180,
+                  width: 180,
+                  padding: EdgeInsets.all(50),
+                  decoration: BoxDecoration(
+                    color: opPrimaryColor,
+                    shape: BoxShape.circle,
+                  ),
+                  child: SvgPicture.asset(
+                    "lib/vectors/empty_home_img.svg",
+                    semanticsLabel: "New Logo",
+                  ),
+                ),
+              ],
             ),
             Text(
               "You have not added any appointments yet,\nclick the add button below to get\nstarted",
