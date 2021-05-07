@@ -57,6 +57,19 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ),
               ),
             ),
+            PhysicalModel(
+              color: colorAppBackground,
+              shadowColor: colorCardShadow,
+              elevation: 8,
+              borderRadius: BorderRadius.circular(8),
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                height: 228,
+                child: Column(
+                  children: <Widget>[],
+                ),
+              ),
+            ),
           ],
         ),
       ),
