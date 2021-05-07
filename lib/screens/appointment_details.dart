@@ -31,6 +31,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
           onPressed: () {},
         ),
       ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: _getHorizontalPadding(screenSize.width),
+        ),
+        child: ListView(
+          children: <Widget>[],
+        ),
+      ),
     );
   }
 }
