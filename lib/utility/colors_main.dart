@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 const colorAppBackground = Color(0xffF9FAFB);
 const colorCardShadow = Color(0xffE8E9EC);
+const colorOrangeChip = Color(0xFFFEEEE3);
 const colorPrimary = Colors.white;
 const colorGrey = Color(0xff707070);
 const colorOrangeAccent = Color(0xffFF8C1C);
