@@ -68,9 +68,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text(
-                      "Day and Time",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Day and Time",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                     ),
                     Container(
                       height: 41,
