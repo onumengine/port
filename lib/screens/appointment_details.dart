@@ -66,6 +66,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 height: 228,
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
                       "Day and Time",
