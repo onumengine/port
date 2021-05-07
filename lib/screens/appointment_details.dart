@@ -63,8 +63,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
               elevation: 8,
               borderRadius: BorderRadius.circular(8),
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 16),
                 height: 228,
+                padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   children: <Widget>[
                     Text(
@@ -87,7 +87,47 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               size: 15,
                             ),
                           ),
-                          Text(""),
+                          Text("Monday, 20 July 2021"),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height: 41,
+                      decoration: BoxDecoration(
+                        color: inputBackgroundColor,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Row(
+                        children: <Widget>[
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 8.0, right: 12),
+                            child: Icon(
+                              Icons.watch_later,
+                              size: 15,
+                            ),
+                          ),
+                          Text("9:00 AM"),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height: 41,
+                      decoration: BoxDecoration(
+                        color: inputBackgroundColor,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Row(
+                        children: <Widget>[
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 8.0, right: 12),
+                            child: Icon(
+                              Icons.watch_later,
+                              size: 15,
+                            ),
+                          ),
+                          Text("30 minutes"),
                         ],
                       ),
                     ),
