@@ -8,6 +8,8 @@ const opSecondaryColor = Color(0xFF757575);
 const opOrangeColor = Color(0xFFFF6E18);
 const opBackgroundColor = Color(0xFFFFFFFF);
 
+const inputBackgroundColor = Color(0x1A9597A1);
+
 const fontRegular = 'Regular';
 const fontMedium = 'Medium';
 const fontSemibold = 'Semibold';
