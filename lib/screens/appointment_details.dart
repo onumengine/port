@@ -72,9 +72,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         "Day and Time",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
+                    SizedBox(height: 10),
                     Container(
                       height: 41,
                       decoration: BoxDecoration(
@@ -95,6 +98,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         ],
                       ),
                     ),
+                    SizedBox(height: 10),
                     Container(
                       height: 41,
                       decoration: BoxDecoration(
@@ -115,6 +119,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         ],
                       ),
                     ),
+                    SizedBox(height: 10),
                     Container(
                       height: 41,
                       decoration: BoxDecoration(
