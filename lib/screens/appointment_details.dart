@@ -66,7 +66,28 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 height: 228,
                 child: Column(
-                  children: <Widget>[],
+                  children: <Widget>[
+                    Text(
+                      "Day and Time",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    Container(
+                      height: 41,
+                      decoration: BoxDecoration(
+                        color: inputBackgroundColor,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.watch_later,
+                            size: 15,
+                          ),
+                          Text(""),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
