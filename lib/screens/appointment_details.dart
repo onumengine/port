@@ -36,7 +36,28 @@ class _DetailsScreenState extends State<DetailsScreen> {
           horizontal: _getHorizontalPadding(screenSize.width),
         ),
         child: ListView(
-          children: <Widget>[],
+          children: <Widget>[
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                width: 212,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: colorOrangeChip,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Center(
+                  child: Text(
+                    "Bank of America",
+                    style: TextStyle(
+                      color: Color(0xFFFD9453),
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
