@@ -79,9 +79,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       ),
                       child: Row(
                         children: <Widget>[
-                          Icon(
-                            Icons.watch_later,
-                            size: 15,
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 8.0, right: 12),
+                            child: Icon(
+                              Icons.watch_later,
+                              size: 15,
+                            ),
                           ),
                           Text(""),
                         ],
