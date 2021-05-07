@@ -64,7 +64,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               borderRadius: BorderRadius.circular(8),
               child: Container(
                 height: 228,
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
