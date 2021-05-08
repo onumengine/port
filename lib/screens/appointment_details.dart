@@ -249,7 +249,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           semanticsLabel: "Request sent icon",
                         ),
                       ),
-                      title: Text("Request sent"),
+                      title: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text("Request sent"),
+                          Text("22 Jan 2020"),
+                        ],
+                      ),
                     ),
                   ],
                 ),
