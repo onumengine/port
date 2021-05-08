@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
 
@@ -242,6 +243,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         decoration: BoxDecoration(
                           color: paleCircleAvatarBackground,
                           shape: BoxShape.circle,
+                        ),
+                        child: SvgPicture.asset(
+                          "lib/vectors/request_sent_icon.svg",
+                          semanticsLabel: "Request sent icon",
                         ),
                       ),
                       title: Text("Request sent"),
