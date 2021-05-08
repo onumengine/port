@@ -264,6 +264,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             "22 Jan 2020",
                             style: TextStyle(
                               color: paleTextColor,
+                              fontSize: 10,
                             ),
                           ),
                         ],
