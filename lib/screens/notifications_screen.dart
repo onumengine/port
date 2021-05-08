@@ -18,6 +18,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -34,6 +36,11 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
             Navigator.pop(context);
           },
         ),
+      ),
+      body: Container(
+        height: screenSize.height,
+        width: screenSize.width,
+        child: ListView(),
       ),
     );
   }
