@@ -252,7 +252,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       title: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text("Request sent"),
+                          Text(
+                            "Request sent",
+                            style: TextStyle(
+                              fontSize: 14,
+                            ),
+                          ),
                           Text("22 Jan 2020"),
                         ],
                       ),
