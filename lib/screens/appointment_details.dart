@@ -158,9 +158,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text(
-                      "Purpose",
-                      style: TextStyle(color: paleTextColor),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Purpose",
+                        style: TextStyle(color: paleTextColor),
+                      ),
                     ),
                     Container(
                       height: 41,
@@ -172,9 +175,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    Text(
-                      "Description",
-                      style: TextStyle(color: paleTextColor),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Description",
+                        style: TextStyle(color: paleTextColor),
+                      ),
                     ),
                     Container(
                       child: Center(
