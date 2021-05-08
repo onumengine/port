@@ -164,6 +164,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           "Went to present a proposal on a solution that can help your business improve and skyrocket your business to the next level"),
                       decoration: BoxDecoration(
                         color: inputBackgroundColor,
+                        borderRadius: BorderRadius.circular(8),
                       ),
                     ),
                     Text("Description"),
