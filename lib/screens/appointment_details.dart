@@ -166,6 +166,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         style: TextStyle(color: paleTextColor),
                       ),
                     ),
+                    SizedBox(height: 10),
                     Container(
                       height: 41,
                       width: double.infinity,
@@ -175,6 +176,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
+                    SizedBox(height: 20),
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -182,6 +184,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         style: TextStyle(color: paleTextColor),
                       ),
                     ),
+                    SizedBox(height: 5),
                     Container(
                       width: double.infinity,
                       child: Center(
