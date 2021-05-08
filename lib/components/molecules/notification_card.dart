@@ -37,16 +37,20 @@ class NotificationCard extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(height: 4),
             Align(
               alignment: Alignment.center,
-              child: Text(
-                this.body,
-                style: TextStyle(
-                  color: paleTextColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                  letterSpacing: 0.2,
-                  height: 1.5,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 14),
+                child: Text(
+                  this.body,
+                  style: TextStyle(
+                    color: paleTextColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                    letterSpacing: 0.2,
+                    height: 1.5,
+                  ),
                 ),
               ),
             ),
