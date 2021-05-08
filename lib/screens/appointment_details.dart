@@ -259,12 +259,30 @@ class _DetailsScreenState extends State<DetailsScreen> {
               ),
             ),
             SizedBox(height: 50),
-            ElevatedButton(
-              child: Text("Edit"),
-              onPressed: () {
-                print("Clicked Edit button");
+            InkWell(
+              onTap: () {
+                print("Tapped Edit button");
               },
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 10),
+                height: 54,
+                decoration: BoxDecoration(
+                  color: opPrimaryColor,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Center(
+                  child: Text(
+                    "Edit",
+                    style: TextStyle(
+                      color: opBackgroundColor,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ),
             ),
+            SizedBox(height: 40),
           ],
         ),
       ),
