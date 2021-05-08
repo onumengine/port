@@ -19,8 +19,12 @@ class NotificationCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(8),
       elevation: 8,
       child: Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: 23,
+        ),
         height: 140,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Align(
               alignment: Alignment.centerLeft,
