@@ -232,6 +232,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               child: Container(
                 padding: EdgeInsets.only(top: 17, left: 20, right: 20),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[],
                 ),
               ),
