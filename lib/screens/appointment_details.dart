@@ -168,9 +168,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     ),
                     Container(
                       height: 41,
-                      child: Center(
-                        child: Text("Business Discussion"),
-                      ),
+                      width: double.infinity,
+                      child: Text("Business Discussion"),
                       decoration: BoxDecoration(
                         color: inputBackgroundColor,
                         borderRadius: BorderRadius.circular(8),
@@ -184,6 +183,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       ),
                     ),
                     Container(
+                      width: double.infinity,
                       child: Center(
                         child: Text(
                           "Went to present a proposal on a solution that can help your business improve and skyrocket your business to the next level",
