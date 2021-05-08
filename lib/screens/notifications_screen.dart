@@ -8,13 +8,21 @@ class NotificationsScreen extends StatefulWidget {
 }
 
 class _NotificationsScreenState extends State<NotificationsScreen> {
+  double _getHorizontalPadding(double screenWidth) {
+    if (screenWidth < 592)
+      return 8;
+    else if (screenWidth > 592 && screenWidth < 1000)
+      return 40;
+    else if (screenWidth > 1000) return 3;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
-          "Details",
+          "Notifications",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         leading: IconButton(
