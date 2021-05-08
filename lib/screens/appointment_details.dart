@@ -159,6 +159,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   children: <Widget>[
                     Text("Purpose"),
                     Container(
+                      height: 41,
                       child: Text(
                           "Went to present a proposal on a solution that can help your business improve and skyrocket your business to the next level"),
                     ),
