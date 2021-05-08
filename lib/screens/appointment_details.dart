@@ -173,6 +173,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     Container(
                       height: 41,
                       width: double.infinity,
+                      padding: EdgeInsets.symmetric(horizontal: 17),
                       child: Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
@@ -204,6 +205,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     SizedBox(height: 8),
                     Container(
                       width: double.infinity,
+                      padding: EdgeInsets.symmetric(horizontal: 17),
                       child: Center(
                         child: Text(
                           "Went to present a proposal on a solution that can help your business improve and skyrocket your business to the next level",
