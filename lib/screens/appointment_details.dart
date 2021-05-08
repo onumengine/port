@@ -173,10 +173,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     Container(
                       height: 41,
                       width: double.infinity,
-                      child: Text(
-                        "Business Discussion",
-                        style: TextStyle(
-                          fontSize: 14,
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Business Discussion",
+                          style: TextStyle(
+                            fontSize: 14,
+                          ),
                         ),
                       ),
                       decoration: BoxDecoration(
@@ -187,11 +190,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     SizedBox(height: 20),
                     Align(
                       alignment: Alignment.centerLeft,
-                      child: Text(
-                        "Description",
-                        style: TextStyle(
-                          color: paleTextColor,
-                          fontSize: 14,
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Description",
+                          style: TextStyle(
+                            color: paleTextColor,
+                            fontSize: 14,
+                          ),
                         ),
                       ),
                     ),
@@ -214,6 +220,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   ],
                 ),
               ),
+            ),
+            SizedBox(height: 20),
+            PhysicalModel(
+              color: colorAppBackground,
+              shadowColor: colorCardShadow,
+              borderRadius: BorderRadius.circular(8),
+              child: Container(),
             ),
           ],
         ),
