@@ -62,7 +62,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             PhysicalModel(
               color: colorAppBackground,
               shadowColor: colorCardShadow,
-              elevation: 8,
+              elevation: 16,
               borderRadius: BorderRadius.circular(8),
               child: Container(
                 height: 228,
@@ -151,11 +151,11 @@ class _DetailsScreenState extends State<DetailsScreen> {
             PhysicalModel(
               color: colorAppBackground,
               shadowColor: colorCardShadow,
-              elevation: 8,
+              elevation: 16,
               borderRadius: BorderRadius.circular(8),
               child: Container(
-                height: 199,
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding:
+                    EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 20),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -205,7 +205,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     SizedBox(height: 8),
                     Container(
                       width: double.infinity,
-                      padding: EdgeInsets.symmetric(horizontal: 17),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 17, vertical: 17),
                       child: Center(
                         child: Text(
                           "Went to present a proposal on a solution that can help your business improve and skyrocket your business to the next level",
@@ -230,6 +231,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               borderRadius: BorderRadius.circular(8),
               child: Container(),
             ),
+            SizedBox(height: 50),
           ],
         ),
       ),
