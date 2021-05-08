@@ -156,7 +156,15 @@ class _DetailsScreenState extends State<DetailsScreen> {
               child: Container(
                 height: 199,
                 child: Column(
-                  children: <Widget>[],
+                  children: <Widget>[
+                    Text("Purpose"),
+                    Container(
+                      child: Text(
+                          "Went to present a proposal on a solution that can help your business improve and skyrocket your business to the next level"),
+                    ),
+                    Text("Description"),
+                    Container(),
+                  ],
                 ),
               ),
             ),
