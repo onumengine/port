@@ -260,7 +260,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               fontWeight: FontWeight.w600,
                             ),
                           ),
-                          Text("22 Jan 2020"),
+                          Text(
+                            "22 Jan 2020",
+                            style: TextStyle(
+                              color: paleTextColor,
+                            ),
+                          ),
                         ],
                       ),
                     ),
