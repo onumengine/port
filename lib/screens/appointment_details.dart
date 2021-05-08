@@ -235,6 +235,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     ListTile(
+                      contentPadding: EdgeInsets.zero,
                       leading: Container(
                         height: 40,
                         width: 40,
