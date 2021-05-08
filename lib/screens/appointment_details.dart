@@ -54,6 +54,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     style: TextStyle(
                       color: Color(0xFFFD9453),
                       fontSize: 18,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
@@ -76,8 +77,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       child: Text(
                         "Day and Time",
                         style: TextStyle(
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w600,
                           color: primaryTextColor,
+                          fontSize: 15,
                         ),
                       ),
                     ),
@@ -98,7 +100,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               size: 15,
                             ),
                           ),
-                          Text("Monday, 20 July 2021"),
+                          Text(
+                            "Monday, 20 July 2021",
+                            style: TextStyle(fontWeight: FontWeight.w400),
+                          ),
                         ],
                       ),
                     ),
@@ -119,7 +124,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               size: 15,
                             ),
                           ),
-                          Text("9:00 AM"),
+                          Text(
+                            "9:00 AM",
+                            style: TextStyle(fontWeight: FontWeight.w400),
+                          ),
                         ],
                       ),
                     ),
@@ -140,7 +148,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               size: 15,
                             ),
                           ),
-                          Text("30 minutes"),
+                          Text(
+                            "30 minutes",
+                            style: TextStyle(fontWeight: FontWeight.w400),
+                          ),
                         ],
                       ),
                     ),
@@ -166,7 +177,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         "Purpose",
                         style: TextStyle(
                           color: paleTextColor,
-                          fontSize: 14,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
@@ -181,6 +193,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           "Business Discussion",
                           style: TextStyle(
                             fontSize: 14,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                       ),
@@ -198,7 +211,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           "Description",
                           style: TextStyle(
                             color: paleTextColor,
-                            fontSize: 14,
+                            fontSize: 12,
                           ),
                         ),
                       ),
@@ -213,6 +226,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           "Went to present a proposal on a solution that can help your business improve and skyrocket your business to the next level",
                           style: TextStyle(
                             fontSize: 14,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                       ),
@@ -232,7 +246,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
               elevation: 16,
               borderRadius: BorderRadius.circular(8),
               child: Container(
-                padding: EdgeInsets.only(top: 17, left: 20, right: 20),
+                padding:
+                    EdgeInsets.only(top: 17, left: 20, right: 20, bottom: 24),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
