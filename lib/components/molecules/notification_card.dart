@@ -25,6 +25,10 @@ class NotificationCard extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: Text(this.title),
             ),
+            Align(
+              alignment: Alignment.center,
+              child: Text(this.body),
+            ),
           ],
         ),
       ),
