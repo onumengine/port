@@ -155,6 +155,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
               borderRadius: BorderRadius.circular(8),
               child: Container(
                 height: 199,
+                child: Column(
+                  children: <Widget>[],
+                ),
               ),
             ),
           ],
