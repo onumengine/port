@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
 
 class NotificationCard extends StatelessWidget {
@@ -23,15 +24,38 @@ class NotificationCard extends StatelessWidget {
           children: <Widget>[
             Align(
               alignment: Alignment.centerLeft,
-              child: Text(this.title),
+              child: Text(
+                this.title,
+                style: TextStyle(
+                  color: primaryTextColor,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
             ),
             Align(
               alignment: Alignment.center,
-              child: Text(this.body),
+              child: Text(
+                this.body,
+                style: TextStyle(
+                  color: paleTextColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  letterSpacing: 0.2,
+                  height: 1.5,
+                ),
+              ),
             ),
             Align(
               alignment: Alignment.centerRight,
-              child: Text(this.timeStamp),
+              child: Text(
+                this.timeStamp,
+                style: TextStyle(
+                  color: paleTextColor,
+                  fontSize: 14,
+                  letterSpacing: 0.2,
+                ),
+              ),
             ),
           ],
         ),
