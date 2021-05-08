@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:port/components/atoms/appointment_status_tile.dart';
 import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
 
@@ -234,44 +234,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 padding: EdgeInsets.only(top: 17, left: 20, right: 20),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    ListTile(
-                      contentPadding: EdgeInsets.zero,
-                      leading: Container(
-                        height: 40,
-                        width: 40,
-                        decoration: BoxDecoration(
-                          color: paleCircleAvatarBackground,
-                          shape: BoxShape.circle,
-                        ),
-                        child: SvgPicture.asset(
-                          "lib/vectors/request_sent_icon.svg",
-                          semanticsLabel: "Request sent icon",
-                        ),
-                      ),
-                      title: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(
-                            "Request sent",
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: opPrimaryColor,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          Text(
-                            "22 Jan 2020",
-                            style: TextStyle(
-                              color: paleTextColor,
-                              fontSize: 10,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                  children: <Widget>[],
                 ),
               ),
             ),

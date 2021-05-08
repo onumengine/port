@@ -3,6 +3,15 @@ import 'package:flutter_svg/svg.dart';
 import 'package:port/utility/colors.dart';
 
 class AppointmentStatusTile extends StatelessWidget {
+  String iconPath, semanticLabel, appointmentStatus, timeStamp;
+
+  AppointmentStatusTile({
+    this.iconPath,
+    this.semanticLabel,
+    this.appointmentStatus,
+    this.timeStamp,
+  });
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -31,7 +40,7 @@ class AppointmentStatusTile extends StatelessWidget {
             ),
           ),
           Text(
-            "22 Jan 2020",
+            "22 Jan 2020, 10:59 AM",
             style: TextStyle(
               color: paleTextColor,
               fontSize: 10,
