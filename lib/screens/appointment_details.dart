@@ -256,6 +256,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             "Request sent",
                             style: TextStyle(
                               fontSize: 14,
+                              color: opPrimaryColor,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                           Text("22 Jan 2020"),
