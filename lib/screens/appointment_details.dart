@@ -160,15 +160,21 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     Text("Purpose"),
                     Container(
                       height: 41,
-                      child: Text(
-                          "Went to present a proposal on a solution that can help your business improve and skyrocket your business to the next level"),
+                      child: Text("Business Discussion"),
                       decoration: BoxDecoration(
                         color: inputBackgroundColor,
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
                     Text("Description"),
-                    Container(),
+                    Container(
+                      child: Text(
+                        "Went to present a proposal on a solution that can help your business improve and skyrocket your business to the next level",
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
                   ],
                 ),
               ),
