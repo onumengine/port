@@ -156,6 +156,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               child: Container(
                 height: 199,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
                       "Purpose",
