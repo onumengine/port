@@ -163,14 +163,22 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         "Purpose",
-                        style: TextStyle(color: paleTextColor),
+                        style: TextStyle(
+                          color: paleTextColor,
+                          fontSize: 14,
+                        ),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 8),
                     Container(
                       height: 41,
                       width: double.infinity,
-                      child: Text("Business Discussion"),
+                      child: Text(
+                        "Business Discussion",
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
                       decoration: BoxDecoration(
                         color: inputBackgroundColor,
                         borderRadius: BorderRadius.circular(8),
@@ -181,15 +189,21 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         "Description",
-                        style: TextStyle(color: paleTextColor),
+                        style: TextStyle(
+                          color: paleTextColor,
+                          fontSize: 14,
+                        ),
                       ),
                     ),
-                    SizedBox(height: 5),
+                    SizedBox(height: 8),
                     Container(
                       width: double.infinity,
                       child: Center(
                         child: Text(
                           "Went to present a proposal on a solution that can help your business improve and skyrocket your business to the next level",
+                          style: TextStyle(
+                            fontSize: 14,
+                          ),
                         ),
                       ),
                       decoration: BoxDecoration(
