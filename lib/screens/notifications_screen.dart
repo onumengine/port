@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
+import 'package:port/components/molecules/notification_card.dart';
 import 'package:port/utility/colors.dart';
 
 class NotificationsScreen extends StatefulWidget {
@@ -38,9 +39,19 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
         ),
       ),
       body: Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: _getHorizontalPadding(screenSize.width),
+        ),
         height: screenSize.height,
         width: screenSize.width,
-        child: ListView(),
+        child: ListView.separated(
+          itemCount: 5,
+          itemBuilder: (context, index) => Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: NotificationCard(),
+          ),
+          separatorBuilder: (context, index) => SizedBox(height: 10),
+        ),
       ),
     );
   }

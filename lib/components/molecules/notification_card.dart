@@ -1,0 +1,17 @@
+import "package:flutter/material.dart";
+import 'package:port/utility/colors_main.dart';
+
+class NotificationCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return PhysicalModel(
+      color: white,
+      shadowColor: colorCardShadow,
+      borderRadius: BorderRadius.circular(8),
+      elevation: 8,
+      child: Container(
+        height: 140,
+      ),
+    );
+  }
+}
