@@ -37,6 +37,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         ),
         child: ListView(
           children: <Widget>[
+            SizedBox(height: 20),
             Align(
               alignment: Alignment.centerLeft,
               child: Container(
@@ -57,6 +58,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ),
               ),
             ),
+            SizedBox(height: 20),
             PhysicalModel(
               color: colorAppBackground,
               shadowColor: colorCardShadow,
