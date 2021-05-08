@@ -265,6 +265,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             style: TextStyle(
                               color: paleTextColor,
                               fontSize: 10,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                         ],
