@@ -17,6 +17,7 @@ class AppointmentStatusTile extends StatelessWidget {
     return ListTile(
       contentPadding: EdgeInsets.zero,
       leading: Container(
+        padding: EdgeInsets.all(10),
         height: 40,
         width: 40,
         decoration: BoxDecoration(
