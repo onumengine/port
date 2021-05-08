@@ -10,6 +10,7 @@ const opBackgroundColor = Color(0xFFFFFFFF);
 
 const inputBackgroundColor = Color(0x1A9597A1);
 const primaryTextColor = Color(0xFF12121F);
+const paleTextColor = Color(0xFFAFAFBD);
 
 const fontRegular = 'Regular';
 const fontMedium = 'Medium';

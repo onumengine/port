@@ -168,7 +168,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    Text("Description"),
+                    Text(
+                      "Description",
+                      style: TextStyle(color: paleTextColor),
+                    ),
                     Container(
                       child: Center(
                         child: Text(
