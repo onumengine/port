@@ -157,7 +157,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 height: 199,
                 child: Column(
                   children: <Widget>[
-                    Text("Purpose"),
+                    Text(
+                      "Purpose",
+                      style: TextStyle(color: paleTextColor),
+                    ),
                     Container(
                       height: 41,
                       child: Center(
