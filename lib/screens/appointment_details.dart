@@ -229,6 +229,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             PhysicalModel(
               color: colorAppBackground,
               shadowColor: colorCardShadow,
+              elevation: 16,
               borderRadius: BorderRadius.circular(8),
               child: Container(
                 padding: EdgeInsets.only(top: 17, left: 20, right: 20),
@@ -258,6 +259,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
               ),
             ),
             SizedBox(height: 50),
+            ElevatedButton(
+              child: Text("Edit"),
+              onPressed: () {
+                print("Clicked Edit button");
+              },
+            ),
           ],
         ),
       ),
