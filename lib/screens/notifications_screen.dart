@@ -50,7 +50,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
             padding: const EdgeInsets.only(top: 10),
             child: NotificationCard(
               title: "Request Approved",
-              body: "",
+              body:
+                  "Your request to meet with Citi bank has been approved and is scheduled for 9:00AM, 20th april, 2021",
               timeStamp: "24, April 2021",
             ),
           ),

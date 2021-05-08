@@ -19,6 +19,14 @@ class NotificationCard extends StatelessWidget {
       elevation: 8,
       child: Container(
         height: 140,
+        child: Column(
+          children: <Widget>[
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(this.title),
+            ),
+          ],
+        ),
       ),
     );
   }
