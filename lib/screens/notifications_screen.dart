@@ -22,7 +22,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
             CupertinoIcons.back,
             color: opPrimaryColor,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
       ),
     );
