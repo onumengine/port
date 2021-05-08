@@ -48,7 +48,11 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           itemCount: 5,
           itemBuilder: (context, index) => Padding(
             padding: const EdgeInsets.only(top: 10),
-            child: NotificationCard(),
+            child: NotificationCard(
+              title: "Request Approved",
+              body: "",
+              timeStamp: "24, April 2021",
+            ),
           ),
           separatorBuilder: (context, index) => SizedBox(height: 10),
         ),
