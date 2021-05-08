@@ -239,8 +239,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         height: 40,
                         width: 40,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
                           color: paleCircleAvatarBackground,
+                          shape: BoxShape.circle,
                         ),
                       ),
                       title: Text("Request sent"),
