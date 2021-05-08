@@ -229,7 +229,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
               color: colorAppBackground,
               shadowColor: colorCardShadow,
               borderRadius: BorderRadius.circular(8),
-              child: Container(),
+              child: Container(
+                padding: EdgeInsets.only(top: 17, left: 20, right: 20),
+                child: Column(
+                  children: <Widget>[],
+                ),
+              ),
             ),
             SizedBox(height: 50),
           ],
