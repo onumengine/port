@@ -76,6 +76,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         "Day and Time",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
+                          color: primaryTextColor,
                         ),
                       ),
                     ),
