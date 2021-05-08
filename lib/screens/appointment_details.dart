@@ -234,7 +234,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 padding: EdgeInsets.only(top: 17, left: 20, right: 20),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[],
+                  children: <Widget>[
+                    AppointmentStatusTile(
+                      iconPath: "lib/vectors/request_sent_icon.svg",
+                      semanticLabel: "Request sent icon",
+                      appointmentStatus: "Request sent",
+                      timeStamp: "22 Jan 2020, 10:59 AM",
+                    ),
+                  ],
                 ),
               ),
             ),

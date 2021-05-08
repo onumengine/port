@@ -24,15 +24,15 @@ class AppointmentStatusTile extends StatelessWidget {
           shape: BoxShape.circle,
         ),
         child: SvgPicture.asset(
-          "lib/vectors/request_sent_icon.svg",
-          semanticsLabel: "Request sent icon",
+          this.iconPath,
+          semanticsLabel: this.semanticLabel,
         ),
       ),
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Text(
-            "Request sent",
+            this.appointmentStatus,
             style: TextStyle(
               fontSize: 14,
               color: opPrimaryColor,
@@ -40,7 +40,7 @@ class AppointmentStatusTile extends StatelessWidget {
             ),
           ),
           Text(
-            "22 Jan 2020, 10:59 AM",
+            this.timeStamp,
             style: TextStyle(
               color: paleTextColor,
               fontSize: 10,
