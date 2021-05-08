@@ -233,7 +233,19 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 padding: EdgeInsets.only(top: 17, left: 20, right: 20),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[],
+                  children: <Widget>[
+                    ListTile(
+                      leading: Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: paleCircleAvatarBackground,
+                        ),
+                      ),
+                      title: Text("Request sent"),
+                    ),
+                  ],
                 ),
               ),
             ),
