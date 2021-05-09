@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import 'package:port/components/atoms/searchbar.dart';
+import 'package:port/components/molecules/category_card.dart';
 import 'package:port/components/organisms/categories_grid.dart';
 
 class CategoriesScreen extends StatefulWidget {
@@ -36,10 +37,6 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             fontWeight: FontWeight.w600,
           ),
         ),
-        bottom: PreferredSize(
-          preferredSize: Size(screenSize.width, 100),
-          child: SearchBar(),
-        ),
       ),
       body: Container(
         height: screenSize.height,
@@ -47,7 +44,29 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         padding: EdgeInsets.symmetric(
           horizontal: _getHorizontalPadding(screenSize.width),
         ),
-        child: CategoriesGrid(),
+        child: CustomScrollView(
+          slivers: [
+            SliverList(
+              delegate: SliverChildListDelegate(
+                <Widget>[
+                  SearchBar(),
+                ],
+              ),
+            ),
+            SliverGrid(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 20,
+                crossAxisSpacing: 20,
+              ),
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  return CategoryCard();
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
