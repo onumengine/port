@@ -66,6 +66,14 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 (context, index) {
                   return CategoryCard();
                 },
+                childCount: 8,
+              ),
+            ),
+            SliverList(
+              delegate: SliverChildListDelegate(
+                <Widget>[
+                  SizedBox(height: 50),
+                ],
               ),
             ),
           ],
