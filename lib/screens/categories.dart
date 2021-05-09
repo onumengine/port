@@ -46,15 +46,13 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         ),
         child: CustomScrollView(
           slivers: [
-            SliverList(
-              delegate: SliverChildListDelegate(
-                <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
-                    child: SearchBar(),
-                  ),
-                ],
+            SliverAppBar(
+              automaticallyImplyLeading: false,
+              flexibleSpace: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                child: SearchBar(),
               ),
+              floating: true,
             ),
             SliverGrid(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
