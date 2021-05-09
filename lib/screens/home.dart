@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:port/components/empty_appointments_comp.dart';
 import 'package:port/components/more_comp.dart';
+import 'package:port/screens/categories.dart';
 import 'package:port/screens/notifications.dart';
 import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
@@ -63,7 +64,12 @@ class _MyHomePageState extends State<MyHomePage> {
         foregroundColor: white,
         child: Icon(Icons.add),
         onPressed: () {
-          print("Pressed the FAB");
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CategoriesScreen(),
+            ),
+          );
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
