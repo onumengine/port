@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:port/components/appointment_card.dart';
+import 'package:port/components/organisms/appointment_card.dart';
 
 class AppointmentsListComponent extends StatefulWidget {
   @override
