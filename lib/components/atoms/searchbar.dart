@@ -28,6 +28,7 @@ class _SearchBarState extends State<SearchBar> {
           Expanded(
             child: TextField(
               controller: _searchText,
+              decoration: InputDecoration.collapsed(hintText: "Search"),
             ),
           ),
         ],
