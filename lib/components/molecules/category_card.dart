@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
 
 class CategoryCard extends StatefulWidget {
@@ -10,14 +11,13 @@ class _CategoryCardState extends State<CategoryCard> {
   @override
   Widget build(BuildContext context) {
     return PhysicalModel(
-      color: colorAppBackground,
-      shadowColor: colorCardShadow,
-      elevation: 8,
+      color: white,
+      shadowColor: colorLightCardShadow,
       borderRadius: BorderRadius.circular(24),
+      elevation: 24,
       child: Container(
         height: 185,
         width: (MediaQuery.of(context).size.width / 3) * 2,
-        decoration: BoxDecoration(boxShadow: <BoxShadow>[BoxShadow()]),
       ),
     );
   }
