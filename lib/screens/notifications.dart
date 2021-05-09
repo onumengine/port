@@ -56,6 +56,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
             ),
           ),
           separatorBuilder: (context, index) => SizedBox(height: 10),
+          padding: EdgeInsets.only(top: 2, bottom: 40),
         ),
       ),
     );
