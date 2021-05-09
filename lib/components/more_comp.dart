@@ -77,7 +77,11 @@ class _MoreComponentState extends State<MoreComponent> {
                         child: Center(
                           child: Text(
                             "Edit Profile",
-                            style: TextStyle(color: opTextPrimaryColor),
+                            style: TextStyle(
+                              color: opTextPrimaryColor,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                            ),
                           ),
                         ),
                         decoration: BoxDecoration(
