@@ -13,8 +13,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _navBarIndex;
-  int _currentIndex = 0;
+  int _navbarIndex = 0;
   String title;
 
   final _tabs = [
@@ -58,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      body: _tabs[_currentIndex],
+      body: _tabs[_navbarIndex],
       floatingActionButton: FloatingActionButton(
         backgroundColor: opPrimaryColor,
         foregroundColor: white,
@@ -74,19 +73,19 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
+        currentIndex: _navbarIndex,
         onTap: (int selectedIndex) {
           setState(() {
-            _currentIndex = selectedIndex;
+            _navbarIndex = selectedIndex;
           });
-          print(_currentIndex);
+          print(_navbarIndex);
         },
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               "lib/vectors/home_icon.svg",
             ),
-            label: "Home",
+            label: "",
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
