@@ -37,8 +37,14 @@ class EmptyAppointmentsComponent extends StatelessWidget {
           ),
           SizedBox(height: 20),
           Text(
-            "You have not added any appointments yet,\nclick the add button below to get\nstarted",
+            "You have not added any appointments yet.\nClick the add button below to get\nstarted",
             textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 15,
+              letterSpacing: 1,
+              height: 1.5,
+            ),
           ),
         ],
       ),
