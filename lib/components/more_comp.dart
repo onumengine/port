@@ -38,7 +38,7 @@ class _MoreComponentState extends State<MoreComponent> {
               elevation: 10,
               borderRadius: BorderRadius.circular(8),
               child: Container(
-                height: 152,
+                padding: EdgeInsets.symmetric(vertical: 20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                 ),
