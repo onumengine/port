@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
         primaryColor: colorAppBackground,
         accentColor: colorOrangeAccent,
         scaffoldBackgroundColor: colorAppBackground,
+        fontFamily: "Sarabun",
         appBarTheme: AppBarTheme(
           backgroundColor: colorAppBackground,
           elevation: 0,
