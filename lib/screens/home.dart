@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:port/components/empty_appointments_comp.dart';
-import 'package:port/components/more_comp.dart';
+import 'package:port/components/empty_appointments.dart';
+import 'package:port/components/more.dart';
 import 'package:port/screens/categories.dart';
 import 'package:port/screens/notifications.dart';
 import 'package:port/utility/colors.dart';

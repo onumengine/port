@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import 'package:port/components/atoms/searchbar.dart';
-import 'package:port/components/organisms/categories_grid.dart';
+import 'package:port/components/molecules/category_card.dart';
 
 class CategoriesScreen extends StatefulWidget {
   @override
@@ -55,7 +55,20 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               ),
               floating: true,
             ),
-            CategoriesGrid(),
+            SliverGrid(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 20,
+                crossAxisSpacing: 20,
+                childAspectRatio: 4 / 5,
+              ),
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  return CategoryCard();
+                },
+                childCount: 8,
+              ),
+            ),
             SliverList(
               delegate: SliverChildListDelegate(
                 <Widget>[
