@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import 'package:port/components/atoms/searchbar.dart';
-import 'package:port/components/molecules/category_card.dart';
 import 'package:port/components/organisms/categories_grid.dart';
 
 class CategoriesScreen extends StatefulWidget {
