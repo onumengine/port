@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:port/components/empty_appointments_comp.dart';
 import 'package:port/components/more_comp.dart';
-import 'package:port/screens/notifications_screen.dart';
+import 'package:port/screens/notifications.dart';
 import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
 import 'package:flutter_svg/flutter_svg.dart';

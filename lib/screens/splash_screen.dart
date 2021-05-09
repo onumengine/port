@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:async';
 
 import '../bloc/sign_in/bloc.dart';
-import 'home_page.dart';
+import 'home.dart';
 import '../repository/user_repository.dart';
 
 class SplashScreen extends StatefulWidget {

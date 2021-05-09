@@ -5,7 +5,7 @@ import 'package:progress_dialog/progress_dialog.dart';
 import '../bloc/sign_in/bloc.dart';
 import '../bloc/sign_in/event.dart';
 import '../bloc/sign_in/state.dart';
-import 'home_page.dart';
+import 'home.dart';
 
 class SignInScreen extends StatefulWidget {
   @override
@@ -32,7 +32,7 @@ class _SignInScreenState extends State<SignInScreen> {
   void initState() {
     _signInBloc = BlocProvider.of<SignInBloc>(context);
     //_emailController.text = "BUI/ACAD/282";
-   // _passwordController.text = "Ezekiel79";
+    // _passwordController.text = "Ezekiel79";
     super.initState();
   }
 
