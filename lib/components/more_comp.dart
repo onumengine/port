@@ -54,11 +54,20 @@ class _MoreComponentState extends State<MoreComponent> {
                       ),
                       title: Text(
                         "Neelesh Chaudhary",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 21,
+                          color: opPrimaryColor,
+                        ),
                       ),
-                      subtitle: Text("UI/UX Designer"),
+                      subtitle: Text(
+                        "UI/UX Designer",
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
                     ),
-                    InkResponse(
+                    InkWell(
                       onTap: () {
                         print("Clicked edit profile");
                       },
