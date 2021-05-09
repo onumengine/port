@@ -23,12 +23,20 @@ class _SearchBarState extends State<SearchBar> {
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
-          Icon(Icons.search),
+          Icon(
+            Icons.search,
+            color: lightIconColor,
+          ),
           SizedBox(width: 4),
           Expanded(
             child: TextField(
               controller: _searchText,
-              decoration: InputDecoration.collapsed(hintText: "Search"),
+              decoration: InputDecoration.collapsed(
+                hintText: "Search",
+                hintStyle: TextStyle(
+                  color: lightIconColor,
+                ),
+              ),
             ),
           ),
         ],

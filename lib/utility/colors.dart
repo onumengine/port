@@ -14,6 +14,7 @@ const paleTextColor = Color(0xFFAFAFBD);
 const paleCircleAvatarBackground = Color(0xD222B45);
 const appBarTitleColor = Color(0xFF171D33);
 const colorLightCardShadow = Color(0xD663E33);
+const lightIconColor = Color(0xFF9597A1);
 
 const fontRegular = 'Regular';
 const fontMedium = 'Medium';
