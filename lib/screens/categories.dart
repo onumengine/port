@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
+import 'package:port/components/organisms/categories_grid.dart';
 
 class CategoriesScreen extends StatefulWidget {
   @override
@@ -41,6 +42,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         padding: EdgeInsets.symmetric(
           horizontal: _getHorizontalPadding(screenSize.width),
         ),
+        child: CategoriesGrid(),
       ),
     );
   }
