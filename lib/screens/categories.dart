@@ -9,6 +9,28 @@ class CategoriesScreen extends StatefulWidget {
 }
 
 class _CategoriesScreenState extends State<CategoriesScreen> {
+  Map<String, String> _categories = {
+    "Banks": "lib/vectors/bank_icon.svg",
+    "Restaurants": "lib/vectors/restaurants_icon.svg",
+    "Hospitals": "lib/vectors/hospital_icon.svg",
+    "Gyms": "lib/vectors/gyms_icon.svg",
+    "Schools": "lib/vectors/schools_icon.svg",
+    "Churches": "lib/vectors/church_icon.svg",
+    "Shops": "lib/vectors/shop_icon.svg",
+    "Stores": "lib/vectors/store_icon.svg",
+  };
+
+  List<String> _semanticLabels = [
+    "Bank icon",
+    "Restaurant icon",
+    "Hospital icon",
+    "Gym icon",
+    "School icon",
+    "Church icon",
+    "Shop icon",
+    "Store icon",
+  ];
+
   double _getHorizontalPadding(double screenWidth) {
     if (screenWidth < 592)
       return 20;
@@ -64,7 +86,11 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               ),
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
-                  return CategoryCard();
+                  return CategoryCard(
+                    iconPath: _categories.values.toList().elementAt(index),
+                    semanticLabel: _semanticLabels[index],
+                    categoryName: _categories.keys.toList()[index],
+                  );
                 },
                 childCount: 8,
               ),

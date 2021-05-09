@@ -4,6 +4,14 @@ import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
 
 class CategoryCard extends StatefulWidget {
+  String iconPath, semanticLabel, categoryName;
+
+  CategoryCard({
+    this.iconPath,
+    this.semanticLabel,
+    this.categoryName,
+  });
+
   @override
   _CategoryCardState createState() => _CategoryCardState();
 }
@@ -31,13 +39,13 @@ class _CategoryCardState extends State<CategoryCard> {
                 color: paleCircleAvatarBackground,
               ),
               child: SvgPicture.asset(
-                "lib/vectors/bank_icon.svg",
-                semanticsLabel: "Banks Icon",
+                widget.iconPath,
+                semanticsLabel: widget.semanticLabel,
               ),
             ),
             SizedBox(height: 30),
             Text(
-              "Banks",
+              widget.categoryName,
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w400,
