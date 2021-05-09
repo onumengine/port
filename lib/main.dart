@@ -21,6 +21,10 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppBarTheme(
           backgroundColor: colorAppBackground,
           elevation: 0,
+          titleTextStyle: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 24,
+          ),
         ),
       ),
       home: SplashScreen(),
