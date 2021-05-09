@@ -12,6 +12,7 @@ const inputBackgroundColor = Color(0x1A9597A1);
 const primaryTextColor = Color(0xFF12121F);
 const paleTextColor = Color(0xFFAFAFBD);
 const paleCircleAvatarBackground = Color(0xD222B45);
+const appBarTitleColor = Color(0xFF171D33);
 
 const fontRegular = 'Regular';
 const fontMedium = 'Medium';

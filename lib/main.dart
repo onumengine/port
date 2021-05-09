@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:port/screens/splash_screen.dart';
+import 'package:port/utility/colors.dart';
 import 'utility/colors_main.dart';
 
 void main() {
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
           titleTextStyle: TextStyle(
             fontWeight: FontWeight.w700,
             fontSize: 24,
+            color: appBarTitleColor,
           ),
         ),
       ),

@@ -18,7 +18,12 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             Navigator.pop(context);
           },
         ),
-        title: Text("Categories"),
+        title: Text(
+          "Choose Category",
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+          ),
+        ),
       ),
     );
   }
