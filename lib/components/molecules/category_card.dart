@@ -36,7 +36,14 @@ class _CategoryCardState extends State<CategoryCard> {
               ),
             ),
             SizedBox(height: 30),
-            Text("Banks"),
+            Text(
+              "Banks",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w400,
+                letterSpacing: 0.25,
+              ),
+            ),
           ],
         ),
       ),
