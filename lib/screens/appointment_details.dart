@@ -29,7 +29,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
         ),
         leading: IconButton(
           icon: Icon(CupertinoIcons.back),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
       ),
       body: Padding(
