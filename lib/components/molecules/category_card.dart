@@ -13,9 +13,9 @@ class _CategoryCardState extends State<CategoryCard> {
   Widget build(BuildContext context) {
     return PhysicalModel(
       color: white,
-      shadowColor: colorLightCardShadow,
+      shadowColor: colorCardShadow,
       borderRadius: BorderRadius.circular(24),
-      elevation: 24,
+      elevation: 12,
       child: Container(
         height: 185,
         width: (MediaQuery.of(context).size.width / 3) * 2,

@@ -56,19 +56,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               ),
               floating: true,
             ),
-            SliverGrid(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 20,
-                crossAxisSpacing: 20,
-              ),
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  return CategoryCard();
-                },
-                childCount: 8,
-              ),
-            ),
+            CategoriesGrid(),
             SliverList(
               delegate: SliverChildListDelegate(
                 <Widget>[
