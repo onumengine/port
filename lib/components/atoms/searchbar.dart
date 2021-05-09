@@ -1,12 +1,12 @@
 import "package:flutter/material.dart";
 import 'package:port/utility/colors.dart';
 
-class SeachBar extends StatefulWidget {
+class SearchBar extends StatefulWidget {
   @override
-  _SeachBarState createState() => _SeachBarState();
+  _SearchBarState createState() => _SearchBarState();
 }
 
-class _SeachBarState extends State<SeachBar> {
+class _SearchBarState extends State<SearchBar> {
   final TextEditingController _searchText = TextEditingController();
 
   @override
@@ -14,15 +14,20 @@ class _SeachBarState extends State<SeachBar> {
     return Container(
       height: 40,
       width: MediaQuery.of(context).size.width - 40,
+      padding: EdgeInsets.symmetric(horizontal: 8),
       decoration: BoxDecoration(
         color: inputBackgroundColor,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
         children: <Widget>[
           Icon(Icons.search),
-          TextField(),
+          SizedBox(width: 4),
+          Expanded(
+            child: TextField(),
+          ),
         ],
       ),
     );
