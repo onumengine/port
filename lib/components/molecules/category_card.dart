@@ -20,6 +20,7 @@ class _CategoryCardState extends State<CategoryCard> {
         height: 185,
         width: (MediaQuery.of(context).size.width / 3) * 2,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
               height: 61,
@@ -34,6 +35,7 @@ class _CategoryCardState extends State<CategoryCard> {
                 semanticsLabel: "Banks Icon",
               ),
             ),
+            SizedBox(height: 30),
             Text("Banks"),
           ],
         ),
