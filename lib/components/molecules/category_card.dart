@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter_svg/svg.dart';
 import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
 
@@ -23,9 +24,14 @@ class _CategoryCardState extends State<CategoryCard> {
             Container(
               height: 61,
               width: 61,
+              padding: EdgeInsets.all(17),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: paleCircleAvatarBackground,
+              ),
+              child: SvgPicture.asset(
+                "lib/vectors/bank_icon.svg",
+                semanticsLabel: "Banks Icon",
               ),
             ),
             Text("Banks"),
