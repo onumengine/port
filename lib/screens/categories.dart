@@ -49,7 +49,10 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             SliverList(
               delegate: SliverChildListDelegate(
                 <Widget>[
-                  SearchBar(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: SearchBar(),
+                  ),
                 ],
               ),
             ),
