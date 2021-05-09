@@ -48,10 +48,10 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           slivers: [
             SliverAppBar(
               elevation: 0,
-              expandedHeight: 80,
+              expandedHeight: 100,
               automaticallyImplyLeading: false,
               flexibleSpace: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
+                padding: const EdgeInsets.only(top: 20, bottom: 40),
                 child: SearchBar(),
               ),
               floating: true,
