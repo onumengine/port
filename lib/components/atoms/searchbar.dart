@@ -26,7 +26,9 @@ class _SearchBarState extends State<SearchBar> {
           Icon(Icons.search),
           SizedBox(width: 4),
           Expanded(
-            child: TextField(),
+            child: TextField(
+              controller: _searchText,
+            ),
           ),
         ],
       ),
