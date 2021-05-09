@@ -47,6 +47,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
+              elevation: 0,
+              expandedHeight: 80,
               automaticallyImplyLeading: false,
               flexibleSpace: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20),
