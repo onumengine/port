@@ -22,8 +22,10 @@ class _CategoryCardState extends State<CategoryCard> {
           children: <Widget>[
             Container(
               height: 61,
+              width: 61,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
+                color: paleCircleAvatarBackground,
               ),
             ),
             Text("Banks"),
