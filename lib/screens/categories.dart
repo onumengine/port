@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
+import 'package:port/components/atoms/searchbar.dart';
 import 'package:port/components/organisms/categories_grid.dart';
 
 class CategoriesScreen extends StatefulWidget {
@@ -34,6 +35,10 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           style: TextStyle(
             fontWeight: FontWeight.w600,
           ),
+        ),
+        bottom: PreferredSize(
+          preferredSize: Size(screenSize.width, 100),
+          child: SearchBar(),
         ),
       ),
       body: Container(
