@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 
 class OrganizationsScreen extends StatefulWidget {
@@ -10,7 +11,18 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Choose Organization"),
+        leading: IconButton(
+          icon: Icon(CupertinoIcons.back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        title: Text(
+          "Choose Organization",
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+          ),
+        ),
       ),
     );
   }
