@@ -24,6 +24,7 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
           ),
         ),
       ),
+      body: CustomScrollView(),
     );
   }
 }
