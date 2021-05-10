@@ -8,6 +8,10 @@ class OrganizationsScreen extends StatefulWidget {
 class _OrganizationsScreenState extends State<OrganizationsScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Choose Organization"),
+      ),
+    );
   }
 }
