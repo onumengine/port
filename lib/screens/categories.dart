@@ -32,11 +32,13 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   ];
 
   double _getHorizontalPadding(double screenWidth) {
-    if (screenWidth < 592)
+    if (screenWidth < 592) {
       return 20;
-    else if (screenWidth > 592 && screenWidth < 1000)
+    } else if (screenWidth > 592 && screenWidth < 1000) {
       return 40;
-    else if (screenWidth > 1000) return 3;
+    } else if (screenWidth > 1000) {
+      return 3;
+    }
   }
 
   @override
@@ -92,7 +94,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                     categoryName: _categories.keys.toList()[index],
                   );
                 },
-                childCount: 8,
+                childCount: _semanticLabels.length,
               ),
             ),
             SliverList(
