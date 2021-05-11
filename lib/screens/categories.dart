@@ -47,7 +47,6 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         leading: IconButton(
           icon: Icon(CupertinoIcons.back),
           onPressed: () {

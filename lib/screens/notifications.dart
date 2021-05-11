@@ -23,7 +23,6 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         title: Text(
           "Notifications",
           style: TextStyle(fontWeight: FontWeight.bold),

@@ -22,7 +22,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         title: Text(
           "Details",
           style: TextStyle(fontWeight: FontWeight.bold),
