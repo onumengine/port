@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_svg/svg.dart';
 import 'package:port/components/atoms/searchbar.dart';
-import 'package:port/components/molecules/category_card.dart';
+import 'package:port/components/molecules/organization_card.dart';
 import 'package:port/utility/colors_main.dart';
 
 class OrganizationsScreen extends StatefulWidget {
@@ -92,7 +92,7 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
-                  return CategoryCard();
+                  return OrganizationCard();
                 },
                 childCount: 7,
               ),
