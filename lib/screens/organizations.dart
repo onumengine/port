@@ -33,6 +33,31 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
             },
           ),
         ],
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(80),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
+              width: 212,
+              height: 50,
+              margin: EdgeInsets.symmetric(horizontal: 20),
+              decoration: BoxDecoration(
+                color: colorOrangeChip,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Center(
+                child: Text(
+                  "Bank of America",
+                  style: TextStyle(
+                    color: Color(0xFFFD9453),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
       ),
       body: CustomScrollView(),
     );
