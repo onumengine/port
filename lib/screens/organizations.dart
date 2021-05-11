@@ -89,6 +89,14 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
               ),
               floating: true,
             ),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  return CategoryCard();
+                },
+                childCount: 7,
+              ),
+            ),
           ],
         ),
       ),
