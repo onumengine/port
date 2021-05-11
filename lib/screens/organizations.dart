@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
+import 'package:flutter_svg/svg.dart';
+import 'package:port/utility/colors_main.dart';
 
 class OrganizationsScreen extends StatefulWidget {
   @override
@@ -23,6 +25,14 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
             fontWeight: FontWeight.w700,
           ),
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: SvgPicture.asset("lib/vectors/location_icon.svg"),
+            onPressed: () {
+              print("Pressed location icon");
+            },
+          ),
+        ],
       ),
       body: CustomScrollView(),
     );
