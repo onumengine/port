@@ -92,7 +92,11 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
-                  return OrganizationCard();
+                  return OrganizationCard(
+                    organizationSymbol: "B",
+                    organizationName: "Bank of America",
+                    distanceFromUser: 2,
+                  );
                 },
                 childCount: 7,
               ),
