@@ -84,16 +84,30 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 20,
-                crossAxisSpacing: 0,
+                crossAxisSpacing: 20,
                 childAspectRatio: 4 / 5,
               ),
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
-                  return CategoryCard(
-                    iconPath: _categories.values.toList().elementAt(index),
-                    semanticLabel: _semanticLabels[index],
-                    categoryName: _categories.keys.toList()[index],
-                  );
+                  if (_isAnOddNumber(index)) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 20),
+                      child: CategoryCard(
+                        iconPath: _categories.values.toList().elementAt(index),
+                        semanticLabel: _semanticLabels[index],
+                        categoryName: _categories.keys.toList()[index],
+                      ),
+                    );
+                  } else {
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: CategoryCard(
+                        iconPath: _categories.values.toList().elementAt(index),
+                        semanticLabel: _semanticLabels[index],
+                        categoryName: _categories.keys.toList()[index],
+                      ),
+                    );
+                  }
                 },
                 childCount: _semanticLabels.length,
               ),
@@ -109,5 +123,9 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         ),
       ),
     );
+  }
+
+  bool _isAnOddNumber(int index) {
+    return (index % 2) != 0;
   }
 }
