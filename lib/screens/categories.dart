@@ -84,7 +84,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 20,
-                crossAxisSpacing: 20,
+                crossAxisSpacing: 0,
                 childAspectRatio: 4 / 5,
               ),
               delegate: SliverChildBuilderDelegate(
