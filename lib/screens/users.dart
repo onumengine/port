@@ -1,5 +1,6 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
+import 'package:port/components/molecules/user_card.dart';
 import 'package:port/utility/colors_main.dart';
 
 class UsersScreen extends StatefulWidget {
@@ -51,7 +52,7 @@ class _UsersScreenState extends State<UsersScreen> {
         ),
       ),
       body: ListView.separated(
-        itemBuilder: (context, index) => Container(),
+        itemBuilder: (context, index) => UserCard(),
         separatorBuilder: (context, index) => Divider(),
         itemCount: 4,
       ),
