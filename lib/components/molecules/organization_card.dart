@@ -33,6 +33,15 @@ class OrganizationCard extends StatelessWidget {
                   color: paleCircleAvatarBackground,
                   borderRadius: BorderRadius.circular(8),
                 ),
+                child: Center(
+                  child: Text(
+                    "B",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
               ),
               title: Text(
                 "Bank of America",
