@@ -8,15 +8,26 @@ class UserCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: ListTile(
-        leading: Container(
+        leading: SvgPicture.asset(
+          "images/mike.svg",
           height: 64,
           width: 64,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(24),
+          semanticsLabel: "Mike image",
+        ),
+        title: Text(
+          "Mike456",
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 18,
           ),
-          child: SvgPicture.asset(
-            "lib/vectors/gyms_icon.svg",
-            semanticsLabel: "ICONN",
+        ),
+        subtitle: Text(
+          "Receptionist",
+          style: TextStyle(
+            fontWeight: FontWeight.w400,
+            fontSize: 16,
+            color: paleTextColor,
+            letterSpacing: 0.2,
           ),
         ),
       ),
