@@ -33,15 +33,15 @@ class _DetailsScreenState extends State<DetailsScreen> {
           },
         ),
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: _getHorizontalPadding(screenSize.width),
-        ),
-        child: ListView(
-          children: <Widget>[
-            SizedBox(height: 20),
-            Align(
-              alignment: Alignment.centerLeft,
+      body: ListView(
+        children: <Widget>[
+          SizedBox(height: 20),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: _getHorizontalPadding(screenSize.width),
+              ),
               child: Container(
                 width: 212,
                 height: 50,
@@ -61,8 +61,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            PhysicalModel(
+          ),
+          SizedBox(height: 20),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: _getHorizontalPadding(screenSize.width),
+            ),
+            child: PhysicalModel(
               color: colorAppBackground,
               shadowColor: colorCardShadow,
               elevation: 16,
@@ -160,8 +165,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            PhysicalModel(
+          ),
+          SizedBox(height: 20),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: _getHorizontalPadding(screenSize.width),
+            ),
+            child: PhysicalModel(
               color: colorAppBackground,
               shadowColor: colorCardShadow,
               elevation: 16,
@@ -240,8 +250,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            PhysicalModel(
+          ),
+          SizedBox(height: 20),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: _getHorizontalPadding(screenSize.width),
+            ),
+            child: PhysicalModel(
               color: colorAppBackground,
               shadowColor: colorCardShadow,
               elevation: 16,
@@ -274,33 +289,33 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 50),
-            InkWell(
-              onTap: () {
-                print("Tapped Edit button");
-              },
-              child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 10),
-                height: 54,
-                decoration: BoxDecoration(
-                  color: opPrimaryColor,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Center(
-                  child: Text(
-                    "Edit",
-                    style: TextStyle(
-                      color: opBackgroundColor,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                    ),
+          ),
+          SizedBox(height: 50),
+          InkWell(
+            onTap: () {
+              print("Tapped Edit button");
+            },
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 10),
+              height: 54,
+              decoration: BoxDecoration(
+                color: opPrimaryColor,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Center(
+                child: Text(
+                  "Edit",
+                  style: TextStyle(
+                    color: opBackgroundColor,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 40),
-          ],
-        ),
+          ),
+          SizedBox(height: 40),
+        ],
       ),
     );
   }
