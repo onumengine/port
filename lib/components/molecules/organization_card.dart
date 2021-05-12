@@ -16,7 +16,7 @@ class OrganizationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
       child: PhysicalModel(
         color: colorAppBackground,
         shadowColor: colorCardShadow,

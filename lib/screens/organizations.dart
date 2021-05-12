@@ -73,36 +73,32 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
           ),
         ),
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: _getHorizontalPadding(screenSize.width),
-        ),
-        child: CustomScrollView(
-          slivers: <Widget>[
-            SliverAppBar(
-              elevation: 0,
-              expandedHeight: 100,
-              automaticallyImplyLeading: false,
-              flexibleSpace: Padding(
-                padding: const EdgeInsets.only(top: 20, bottom: 40),
-                child: SearchBar(),
-              ),
-              floating: true,
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            elevation: 0,
+            expandedHeight: 100,
+            automaticallyImplyLeading: false,
+            flexibleSpace: Padding(
+              padding: const EdgeInsets.only(
+                  top: 20, bottom: 40, left: 20, right: 20),
+              child: SearchBar(),
             ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
-                  return OrganizationCard(
-                    organizationSymbol: "B",
-                    organizationName: "Bank of America",
-                    distanceFromUser: 2,
-                  );
-                },
-                childCount: 7,
-              ),
+            floating: true,
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return OrganizationCard(
+                  organizationSymbol: "B",
+                  organizationName: "Bank of America",
+                  distanceFromUser: 2,
+                );
+              },
+              childCount: 7,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
