@@ -63,9 +63,6 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
       body: Container(
         height: screenSize.height,
         width: screenSize.width,
-        padding: EdgeInsets.symmetric(
-          horizontal: _getHorizontalPadding(screenSize.width),
-        ),
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
@@ -73,7 +70,12 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               expandedHeight: 100,
               automaticallyImplyLeading: false,
               flexibleSpace: Padding(
-                padding: const EdgeInsets.only(top: 20, bottom: 40),
+                padding: EdgeInsets.only(
+                  top: 20,
+                  bottom: 40,
+                  left: _getHorizontalPadding(screenSize.width),
+                  right: _getHorizontalPadding(screenSize.width),
+                ),
                 child: SearchBar(),
               ),
               floating: true,
