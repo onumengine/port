@@ -24,21 +24,29 @@ class OrganizationCard extends StatelessWidget {
         elevation: 8,
         child: Container(
           height: 94,
-          child: ListTile(
-            leading: Container(
-              width: 48,
-              height: 48,
-              decoration: BoxDecoration(
-                color: paleCircleAvatarBackground,
-                borderRadius: BorderRadius.circular(8),
+          child: Center(
+            child: ListTile(
+              leading: Container(
+                width: 48,
+                height: 48,
+                decoration: BoxDecoration(
+                  color: paleCircleAvatarBackground,
+                  borderRadius: BorderRadius.circular(8),
+                ),
               ),
-            ),
-            title: Text("Bank of America"),
-            subtitle: Row(
-              children: [
-                Icon(Icons.lock_clock),
-                Text("${distanceFromUser}km away"),
-              ],
+              title: Text(
+                "Bank of America",
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              subtitle: Row(
+                children: [
+                  Icon(Icons.lock_clock),
+                  Text("${distanceFromUser.toInt()}km away"),
+                ],
+              ),
             ),
           ),
         ),
