@@ -39,12 +39,24 @@ class OrganizationCard extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w600,
+                  color: primaryTextColor,
                 ),
               ),
               subtitle: Row(
                 children: [
-                  Icon(Icons.lock_clock),
-                  Text("${distanceFromUser.toInt()}km away"),
+                  Icon(
+                    Icons.watch_later,
+                    color: paleTextColor,
+                    size: 14,
+                  ),
+                  Text(
+                    "${distanceFromUser.toInt()}km away",
+                    style: TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w500,
+                      color: paleTextColor,
+                    ),
+                  ),
                 ],
               ),
             ),
