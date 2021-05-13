@@ -1,12 +1,25 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
+import 'package:port/components/organisms/calendar.dart';
 
 class DatePickerScreen extends StatefulWidget {
   @override
   _DatePickerScreenState createState() => _DatePickerScreenState();
 }
 
-class _DatePickerScreenState extends State<DatePickerScreen> {
+class _DatePickerScreenState extends State<DatePickerScreen>
+    with TickerProviderStateMixin {
+  TabController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    this.controller = TabController(
+      length: 6,
+      vsync: this,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,9 +39,19 @@ class _DatePickerScreenState extends State<DatePickerScreen> {
       ),
       body: CustomScrollView(
         slivers: [
-          SliverFillRemaining(),
+          SliverFillRemaining(
+            child: Calendar(
+              controller: controller,
+            ),
+          ),
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    this.controller.dispose();
   }
 }
