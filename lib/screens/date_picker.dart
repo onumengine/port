@@ -17,6 +17,12 @@ class _DatePickerScreenState extends State<DatePickerScreen> {
             Navigator.pop(context);
           },
         ),
+        title: Text(
+          "Pick day and time",
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+          ),
+        ),
       ),
     );
   }
