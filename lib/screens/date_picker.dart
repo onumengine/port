@@ -24,6 +24,11 @@ class _DatePickerScreenState extends State<DatePickerScreen> {
           ),
         ),
       ),
+      body: CustomScrollView(
+        slivers: [
+          SliverFillRemaining(),
+        ],
+      ),
     );
   }
 }
