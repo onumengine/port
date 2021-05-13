@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import 'package:flutter_svg/svg.dart';
-import 'package:port/utility/colors_main.dart';
 import 'package:port/utility/colors.dart';
 
 class UserCard extends StatelessWidget {
