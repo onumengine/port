@@ -52,8 +52,15 @@ class _UsersScreenState extends State<UsersScreen> {
         ),
       ),
       body: ListView.separated(
+        padding: EdgeInsets.symmetric(vertical: 30),
         itemBuilder: (context, index) => UserCard(),
-        separatorBuilder: (context, index) => Divider(),
+        separatorBuilder: (context, index) => Padding(
+          padding: EdgeInsets.symmetric(vertical: 8.0),
+          child: Divider(
+            indent: 20,
+            endIndent: 20,
+          ),
+        ),
         itemCount: 4,
       ),
     );
