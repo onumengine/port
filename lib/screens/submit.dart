@@ -11,6 +11,12 @@ class _SubmitScreenState extends State<SubmitScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(CupertinoIcons.back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         title: Text(
           "Summary",
           style: TextStyle(fontWeight: FontWeight.w700),
