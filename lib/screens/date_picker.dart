@@ -1,6 +1,7 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import 'package:port/components/organisms/calendar.dart';
+import 'package:port/screens/summary.dart';
 
 class DatePickerScreen extends StatefulWidget {
   @override
@@ -42,6 +43,21 @@ class _DatePickerScreenState extends State<DatePickerScreen>
           SliverFillRemaining(
             child: Calendar(
               controller: controller,
+            ),
+          ),
+          SliverFillRemaining(
+            child: Center(
+              child: TextButton(
+                child: Text("Show Summary"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SubmitScreen(),
+                    ),
+                  );
+                },
+              ),
             ),
           ),
         ],
