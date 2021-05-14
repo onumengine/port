@@ -153,6 +153,7 @@ class _SubmitScreenState extends State<SubmitScreen> {
                     Container(
                       height: 188,
                       width: double.infinity,
+                      padding: EdgeInsets.all(4),
                       decoration: BoxDecoration(
                         color: inputBackgroundColor,
                         borderRadius: BorderRadius.circular(8),
@@ -161,6 +162,7 @@ class _SubmitScreenState extends State<SubmitScreen> {
                         expands: true,
                         maxLines: null,
                         minLines: null,
+                        decoration: InputDecoration.collapsed(hintText: ""),
                       ),
                     ),
                   ],
