@@ -5,16 +5,24 @@ import 'package:port/components/organisms/timestamp_card.dart';
 import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
 
+enum AppointmentReasons {
+  reason1,
+  reason2,
+  reason3,
+}
+
 class SubmitScreen extends StatefulWidget {
   @override
   _SubmitScreenState createState() => _SubmitScreenState();
 }
 
 class _SubmitScreenState extends State<SubmitScreen> {
+  AppointmentReasons _dropdownButtonValue;
+
   double _getHorizontalPadding(double screenWidth) {
-    if (screenWidth < 592)
+    if (screenWidth <= 592)
       return 8;
-    else if (screenWidth > 592 && screenWidth < 1000)
+    else if (screenWidth <= 1000)
       return 40;
     else if (screenWidth > 1000) return 3;
   }
@@ -78,10 +86,51 @@ class _SubmitScreenState extends State<SubmitScreen> {
               elevation: 16,
               borderRadius: BorderRadius.circular(8),
               child: Container(
-                padding:
-                    EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 20),
-                child: DropdownButton(
-                  items: <DropdownMenuItem>[],
+                padding: EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                  top: 10,
+                  bottom: 20,
+                ),
+                child: DropdownButton<AppointmentReasons>(
+                  isExpanded: true,
+                  value: _dropdownButtonValue,
+                  icon: Icon(CupertinoIcons.chevron_down),
+                  underline: SizedBox(),
+                  onChanged: (selectedAppointmentReason) {
+                    setState(() {
+                      _dropdownButtonValue = selectedAppointmentReason;
+                    });
+                    print("${_dropdownButtonValue}");
+                  },
+                  hint: Text("Choose reason for appointment"),
+                  disabledHint: Text("Disabled"),
+                  items: <DropdownMenuItem<AppointmentReasons>>[
+                    DropdownMenuItem(
+                      child: Container(
+                        child: Center(
+                          child: Text("Reason1"),
+                        ),
+                      ),
+                      value: AppointmentReasons.reason1,
+                    ),
+                    DropdownMenuItem(
+                      child: Container(
+                        child: Center(
+                          child: Text("Reason2"),
+                        ),
+                      ),
+                      value: AppointmentReasons.reason2,
+                    ),
+                    DropdownMenuItem(
+                      child: Container(
+                        child: Center(
+                          child: Text("Reason3"),
+                        ),
+                      ),
+                      value: AppointmentReasons.reason3,
+                    ),
+                  ],
                 ),
               ),
             ),
