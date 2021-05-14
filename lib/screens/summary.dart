@@ -138,13 +138,16 @@ class _SubmitScreenState extends State<SubmitScreen> {
                     SizedBox(height: 27),
                     Align(
                       alignment: Alignment.centerLeft,
-                      child: Text(
-                        "Add a note",
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 0.2,
-                          color: opPrimaryColor,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 4),
+                        child: Text(
+                          "Add a note",
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 0.2,
+                            color: opPrimaryColor,
+                          ),
                         ),
                       ),
                     ),
