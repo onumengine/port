@@ -89,46 +89,66 @@ class _SubmitScreenState extends State<SubmitScreen> {
                 padding: EdgeInsets.only(
                   left: 20,
                   right: 20,
-                  top: 10,
-                  bottom: 20,
                 ),
-                child: DropdownButton<AppointmentReasons>(
-                  isExpanded: true,
-                  value: _dropdownButtonValue,
-                  icon: Icon(CupertinoIcons.chevron_down),
-                  underline: SizedBox(),
-                  onChanged: (selectedAppointmentReason) {
-                    setState(() {
-                      _dropdownButtonValue = selectedAppointmentReason;
-                    });
-                    print("${_dropdownButtonValue}");
-                  },
-                  hint: Text("Choose reason for appointment"),
-                  disabledHint: Text("Disabled"),
-                  items: <DropdownMenuItem<AppointmentReasons>>[
-                    DropdownMenuItem(
-                      child: Container(
-                        child: Center(
-                          child: Text("Reason1"),
+                child: Column(
+                  children: [
+                    DropdownButton<AppointmentReasons>(
+                      isExpanded: true,
+                      value: _dropdownButtonValue,
+                      icon: Icon(CupertinoIcons.chevron_down),
+                      underline: SizedBox(),
+                      onChanged: (selectedAppointmentReason) {
+                        setState(() {
+                          _dropdownButtonValue = selectedAppointmentReason;
+                        });
+                        print("${_dropdownButtonValue}");
+                      },
+                      hint: Text("Choose reason for appointment"),
+                      disabledHint: Text("Disabled"),
+                      items: <DropdownMenuItem<AppointmentReasons>>[
+                        DropdownMenuItem(
+                          child: Container(
+                            child: Center(
+                              child: Text("Reason1"),
+                            ),
+                          ),
+                          value: AppointmentReasons.reason1,
                         ),
-                      ),
-                      value: AppointmentReasons.reason1,
+                        DropdownMenuItem(
+                          child: Container(
+                            child: Center(
+                              child: Text("Reason2"),
+                            ),
+                          ),
+                          value: AppointmentReasons.reason2,
+                        ),
+                        DropdownMenuItem(
+                          child: Container(
+                            child: Center(
+                              child: Text("Reason3"),
+                            ),
+                          ),
+                          value: AppointmentReasons.reason3,
+                        ),
+                      ],
                     ),
-                    DropdownMenuItem(
-                      child: Container(
-                        child: Center(
-                          child: Text("Reason2"),
-                        ),
+                    SizedBox(height: 27),
+                    Text(
+                      "Add a note",
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 0.2,
+                        color: opPrimaryColor,
                       ),
-                      value: AppointmentReasons.reason2,
                     ),
-                    DropdownMenuItem(
-                      child: Container(
-                        child: Center(
-                          child: Text("Reason3"),
-                        ),
+                    SizedBox(height: 10),
+                    Container(
+                      height: 188,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: inputBackgroundColor,
                       ),
-                      value: AppointmentReasons.reason3,
                     ),
                   ],
                 ),
