@@ -87,8 +87,10 @@ class _SubmitScreenState extends State<SubmitScreen> {
               borderRadius: BorderRadius.circular(8),
               child: Container(
                 padding: EdgeInsets.only(
-                  left: 20,
-                  right: 20,
+                  top: 16,
+                  bottom: 30,
+                  left: 16,
+                  right: 16,
                 ),
                 child: Column(
                   children: [
@@ -160,44 +162,6 @@ class _SubmitScreenState extends State<SubmitScreen> {
             ),
           ),
           SizedBox(height: 20),
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: _getHorizontalPadding(screenSize.width),
-            ),
-            child: PhysicalModel(
-              color: colorAppBackground,
-              shadowColor: colorCardShadow,
-              elevation: 16,
-              borderRadius: BorderRadius.circular(8),
-              child: Container(
-                padding:
-                    EdgeInsets.only(top: 17, left: 20, right: 20, bottom: 24),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    AppointmentStatusTile(
-                      iconPath: "lib/vectors/request_sent_icon.svg",
-                      semanticLabel: "Request sent icon",
-                      appointmentStatus: "Request sent",
-                      timeStamp: "4 Jan 2020, 10:59 AM",
-                    ),
-                    AppointmentStatusTile(
-                      iconPath: "lib/vectors/eye_icon.svg",
-                      semanticLabel: "Review icon",
-                      appointmentStatus: "Under Review",
-                      timeStamp: "22 Jan 2020, 10:59 AM",
-                    ),
-                    AppointmentStatusTile(
-                      iconPath: "lib/vectors/smiley_icon.svg",
-                      semanticLabel: "Approved icon",
-                      appointmentStatus: "Approved",
-                      timeStamp: "10:59 AM",
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
           SizedBox(height: 50),
           InkWell(
             onTap: () {
