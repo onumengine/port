@@ -20,13 +20,12 @@ class SubmitScreen extends StatefulWidget {
 
 class _SubmitScreenState extends State<SubmitScreen> {
   AppointmentReasons _dropdownButtonValue;
+  TextEditingController _summaryNote;
 
-  double _getHorizontalPadding(double screenWidth) {
-    if (screenWidth <= 592)
-      return 8;
-    else if (screenWidth <= 1000)
-      return 40;
-    else if (screenWidth > 1000) return 3;
+  @override
+  void initState() {
+    super.initState();
+    _summaryNote = TextEditingController();
   }
 
   @override
@@ -162,6 +161,7 @@ class _SubmitScreenState extends State<SubmitScreen> {
                         expands: true,
                         maxLines: null,
                         minLines: null,
+                        controller: _summaryNote,
                         decoration: InputDecoration.collapsed(hintText: ""),
                       ),
                     ),
@@ -199,5 +199,13 @@ class _SubmitScreenState extends State<SubmitScreen> {
         ],
       ),
     );
+  }
+
+  double _getHorizontalPadding(double screenWidth) {
+    if (screenWidth <= 592)
+      return 8;
+    else if (screenWidth <= 1000)
+      return 40;
+    else if (screenWidth > 1000) return 3;
   }
 }
