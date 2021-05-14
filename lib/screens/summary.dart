@@ -133,13 +133,16 @@ class _SubmitScreenState extends State<SubmitScreen> {
                       ],
                     ),
                     SizedBox(height: 27),
-                    Text(
-                      "Add a note",
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 0.2,
-                        color: opPrimaryColor,
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Add a note",
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0.2,
+                          color: opPrimaryColor,
+                        ),
                       ),
                     ),
                     SizedBox(height: 10),
@@ -148,6 +151,7 @@ class _SubmitScreenState extends State<SubmitScreen> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: inputBackgroundColor,
+                        borderRadius: BorderRadius.circular(8),
                       ),
                     ),
                   ],
