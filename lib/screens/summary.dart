@@ -80,74 +80,8 @@ class _SubmitScreenState extends State<SubmitScreen> {
               child: Container(
                 padding:
                     EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "Purpose",
-                        style: TextStyle(
-                          color: paleTextColor,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 8),
-                    Container(
-                      height: 41,
-                      width: double.infinity,
-                      padding: EdgeInsets.symmetric(horizontal: 17),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          "Business Discussion",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                      decoration: BoxDecoration(
-                        color: inputBackgroundColor,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          "Description",
-                          style: TextStyle(
-                            color: paleTextColor,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 8),
-                    Container(
-                      width: double.infinity,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 17, vertical: 17),
-                      child: Center(
-                        child: Text(
-                          "Went to present a proposal on a solution that can help your business improve and skyrocket your business to the next level",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                      decoration: BoxDecoration(
-                        color: inputBackgroundColor,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                  ],
+                child: DropdownButton(
+                  items: <DropdownMenuItem>[],
                 ),
               ),
             ),
