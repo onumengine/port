@@ -1,9 +1,11 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
+import 'package:flutter/services.dart';
 import 'package:port/components/atoms/appointment_status_tile.dart';
 import 'package:port/components/organisms/timestamp_card.dart';
 import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
+import 'package:port/utility/style.dart';
 
 enum AppointmentReasons {
   reason1,
@@ -154,6 +156,11 @@ class _SubmitScreenState extends State<SubmitScreen> {
                       decoration: BoxDecoration(
                         color: inputBackgroundColor,
                         borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: TextField(
+                        expands: true,
+                        maxLines: null,
+                        minLines: null,
                       ),
                     ),
                   ],
