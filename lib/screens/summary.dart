@@ -170,7 +170,6 @@ class _SubmitScreenState extends State<SubmitScreen> {
               ),
             ),
           ),
-          SizedBox(height: 20),
           SizedBox(height: 50),
           InkWell(
             onTap: () {
