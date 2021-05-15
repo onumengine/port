@@ -46,9 +46,13 @@ class _DatePickerScreenState extends State<DatePickerScreen>
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: CustomScrollView(
           slivers: [
-            SliverFillRemaining(
-              child: Calendar(
-                controller: controller,
+            SliverList(
+              delegate: SliverChildListDelegate(
+                [
+                  Calendar(
+                    controller: controller,
+                  ),
+                ],
               ),
             ),
             SliverList(
