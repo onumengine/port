@@ -53,6 +53,7 @@ class _DatePickerScreenState extends State<DatePickerScreen>
             SliverList(
               delegate: SliverChildListDelegate(
                 [
+                  SizedBox(height: 20),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -63,6 +64,7 @@ class _DatePickerScreenState extends State<DatePickerScreen>
                       ),
                     ),
                   ),
+                  SizedBox(height: 20),
                 ],
               ),
             ),
