@@ -123,7 +123,7 @@ class _DatePickerScreenState extends State<DatePickerScreen>
                 crossAxisCount: 3,
                 mainAxisSpacing: 26,
                 crossAxisSpacing: 26,
-                childAspectRatio: 2 / 1,
+                childAspectRatio: 1.6774,
               ),
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
