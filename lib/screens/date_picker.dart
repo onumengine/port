@@ -3,6 +3,7 @@ import "package:flutter/material.dart";
 import 'package:port/components/organisms/calendar.dart';
 import 'package:port/screens/submit.dart';
 import 'package:port/utility/colors.dart';
+import 'package:port/utility/colors_main.dart';
 
 class DatePickerScreen extends StatefulWidget {
   @override
@@ -158,6 +159,24 @@ class _DatePickerScreenState extends State<DatePickerScreen>
                   decoration: BoxDecoration(
                     color: opPrimaryColor,
                     borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: TextButton(
+                    child: Text(
+                      "Proceed",
+                      style: TextStyle(
+                        color: white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SubmitScreen(),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ]),
