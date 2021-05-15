@@ -149,37 +149,44 @@ class _DatePickerScreenState extends State<DatePickerScreen>
                 childCount: 3,
               ),
             ),
-            SliverFillRemaining(
-              child: SizedBox(height: 110),
+            SliverList(
+              delegate: SliverChildListDelegate(
+                [
+                  SizedBox(height: 110),
+                ],
+              ),
             ),
             SliverList(
-              delegate: SliverChildListDelegate([
-                Container(
-                  height: 54,
-                  decoration: BoxDecoration(
-                    color: opPrimaryColor,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: TextButton(
-                    child: Text(
-                      "Proceed",
-                      style: TextStyle(
-                        color: white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                      ),
+              delegate: SliverChildListDelegate(
+                [
+                  Container(
+                    height: 54,
+                    decoration: BoxDecoration(
+                      color: opPrimaryColor,
+                      borderRadius: BorderRadius.circular(8),
                     ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SubmitScreen(),
+                    child: TextButton(
+                      child: Text(
+                        "Proceed",
+                        style: TextStyle(
+                          color: white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
                         ),
-                      );
-                    },
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SubmitScreen(),
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                ),
-              ]),
+                  SizedBox(height: 40),
+                ],
+              ),
             ),
           ],
         ),
