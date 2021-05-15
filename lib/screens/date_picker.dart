@@ -10,19 +10,7 @@ class DatePickerScreen extends StatefulWidget {
   _DatePickerScreenState createState() => _DatePickerScreenState();
 }
 
-class _DatePickerScreenState extends State<DatePickerScreen>
-    with TickerProviderStateMixin {
-  TabController controller;
-
-  @override
-  void initState() {
-    super.initState();
-    this.controller = TabController(
-      length: 3,
-      vsync: this,
-    );
-  }
-
+class _DatePickerScreenState extends State<DatePickerScreen> {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -46,38 +34,10 @@ class _DatePickerScreenState extends State<DatePickerScreen>
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: CustomScrollView(
           slivers: [
-            SliverAppBar(
-              automaticallyImplyLeading: false,
-              bottom: TabBar(
-                controller: this.controller,
-                tabs: [
-                  Tab(
-                    text: "January",
-                  ),
-                  Tab(
-                    text: "February",
-                  ),
-                  Tab(
-                    text: "March",
-                  ),
-                ],
-              ),
-            ),
             SliverList(
               delegate: SliverChildListDelegate(
                 [
-                  Container(
-                    height: 540,
-                    width: screenSize.width,
-                    child: TabBarView(
-                      controller: this.controller,
-                      children: [
-                        Center(child: Text("Tab1")),
-                        Center(child: Text("Tab2")),
-                        Center(child: Text("Tab3")),
-                      ],
-                    ),
-                  ),
+                  //TODO
                 ],
               ),
             ),
@@ -222,11 +182,5 @@ class _DatePickerScreenState extends State<DatePickerScreen>
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    this.controller.dispose();
   }
 }
