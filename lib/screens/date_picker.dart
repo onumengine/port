@@ -149,19 +149,18 @@ class _DatePickerScreenState extends State<DatePickerScreen>
               ),
             ),
             SliverFillRemaining(
-              child: Center(
-                child: TextButton(
-                  child: Text("Show Summary"),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SubmitScreen(),
-                      ),
-                    );
-                  },
+              child: SizedBox(height: 110),
+            ),
+            SliverList(
+              delegate: SliverChildListDelegate([
+                Container(
+                  height: 54,
+                  decoration: BoxDecoration(
+                    color: opPrimaryColor,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                 ),
-              ),
+              ]),
             ),
           ],
         ),
