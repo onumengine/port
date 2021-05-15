@@ -14,17 +14,6 @@ class Calendar extends StatefulWidget {
 class _CalendarState extends State<Calendar> {
   @override
   Widget build(BuildContext context) {
-    return TabBar(
-      isScrollable: true,
-      controller: widget.controller,
-      tabs: <Widget>[
-        Text("January"),
-        Text("February"),
-        Text("March"),
-        Text("April"),
-        Text("May"),
-        Text("June"),
-      ],
-    );
+    return Container();
   }
 }

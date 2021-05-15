@@ -8,9 +8,12 @@ const opSecondaryColor = Color(0xFF757575);
 const opOrangeColor = Color(0xFFFF6E18);
 const opBackgroundColor = Color(0xFFFFFFFF);
 
+const chipTextColorDisabled = Color(0xFF8B9CB3);
+
 const inputBackgroundColor = Color(0x1A9597A1);
 const primaryTextColor = Color(0xFF12121F);
 const paleTextColor = Color(0xFFAFAFBD);
+const paleChipBackground = Color(0xFFF1F3F8);
 const paleCircleAvatarBackground = Color(0xD222B45);
 const appBarTitleColor = Color(0xFF171D33);
 const colorLightCardShadow = Color(0xD663E33);
