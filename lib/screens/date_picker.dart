@@ -53,7 +53,7 @@ class _DatePickerScreenState extends State<DatePickerScreen>
             SliverList(
               delegate: SliverChildListDelegate(
                 [
-                  SizedBox(height: 20),
+                  SizedBox(height: 30),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -97,6 +97,24 @@ class _DatePickerScreenState extends State<DatePickerScreen>
                   );
                 },
                 childCount: 6,
+              ),
+            ),
+            SliverList(
+              delegate: SliverChildListDelegate(
+                [
+                  SizedBox(height: 30),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Choose duration",
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                ],
               ),
             ),
             SliverFillRemaining(
