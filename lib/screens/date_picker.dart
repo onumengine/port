@@ -50,14 +50,16 @@ class _DatePickerScreenState extends State<DatePickerScreen>
                 controller: controller,
               ),
             ),
-            SliverFillRemaining(
-              child: Text(
-                "Choose time",
-                style: TextStyle(
-                  color: opBackgroundColor,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                ),
+            SliverList(
+              delegate: SliverChildListDelegate(
+                [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Choose time",
+                    ),
+                  ),
+                ],
               ),
             ),
             SliverGrid(
