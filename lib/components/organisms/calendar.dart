@@ -1,12 +1,6 @@
 import "package:flutter/material.dart";
 
 class Calendar extends StatefulWidget {
-  TabController controller;
-
-  Calendar({
-    @required this.controller,
-  });
-
   @override
   _CalendarState createState() => _CalendarState();
 }

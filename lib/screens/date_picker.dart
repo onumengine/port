@@ -18,7 +18,7 @@ class _DatePickerScreenState extends State<DatePickerScreen>
   void initState() {
     super.initState();
     this.controller = TabController(
-      length: 6,
+      length: 3,
       vsync: this,
     );
   }
@@ -46,11 +46,37 @@ class _DatePickerScreenState extends State<DatePickerScreen>
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: CustomScrollView(
           slivers: [
+            SliverAppBar(
+              automaticallyImplyLeading: false,
+              bottom: TabBar(
+                controller: this.controller,
+                tabs: [
+                  Tab(
+                    text: "January",
+                  ),
+                  Tab(
+                    text: "February",
+                  ),
+                  Tab(
+                    text: "March",
+                  ),
+                ],
+              ),
+            ),
             SliverList(
               delegate: SliverChildListDelegate(
                 [
-                  Calendar(
-                    controller: controller,
+                  Container(
+                    height: 540,
+                    width: screenSize.width,
+                    child: TabBarView(
+                      controller: this.controller,
+                      children: [
+                        Center(child: Text("Tab1")),
+                        Center(child: Text("Tab2")),
+                        Center(child: Text("Tab3")),
+                      ],
+                    ),
                   ),
                 ],
               ),
