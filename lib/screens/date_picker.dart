@@ -117,6 +117,37 @@ class _DatePickerScreenState extends State<DatePickerScreen>
                 ],
               ),
             ),
+            SliverGrid(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                mainAxisSpacing: 26,
+                crossAxisSpacing: 26,
+                childAspectRatio: 2 / 1,
+              ),
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  return Container(
+                    height: 62,
+                    width: screenSize.width / 14,
+                    decoration: BoxDecoration(
+                      color: paleChipBackground,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Time text",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                          color: chipTextColorDisabled,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+                childCount: 3,
+              ),
+            ),
             SliverFillRemaining(
               child: Center(
                 child: TextButton(
