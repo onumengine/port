@@ -57,6 +57,10 @@ class _DatePickerScreenState extends State<DatePickerScreen>
                     alignment: Alignment.centerLeft,
                     child: Text(
                       "Choose time",
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ],
