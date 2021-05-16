@@ -40,7 +40,7 @@ class _CalendarState extends State<Calendar> {
                 icon: Icon(Icons.add),
                 onPressed: _decrementYear,
               ),
-              Text("${_year}"),
+              Text("$_year}"),
               IconButton(
                 icon: Icon(Icons.add),
                 onPressed: _incrementYear,
