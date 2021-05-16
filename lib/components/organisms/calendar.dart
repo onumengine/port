@@ -8,7 +8,15 @@ class Calendar extends StatefulWidget {
 }
 
 class _CalendarState extends State<Calendar> {
-  int year = 2021;
+  int _year = 2021;
+  DateTime _dateTime;
+  DateTimeRange _dateTimeRange;
+
+  @override
+  void initState() {
+    super.initState();
+    _dateTime = DateTime.now();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +40,7 @@ class _CalendarState extends State<Calendar> {
                 icon: Icon(Icons.add),
                 onPressed: _decrementYear,
               ),
-              Text("${this.year}"),
+              Text("${_year}"),
               IconButton(
                 icon: Icon(Icons.add),
                 onPressed: _incrementYear,
@@ -47,18 +55,19 @@ class _CalendarState extends State<Calendar> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Text("S"),
               Text("M"),
               Text("T"),
               Text("W"),
               Text("T"),
               Text("F"),
               Text("S"),
+              Text("S"),
             ],
           ),
           Expanded(
             child: Container(
               color: Colors.purpleAccent,
+              padding: EdgeInsets.all(8),
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 7,
@@ -70,6 +79,7 @@ class _CalendarState extends State<Calendar> {
                     text: (index + 1).toString(),
                     onTap: () {
                       print("Tapped the calendar bubble ${index + 1}");
+                      print(_dateTime);
                     },
                   );
                 },
@@ -82,15 +92,21 @@ class _CalendarState extends State<Calendar> {
     );
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    print("Calendar disposed");
+  }
+
   void _incrementYear() {
     setState(() {
-      year++;
+      _year++;
     });
   }
 
   void _decrementYear() {
     setState(() {
-      year--;
+      _year--;
     });
   }
 }
