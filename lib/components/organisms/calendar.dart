@@ -33,6 +33,7 @@ class _CalendarState extends State<Calendar> {
   void initState() {
     super.initState();
     _dateTime = DateTime.now();
+    _currentMonth = 1;
   }
 
   @override
@@ -59,7 +60,7 @@ class _CalendarState extends State<Calendar> {
                 ),
                 IconButton(
                   icon: Icon(CupertinoIcons.chevron_left),
-                  onPressed: _decrementYear,
+                  onPressed: _decrementMonth,
                 ),
                 Column(
                   children: <Widget>[
@@ -70,12 +71,12 @@ class _CalendarState extends State<Calendar> {
                         fontSize: 20,
                       ),
                     ),
-                    Text("Month"),
+                    Text("${_numberToMonthMap[_currentMonth]}"),
                   ],
                 ),
                 IconButton(
                   icon: Icon(CupertinoIcons.chevron_right),
-                  onPressed: _incrementYear,
+                  onPressed: _incrementMonth,
                 ),
                 IconButton(
                   icon: Icon(CupertinoIcons.chevron_right_2),
@@ -139,7 +140,7 @@ class _CalendarState extends State<Calendar> {
   void _incrementMonth() {
     setState(() {
       if (_currentMonth == 12) {
-        _currentMonth = 0;
+        _currentMonth = 1;
       } else {
         _currentMonth++;
       }
