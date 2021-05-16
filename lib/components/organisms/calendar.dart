@@ -41,6 +41,11 @@ class _CalendarState extends State<Calendar> {
               ),
             ],
           ),
+          Expanded(
+            child: Container(
+              color: Colors.purpleAccent,
+            ),
+          ),
         ],
       ),
     );
