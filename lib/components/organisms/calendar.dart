@@ -92,12 +92,6 @@ class _CalendarState extends State<Calendar> {
     );
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    print("Calendar disposed");
-  }
-
   void _incrementYear() {
     setState(() {
       _year++;
