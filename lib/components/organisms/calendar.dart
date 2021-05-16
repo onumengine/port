@@ -62,10 +62,12 @@ class _CalendarState extends State<Calendar> {
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 7,
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 8,
                 ),
                 itemBuilder: (context, index) {
                   return CalendarBubble(
-                    text: index.toString(),
+                    text: (index + 1).toString(),
                   );
                 },
                 itemCount: 28,
