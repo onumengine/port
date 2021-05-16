@@ -12,7 +12,7 @@ class Calendar extends StatefulWidget {
 class _CalendarState extends State<Calendar> {
   int _year = 2021;
   DateTime _dateTime;
-  int _currentMonth, _currentDay, _currentYear;
+  int _currentWeekday, _currentMonth, _currentYear;
 
   Map<int, String> _numberToMonthMap = <int, String>{
     1: "Jan",
@@ -32,7 +32,7 @@ class _CalendarState extends State<Calendar> {
   @override
   void initState() {
     super.initState();
-    _dateTime = DateTime.now();
+    _currentYear = 2021;
     _currentMonth = 1;
   }
 
@@ -111,7 +111,11 @@ class _CalendarState extends State<Calendar> {
                       text: (index + 1).toString(),
                       onTap: () {
                         print("Tapped the calendar bubble ${index + 1}");
-                        print(_dateTime);
+                        _dateTime = DateTime(
+                          2021,
+                          _currentMonth,
+                        );
+                        print(_dateTime.weekday);
                       },
                     );
                   },
@@ -123,6 +127,10 @@ class _CalendarState extends State<Calendar> {
         ),
       ),
     );
+  }
+
+  int _getNumberOfDaysToSkip() {
+    return _currentWeekday - 1;
   }
 
   void _incrementYear() {
