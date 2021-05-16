@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:port/utility/colors.dart';
 
 class Calendar extends StatefulWidget {
   @override
@@ -17,7 +18,7 @@ class _CalendarState extends State<Calendar> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
-        children: [
+        children: <Widget>[
           Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -41,9 +42,38 @@ class _CalendarState extends State<Calendar> {
               ),
             ],
           ),
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Text("S"),
+              Text("M"),
+              Text("T"),
+              Text("W"),
+              Text("T"),
+              Text("F"),
+              Text("S"),
+            ],
+          ),
           Expanded(
             child: Container(
               color: Colors.purpleAccent,
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 7,
+                ),
+                itemBuilder: (context, index) {
+                  return Container(
+                    height: 20,
+                    width: 20,
+                    decoration: BoxDecoration(
+                      color: paleChipBackground,
+                      shape: BoxShape.circle,
+                    ),
+                  );
+                },
+                itemCount: 28,
+              ),
             ),
           ),
         ],
