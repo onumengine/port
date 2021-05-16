@@ -53,7 +53,7 @@ class _CalendarState extends State<Calendar> {
           ),
           Row(
             mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               Text("M"),
               Text("T"),
