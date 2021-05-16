@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:port/components/atoms/calendar_bubble.dart';
 import 'package:port/utility/colors.dart';
 
 class Calendar extends StatefulWidget {
@@ -63,13 +64,8 @@ class _CalendarState extends State<Calendar> {
                   crossAxisCount: 7,
                 ),
                 itemBuilder: (context, index) {
-                  return Container(
-                    height: 20,
-                    width: 20,
-                    decoration: BoxDecoration(
-                      color: paleChipBackground,
-                      shape: BoxShape.circle,
-                    ),
+                  return CalendarBubble(
+                    text: index.toString(),
                   );
                 },
                 itemCount: 28,
