@@ -1,3 +1,4 @@
+import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import 'package:port/components/atoms/calendar_bubble.dart';
 import 'package:port/utility/colors.dart';
@@ -10,7 +11,7 @@ class Calendar extends StatefulWidget {
 class _CalendarState extends State<Calendar> {
   int _year = 2021;
   DateTime _dateTime;
-  DateTimeRange _dateTimeRange;
+  int _currentMonth, _currentDay, _currentYear;
 
   @override
   void initState() {
@@ -33,20 +34,31 @@ class _CalendarState extends State<Calendar> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               IconButton(
-                icon: Icon(Icons.add),
+                icon: Icon(CupertinoIcons.chevron_left_2),
                 onPressed: _decrementYear,
               ),
               IconButton(
-                icon: Icon(Icons.add),
+                icon: Icon(CupertinoIcons.chevron_left),
                 onPressed: _decrementYear,
               ),
-              Text("$_year}"),
+              Column(
+                children: <Widget>[
+                  Text(
+                    "$_year",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20,
+                    ),
+                  ),
+                  Text("Month"),
+                ],
+              ),
               IconButton(
-                icon: Icon(Icons.add),
+                icon: Icon(CupertinoIcons.chevron_right),
                 onPressed: _incrementYear,
               ),
               IconButton(
-                icon: Icon(Icons.add),
+                icon: Icon(CupertinoIcons.chevron_right_2),
                 onPressed: _incrementYear,
               ),
             ],
@@ -103,4 +115,8 @@ class _CalendarState extends State<Calendar> {
       _year--;
     });
   }
+
+  void _incrementMonth() {}
+
+  void _decrementMonth() {}
 }
