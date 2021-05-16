@@ -3,20 +3,24 @@ import 'package:port/utility/colors.dart';
 
 class CalendarBubble extends StatelessWidget {
   final String text;
+  final VoidCallback onTap;
 
-  CalendarBubble({this.text});
+  CalendarBubble({this.text, this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 20,
-      width: 20,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: paleTextColor,
-      ),
-      child: Center(
-        child: Text(this.text),
+    return GestureDetector(
+      onTap: this.onTap,
+      child: Container(
+        height: 20,
+        width: 20,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: paleTextColor,
+        ),
+        child: Center(
+          child: Text(this.text),
+        ),
       ),
     );
   }

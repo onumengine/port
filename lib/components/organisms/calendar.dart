@@ -68,6 +68,9 @@ class _CalendarState extends State<Calendar> {
                 itemBuilder: (context, index) {
                   return CalendarBubble(
                     text: (index + 1).toString(),
+                    onTap: () {
+                      print("Tapped the calendar bubble ${index + 1}");
+                    },
                   );
                 },
                 itemCount: 28,
