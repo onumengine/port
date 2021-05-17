@@ -51,6 +51,9 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
                       color: colorOrangeChip,
                       borderRadius: BorderRadius.circular(12),
                     ),
+                    child: Text(
+                      "Paris (GMT+2)",
+                    ),
                   ),
                   SizedBox(height: 30),
                   Align(
