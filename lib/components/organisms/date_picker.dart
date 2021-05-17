@@ -184,6 +184,7 @@ class _DatePickerState extends State<DatePicker> {
             ),
             Expanded(
               child: Container(
+                margin: EdgeInsets.only(top: 8),
                 padding: EdgeInsets.all(8),
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
