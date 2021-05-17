@@ -63,6 +63,7 @@ class _DatePickerState extends State<DatePicker> {
       _currentYear,
       _currentMonth,
     );
+    _setNumberOfDaysInSelectedMonth();
   }
 
   @override
