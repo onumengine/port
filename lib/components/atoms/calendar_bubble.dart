@@ -16,7 +16,7 @@ class CalendarBubble extends StatelessWidget {
         width: 20,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: paleTextColor,
+          color: paleCircleAvatarBackground,
         ),
         child: Center(
           child: Text(this.text),
