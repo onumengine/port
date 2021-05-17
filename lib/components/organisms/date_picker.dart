@@ -128,8 +128,14 @@ class _DatePickerState extends State<DatePicker> {
                     Text("${_numberToMonthMap[_currentMonth]}"),
                   ],
                 ),
-                IconButton(
-                  icon: Icon(Icons.chevron_right),
+                RawMaterialButton(
+                  child: Icon(
+                    CupertinoIcons.chevron_right,
+                    size: 20,
+                  ),
+                  elevation: 2,
+                  shape: CircleBorder(),
+                  fillColor: paleChipBackground,
                   onPressed: () {
                     _incrementMonth();
                     _createNewDateTime();
@@ -137,8 +143,14 @@ class _DatePickerState extends State<DatePicker> {
                     _setNumberOfDaysInSelectedMonth();
                   },
                 ),
-                IconButton(
-                  icon: Icon(CupertinoIcons.chevron_right_2),
+                RawMaterialButton(
+                  child: Icon(
+                    CupertinoIcons.chevron_right_2,
+                    size: 20,
+                  ),
+                  elevation: 2,
+                  shape: CircleBorder(),
+                  fillColor: paleChipBackground,
                   onPressed: () {
                     _incrementYear();
                     _createNewDateTime();
