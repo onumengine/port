@@ -47,6 +47,8 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
                   Container(
                     height: 50,
                     padding: EdgeInsets.all(12),
+                    margin:
+                        EdgeInsets.only(top: 40, bottom: 20, left: 4, right: 4),
                     decoration: BoxDecoration(
                       color: colorOrangeChip,
                       borderRadius: BorderRadius.circular(12),
