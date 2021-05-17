@@ -55,6 +55,7 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
                       "Paris (GMT+2)",
                       style: TextStyle(
                         color: orangeChipTextColor,
+                        fontSize: 18,
                       ),
                     ),
                   ),
