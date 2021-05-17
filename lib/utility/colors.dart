@@ -9,6 +9,7 @@ const opOrangeColor = Color(0xFFFF6E18);
 const opBackgroundColor = Color(0xFFFFFFFF);
 
 const chipTextColorDisabled = Color(0xFF8B9CB3);
+const orangeChipTextColor = Color(0xFFFD9453);
 
 const inputBackgroundColor = Color(0x1A9597A1);
 const primaryTextColor = Color(0xFF12121F);

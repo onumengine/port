@@ -53,6 +53,9 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
                     ),
                     child: Text(
                       "Paris (GMT+2)",
+                      style: TextStyle(
+                        color: orangeChipTextColor,
+                      ),
                     ),
                   ),
                   SizedBox(height: 30),
