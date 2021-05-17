@@ -168,6 +168,7 @@ class _DatePickerState extends State<DatePicker> {
                 ),
               ],
             ),
+            SizedBox(height: 20),
             Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
