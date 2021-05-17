@@ -4,9 +4,9 @@ import 'package:port/components/atoms/calendar_bubble.dart';
 import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
 
-class Calendar extends StatefulWidget {
+class DatePicker extends StatefulWidget {
   @override
-  _CalendarState createState() => _CalendarState();
+  _DatePickerState createState() => _DatePickerState();
 }
 
 /// ## How this calendar should populate the days
@@ -24,7 +24,7 @@ class Calendar extends StatefulWidget {
 ///    to the number of days in the month
 /// 9. Find a way to get the number of days in a month
 
-class _CalendarState extends State<Calendar> {
+class _DatePickerState extends State<DatePicker> {
   DateTime _dateTime;
   int _currentWeekday, _currentMonth, _currentYear, _firstDayOfSelectedMonth;
   int _numberOfDaysInSelectedMonth;

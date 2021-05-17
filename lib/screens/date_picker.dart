@@ -37,7 +37,7 @@ class _DatePickerScreenState extends State<DatePickerScreen> {
             SliverList(
               delegate: SliverChildListDelegate(
                 [
-                  Calendar(),
+                  DatePicker(),
                 ],
               ),
             ),
