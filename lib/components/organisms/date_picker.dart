@@ -86,8 +86,14 @@ class _DatePickerState extends State<DatePicker> {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                IconButton(
-                  icon: Icon(CupertinoIcons.chevron_left_2),
+                RawMaterialButton(
+                  child: Icon(
+                    CupertinoIcons.chevron_left_2,
+                    size: 20,
+                  ),
+                  elevation: 2,
+                  shape: CircleBorder(),
+                  fillColor: paleChipBackground,
                   onPressed: () {
                     _decrementYear();
                     _createNewDateTime();
@@ -95,8 +101,14 @@ class _DatePickerState extends State<DatePicker> {
                     _setNumberOfDaysInSelectedMonth();
                   },
                 ),
-                IconButton(
-                  icon: Icon(Icons.chevron_left),
+                RawMaterialButton(
+                  child: Icon(
+                    CupertinoIcons.chevron_left,
+                    size: 20,
+                  ),
+                  elevation: 2,
+                  shape: CircleBorder(),
+                  fillColor: paleChipBackground,
                   onPressed: () {
                     _decrementMonth();
                     _createNewDateTime();
