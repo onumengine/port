@@ -94,7 +94,7 @@ class _DatePickerState extends State<DatePicker> {
                   },
                 ),
                 IconButton(
-                  icon: Icon(CupertinoIcons.chevron_left),
+                  icon: Icon(Icons.chevron_left),
                   onPressed: () {
                     _decrementMonth();
                     _createNewDateTime();
@@ -115,7 +115,7 @@ class _DatePickerState extends State<DatePicker> {
                   ],
                 ),
                 IconButton(
-                  icon: Icon(CupertinoIcons.chevron_right),
+                  icon: Icon(Icons.chevron_right),
                   onPressed: () {
                     _incrementMonth();
                     _createNewDateTime();
