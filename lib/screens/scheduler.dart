@@ -44,6 +44,14 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
             SliverList(
               delegate: SliverChildListDelegate(
                 [
+                  Container(
+                    height: 50,
+                    padding: EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: colorOrangeChip,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
                   SizedBox(height: 30),
                   Align(
                     alignment: Alignment.centerLeft,
