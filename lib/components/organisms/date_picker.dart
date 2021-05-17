@@ -94,6 +94,7 @@ class _DatePickerState extends State<DatePicker> {
                   elevation: 2,
                   shape: CircleBorder(),
                   fillColor: paleChipBackground,
+                  constraints: BoxConstraints(minWidth: 36),
                   onPressed: () {
                     _decrementYear();
                     _createNewDateTime();
@@ -109,6 +110,7 @@ class _DatePickerState extends State<DatePicker> {
                   elevation: 2,
                   shape: CircleBorder(),
                   fillColor: paleChipBackground,
+                  constraints: BoxConstraints(minWidth: 36),
                   onPressed: () {
                     _decrementMonth();
                     _createNewDateTime();
@@ -136,6 +138,7 @@ class _DatePickerState extends State<DatePicker> {
                   elevation: 2,
                   shape: CircleBorder(),
                   fillColor: paleChipBackground,
+                  constraints: BoxConstraints(minWidth: 36),
                   onPressed: () {
                     _incrementMonth();
                     _createNewDateTime();
@@ -151,6 +154,7 @@ class _DatePickerState extends State<DatePicker> {
                   elevation: 2,
                   shape: CircleBorder(),
                   fillColor: paleChipBackground,
+                  constraints: BoxConstraints(minWidth: 36),
                   onPressed: () {
                     _incrementYear();
                     _createNewDateTime();
