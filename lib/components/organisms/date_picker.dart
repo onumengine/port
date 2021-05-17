@@ -188,8 +188,8 @@ class _DatePickerState extends State<DatePicker> {
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 7,
-                    mainAxisSpacing: 8,
-                    crossAxisSpacing: 8,
+                    mainAxisSpacing: 12,
+                    crossAxisSpacing: 12,
                   ),
                   itemBuilder: (context, index) {
                     return index < _getNumberOfDaysToSkip()
