@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:flutter_svg/svg.dart';
-import 'package:port/screens/date_picker.dart';
+import 'package:port/screens/scheduler.dart';
 import 'package:port/utility/colors.dart';
 
 class UserCard extends StatelessWidget {
@@ -34,7 +34,7 @@ class UserCard extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => DatePickerScreen(),
+              builder: (context) => SchedulerScreen(),
             ),
           );
         },

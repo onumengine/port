@@ -1,16 +1,16 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
-import 'package:port/components/organisms/calendar.dart';
+import 'package:port/components/organisms/date_picker.dart';
 import 'package:port/screens/submit.dart';
 import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
 
-class DatePickerScreen extends StatefulWidget {
+class SchedulerScreen extends StatefulWidget {
   @override
-  _DatePickerScreenState createState() => _DatePickerScreenState();
+  _SchedulerScreenState createState() => _SchedulerScreenState();
 }
 
-class _DatePickerScreenState extends State<DatePickerScreen> {
+class _SchedulerScreenState extends State<SchedulerScreen> {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
