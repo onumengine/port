@@ -57,6 +57,7 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
                         color: orangeChipTextColor,
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
+                        letterSpacing: 0.1,
                       ),
                     ),
                   ),
