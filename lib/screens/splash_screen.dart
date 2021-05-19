@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:port/bloc/home/bloc.dart';
 import 'package:port/screens/sign_in.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:async';
@@ -47,9 +48,10 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) {
-            return MyHomePage();
-          },
+          builder: (context) => BlocProvider<HomeBloc>(
+            create: (context) => HomeBloc(),
+            child: MyHomePage(),
+          ),
         ),
       );
     }
