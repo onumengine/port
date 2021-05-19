@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:port/bloc/home/bloc.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import '../bloc/sign_in/bloc.dart';
 import '../bloc/sign_in/event.dart';
@@ -83,7 +84,10 @@ class _SignInScreenState extends State<SignInScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MyHomePage(),
+                    builder: (context) => BlocProvider<HomeBloc>(
+                      create: (context) => HomeBloc(),
+                      child: MyHomePage(),
+                    ),
                   ),
                 );
               } else {
