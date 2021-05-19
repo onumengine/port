@@ -70,14 +70,11 @@ class _DatePickerState extends State<DatePicker> {
 
   @override
   Widget build(BuildContext context) {
-    return PhysicalModel(
-      color: colorAppBackground,
-      shadowColor: colorCardShadow,
-      elevation: 8,
-      borderRadius: BorderRadius.circular(8),
+    var screenSize = MediaQuery.of(context).size;
+    return FractionallySizedBox(
+      widthFactor: 1,
       child: Container(
-        width: double.infinity,
-        height: 540,
+        height: screenSize.height / 2,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
