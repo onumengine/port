@@ -1,27 +1,27 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
-abstract class BookingState extends Equatable {
+abstract class AppointmentState extends Equatable {
   @override
   List<Object> get props => [];
 }
 
-class BookedState extends BookingState {
+class EmptyState extends AppointmentState {
   @override
   List<Object> get props => [];
 }
 
-class UnbookedState extends BookingState {
+class BookedState extends AppointmentState {
   @override
   List<Object> get props => [];
 }
 
-class BookingInProgressState extends BookingState {
+class BookingInProgressState extends AppointmentState {
   @override
   List<Object> get props => [];
 }
 
-class BookingError extends BookingState {
+class BookingError extends AppointmentState {
   @override
   List<Object> get props => [];
 }
