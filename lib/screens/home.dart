@@ -22,7 +22,15 @@ class _MyHomePageState extends State<MyHomePage> {
   HomeBloc _homeBloc;
 
   final _tabs = [
-    EmptyAppointmentsComponent(),
+    BlocBuilder<HomeBloc, AppointmentState>(
+      builder: (context, state) {
+        if (state is EmptyState) {
+          return EmptyAppointmentsComponent();
+        } else if (state is BookedState) {
+          return AppointmentsListComponent();
+        }
+      },
+    ),
     MoreComponent(),
   ];
 
