@@ -43,6 +43,7 @@ class _CreateStudentScreenState extends State<CreateStudentScreen> {
   PageController pageController = PageController(initialPage: 0);
   int pageNumber = 0;
   bool isloading = false;
+
   void showloader(loading) {
     setState(() {
       isloading = loading;

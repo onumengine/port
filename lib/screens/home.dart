@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:port/bloc/home/bloc.dart';
+import 'package:port/bloc/home/state.dart';
+import 'package:port/components/organisms/appointments_list.dart';
 import 'package:port/components/organisms/empty_appointments.dart';
 import 'package:port/components/organisms/more.dart';
 import 'package:port/screens/categories.dart';
@@ -15,6 +19,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _navbarIndex = 0;
   String title;
+  HomeBloc _homeBloc;
 
   final _tabs = [
     EmptyAppointmentsComponent(),
@@ -23,6 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
+    _homeBloc = BlocProvider.of<HomeBloc>(context);
     super.initState();
   }
 

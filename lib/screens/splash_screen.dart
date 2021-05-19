@@ -16,6 +16,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   UserRepository _userRepository;
   bool isUserLoggedIn = false;
+
   @override
   void initState() {
     _userRepository = UserRepository();
