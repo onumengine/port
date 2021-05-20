@@ -66,8 +66,8 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => BlocProvider<NotificationBloc>(
-                    create: (context) => NotificationBloc(),
+                  builder: (context) => BlocProvider<NotificationsBloc>(
+                    create: (context) => NotificationsBloc(),
                     child: NotificationsScreen(),
                   ),
                 ),

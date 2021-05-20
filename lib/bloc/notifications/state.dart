@@ -1,23 +1,23 @@
 import 'package:equatable/equatable.dart';
 
-abstract class NotificationState extends Equatable {}
+abstract class NotificationsState extends Equatable {}
 
-class EmptyNotificationState extends NotificationState {
+class EmptyNotificationsState extends NotificationsState {
   @override
   List<Object> get props => [];
 }
 
-class NotificationRefreshingState extends NotificationState {
+class NotificationsRefreshingState extends NotificationsState {
   @override
   List<Object> get props => [];
 }
 
-class NonEmptyNotificationState extends NotificationState {
+class NonEmptyNotificationsState extends NotificationsState {
   @override
   List<Object> get props => [];
 }
 
-class NotificationFetchUnsuccessfulState extends NotificationState {
+class NotificationsFetchUnsuccessfulState extends NotificationsState {
   @override
   List<Object> get props => [];
 }

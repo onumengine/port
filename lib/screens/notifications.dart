@@ -12,11 +12,11 @@ class NotificationsScreen extends StatefulWidget {
 }
 
 class _NotificationsScreenState extends State<NotificationsScreen> {
-  NotificationBloc _notificationBloc;
+  NotificationsBloc _notificationBloc;
 
   @override
   void initState() {
-    _notificationBloc = BlocProvider.of<NotificationBloc>(context);
+    _notificationBloc = BlocProvider.of<NotificationsBloc>(context);
     super.initState();
   }
 
@@ -40,13 +40,13 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           },
         ),
       ),
-      body: BlocBuilder<NotificationBloc, NotificationState>(
-        builder: (BuildContext context, NotificationState state) {
-          if (state is NotificationRefreshingState) {
+      body: BlocBuilder<NotificationsBloc, NotificationsState>(
+        builder: (BuildContext context, NotificationsState state) {
+          if (state is NotificationsRefreshingState) {
             return Center(
               child: CircularProgressIndicator(),
             );
-          } else if (state is NotificationFetchUnsuccessfulState) {
+          } else if (state is NotificationsFetchUnsuccessfulState) {
             return Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -62,7 +62,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                 ),
               ],
             );
-          } else if (state is NonEmptyNotificationState) {
+          } else if (state is NonEmptyNotificationsState) {
             return Container(
               padding: EdgeInsets.symmetric(
                 horizontal: _getHorizontalPadding(screenSize.width),

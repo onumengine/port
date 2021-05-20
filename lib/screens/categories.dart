@@ -120,8 +120,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                      BlocProvider<NotificationBloc>(
-                                    create: (context) => NotificationBloc(),
+                                      BlocProvider<NotificationsBloc>(
+                                    create: (context) => NotificationsBloc(),
                                     child: NotificationsScreen(),
                                   ),
                                 ),
