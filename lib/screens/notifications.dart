@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:port/bloc/notifications/bloc.dart';
+import 'package:port/bloc/notifications/state.dart';
 import 'package:port/components/molecules/notification_card.dart';
 import 'package:port/utility/colors.dart';
 
@@ -9,12 +12,12 @@ class NotificationsScreen extends StatefulWidget {
 }
 
 class _NotificationsScreenState extends State<NotificationsScreen> {
-  double _getHorizontalPadding(double screenWidth) {
-    if (screenWidth < 592)
-      return 8;
-    else if (screenWidth > 592 && screenWidth < 1000)
-      return 40;
-    else if (screenWidth > 1000) return 3;
+  NotificationBloc _notificationBloc;
+
+  @override
+  void initState() {
+    _notificationBloc = BlocProvider.of<NotificationBloc>(context);
+    super.initState();
   }
 
   @override
@@ -37,27 +40,63 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           },
         ),
       ),
-      body: Container(
-        padding: EdgeInsets.symmetric(
-          horizontal: _getHorizontalPadding(screenSize.width),
-        ),
-        height: screenSize.height,
-        width: screenSize.width,
-        child: ListView.separated(
-          itemCount: 5,
-          itemBuilder: (context, index) => Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: NotificationCard(
-              title: "Request Approved",
-              body:
-                  "Your request to meet with Citi bank has been approved and is scheduled for 9:00AM, 20th april, 2021",
-              timeStamp: "24, April 2021",
-            ),
-          ),
-          separatorBuilder: (context, index) => SizedBox(height: 10),
-          padding: EdgeInsets.only(top: 2, bottom: 40),
-        ),
+      body: BlocBuilder<NotificationBloc, NotificationState>(
+        builder: (BuildContext context, NotificationState state) {
+          if (state is NotificationRefreshingState) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state is NotificationFetchUnsuccessfulState) {
+            return Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(Icons.error, size: 50),
+                SizedBox(height: 40),
+                Text(
+                  "Oops. Couldn't fetch Notifications",
+                  style: TextStyle(
+                    color: paleTextColor,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            );
+          } else if (state is NonEmptyNotificationState) {
+            return Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: _getHorizontalPadding(screenSize.width),
+              ),
+              height: screenSize.height,
+              width: screenSize.width,
+              child: ListView.separated(
+                itemCount: 5,
+                itemBuilder: (context, index) => Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: NotificationCard(
+                    title: "Request Approved",
+                    body:
+                        "Your request to meet with Citi bank has been approved and is scheduled for 9:00AM, 20th april, 2021",
+                    timeStamp: "24, April 2021",
+                  ),
+                ),
+                separatorBuilder: (context, index) => SizedBox(height: 10),
+                padding: EdgeInsets.only(top: 2, bottom: 40),
+              ),
+            );
+          } else {
+            return Container();
+          }
+        },
       ),
     );
+  }
+
+  double _getHorizontalPadding(double screenWidth) {
+    if (screenWidth < 592)
+      return 8;
+    else if (screenWidth > 592 && screenWidth < 1000)
+      return 40;
+    else if (screenWidth > 1000) return 3;
   }
 }
