@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:port/bloc/categories/bloc.dart';
 import 'package:port/bloc/home/bloc.dart';
 import 'package:port/bloc/home/state.dart';
+import 'package:port/bloc/notifications/bloc.dart';
 import 'package:port/components/organisms/appointments_list.dart';
 import 'package:port/components/organisms/empty_appointments.dart';
 import 'package:port/components/organisms/more.dart';
@@ -65,7 +66,10 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => NotificationsScreen(),
+                  builder: (context) => BlocProvider<NotificationBloc>(
+                    create: (context) => NotificationBloc(),
+                    child: NotificationsScreen(),
+                  ),
                 ),
               );
             },
