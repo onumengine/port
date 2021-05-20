@@ -4,8 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:port/bloc/categories/bloc.dart';
 import 'package:port/bloc/categories/event.dart';
 import 'package:port/bloc/categories/state.dart';
+import 'package:port/bloc/notifications/bloc.dart';
 import 'package:port/components/atoms/searchbar.dart';
 import 'package:port/components/molecules/category_card.dart';
+import 'package:port/screens/notifications.dart';
 
 class CategoriesScreen extends StatefulWidget {
   @override
@@ -113,6 +115,18 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                 _categories.values.toList().elementAt(index),
                             semanticLabel: _semanticLabels[index],
                             categoryName: _categories.keys.toList()[index],
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      BlocProvider<NotificationBloc>(
+                                    create: (context) => NotificationBloc(),
+                                    child: NotificationsScreen(),
+                                  ),
+                                ),
+                              );
+                            },
                           ),
                         );
                       } else {
