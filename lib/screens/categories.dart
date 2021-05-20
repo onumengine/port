@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:port/bloc/categories/bloc.dart';
+import 'package:port/bloc/categories/event.dart';
+import 'package:port/bloc/categories/state.dart';
 import 'package:port/components/atoms/searchbar.dart';
 import 'package:port/components/molecules/category_card.dart';
 
@@ -9,6 +13,15 @@ class CategoriesScreen extends StatefulWidget {
 }
 
 class _CategoriesScreenState extends State<CategoriesScreen> {
+  CategoriesBloc _categoriesBloc;
+
+  @override
+  void initState() {
+    _categoriesBloc = BlocProvider.of<CategoriesBloc>(context);
+    super.initState();
+    _categoriesBloc.add(FetchEvent());
+  }
+
   Map<String, String> _categories = {
     "Banks": "lib/vectors/bank_icon.svg",
     "Restaurants": "lib/vectors/restaurants_icon.svg",
@@ -60,68 +73,79 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           ),
         ),
       ),
-      body: Container(
-        height: screenSize.height,
-        width: screenSize.width,
-        child: CustomScrollView(
-          slivers: [
-            SliverAppBar(
-              elevation: 0,
-              expandedHeight: 100,
-              automaticallyImplyLeading: false,
-              flexibleSpace: Padding(
-                padding: EdgeInsets.only(
-                  top: 20,
-                  bottom: 40,
-                  left: _getHorizontalPadding(screenSize.width),
-                  right: _getHorizontalPadding(screenSize.width),
+      body: BlocBuilder<CategoriesBloc, CategoriesState>(
+          builder: (BuildContext context, CategoriesState state) {
+        if (state is ErrorState) {
+          return Container(
+            height: screenSize.height,
+            width: screenSize.width,
+            child: CustomScrollView(
+              slivers: [
+                SliverAppBar(
+                  elevation: 0,
+                  expandedHeight: 100,
+                  automaticallyImplyLeading: false,
+                  flexibleSpace: Padding(
+                    padding: EdgeInsets.only(
+                      top: 20,
+                      bottom: 40,
+                      left: _getHorizontalPadding(screenSize.width),
+                      right: _getHorizontalPadding(screenSize.width),
+                    ),
+                    child: SearchBar(),
+                  ),
+                  floating: true,
                 ),
-                child: SearchBar(),
-              ),
-              floating: true,
+                SliverGrid(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 20,
+                    crossAxisSpacing: 20,
+                    childAspectRatio: 4 / 5,
+                  ),
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      if (_isAnOddNumber(index)) {
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 20),
+                          child: CategoryCard(
+                            iconPath:
+                                _categories.values.toList().elementAt(index),
+                            semanticLabel: _semanticLabels[index],
+                            categoryName: _categories.keys.toList()[index],
+                          ),
+                        );
+                      } else {
+                        return Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: CategoryCard(
+                            iconPath:
+                                _categories.values.toList().elementAt(index),
+                            semanticLabel: _semanticLabels[index],
+                            categoryName: _categories.keys.toList()[index],
+                          ),
+                        );
+                      }
+                    },
+                    childCount: _semanticLabels.length,
+                  ),
+                ),
+                SliverList(
+                  delegate: SliverChildListDelegate(
+                    <Widget>[
+                      SizedBox(height: 50),
+                    ],
+                  ),
+                ),
+              ],
             ),
-            SliverGrid(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 20,
-                crossAxisSpacing: 20,
-                childAspectRatio: 4 / 5,
-              ),
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  if (_isAnOddNumber(index)) {
-                    return Padding(
-                      padding: const EdgeInsets.only(right: 20),
-                      child: CategoryCard(
-                        iconPath: _categories.values.toList().elementAt(index),
-                        semanticLabel: _semanticLabels[index],
-                        categoryName: _categories.keys.toList()[index],
-                      ),
-                    );
-                  } else {
-                    return Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: CategoryCard(
-                        iconPath: _categories.values.toList().elementAt(index),
-                        semanticLabel: _semanticLabels[index],
-                        categoryName: _categories.keys.toList()[index],
-                      ),
-                    );
-                  }
-                },
-                childCount: _semanticLabels.length,
-              ),
-            ),
-            SliverList(
-              delegate: SliverChildListDelegate(
-                <Widget>[
-                  SizedBox(height: 50),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
+          );
+        } else {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      }),
     );
   }
 

@@ -7,15 +7,13 @@ import 'app_exceptions.dart';
 import 'package:port/utility/utility.dart' as Constants;
 
 class ApiClient {
-
-  final  httpClient = http.Client() ;
-
+  final httpClient = http.Client();
 
   Future<dynamic> get(String url) async {
     print('Api Get, url $url');
     var responseJson;
     try {
-      final response = await http.get( url );
+      final response = await http.get(url);
       responseJson = _returnResponse(response);
     } on SocketException {
       print('No net');
@@ -26,25 +24,26 @@ class ApiClient {
   }
 
   Future<dynamic> postForm(String url, Map body) async {
-    print('Api Post, url :' +url);
+    print('Api Post, url :' + url);
     print('parameters:' + body.toString());
 
     var responseJson;
     try {
-      final response = await http.post(url, body: body,headers: Constants.headers);
+      final response =
+          await http.post(url, body: body, headers: Constants.headers);
       responseJson = _returnResponse(response);
     } on SocketException {
       print('No net');
       throw FetchDataException('No Internet connection');
     }
     print('api post.');
-    print("responsejson"+responseJson.toString());
+    print("responsejson" + responseJson.toString());
 
     return responseJson;
   }
 
   Future<dynamic> post(String url, String body) async {
-    print('Api Post, url :' + Constants.BASE_URL+url);
+    print('Api Post, url :' + Constants.BASE_URL + url);
     print('parameters:' + body.toString());
 
     var responseJson;
@@ -80,7 +79,7 @@ class ApiClient {
     print('Api delete, url $url');
     var apiResponse;
     try {
-      final response = await http.delete( url);
+      final response = await http.delete(url);
       apiResponse = _returnResponse(response);
     } on SocketException {
       print('No net');
@@ -90,12 +89,11 @@ class ApiClient {
     return apiResponse;
   }
 
-
-
   dynamic _returnResponse(http.Response response) {
     var responseJson = response.body;
-   GenericResponse genericResponse = GenericResponse.fromJson(jsonDecode(response.body));
-    print("response :"+responseJson.toString());
+    GenericResponse genericResponse =
+        GenericResponse.fromJson(jsonDecode(response.body));
+    print("response :" + responseJson.toString());
     switch (response.statusCode) {
       case 200:
         return responseJson;
@@ -113,6 +111,5 @@ class ApiClient {
         throw FetchDataException(
             'Error occured while Communicating with Server with StatusCode : ${response.statusCode}');
     }
-
   }
 }

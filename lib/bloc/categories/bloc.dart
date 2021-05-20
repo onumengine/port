@@ -4,15 +4,24 @@ import 'package:port/bloc/categories/state.dart';
 import 'package:port/repository/api_client.dart';
 
 class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
+  final categoriesUrl =
+      "http://virtualmerenda.000webhostapp.com/vetlyn/index.php/port/categories";
   ApiClient _apiClient = ApiClient();
 
   @override
-  // TODO: implement initialState
-  get initialState => throw UnimplementedError();
+  CategoriesState get initialState => ErrorState();
 
   @override
   Stream<CategoriesState> mapEventToState(CategoriesEvent event) async* {
-    // TODO: implement mapEventToState
-    throw UnimplementedError();
+    if (event is FetchEvent) {
+      try {
+        var categories = _apiClient.get(categoriesUrl);
+        print(categories);
+      } catch (e) {
+        print("ERROR: ${e.message}");
+      }
+    }
   }
+
+  Future<dynamic> _getCategories(String url) {}
 }
