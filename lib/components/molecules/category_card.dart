@@ -6,11 +6,13 @@ import 'package:port/utility/colors_main.dart';
 
 class CategoryCard extends StatefulWidget {
   String iconPath, semanticLabel, categoryName;
+  VoidCallback onTap;
 
   CategoryCard({
     this.iconPath,
     this.semanticLabel,
     this.categoryName,
+    this.onTap,
   });
 
   @override
@@ -21,14 +23,7 @@ class _CategoryCardState extends State<CategoryCard> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => OrganizationsScreen(),
-          ),
-        );
-      },
+      onTap: widget.onTap,
       child: PhysicalModel(
         color: white,
         shadowColor: colorCardShadow,
