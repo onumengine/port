@@ -7,6 +7,11 @@ class NotificationRefreshEvent extends NotificationEvent {
   List<Object> get props => [];
 }
 
+class NotificationRefreshSuccessEvent extends NotificationEvent {
+  @override
+  List<Object> get props => [];
+}
+
 class NotificationRefreshErrorEvent extends NotificationEvent {
   @override
   List<Object> get props => [];
