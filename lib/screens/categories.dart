@@ -5,9 +5,11 @@ import 'package:port/bloc/categories/bloc.dart';
 import 'package:port/bloc/categories/event.dart';
 import 'package:port/bloc/categories/state.dart';
 import 'package:port/bloc/notifications/bloc.dart';
+import 'package:port/bloc/organizations/bloc.dart';
 import 'package:port/components/atoms/searchbar.dart';
 import 'package:port/components/molecules/category_card.dart';
 import 'package:port/screens/notifications.dart';
+import 'package:port/screens/organizations.dart';
 
 class CategoriesScreen extends StatefulWidget {
   @override
@@ -120,9 +122,9 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                      BlocProvider<NotificationsBloc>(
-                                    create: (context) => NotificationsBloc(),
-                                    child: NotificationsScreen(),
+                                      BlocProvider<OrganizationsBloc>(
+                                    create: (context) => OrganizationsBloc(),
+                                    child: OrganizationsScreen(),
                                   ),
                                 ),
                               );
