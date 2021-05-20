@@ -1,18 +1,18 @@
 import 'package:equatable/equatable.dart';
 
-abstract class NotificationEvent extends Equatable {}
+abstract class NotificationsEvent extends Equatable {}
 
-class NotificationRefreshEvent extends NotificationEvent {
+class NotificationsRefreshEvent extends NotificationsEvent {
   @override
   List<Object> get props => [];
 }
 
-class NotificationRefreshSuccessEvent extends NotificationEvent {
+class NotificationsRefreshSuccessEvent extends NotificationsEvent {
   @override
   List<Object> get props => [];
 }
 
-class NotificationRefreshErrorEvent extends NotificationEvent {
+class NotificationsRefreshErrorEvent extends NotificationsEvent {
   @override
   List<Object> get props => [];
 }

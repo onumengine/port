@@ -2,17 +2,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:port/bloc/notifications/event.dart';
 import 'package:port/bloc/notifications/state.dart';
 
-class NotificationsBloc extends Bloc<NotificationEvent, NotificationsState> {
+class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
   @override
   NotificationsState get initialState => EmptyNotificationsState();
 
   @override
-  Stream<NotificationsState> mapEventToState(NotificationEvent event) async* {
-    if (event is NotificationRefreshEvent) {
+  Stream<NotificationsState> mapEventToState(NotificationsEvent event) async* {
+    if (event is NotificationsRefreshEvent) {
       yield NotificationsRefreshingState();
-    } else if (event is NotificationRefreshSuccessEvent) {
+    } else if (event is NotificationsRefreshSuccessEvent) {
       yield NonEmptyNotificationsState();
-    } else if (event is NotificationRefreshErrorEvent) {
+    } else if (event is NotificationsRefreshErrorEvent) {
       yield NotificationsFetchUnsuccessfulState();
     }
   }
