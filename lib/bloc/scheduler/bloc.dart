@@ -1,0 +1,13 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:port/bloc/scheduler/event.dart';
+import 'package:port/bloc/scheduler/state.dart';
+
+class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
+  @override
+  SchedulerState get initialState => throw UnimplementedError();
+
+  @override
+  Stream<SchedulerState> mapEventToState(SchedulerEvent event) async* {
+    throw UnimplementedError();
+  }
+}
