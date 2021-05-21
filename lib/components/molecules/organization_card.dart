@@ -7,11 +7,13 @@ class OrganizationCard extends StatelessWidget {
   String organizationSymbol;
   String organizationName;
   double distanceFromUser;
+  void Function() onTap;
 
   OrganizationCard({
     @required this.organizationSymbol,
     @required this.organizationName,
     @required this.distanceFromUser,
+    @required this.onTap,
   });
 
   @override
@@ -19,14 +21,7 @@ class OrganizationCard extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
       child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => UsersScreen(),
-            ),
-          );
-        },
+        onTap: this.onTap,
         child: PhysicalModel(
           color: colorAppBackground,
           shadowColor: colorCardShadow,
