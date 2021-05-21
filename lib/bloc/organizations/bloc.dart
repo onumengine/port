@@ -4,7 +4,7 @@ import 'package:port/bloc/organizations/state.dart';
 
 class OrganizationsBloc extends Bloc<OrganizationsEvent, OrganizationsState> {
   @override
-  OrganizationsState get initialState => EmptyOrganizationsState();
+  OrganizationsState get initialState => NonEmptyOrganizationsState();
 
   @override
   Stream<OrganizationsState> mapEventToState(OrganizationsEvent event) async* {
