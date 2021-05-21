@@ -14,4 +14,12 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
   Stream<SchedulerState> mapEventToState(SchedulerEvent event) async* {
     throw UnimplementedError();
   }
+
+  void _incrementYear() {
+    selectedYear++;
+  }
+
+  void _decrementYear() {
+    selectedYear--;
+  }
 }
