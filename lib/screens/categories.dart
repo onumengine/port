@@ -78,90 +78,103 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         ),
       ),
       body: BlocBuilder<CategoriesBloc, CategoriesState>(
-          builder: (BuildContext context, CategoriesState state) {
-        if (state is ErrorState) {
-          return Container(
-            height: screenSize.height,
-            width: screenSize.width,
-            child: CustomScrollView(
-              slivers: [
-                SliverAppBar(
-                  elevation: 0,
-                  expandedHeight: 100,
-                  automaticallyImplyLeading: false,
-                  flexibleSpace: Padding(
-                    padding: EdgeInsets.only(
-                      top: 20,
-                      bottom: 40,
-                      left: _getHorizontalPadding(screenSize.width),
-                      right: _getHorizontalPadding(screenSize.width),
+        builder: (BuildContext context, CategoriesState state) {
+          if (state is ErrorState) {
+            return Container(
+              height: screenSize.height,
+              width: screenSize.width,
+              child: CustomScrollView(
+                slivers: [
+                  SliverAppBar(
+                    elevation: 0,
+                    expandedHeight: 100,
+                    automaticallyImplyLeading: false,
+                    flexibleSpace: Padding(
+                      padding: EdgeInsets.only(
+                        top: 20,
+                        bottom: 40,
+                        left: _getHorizontalPadding(screenSize.width),
+                        right: _getHorizontalPadding(screenSize.width),
+                      ),
+                      child: SearchBar(),
                     ),
-                    child: SearchBar(),
+                    floating: true,
                   ),
-                  floating: true,
-                ),
-                SliverGrid(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 20,
-                    crossAxisSpacing: 20,
-                    childAspectRatio: 4 / 5,
-                  ),
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) {
-                      if (_isAnOddNumber(index)) {
-                        return Padding(
-                          padding: const EdgeInsets.only(right: 20),
-                          child: CategoryCard(
-                            iconPath:
-                                _categories.values.toList().elementAt(index),
-                            semanticLabel: _semanticLabels[index],
-                            categoryName: _categories.keys.toList()[index],
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      BlocProvider<OrganizationsBloc>(
-                                    create: (context) => OrganizationsBloc(),
-                                    child: OrganizationsScreen(),
+                  SliverGrid(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 20,
+                      crossAxisSpacing: 20,
+                      childAspectRatio: 4 / 5,
+                    ),
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) {
+                        if (_isAnOddNumber(index)) {
+                          return Padding(
+                            padding: const EdgeInsets.only(right: 20),
+                            child: CategoryCard(
+                              iconPath:
+                                  _categories.values.toList().elementAt(index),
+                              semanticLabel: _semanticLabels[index],
+                              categoryName: _categories.keys.toList()[index],
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        BlocProvider<OrganizationsBloc>(
+                                      create: (context) => OrganizationsBloc(),
+                                      child: OrganizationsScreen(),
+                                    ),
                                   ),
-                                ),
-                              );
-                            },
-                          ),
-                        );
-                      } else {
-                        return Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: CategoryCard(
-                            iconPath:
-                                _categories.values.toList().elementAt(index),
-                            semanticLabel: _semanticLabels[index],
-                            categoryName: _categories.keys.toList()[index],
-                          ),
-                        );
-                      }
-                    },
-                    childCount: _semanticLabels.length,
+                                );
+                              },
+                            ),
+                          );
+                        } else {
+                          return Padding(
+                            padding: const EdgeInsets.only(left: 20),
+                            child: CategoryCard(
+                              iconPath:
+                                  _categories.values.toList().elementAt(index),
+                              semanticLabel: _semanticLabels[index],
+                              categoryName: _categories.keys.toList()[index],
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        BlocProvider<OrganizationsBloc>(
+                                      create: (context) => OrganizationsBloc(),
+                                      child: OrganizationsScreen(),
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          );
+                        }
+                      },
+                      childCount: _semanticLabels.length,
+                    ),
                   ),
-                ),
-                SliverList(
-                  delegate: SliverChildListDelegate(
-                    <Widget>[
-                      SizedBox(height: 50),
-                    ],
+                  SliverList(
+                    delegate: SliverChildListDelegate(
+                      <Widget>[
+                        SizedBox(height: 50),
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-          );
-        } else {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-      }),
+                ],
+              ),
+            );
+          } else {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
+      ),
     );
   }
 
