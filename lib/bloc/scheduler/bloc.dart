@@ -15,19 +15,19 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
     throw UnimplementedError();
   }
 
-  void incrementYear() {
+  void incrementSelectedYear() {
     selectedYear++;
   }
 
-  void decrementYear() {
+  void decrementSelectedYear() {
     selectedYear--;
   }
 
-  void incrementMonth() {
+  void incrementSelectedMonth() {
     selectedMonth++;
   }
 
-  void decrementMonth() {
+  void decrementSelectedMonth() {
     selectedMonth--;
   }
 
