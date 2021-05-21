@@ -68,7 +68,12 @@ class _UsersScreenState extends State<UsersScreen> {
           if (state is PopulatedUsersState) {
             return ListView.separated(
               padding: EdgeInsets.symmetric(vertical: 30),
-              itemBuilder: (context, index) => UserCard(),
+              itemBuilder: (context, index) => UserCard(
+                imagePath: "images/mike.svg",
+                semanticLabel: "Label$index",
+                name: "Mike $index",
+                jobTitle: "Job $index",
+              ),
               separatorBuilder: (context, index) => Padding(
                 padding: EdgeInsets.symmetric(vertical: 8.0),
                 child: Divider(
