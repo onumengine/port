@@ -16,3 +16,8 @@ class DayChangedState extends SchedulerState {
   @override
   List<Object> get props => [];
 }
+
+class ScheduleState extends SchedulerState {
+  @override
+  List<Object> get props => [];
+}
