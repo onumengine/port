@@ -18,6 +18,18 @@ class DayChangedState extends SchedulerState {
 }
 
 class ScheduleState extends SchedulerState {
+  DateTime selectedDateTime;
+  int selectedYear, selectedMonth, selectedDay, numberOfDaysInSelectedMonth;
+  bool isSelected;
+
+  ScheduleState({
+    this.selectedDateTime,
+    this.selectedYear,
+    this.selectedMonth,
+    this.selectedDay,
+    this.isSelected,
+  });
+
   @override
   List<Object> get props => [];
 }
