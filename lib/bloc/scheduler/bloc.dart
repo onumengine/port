@@ -30,4 +30,12 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
   void decrementMonth() {
     selectedMonth--;
   }
+
+  void incrementSelectedDay() {
+    selectedDay++;
+  }
+
+  void decrementSelectedDay() {
+    selectedDay--;
+  }
 }
