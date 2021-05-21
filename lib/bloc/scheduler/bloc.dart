@@ -22,4 +22,12 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
   void _decrementYear() {
     selectedYear--;
   }
+
+  void incrementMonth() {
+    selectedMonth++;
+  }
+
+  void decrementMonth() {
+    selectedMonth--;
+  }
 }
