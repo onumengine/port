@@ -4,8 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:port/bloc/organizations/bloc.dart';
 import 'package:port/bloc/organizations/state.dart';
+import 'package:port/bloc/users/bloc.dart';
 import 'package:port/components/atoms/searchbar.dart';
 import 'package:port/components/molecules/organization_card.dart';
+import 'package:port/screens/users.dart';
 import 'package:port/utility/colors_main.dart';
 
 class OrganizationsScreen extends StatefulWidget {
@@ -97,6 +99,17 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
                         organizationSymbol: "B",
                         organizationName: "Bank of America",
                         distanceFromUser: 2,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BlocProvider<UsersBloc>(
+                                create: (context) => UsersBloc(),
+                                child: UsersScreen(),
+                              ),
+                            ),
+                          );
+                        },
                       );
                     },
                     childCount: 7,
