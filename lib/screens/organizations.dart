@@ -26,91 +26,92 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
 
-    return BlocBuilder<OrganizationsBloc, OrganizationsState>(
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(CupertinoIcons.back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        title: Text(
+          "Choose Organization",
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: SvgPicture.asset("lib/vectors/location_icon.svg"),
+            onPressed: () {
+              print("Pressed location icon");
+            },
+          ),
+        ],
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(80),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
+              width: 212,
+              height: 50,
+              margin: EdgeInsets.symmetric(horizontal: 20),
+              decoration: BoxDecoration(
+                color: colorOrangeChip,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Center(
+                child: Text(
+                  "Bank of America",
+                  style: TextStyle(
+                    color: Color(0xFFFD9453),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+      body: BlocBuilder<OrganizationsBloc, OrganizationsState>(
         builder: (context, state) {
-      if (state is NonEmptyOrganizationsState) {
-        return Scaffold(
-          appBar: AppBar(
-            leading: IconButton(
-              icon: Icon(CupertinoIcons.back),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-            title: Text(
-              "Choose Organization",
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            actions: <Widget>[
-              IconButton(
-                icon: SvgPicture.asset("lib/vectors/location_icon.svg"),
-                onPressed: () {
-                  print("Pressed location icon");
-                },
-              ),
-            ],
-            bottom: PreferredSize(
-              preferredSize: Size.fromHeight(80),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  width: 212,
-                  height: 50,
-                  margin: EdgeInsets.symmetric(horizontal: 20),
-                  decoration: BoxDecoration(
-                    color: colorOrangeChip,
-                    borderRadius: BorderRadius.circular(8),
+          if (state is NonEmptyOrganizationsState) {
+            return CustomScrollView(
+              slivers: <Widget>[
+                SliverAppBar(
+                  elevation: 0,
+                  expandedHeight: 100,
+                  automaticallyImplyLeading: false,
+                  flexibleSpace: Padding(
+                    padding: const EdgeInsets.only(
+                        top: 20, bottom: 40, left: 20, right: 20),
+                    child: SearchBar(),
                   ),
-                  child: Center(
-                    child: Text(
-                      "Bank of America",
-                      style: TextStyle(
-                        color: Color(0xFFFD9453),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+                  floating: true,
+                ),
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                      return OrganizationCard(
+                        organizationSymbol: "B",
+                        organizationName: "Bank of America",
+                        distanceFromUser: 2,
+                      );
+                    },
+                    childCount: 7,
                   ),
                 ),
-              ),
-            ),
-          ),
-          body: CustomScrollView(
-            slivers: <Widget>[
-              SliverAppBar(
-                elevation: 0,
-                expandedHeight: 100,
-                automaticallyImplyLeading: false,
-                flexibleSpace: Padding(
-                  padding: const EdgeInsets.only(
-                      top: 20, bottom: 40, left: 20, right: 20),
-                  child: SearchBar(),
-                ),
-                floating: true,
-              ),
-              SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int index) {
-                    return OrganizationCard(
-                      organizationSymbol: "B",
-                      organizationName: "Bank of America",
-                      distanceFromUser: 2,
-                    );
-                  },
-                  childCount: 7,
-                ),
-              ),
-            ],
-          ),
-        );
-      } else {
-        return Center(
-          child: CircularProgressIndicator(),
-        );
-      }
-    });
+              ],
+            );
+          } else if (state is OrganizationsFetchingState) {
+            return Center(child: CircularProgressIndicator());
+          } else {
+            return Container();
+          }
+        },
+      ),
+    );
   }
 
   double _getHorizontalPadding(double screenWidth) {
