@@ -7,6 +7,11 @@ class UnfetchedUsersState extends UsersScreenState {
   List<Object> get props => [];
 }
 
+class FetchingUsersState extends UsersScreenState {
+  @override
+  List<Object> get props => [];
+}
+
 class PopulatedUsersState extends UsersScreenState {
   @override
   List<Object> get props => [];
