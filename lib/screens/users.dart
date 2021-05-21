@@ -1,6 +1,10 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:port/bloc/users/bloc.dart';
+import 'package:port/bloc/users/state.dart';
 import 'package:port/components/molecules/user_card.dart';
+import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
 
 class UsersScreen extends StatefulWidget {
@@ -9,6 +13,14 @@ class UsersScreen extends StatefulWidget {
 }
 
 class _UsersScreenState extends State<UsersScreen> {
+  UsersBloc _usersBloc;
+
+  @override
+  void initState() {
+    _usersBloc = BlocProvider.of<UsersBloc>(context);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,17 +63,45 @@ class _UsersScreenState extends State<UsersScreen> {
           ),
         ),
       ),
-      body: ListView.separated(
-        padding: EdgeInsets.symmetric(vertical: 30),
-        itemBuilder: (context, index) => UserCard(),
-        separatorBuilder: (context, index) => Padding(
-          padding: EdgeInsets.symmetric(vertical: 8.0),
-          child: Divider(
-            indent: 20,
-            endIndent: 20,
-          ),
-        ),
-        itemCount: 4,
+      body: BlocBuilder<UsersBloc, UsersScreenState>(
+        builder: (context, state) {
+          if (state is PopulatedUsersState) {
+            return ListView.separated(
+              padding: EdgeInsets.symmetric(vertical: 30),
+              itemBuilder: (context, index) => UserCard(),
+              separatorBuilder: (context, index) => Padding(
+                padding: EdgeInsets.symmetric(vertical: 8.0),
+                child: Divider(
+                  indent: 20,
+                  endIndent: 20,
+                ),
+              ),
+              itemCount: 4,
+            );
+          } else if (state is FetchingUsersState) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state is FetchingErrorState) {
+            return Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(Icons.error),
+                SizedBox(height: 20),
+                Text(
+                  "Unable to fetch users",
+                  style: TextStyle(
+                    color: paleTextColor,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            );
+          } else {
+            return Container();
+          }
+        },
       ),
     );
   }
