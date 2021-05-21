@@ -59,12 +59,11 @@ class _DatePickerState extends State<DatePicker> {
   @override
   void initState() {
     super.initState();
-    _currentYear = 2021;
-    _currentMonth = 1;
-    _dateTime = DateTime(
-      _currentYear,
-      _currentMonth,
-    );
+    setState(() {
+      _dateTime = DateTime.now();
+    });
+    _currentMonth = _dateTime.month;
+    _currentYear = _dateTime.year;
     _setNumberOfDaysInSelectedMonth();
   }
 
