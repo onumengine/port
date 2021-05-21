@@ -3,6 +3,10 @@ import 'package:port/bloc/scheduler/event.dart';
 import 'package:port/bloc/scheduler/state.dart';
 
 class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
+  DateTime selectedDateTime;
+  int selectedYear, selectedMonth, selectedDay, numberOfDaysInSelectedMonth;
+  bool isSelected;
+
   @override
   SchedulerState get initialState => throw UnimplementedError();
 
