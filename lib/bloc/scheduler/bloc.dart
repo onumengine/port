@@ -38,4 +38,11 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
   void decrementSelectedDay() {
     selectedDay--;
   }
+
+  void createNewDateTime() {
+    selectedDateTime = DateTime(
+      selectedYear,
+      selectedMonth,
+    );
+  }
 }
