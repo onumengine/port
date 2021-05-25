@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:port/bloc/scheduler/bloc.dart';
 import 'package:port/screens/scheduler.dart';
 import 'package:port/utility/colors.dart';
 
@@ -38,7 +40,10 @@ class UserCard extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => SchedulerScreen(),
+              builder: (context) => BlocProvider<SchedulerBloc>(
+                create: (context) => SchedulerBloc(),
+                child: SchedulerScreen(),
+              ),
             ),
           );
         },
