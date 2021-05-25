@@ -7,7 +7,7 @@ class SubmitBloc extends Bloc<SubmitScreenEvent, SubmitScreenState> {
   SubmitScreenState get initialState => DefaultState();
 
   @override
-  Stream<SubmitScreenState> mapEventToState(SubmitScreenEvent event) {
-    throw UnimplementedError();
+  Stream<SubmitScreenState> mapEventToState(SubmitScreenEvent event) async* {
+    yield SuccessfulSubmissionState();
   }
 }
