@@ -1,9 +1,11 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:port/bloc/scheduler/bloc.dart';
 import 'package:port/bloc/users/bloc.dart';
 import 'package:port/bloc/users/state.dart';
 import 'package:port/components/molecules/user_card.dart';
+import 'package:port/screens/scheduler.dart';
 import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
 
@@ -73,6 +75,17 @@ class _UsersScreenState extends State<UsersScreen> {
                 semanticLabel: "Label$index",
                 name: "Mike $index",
                 jobTitle: "Job $index",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BlocProvider<SchedulerBloc>(
+                        create: (context) => SchedulerBloc(),
+                        child: SchedulerScreen(),
+                      ),
+                    ),
+                  );
+                },
               ),
               separatorBuilder: (context, index) => Padding(
                 padding: EdgeInsets.symmetric(vertical: 8.0),

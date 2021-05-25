@@ -7,8 +7,14 @@ import 'package:port/utility/colors.dart';
 
 class UserCard extends StatelessWidget {
   String imagePath, semanticLabel, name, jobTitle;
+  VoidCallback onTap;
 
-  UserCard({this.imagePath, this.semanticLabel, this.name, this.jobTitle});
+  UserCard(
+      {this.imagePath,
+      this.semanticLabel,
+      this.name,
+      this.jobTitle,
+      this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -36,17 +42,7 @@ class UserCard extends StatelessWidget {
             letterSpacing: 0.2,
           ),
         ),
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => BlocProvider<SchedulerBloc>(
-                create: (context) => SchedulerBloc(),
-                child: SchedulerScreen(),
-              ),
-            ),
-          );
-        },
+        onTap: this.onTap,
       ),
     );
   }
