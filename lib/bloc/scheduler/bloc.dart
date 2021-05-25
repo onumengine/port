@@ -34,11 +34,12 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
     7: "Sun",
   };
 
-  SchedulerBloc() {
-    selectedDateTime = DateTime.now();
-    selectedYear = selectedDateTime.year;
-    selectedMonth = selectedDateTime.month;
-    setNumberOfDaysInSelectedMonth();
+  @override
+  void onEvent(SchedulerEvent event) {
+    super.onEvent(event);
+    if (event is DatePickerInitializationEvent) {
+      initializeDateVariables();
+    }
   }
 
   @override
@@ -87,6 +88,12 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
         selectedDay: selectedDay,
       );
     }
+  }
+
+  void initializeDateVariables() {
+    selectedDateTime = DateTime.now();
+    selectedYear = DateTime.now().year;
+    selectedMonth = DateTime.now().month;
   }
 
   void setNumberOfDaysInSelectedMonth() {
