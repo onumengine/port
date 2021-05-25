@@ -1,15 +1,13 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:port/bloc/submit/bloc.dart';
+import 'package:port/bloc/submit/event.dart';
 import 'package:port/bloc/submit/state.dart';
-import 'package:port/components/atoms/appointment_status_tile.dart';
 import 'package:port/components/organisms/timestamp_card.dart';
 import 'package:port/screens/home.dart';
 import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
-import 'package:port/utility/style.dart';
 
 enum AppointmentReasons {
   reason1,
@@ -208,7 +206,8 @@ class _SubmitScreenState extends State<SubmitScreen> {
             SizedBox(height: 50),
             InkWell(
               onTap: () {
-                print("Tapped Edit button");
+                print("Tapped Edit button\nAdding SubmissionEvent");
+                _submitBloc.add(SubmissionEvent());
               },
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 10),
