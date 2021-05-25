@@ -1,5 +1,7 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:port/bloc/scheduler/bloc.dart';
 import 'package:port/components/organisms/date_picker.dart';
 import 'package:port/screens/submit.dart';
 import 'package:port/utility/colors.dart';
@@ -11,6 +13,14 @@ class SchedulerScreen extends StatefulWidget {
 }
 
 class _SchedulerScreenState extends State<SchedulerScreen> {
+  SchedulerBloc _schedulerBloc;
+
+  @override
+  void initState() {
+    _schedulerBloc = BlocProvider.of<SchedulerBloc>(context);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
