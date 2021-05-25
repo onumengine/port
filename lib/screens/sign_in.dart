@@ -72,12 +72,25 @@ class _SignInScreenState extends State<SignInScreen> {
               if (state is SignInPostingState) {
                 showloader(true);
               } else if (state is SignInPostingError) {
+                showloader(false);
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BlocProvider<HomeBloc>(
+                      create: (context) => HomeBloc(),
+                      child: MyHomePage(),
+                    ),
+                  ),
+                );
+                /*
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   content: Text(state.error,
                       style: TextStyle(color: Colors.black87)),
                   backgroundColor: Colors.white,
                 ));
                 showloader(false);
+                */
               } else if (state is SignInPostedSuccess) {
                 showloader(false);
                 Navigator.pop(context);
