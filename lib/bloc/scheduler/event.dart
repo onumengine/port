@@ -48,7 +48,7 @@ class DurationSelectionEvent extends SchedulerEvent {
   List<Object> get props => [];
 }
 
-class SubmissionEvent extends SchedulerEvent {
+class ScheduleSubmissionEvent extends SchedulerEvent {
   @override
   List<Object> get props => [];
 }
