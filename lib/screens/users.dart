@@ -17,8 +17,8 @@ class _UsersScreenState extends State<UsersScreen> {
 
   @override
   void initState() {
-    _usersBloc = BlocProvider.of<UsersBloc>(context);
     super.initState();
+    _usersBloc = BlocProvider.of<UsersBloc>(context);
   }
 
   @override
