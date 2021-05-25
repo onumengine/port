@@ -2,6 +2,7 @@ import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:port/bloc/scheduler/bloc.dart';
+import 'package:port/bloc/scheduler/state.dart';
 import 'package:port/components/organisms/date_picker.dart';
 import 'package:port/screens/submit.dart';
 import 'package:port/utility/colors.dart';
@@ -17,8 +18,8 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
 
   @override
   void initState() {
-    _schedulerBloc = BlocProvider.of<SchedulerBloc>(context);
     super.initState();
+    _schedulerBloc = BlocProvider.of<SchedulerBloc>(context);
   }
 
   @override
@@ -40,175 +41,179 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
           ),
         ),
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        child: CustomScrollView(
-          slivers: [
-            SliverList(
-              delegate: SliverChildListDelegate(
-                [
-                  DatePicker(),
-                ],
-              ),
-            ),
-            SliverList(
-              delegate: SliverChildListDelegate(
-                [
-                  Container(
-                    height: 50,
-                    padding: EdgeInsets.all(12),
-                    margin:
-                        EdgeInsets.only(top: 40, bottom: 20, left: 4, right: 4),
-                    decoration: BoxDecoration(
-                      color: colorOrangeChip,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Text(
-                      "Paris (GMT+2)",
-                      style: TextStyle(
-                        color: orangeChipTextColor,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 0.1,
-                      ),
-                    ),
+      body: BlocBuilder<SchedulerBloc, SchedulerState>(
+        builder: (context, state) {
+          return Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: CustomScrollView(
+              slivers: [
+                SliverList(
+                  delegate: SliverChildListDelegate(
+                    [
+                      DatePicker(),
+                    ],
                   ),
-                  SizedBox(height: 30),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Choose time",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                ],
-              ),
-            ),
-            SliverGrid(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                mainAxisSpacing: 26,
-                crossAxisSpacing: 26,
-                childAspectRatio: 2 / 1,
-              ),
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  return Container(
-                    height: 62,
-                    width: screenSize.width / 14,
-                    decoration: BoxDecoration(
-                      color: paleChipBackground,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Center(
-                      child: Text(
-                        "Time text",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 18,
-                          color: chipTextColorDisabled,
+                ),
+                SliverList(
+                  delegate: SliverChildListDelegate(
+                    [
+                      Container(
+                        height: 50,
+                        padding: EdgeInsets.all(12),
+                        margin: EdgeInsets.only(
+                            top: 40, bottom: 20, left: 4, right: 4),
+                        decoration: BoxDecoration(
+                          color: colorOrangeChip,
+                          borderRadius: BorderRadius.circular(12),
                         ),
-                      ),
-                    ),
-                  );
-                },
-                childCount: 6,
-              ),
-            ),
-            SliverList(
-              delegate: SliverChildListDelegate(
-                [
-                  SizedBox(height: 30),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Choose duration",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                ],
-              ),
-            ),
-            SliverGrid(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                mainAxisSpacing: 26,
-                crossAxisSpacing: 26,
-                childAspectRatio: 1.6774,
-              ),
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  return Container(
-                    height: 62,
-                    width: screenSize.width / 14,
-                    decoration: BoxDecoration(
-                      color: paleChipBackground,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Center(
-                      child: Text(
-                        "Time text",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 18,
-                          color: chipTextColorDisabled,
-                        ),
-                      ),
-                    ),
-                  );
-                },
-                childCount: 3,
-              ),
-            ),
-            SliverList(
-              delegate: SliverChildListDelegate(
-                [
-                  SizedBox(height: 110),
-                ],
-              ),
-            ),
-            SliverList(
-              delegate: SliverChildListDelegate(
-                [
-                  Container(
-                    height: 54,
-                    decoration: BoxDecoration(
-                      color: opPrimaryColor,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: TextButton(
-                      child: Text(
-                        "Proceed",
-                        style: TextStyle(
-                          color: white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => SubmitScreen(),
+                        child: Text(
+                          "Paris (GMT+2)",
+                          style: TextStyle(
+                            color: orangeChipTextColor,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 0.1,
                           ),
-                        );
-                      },
-                    ),
+                        ),
+                      ),
+                      SizedBox(height: 30),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Choose time",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                    ],
                   ),
-                  SizedBox(height: 40),
-                ],
-              ),
+                ),
+                SliverGrid(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    mainAxisSpacing: 26,
+                    crossAxisSpacing: 26,
+                    childAspectRatio: 2 / 1,
+                  ),
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      return Container(
+                        height: 62,
+                        width: screenSize.width / 14,
+                        decoration: BoxDecoration(
+                          color: paleChipBackground,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Time text",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: chipTextColorDisabled,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    childCount: 6,
+                  ),
+                ),
+                SliverList(
+                  delegate: SliverChildListDelegate(
+                    [
+                      SizedBox(height: 30),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Choose duration",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                    ],
+                  ),
+                ),
+                SliverGrid(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    mainAxisSpacing: 26,
+                    crossAxisSpacing: 26,
+                    childAspectRatio: 1.6774,
+                  ),
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      return Container(
+                        height: 62,
+                        width: screenSize.width / 14,
+                        decoration: BoxDecoration(
+                          color: paleChipBackground,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Time text",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: chipTextColorDisabled,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    childCount: 3,
+                  ),
+                ),
+                SliverList(
+                  delegate: SliverChildListDelegate(
+                    [
+                      SizedBox(height: 110),
+                    ],
+                  ),
+                ),
+                SliverList(
+                  delegate: SliverChildListDelegate(
+                    [
+                      Container(
+                        height: 54,
+                        decoration: BoxDecoration(
+                          color: opPrimaryColor,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: TextButton(
+                          child: Text(
+                            "Proceed",
+                            style: TextStyle(
+                              color: white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SubmitScreen(),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      SizedBox(height: 40),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
