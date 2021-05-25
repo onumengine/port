@@ -1,6 +1,7 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:port/bloc/home/bloc.dart';
 import 'package:port/bloc/submit/bloc.dart';
 import 'package:port/bloc/submit/event.dart';
 import 'package:port/bloc/submit/state.dart';
@@ -58,8 +59,8 @@ class _SubmitScreenState extends State<SubmitScreen> {
           Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
-              builder: (context) => BlocProvider(
-                create: (context) => SubmitBloc(),
+              builder: (context) => BlocProvider<HomeBloc>(
+                create: (context) => HomeBloc(),
                 child: MyHomePage(),
               ),
             ),
