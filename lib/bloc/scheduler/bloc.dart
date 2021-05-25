@@ -38,6 +38,7 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
     selectedDateTime = DateTime.now();
     selectedYear = selectedDateTime.year;
     selectedMonth = selectedDateTime.month;
+    setNumberOfDaysInSelectedMonth();
   }
 
   @override
