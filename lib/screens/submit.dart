@@ -1,6 +1,8 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:port/bloc/submit/bloc.dart';
 import 'package:port/components/atoms/appointment_status_tile.dart';
 import 'package:port/components/organisms/timestamp_card.dart';
 import 'package:port/utility/colors.dart';
@@ -21,11 +23,13 @@ class SubmitScreen extends StatefulWidget {
 class _SubmitScreenState extends State<SubmitScreen> {
   AppointmentReasons _dropdownButtonValue;
   TextEditingController _summaryNote;
+  SubmitBloc _submitBloc;
 
   @override
   void initState() {
     super.initState();
     _summaryNote = TextEditingController();
+    _submitBloc = BlocProvider.of<SubmitBloc>(context);
   }
 
   @override
