@@ -3,6 +3,7 @@ import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:port/bloc/scheduler/bloc.dart';
 import 'package:port/bloc/scheduler/state.dart';
+import 'package:port/bloc/submit/bloc.dart';
 import 'package:port/components/organisms/date_picker.dart';
 import 'package:port/screens/submit.dart';
 import 'package:port/utility/colors.dart';
@@ -190,7 +191,10 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => SubmitScreen(),
+                            builder: (context) => BlocProvider<SubmitBloc>(
+                              create: (context) => SubmitBloc(),
+                              child: SubmitScreen(),
+                            ),
                           ),
                         );
                       },
