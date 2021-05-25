@@ -33,11 +33,6 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
   };
 
   @override
-  void onEvent(SchedulerEvent event) {
-    super.onEvent(event);
-  }
-
-  @override
   SchedulerState get initialState => throw UnimplementedError();
 
   @override
