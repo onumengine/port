@@ -44,16 +44,19 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
 
   @override
   SchedulerState get initialState => ScheduleState(
-        selectedDateTime: selectedDateTime,
-        selectedYear: selectedYear,
-        selectedMonth: selectedMonth,
-        selectedDay: selectedDay,
+        selectedDateTime: DateTime.now(),
+        selectedYear: DateTime.now().year,
+        selectedMonth: DateTime.now().month,
+        selectedDay: DateTime.now().day,
       );
 
   @override
   Stream<SchedulerState> mapEventToState(SchedulerEvent event) async* {
     if (event is YearIncrementEvent) {
       incrementSelectedYear();
+      setNewDateTime();
+      setFirstDayOfSelectedMonth();
+      setNumberOfDaysInSelectedMonth();
       yield ScheduleState(
         selectedDateTime: selectedDateTime,
         selectedYear: selectedYear,
@@ -93,6 +96,13 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
         selectedDay: selectedDay,
       );
     }
+  }
+
+  void setNewDateTime() {
+    selectedDateTime = DateTime(
+      selectedYear,
+      selectedMonth,
+    );
   }
 
   void setNumberOfDaysInSelectedMonth() {

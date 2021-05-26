@@ -31,5 +31,12 @@ class ScheduleState extends SchedulerState {
   });
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [
+        selectedDateTime,
+        selectedYear,
+        selectedMonth,
+        selectedDay,
+        numberOfDaysInSelectedMonth,
+        isSelected,
+      ];
 }

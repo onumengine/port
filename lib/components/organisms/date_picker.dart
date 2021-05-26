@@ -2,6 +2,7 @@ import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:port/bloc/scheduler/bloc.dart';
+import 'package:port/bloc/scheduler/event.dart';
 import 'package:port/bloc/scheduler/state.dart';
 import 'package:port/components/atoms/calendar_bubble.dart';
 import 'package:port/utility/colors.dart';
@@ -78,146 +79,157 @@ class _DatePickerState extends State<DatePicker> {
 
     return BlocBuilder<SchedulerBloc, SchedulerState>(
       builder: (context, state) {
-        return FractionallySizedBox(
-          widthFactor: 1,
-          child: Container(
-            height: screenSize.height / 2,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                SizedBox(height: 12),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    RawMaterialButton(
-                      child: Icon(
-                        CupertinoIcons.chevron_left_2,
-                        size: 20,
-                      ),
-                      elevation: 2,
-                      shape: CircleBorder(),
-                      padding: EdgeInsets.all(4),
-                      fillColor: paleChipBackground,
-                      constraints: BoxConstraints(minWidth: 36, minHeight: 36),
-                      onPressed: () {
+        if (state is ScheduleState) {
+          return FractionallySizedBox(
+            widthFactor: 1,
+            child: Container(
+              height: screenSize.height / 2,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  SizedBox(height: 12),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      RawMaterialButton(
+                        child: Icon(
+                          CupertinoIcons.chevron_left_2,
+                          size: 20,
+                        ),
+                        elevation: 2,
+                        shape: CircleBorder(),
+                        padding: EdgeInsets.all(4),
+                        fillColor: paleChipBackground,
+                        constraints:
+                            BoxConstraints(minWidth: 36, minHeight: 36),
+                        onPressed: () {
+                          /*
                         _decrementYear();
                         _createNewDateTime();
                         _setFirstDayOfSelectedMonth();
                         _setNumberOfDaysInSelectedMonth();
-                      },
-                    ),
-                    RawMaterialButton(
-                      child: Icon(
-                        CupertinoIcons.chevron_left,
-                        size: 20,
+                        */
+                          _schedulerBloc.add(YearDecrementEvent());
+                        },
                       ),
-                      elevation: 2,
-                      shape: CircleBorder(),
-                      padding: EdgeInsets.all(2),
-                      fillColor: paleChipBackground,
-                      constraints: BoxConstraints(minWidth: 36, minHeight: 28),
-                      onPressed: () {
-                        _decrementMonth();
-                        _createNewDateTime();
-                        _setFirstDayOfSelectedMonth();
-                        _setNumberOfDaysInSelectedMonth();
-                      },
-                    ),
-                    Column(
-                      children: <Widget>[
-                        Text(
-                          "$_currentYear",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 20,
-                          ),
+                      RawMaterialButton(
+                        child: Icon(
+                          CupertinoIcons.chevron_left,
+                          size: 20,
                         ),
-                        Text("${_numberToMonthMap[_currentMonth]}"),
-                      ],
-                    ),
-                    RawMaterialButton(
-                      child: Icon(
-                        CupertinoIcons.chevron_right,
-                        size: 20,
+                        elevation: 2,
+                        shape: CircleBorder(),
+                        padding: EdgeInsets.all(2),
+                        fillColor: paleChipBackground,
+                        constraints:
+                            BoxConstraints(minWidth: 36, minHeight: 28),
+                        onPressed: () {
+                          _decrementMonth();
+                          _createNewDateTime();
+                          _setFirstDayOfSelectedMonth();
+                          _setNumberOfDaysInSelectedMonth();
+                        },
                       ),
-                      elevation: 2,
-                      shape: CircleBorder(),
-                      padding: EdgeInsets.all(2),
-                      fillColor: paleChipBackground,
-                      constraints: BoxConstraints(minWidth: 36, minHeight: 28),
-                      onPressed: () {
-                        _incrementMonth();
-                        _createNewDateTime();
-                        _setFirstDayOfSelectedMonth();
-                        _setNumberOfDaysInSelectedMonth();
-                      },
-                    ),
-                    RawMaterialButton(
-                      child: Icon(
-                        CupertinoIcons.chevron_right_2,
-                        size: 20,
+                      Column(
+                        children: <Widget>[
+                          Text(
+                            "${state.selectedYear}",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20,
+                            ),
+                          ),
+                          Text("${_numberToMonthMap[state.selectedMonth]}"),
+                        ],
                       ),
-                      elevation: 2,
-                      shape: CircleBorder(),
-                      padding: EdgeInsets.all(4),
-                      fillColor: paleChipBackground,
-                      constraints: BoxConstraints(minWidth: 36, minHeight: 36),
-                      onPressed: () {
-                        _incrementYear();
-                        _createNewDateTime();
-                        _setFirstDayOfSelectedMonth();
-                        _setNumberOfDaysInSelectedMonth();
-                      },
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    Text("M"),
-                    Text("T"),
-                    Text("W"),
-                    Text("T"),
-                    Text("F"),
-                    Text("S"),
-                    Text("S"),
-                  ],
-                ),
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.only(top: 8),
-                    padding: EdgeInsets.all(8),
-                    child: GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 7,
-                        mainAxisSpacing: 12,
-                        crossAxisSpacing: 12,
+                      RawMaterialButton(
+                        child: Icon(
+                          CupertinoIcons.chevron_right,
+                          size: 20,
+                        ),
+                        elevation: 2,
+                        shape: CircleBorder(),
+                        padding: EdgeInsets.all(2),
+                        fillColor: paleChipBackground,
+                        constraints:
+                            BoxConstraints(minWidth: 36, minHeight: 28),
+                        onPressed: () {
+                          _incrementMonth();
+                          _createNewDateTime();
+                          _setFirstDayOfSelectedMonth();
+                          _setNumberOfDaysInSelectedMonth();
+                        },
                       ),
-                      itemBuilder: (context, index) {
-                        return index < _getNumberOfDaysToSkip()
-                            ? Container()
-                            : CalendarBubble(
-                                text:
-                                    "${(index - _getNumberOfDaysToSkip()) + 1}",
-                                onTap: () {
-                                  print(
-                                      "Tapped the calendar bubble ${index + 1}");
-                                },
-                              );
-                      },
-                      itemCount: (_numberOfDaysInSelectedMonth +
-                          _getNumberOfDaysToSkip()),
+                      RawMaterialButton(
+                        child: Icon(
+                          CupertinoIcons.chevron_right_2,
+                          size: 20,
+                        ),
+                        elevation: 2,
+                        shape: CircleBorder(),
+                        padding: EdgeInsets.all(4),
+                        fillColor: paleChipBackground,
+                        constraints:
+                            BoxConstraints(minWidth: 36, minHeight: 36),
+                        onPressed: () {
+                          _incrementYear();
+                          _createNewDateTime();
+                          _setFirstDayOfSelectedMonth();
+                          _setNumberOfDaysInSelectedMonth();
+                        },
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Text("M"),
+                      Text("T"),
+                      Text("W"),
+                      Text("T"),
+                      Text("F"),
+                      Text("S"),
+                      Text("S"),
+                    ],
+                  ),
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.only(top: 8),
+                      padding: EdgeInsets.all(8),
+                      child: GridView.builder(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 7,
+                          mainAxisSpacing: 12,
+                          crossAxisSpacing: 12,
+                        ),
+                        itemBuilder: (context, index) {
+                          return index < _getNumberOfDaysToSkip()
+                              ? Container()
+                              : CalendarBubble(
+                                  text:
+                                      "${(index - _getNumberOfDaysToSkip()) + 1}",
+                                  onTap: () {
+                                    print(
+                                        "Tapped the calendar bubble ${index + 1}");
+                                  },
+                                );
+                        },
+                        itemCount: (_numberOfDaysInSelectedMonth +
+                            _getNumberOfDaysToSkip()),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        );
+          );
+        } else {
+          return Center(child: Text("Unable to load DatePicker"));
+        }
       },
     );
   }
