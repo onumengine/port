@@ -105,12 +105,6 @@ class _DatePickerState extends State<DatePicker> {
                         constraints:
                             BoxConstraints(minWidth: 36, minHeight: 36),
                         onPressed: () {
-                          /*
-                        _decrementYear();
-                        _createNewDateTime();
-                        _setFirstDayOfSelectedMonth();
-                        _setNumberOfDaysInSelectedMonth();
-                        */
                           _schedulerBloc.add(YearDecrementEvent());
                         },
                       ),
@@ -126,10 +120,7 @@ class _DatePickerState extends State<DatePicker> {
                         constraints:
                             BoxConstraints(minWidth: 36, minHeight: 28),
                         onPressed: () {
-                          _decrementMonth();
-                          _createNewDateTime();
-                          _setFirstDayOfSelectedMonth();
-                          _setNumberOfDaysInSelectedMonth();
+                          _schedulerBloc.add(MonthDecrementEvent());
                         },
                       ),
                       Column(
@@ -156,10 +147,7 @@ class _DatePickerState extends State<DatePicker> {
                         constraints:
                             BoxConstraints(minWidth: 36, minHeight: 28),
                         onPressed: () {
-                          _incrementMonth();
-                          _createNewDateTime();
-                          _setFirstDayOfSelectedMonth();
-                          _setNumberOfDaysInSelectedMonth();
+                          _schedulerBloc.add(MonthIncrementEvent());
                         },
                       ),
                       RawMaterialButton(
@@ -174,10 +162,7 @@ class _DatePickerState extends State<DatePicker> {
                         constraints:
                             BoxConstraints(minWidth: 36, minHeight: 36),
                         onPressed: () {
-                          _incrementYear();
-                          _createNewDateTime();
-                          _setFirstDayOfSelectedMonth();
-                          _setNumberOfDaysInSelectedMonth();
+                          _schedulerBloc.add(YearIncrementEvent());
                         },
                       ),
                     ],

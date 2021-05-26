@@ -65,6 +65,9 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
       );
     } else if (event is YearDecrementEvent) {
       decrementSelectedYear();
+      setNewDateTime();
+      setFirstDayOfSelectedMonth();
+      setNumberOfDaysInSelectedMonth();
       yield ScheduleState(
         selectedDateTime: selectedDateTime,
         selectedYear: selectedYear,
@@ -73,6 +76,9 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
       );
     } else if (event is MonthIncrementEvent) {
       incrementSelectedMonth();
+      setNewDateTime();
+      setFirstDayOfSelectedMonth();
+      setNumberOfDaysInSelectedMonth();
       yield ScheduleState(
         selectedDateTime: selectedDateTime,
         selectedYear: selectedYear,
@@ -81,6 +87,9 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
       );
     } else if (event is MonthDecrementEvent) {
       decrementSelectedMonth();
+      setNewDateTime();
+      setFirstDayOfSelectedMonth();
+      setNumberOfDaysInSelectedMonth();
       yield ScheduleState(
         selectedDateTime: selectedDateTime,
         selectedYear: selectedYear,
