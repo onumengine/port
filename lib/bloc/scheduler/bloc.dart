@@ -34,6 +34,13 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
     7: "Sun",
   };
 
+  SchedulerBloc() {
+    selectedDateTime = DateTime.now();
+    selectedYear = DateTime.now().year;
+    selectedMonth = DateTime.now().month;
+    setNumberOfDaysInSelectedMonth();
+  }
+
   @override
   SchedulerState get initialState => throw UnimplementedError();
 
