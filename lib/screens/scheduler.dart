@@ -15,12 +15,9 @@ class SchedulerScreen extends StatefulWidget {
 }
 
 class _SchedulerScreenState extends State<SchedulerScreen> {
-  SchedulerBloc _schedulerBloc;
-
   @override
   void initState() {
     super.initState();
-    _schedulerBloc = BlocProvider.of<SchedulerBloc>(context);
   }
 
   @override

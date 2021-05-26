@@ -3,10 +3,12 @@ import 'package:port/bloc/scheduler/event.dart';
 import 'package:port/bloc/scheduler/state.dart';
 
 class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
-  DateTime selectedDateTime = DateTime.now();
-  int selectedYear = DateTime.now().year;
-  int selectedMonth = DateTime.now().month;
-  int selectedDay, numberOfDaysInSelectedMonth, firstDayOfSelectedMonth;
+  DateTime selectedDateTime;
+  int selectedYear,
+      selectedMonth,
+      selectedDay,
+      numberOfDaysInSelectedMonth,
+      firstDayOfSelectedMonth;
   bool isSelected;
   Map<int, String> numberToMonthMap = <int, String>{
     1: "Jan",
