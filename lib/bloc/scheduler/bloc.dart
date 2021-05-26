@@ -38,11 +38,17 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
     selectedDateTime = DateTime.now();
     selectedYear = DateTime.now().year;
     selectedMonth = DateTime.now().month;
+    selectedDay = DateTime.now().day;
     setNumberOfDaysInSelectedMonth();
   }
 
   @override
-  SchedulerState get initialState => throw UnimplementedError();
+  SchedulerState get initialState => ScheduleState(
+        selectedDateTime: selectedDateTime,
+        selectedYear: selectedYear,
+        selectedMonth: selectedMonth,
+        selectedDay: selectedDay,
+      );
 
   @override
   Stream<SchedulerState> mapEventToState(SchedulerEvent event) async* {
