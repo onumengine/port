@@ -117,6 +117,8 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
         selectedYear: selectedYear,
         selectedMonth: selectedMonth,
         selectedDay: selectedDay,
+        numberOfDaysInSelectedMonth: numberOfDaysInSelectedMonth,
+        numberOfCalendarSpacesToSkip: numberOfCalendarSpacesToSkip,
       );
     }
   }

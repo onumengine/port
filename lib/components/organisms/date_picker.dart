@@ -210,7 +210,10 @@ class _DatePickerState extends State<DatePicker> {
                                       ),
                                       color: appBarTitleColor,
                                       onTap: () {
-                                        print("Tapped the current date");
+                                        _schedulerBloc.add(
+                                          DaySelectionEvent(
+                                              _calendarBubbleNumber),
+                                        );
                                       },
                                     )
                                   : CalendarBubble(

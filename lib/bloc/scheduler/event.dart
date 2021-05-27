@@ -32,10 +32,10 @@ class YearDecrementEvent extends SchedulerEvent {
 class DaySelectionEvent extends SchedulerEvent {
   int selectedDay;
 
-  @override
-  List<Object> get props => [];
+  DaySelectionEvent(this.selectedDay);
 
-  DaySelectionEvent({int selectedDay});
+  @override
+  List<Object> get props => [selectedDay];
 }
 
 class TimeSelectionEvent extends SchedulerEvent {
