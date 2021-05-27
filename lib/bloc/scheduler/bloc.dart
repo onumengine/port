@@ -57,6 +57,7 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
       incrementSelectedYear();
       setNewDateTime();
       setFirstDayOfSelectedMonth();
+      setNumberOfCalendarSpacesToSkip();
       setNumberOfDaysInSelectedMonth();
       yield ScheduleState(
         selectedDateTime: selectedDateTime,
@@ -68,6 +69,7 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
       decrementSelectedYear();
       setNewDateTime();
       setFirstDayOfSelectedMonth();
+      setNumberOfCalendarSpacesToSkip();
       setNumberOfDaysInSelectedMonth();
       yield ScheduleState(
         selectedDateTime: selectedDateTime,
@@ -79,6 +81,7 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
       incrementSelectedMonth();
       setNewDateTime();
       setFirstDayOfSelectedMonth();
+      setNumberOfCalendarSpacesToSkip();
       setNumberOfDaysInSelectedMonth();
       yield ScheduleState(
         selectedDateTime: selectedDateTime,
@@ -90,6 +93,7 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
       decrementSelectedMonth();
       setNewDateTime();
       setFirstDayOfSelectedMonth();
+      setNumberOfCalendarSpacesToSkip();
       setNumberOfDaysInSelectedMonth();
       yield ScheduleState(
         selectedDateTime: selectedDateTime,
