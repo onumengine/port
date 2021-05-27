@@ -32,8 +32,12 @@ class DatePicker extends StatefulWidget {
 
 class _DatePickerState extends State<DatePicker> {
   DateTime _dateTime;
-  int _currentWeekday, _currentMonth, _currentYear, _firstDayOfSelectedMonth;
-  int _numberOfDaysInSelectedMonth;
+  int _currentWeekday,
+      _currentMonth,
+      _currentYear,
+      _firstDayOfSelectedMonth,
+      _numberOfDaysInSelectedMonth,
+      _calendarBubbleNumber;
   SchedulerBloc _schedulerBloc;
 
   Map<int, String> _numberToMonthMap = <int, String>{
@@ -192,11 +196,12 @@ class _DatePickerState extends State<DatePicker> {
                           crossAxisSpacing: 12,
                         ),
                         itemBuilder: (context, index) {
+                          _calendarBubbleNumber =
+                              (index - _getNumberOfDaysToSkip()) + 1;
                           return index < _getNumberOfDaysToSkip()
                               ? Container()
                               : CalendarBubble(
-                                  text:
-                                      "${(index - _getNumberOfDaysToSkip()) + 1}",
+                                  text: "$_calendarBubbleNumber",
                                   onTap: () {
                                     print(
                                         "Tapped the calendar bubble ${index + 1}");
