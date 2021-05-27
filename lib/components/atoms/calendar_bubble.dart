@@ -2,12 +2,12 @@ import "package:flutter/material.dart";
 import 'package:port/utility/colors.dart';
 
 class CalendarBubble extends StatelessWidget {
-  final String text;
+  final Widget child;
   Color color;
   final VoidCallback onTap;
 
   CalendarBubble({
-    this.text,
+    this.child,
     this.onTap,
     this.color = paleCircleAvatarBackground,
   });
@@ -24,7 +24,7 @@ class CalendarBubble extends StatelessWidget {
           color: this.color,
         ),
         child: Center(
-          child: Text(this.text),
+          child: this.child,
         ),
       ),
     );

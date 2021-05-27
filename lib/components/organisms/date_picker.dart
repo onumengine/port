@@ -202,14 +202,23 @@ class _DatePickerState extends State<DatePicker> {
                               ? Container()
                               : (_calendarBubbleNumber == state.selectedDay)
                                   ? CalendarBubble(
-                                      text: "$_calendarBubbleNumber",
+                                      child: Text(
+                                        "$_calendarBubbleNumber",
+                                        style: TextStyle(
+                                          color: opBackgroundColor,
+                                        ),
+                                      ),
                                       color: appBarTitleColor,
                                       onTap: () {
                                         print("Tapped the current date");
                                       },
                                     )
                                   : CalendarBubble(
-                                      text: "$_calendarBubbleNumber",
+                                      child: Text(
+                                        "$_calendarBubbleNumber",
+                                        style:
+                                            TextStyle(color: textColorPrimary),
+                                      ),
                                       onTap: () {
                                         print(
                                             "Tapped the calendar bubble ${index + 1}");
