@@ -99,6 +99,7 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
       );
     } else if (event is DaySelectionEvent) {
       setSelectedDay(event.selectedDay);
+      setNewDateTime();
       yield ScheduleState(
         selectedDateTime: selectedDateTime,
         selectedYear: selectedYear,
@@ -112,6 +113,15 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
     selectedDateTime = DateTime(
       selectedYear,
       selectedMonth,
+      selectedDay,
+    );
+  }
+
+  void setNewDateTimeWithDate() {
+    selectedDateTime = DateTime(
+      selectedYear,
+      selectedMonth,
+      selectedDay,
     );
   }
 
