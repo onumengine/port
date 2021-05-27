@@ -8,7 +8,8 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
       selectedMonth,
       selectedDay,
       numberOfDaysInSelectedMonth,
-      firstDayOfSelectedMonth;
+      firstDayOfSelectedMonth,
+      numberOfDaysToSkip;
   bool isSelected;
   Map<int, String> numberToMonthMap = <int, String>{
     1: "Jan",
