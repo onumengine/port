@@ -134,11 +134,11 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
     firstDayOfSelectedMonth = selectedDateTime.weekday;
   }
 
-  int getNumberOfCalendarSpacesToSkip() {
+  void setNumberOfCalendarSpacesToSkip() {
     if (firstDayOfSelectedMonth == null) {
       setFirstDayOfSelectedMonth();
     }
-    return firstDayOfSelectedMonth - 1;
+    numberOfCalendarSpacesToSkip = firstDayOfSelectedMonth - 1;
   }
 
   void incrementSelectedYear() {
