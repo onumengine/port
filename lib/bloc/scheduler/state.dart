@@ -19,7 +19,11 @@ class DayChangedState extends SchedulerState {
 
 class ScheduleState extends SchedulerState {
   DateTime selectedDateTime;
-  int selectedYear, selectedMonth, selectedDay, numberOfDaysInSelectedMonth;
+  int selectedYear,
+      selectedMonth,
+      selectedDay,
+      numberOfDaysInSelectedMonth,
+      numberOfCalendarSpacesToSkip;
   bool isSelected;
 
   ScheduleState({
@@ -28,6 +32,8 @@ class ScheduleState extends SchedulerState {
     this.selectedMonth,
     this.selectedDay,
     this.isSelected,
+    this.numberOfDaysInSelectedMonth,
+    this.numberOfCalendarSpacesToSkip,
   });
 
   @override
@@ -37,6 +43,7 @@ class ScheduleState extends SchedulerState {
         selectedMonth,
         selectedDay,
         numberOfDaysInSelectedMonth,
+        this.numberOfCalendarSpacesToSkip,
         isSelected,
       ];
 }
