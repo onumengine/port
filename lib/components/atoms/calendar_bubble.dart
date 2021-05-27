@@ -3,9 +3,14 @@ import 'package:port/utility/colors.dart';
 
 class CalendarBubble extends StatelessWidget {
   final String text;
+  Color color;
   final VoidCallback onTap;
 
-  CalendarBubble({this.text, this.onTap});
+  CalendarBubble({
+    this.text,
+    this.onTap,
+    this.color = paleCircleAvatarBackground,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +21,7 @@ class CalendarBubble extends StatelessWidget {
         width: 20,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: paleCircleAvatarBackground,
+          color: this.color,
         ),
         child: Center(
           child: Text(this.text),
