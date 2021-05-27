@@ -64,6 +64,8 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
         selectedYear: selectedYear,
         selectedMonth: selectedMonth,
         selectedDay: selectedDay,
+        numberOfDaysInSelectedMonth: numberOfDaysInSelectedMonth,
+        numberOfCalendarSpacesToSkip: numberOfCalendarSpacesToSkip,
       );
     } else if (event is YearDecrementEvent) {
       decrementSelectedYear();
@@ -76,6 +78,8 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
         selectedYear: selectedYear,
         selectedMonth: selectedMonth,
         selectedDay: selectedDay,
+        numberOfDaysInSelectedMonth: numberOfDaysInSelectedMonth,
+        numberOfCalendarSpacesToSkip: numberOfCalendarSpacesToSkip,
       );
     } else if (event is MonthIncrementEvent) {
       incrementSelectedMonth();
@@ -88,6 +92,8 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
         selectedYear: selectedYear,
         selectedMonth: selectedMonth,
         selectedDay: selectedDay,
+        numberOfDaysInSelectedMonth: numberOfDaysInSelectedMonth,
+        numberOfCalendarSpacesToSkip: numberOfCalendarSpacesToSkip,
       );
     } else if (event is MonthDecrementEvent) {
       decrementSelectedMonth();
@@ -100,6 +106,8 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
         selectedYear: selectedYear,
         selectedMonth: selectedMonth,
         selectedDay: selectedDay,
+        numberOfDaysInSelectedMonth: numberOfDaysInSelectedMonth,
+        numberOfCalendarSpacesToSkip: numberOfCalendarSpacesToSkip,
       );
     } else if (event is DaySelectionEvent) {
       setSelectedDay(event.selectedDay);
@@ -114,14 +122,6 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerState> {
   }
 
   void setNewDateTime() {
-    selectedDateTime = DateTime(
-      selectedYear,
-      selectedMonth,
-      selectedDay,
-    );
-  }
-
-  void setNewDateTimeWithDate() {
     selectedDateTime = DateTime(
       selectedYear,
       selectedMonth,
