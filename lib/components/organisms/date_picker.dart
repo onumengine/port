@@ -200,13 +200,21 @@ class _DatePickerState extends State<DatePicker> {
                               (index - _getNumberOfDaysToSkip()) + 1;
                           return index < _getNumberOfDaysToSkip()
                               ? Container()
-                              : CalendarBubble(
-                                  text: "$_calendarBubbleNumber",
-                                  onTap: () {
-                                    print(
-                                        "Tapped the calendar bubble ${index + 1}");
-                                  },
-                                );
+                              : (_calendarBubbleNumber == state.selectedDay)
+                                  ? CalendarBubble(
+                                      text: "$_calendarBubbleNumber",
+                                      color: appBarTitleColor,
+                                      onTap: () {
+                                        print("Tapped the current date");
+                                      },
+                                    )
+                                  : CalendarBubble(
+                                      text: "$_calendarBubbleNumber",
+                                      onTap: () {
+                                        print(
+                                            "Tapped the calendar bubble ${index + 1}");
+                                      },
+                                    );
                         },
                         itemCount: (_numberOfDaysInSelectedMonth +
                             _getNumberOfDaysToSkip()),
