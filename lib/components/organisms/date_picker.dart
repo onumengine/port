@@ -31,13 +31,7 @@ class DatePicker extends StatefulWidget {
 ///     of days in a month
 
 class _DatePickerState extends State<DatePicker> {
-  DateTime _dateTime;
-  int _currentWeekday,
-      _currentMonth,
-      _currentYear,
-      _firstDayOfSelectedMonth,
-      _numberOfDaysInSelectedMonth,
-      _calendarBubbleNumber;
+  int _calendarBubbleNumber;
   SchedulerBloc _schedulerBloc;
 
   Map<int, String> _numberToMonthMap = <int, String>{
@@ -55,25 +49,9 @@ class _DatePickerState extends State<DatePicker> {
     12: "Dec",
   };
 
-  Map<int, String> _numberToWeekdayMap = <int, String>{
-    1: "Mon",
-    2: "Tue",
-    3: "Wed",
-    4: "Thu",
-    5: "Fri",
-    6: "Sat",
-    7: "Sun",
-  };
-
   @override
   void initState() {
     super.initState();
-    setState(() {
-      _dateTime = DateTime.now();
-    });
-    _currentMonth = _dateTime.month;
-    _currentYear = _dateTime.year;
-    _setNumberOfDaysInSelectedMonth();
   }
 
   @override
@@ -197,39 +175,37 @@ class _DatePickerState extends State<DatePicker> {
                         ),
                         itemBuilder: (context, index) {
                           _calendarBubbleNumber =
-                              (index - _getNumberOfDaysToSkip()) + 1;
-                          return index < _getNumberOfDaysToSkip()
+                              (index - state.numberOfCalendarSpacesToSkip) + 1;
+                          return index < state.numberOfCalendarSpacesToSkip
                               ? Container()
-                              : (_calendarBubbleNumber == state.selectedDay)
-                                  ? CalendarBubble(
-                                      child: Text(
-                                        "$_calendarBubbleNumber",
-                                        style: TextStyle(
-                                          color: opBackgroundColor,
+                              : CalendarBubble(
+                                  child: (_calendarBubbleNumber ==
+                                          state.selectedDay)
+                                      ? Text(
+                                          "$_calendarBubbleNumber",
+                                          style: TextStyle(
+                                            color: opBackgroundColor,
+                                          ),
+                                        )
+                                      : Text(
+                                          "$_calendarBubbleNumber",
+                                          style: TextStyle(
+                                            color: primaryTextColor,
+                                          ),
                                         ),
-                                      ),
-                                      color: appBarTitleColor,
-                                      onTap: () {
-                                        _schedulerBloc.add(
-                                          DaySelectionEvent(
-                                              _calendarBubbleNumber),
-                                        );
-                                      },
-                                    )
-                                  : CalendarBubble(
-                                      child: Text(
-                                        "$_calendarBubbleNumber",
-                                        style:
-                                            TextStyle(color: textColorPrimary),
-                                      ),
-                                      onTap: () {
-                                        print(
-                                            "Tapped the calendar bubble ${index + 1}");
-                                      },
+                                  color: (_calendarBubbleNumber ==
+                                          state.selectedDay)
+                                      ? appBarTitleColor
+                                      : paleCircleAvatarBackground,
+                                  onTap: () {
+                                    _schedulerBloc.add(
+                                      DaySelectionEvent(_calendarBubbleNumber),
                                     );
+                                  },
+                                );
                         },
-                        itemCount: (_numberOfDaysInSelectedMonth +
-                            _getNumberOfDaysToSkip()),
+                        itemCount: (state.numberOfDaysInSelectedMonth +
+                            state.numberOfCalendarSpacesToSkip),
                       ),
                     ),
                   ),
@@ -242,67 +218,5 @@ class _DatePickerState extends State<DatePicker> {
         }
       },
     );
-  }
-
-  void _setNumberOfDaysInSelectedMonth() {
-    _numberOfDaysInSelectedMonth =
-        DateTime(_currentYear, _currentMonth + 1, 0).day;
-    print(
-        "There are $_numberOfDaysInSelectedMonth days in ${_numberToMonthMap[_currentMonth]}");
-  }
-
-  void _setFirstDayOfSelectedMonth() {
-    _firstDayOfSelectedMonth = _dateTime.weekday;
-    print(
-      "First day of ${_numberToMonthMap[_dateTime.month]} is ${_numberToWeekdayMap[_firstDayOfSelectedMonth]}",
-    );
-  }
-
-  int _getNumberOfDaysToSkip() {
-    if (_firstDayOfSelectedMonth == null) {
-      _setFirstDayOfSelectedMonth();
-    }
-    return _firstDayOfSelectedMonth - 1;
-  }
-
-  void _createNewDateTime() {
-    _dateTime = DateTime(
-      _currentYear,
-      _currentMonth,
-    );
-  }
-
-  void _incrementYear() {
-    setState(() {
-      _currentYear++;
-    });
-  }
-
-  void _decrementYear() {
-    setState(() {
-      _currentYear--;
-    });
-  }
-
-  void _incrementMonth() {
-    setState(() {
-      if (_currentMonth == 12) {
-        _currentMonth = 1;
-        _currentYear++;
-      } else {
-        _currentMonth++;
-      }
-    });
-  }
-
-  void _decrementMonth() {
-    setState(() {
-      if (_currentMonth == 1) {
-        _currentMonth = 12;
-        _currentYear--;
-      } else {
-        _currentMonth--;
-      }
-    });
   }
 }

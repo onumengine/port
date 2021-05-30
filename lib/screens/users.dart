@@ -79,7 +79,10 @@ class _UsersScreenState extends State<UsersScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SchedulerScreen(),
+                      builder: (context) => BlocProvider<SchedulerBloc>(
+                        create: (context) => SchedulerBloc(),
+                        child: SchedulerScreen(),
+                      ),
                     ),
                   );
                 },
