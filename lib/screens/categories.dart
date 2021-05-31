@@ -23,7 +23,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   void initState() {
     _categoriesBloc = BlocProvider.of<CategoriesBloc>(context);
     super.initState();
-    _categoriesBloc.add(FetchEvent());
+    _categoriesBloc.add(CategoriesFetchEvent());
   }
 
   Map<String, String> _categories = {
@@ -79,7 +79,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
       ),
       body: BlocBuilder<CategoriesBloc, CategoriesState>(
         builder: (BuildContext context, CategoriesState state) {
-          if (state is ErrorState) {
+          if (state is CategoriesFetchedState) {
             return Container(
               height: screenSize.height,
               width: screenSize.width,
@@ -168,10 +168,16 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 ],
               ),
             );
-          } else {
+          } else if (state is CategoriesFetchingState) {
             return Center(
               child: CircularProgressIndicator(),
             );
+          } else if (state is ErrorState) {
+            return Center(
+              child: Text("Unable to fetch categories"),
+            );
+          } else {
+            return Center();
           }
         },
       ),
