@@ -24,6 +24,8 @@ const String SESSION_ID = "session_id";
 const String SESSION_TOKEN = "session_token";
 const String LOGGED_IN_USER = "user";
 
+const String CATEGORIES_FETCH_PATH = BASE_URL + "categories";
+
 const String LOGIN_STRING_REQUEST = BASE_URL + "user/login";
 
 const String CREATE_STUDENT_PROFILE = BASE_URL + "";
