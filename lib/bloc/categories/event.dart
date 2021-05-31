@@ -5,10 +5,8 @@ abstract class CategoriesEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class FetchEvent extends CategoriesEvent {}
+class CategoriesFetchEvent extends CategoriesEvent {}
 
 class CategoriesFetchingError extends CategoriesEvent {}
 
 class CategoriesFetchedEvent extends CategoriesEvent {}
-
-class CategoriesPopulatedSuccessEvent extends CategoriesEvent {}
