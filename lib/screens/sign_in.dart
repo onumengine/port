@@ -73,24 +73,12 @@ class _SignInScreenState extends State<SignInScreen> {
                 showloader(true);
               } else if (state is SignInPostingError) {
                 showloader(false);
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => BlocProvider<HomeBloc>(
-                      create: (context) => HomeBloc(),
-                      child: MyHomePage(),
-                    ),
-                  ),
-                );
-                /*
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   content: Text(state.error,
                       style: TextStyle(color: Colors.black87)),
                   backgroundColor: Colors.white,
                 ));
                 showloader(false);
-                */
               } else if (state is SignInPostedSuccess) {
                 showloader(false);
                 Navigator.pop(context);
@@ -156,8 +144,10 @@ class _SignInScreenState extends State<SignInScreen> {
                                     contentPadding:
                                         EdgeInsets.only(left: 8.0, top: 8.0),
                                     enabledBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.grey[300])),
+                                      borderSide: BorderSide(
+                                        color: Colors.grey[300],
+                                      ),
+                                    ),
                                     labelText: 'username',
                                     labelStyle: TextStyle(
                                         color: Color(0xffA1A1A1), fontSize: 13),
@@ -180,8 +170,9 @@ class _SignInScreenState extends State<SignInScreen> {
                                     contentPadding:
                                         EdgeInsets.only(left: 8.0, top: 8.0),
                                     enabledBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.grey[300])),
+                                      borderSide:
+                                          BorderSide(color: Colors.grey[300]),
+                                    ),
                                     labelText: 'Password',
                                     labelStyle: TextStyle(
                                         color: Color(0xffA1A1A1), fontSize: 13),
@@ -201,35 +192,38 @@ class _SignInScreenState extends State<SignInScreen> {
                                       0.0, 5.0, 0.0, 10.0),
                                   child: InkResponse(
                                     onTap: () {
-                                      _signInBloc.add(SigningInEvent(
+                                      _signInBloc.add(
+                                        SigningInEvent(
                                           email: _emailController.text,
-                                          password: _passwordController.text));
+                                          password: _passwordController.text,
+                                        ),
+                                      );
                                     },
                                     child: Container(
                                       height: 50,
                                       decoration: BoxDecoration(
-                                          color: Color(0xFF222B45),
-                                          borderRadius:
-                                              BorderRadius.circular(5)),
+                                        color: Color(0xFF222B45),
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
                                       child: Center(
-                                          child: Padding(
-                                              padding:
-                                                  const EdgeInsets.fromLTRB(
-                                                      2.0, 0.0, 2.0, 0.0),
-                                              child: isloading == false
-                                                  ? Text(
-                                                      'Sign In',
-                                                      style: TextStyle(
-                                                          color: Colors.white,
-                                                          fontSize: 14),
-                                                    )
-                                                  : CircularProgressIndicator(
-                                                      valueColor:
-                                                          new AlwaysStoppedAnimation<
-                                                                  Color>(
-                                                              Colors.white),
-                                                      strokeWidth: 3,
-                                                    ))),
+                                        child: Padding(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              2.0, 0.0, 2.0, 0.0),
+                                          child: isloading == false
+                                              ? Text(
+                                                  'Sign In',
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 14),
+                                                )
+                                              : CircularProgressIndicator(
+                                                  valueColor:
+                                                      new AlwaysStoppedAnimation<
+                                                          Color>(Colors.white),
+                                                  strokeWidth: 3,
+                                                ),
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),
