@@ -174,7 +174,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             );
           } else if (state is ErrorState) {
             return Center(
-              child: Text("Unable to fetch categories"),
+              child: Text(state.errorMessage),
             );
           } else {
             return Center();

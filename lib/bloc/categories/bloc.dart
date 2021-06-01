@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:port/bloc/categories/event.dart';
 import 'package:port/bloc/categories/state.dart';
 import 'package:port/repository/api_client.dart';
+import 'package:port/repository/app_exceptions.dart';
 import 'package:port/utility/constants.dart';
 
 class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
@@ -15,13 +16,13 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     if (event is CategoriesFetchEvent) {
       yield CategoriesFetchingState();
       try {
-        _apiClient.get(CATEGORIES_FETCH_PATH).then((value) => print);
+        var response = await _apiClient.get(CATEGORIES_FETCH_PATH);
+        print("The response from fetching categories is $response");
         yield CategoriesFetchedState();
-      } catch (e) {
-        print("ERROR: ${e.message}");
+      } on FetchDataException catch (e) {
+        print("Categories fetch caught an error. ERROR: $e");
+        yield ErrorState(errorMessage: e.toString());
       }
     }
   }
-
-  Future<dynamic> _getCategories(String url) {}
 }

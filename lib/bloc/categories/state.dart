@@ -20,4 +20,10 @@ class CategoriesFetchedState extends CategoriesState {
 }
 
 class ErrorState extends CategoriesState {
+  String errorMessage;
+
+  ErrorState({this.errorMessage});
+
+  @override
+  List<Object> get props => [errorMessage];
 }
