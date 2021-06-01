@@ -46,10 +46,7 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
             SliverList(
               delegate: SliverChildListDelegate(
                 [
-                  BlocProvider<SchedulerBloc>(
-                    create: (context) => SchedulerBloc(),
-                    child: DatePicker(),
-                  ),
+                  DatePicker(),
                 ],
               ),
             ),
