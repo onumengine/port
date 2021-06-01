@@ -15,13 +15,19 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
   Stream<CategoriesState> mapEventToState(CategoriesEvent event) async* {
     if (event is CategoriesFetchEvent) {
       yield CategoriesFetchingState();
+      var response, responseObject, categoriesList;
       try {
-        var response = await _apiClient.get(CATEGORIES_FETCH_PATH);
-        print("The response from fetching categories is $response");
-        yield CategoriesFetchedState();
+        response = _apiClient.get(CATEGORIES_FETCH_PATH);
+        responseObject = Future.value(responseObject);
+        print("The response from fetching categories is $responseObject");
+        categoriesList = responseObject["data"];
+        print("The list of categories in the BLoC is $categoriesList");
+        yield CategoriesFetchedState(categories: response);
       } on FetchDataException catch (e) {
         print("Categories fetch caught an error. ERROR: $e");
         yield ErrorState(errorMessage: e.toString());
+      } finally {
+        yield CategoriesFetchedState(categories: response["data"]);
       }
     }
   }

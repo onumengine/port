@@ -1,12 +1,12 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:port/bloc/scheduler/bloc.dart';
-import 'package:port/bloc/scheduler/event.dart';
+import 'package:port/bloc/date_picker/bloc.dart';
+import 'package:port/bloc/date_picker/event.dart';
+import 'package:port/bloc/date_picker/state.dart';
 import 'package:port/bloc/scheduler/state.dart';
 import 'package:port/components/atoms/calendar_bubble.dart';
 import 'package:port/utility/colors.dart';
-import 'package:port/utility/colors_main.dart';
 
 class DatePicker extends StatefulWidget {
   @override
@@ -32,7 +32,7 @@ class DatePicker extends StatefulWidget {
 
 class _DatePickerState extends State<DatePicker> {
   int _calendarBubbleNumber;
-  SchedulerBloc _schedulerBloc;
+  DatePickerBloc _datePickerBloc;
 
   Map<int, String> _numberToMonthMap = <int, String>{
     1: "Jan",
@@ -57,11 +57,11 @@ class _DatePickerState extends State<DatePicker> {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
-    _schedulerBloc = BlocProvider.of<SchedulerBloc>(context);
+    _datePickerBloc = BlocProvider.of<DatePickerBloc>(context);
 
-    return BlocBuilder<SchedulerBloc, SchedulerState>(
+    return BlocBuilder<DatePickerBloc, DatePickerState>(
       builder: (context, state) {
-        if (state is ScheduleState) {
+        if (state is DatePickerState) {
           return FractionallySizedBox(
             widthFactor: 1,
             child: Container(
@@ -87,7 +87,7 @@ class _DatePickerState extends State<DatePicker> {
                         constraints:
                             BoxConstraints(minWidth: 36, minHeight: 36),
                         onPressed: () {
-                          _schedulerBloc.add(YearDecrementEvent());
+                          _datePickerBloc.add(YearDecrementEvent());
                         },
                       ),
                       RawMaterialButton(
@@ -102,7 +102,7 @@ class _DatePickerState extends State<DatePicker> {
                         constraints:
                             BoxConstraints(minWidth: 36, minHeight: 28),
                         onPressed: () {
-                          _schedulerBloc.add(MonthDecrementEvent());
+                          _datePickerBloc.add(MonthDecrementEvent());
                         },
                       ),
                       Column(
@@ -129,7 +129,7 @@ class _DatePickerState extends State<DatePicker> {
                         constraints:
                             BoxConstraints(minWidth: 36, minHeight: 28),
                         onPressed: () {
-                          _schedulerBloc.add(MonthIncrementEvent());
+                          _datePickerBloc.add(MonthIncrementEvent());
                         },
                       ),
                       RawMaterialButton(
@@ -144,7 +144,7 @@ class _DatePickerState extends State<DatePicker> {
                         constraints:
                             BoxConstraints(minWidth: 36, minHeight: 36),
                         onPressed: () {
-                          _schedulerBloc.add(YearIncrementEvent());
+                          _datePickerBloc.add(YearIncrementEvent());
                         },
                       ),
                     ],
@@ -175,8 +175,8 @@ class _DatePickerState extends State<DatePicker> {
                         ),
                         itemBuilder: (context, index) {
                           _calendarBubbleNumber =
-                              (index - state.numberOfCalendarSpacesToSkip) + 1;
-                          return index < state.numberOfCalendarSpacesToSkip
+                              (index - state.weekdayToRenderFrom) + 1;
+                          return index < state.weekdayToRenderFrom
                               ? Container()
                               : CalendarBubble(
                                   child: (_calendarBubbleNumber ==
@@ -198,14 +198,13 @@ class _DatePickerState extends State<DatePicker> {
                                       ? appBarTitleColor
                                       : paleCircleAvatarBackground,
                                   onTap: () {
-                                    _schedulerBloc.add(
+                                    _datePickerBloc.add(
                                       DaySelectionEvent(_calendarBubbleNumber),
                                     );
                                   },
                                 );
                         },
-                        itemCount: (state.numberOfDaysInSelectedMonth +
-                            state.numberOfCalendarSpacesToSkip),
+                        itemCount: (state.itemCount),
                       ),
                     ),
                   ),

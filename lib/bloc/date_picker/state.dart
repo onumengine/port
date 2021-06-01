@@ -5,14 +5,16 @@ class DatePickerState extends Equatable {
       selectedMonth,
       selectedDay,
       numberOfDaysInSelectedMonth,
-      numberOfCalendarSpacesToSkip;
+      weekdayToRenderFrom,
+      itemCount;
 
   DatePickerState({
-    selectedYear,
-    selectedMonth,
-    selectedDay,
-    numberOfDaysInSelectedMonth,
-    numberOfCalendarSpacesToSkip,
+    this.selectedYear,
+    this.selectedMonth,
+    this.selectedDay,
+    this.numberOfDaysInSelectedMonth,
+    this.weekdayToRenderFrom,
+    this.itemCount,
   });
 
   @override
@@ -21,6 +23,7 @@ class DatePickerState extends Equatable {
         selectedMonth,
         selectedDay,
         numberOfDaysInSelectedMonth,
-        numberOfCalendarSpacesToSkip,
+        weekdayToRenderFrom,
+        itemCount
       ];
 }

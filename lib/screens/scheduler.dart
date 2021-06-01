@@ -44,10 +44,11 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
         child: CustomScrollView(
           slivers: [
             SliverList(
-              delegate: SliverChildListDelegate(
-                [
-                  DatePicker(),
-                ],
+              delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    return DatePicker();
+                  },
+                childCount: 1,
               ),
             ),
             SliverList(
