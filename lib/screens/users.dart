@@ -1,6 +1,7 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:port/bloc/date_picker/bloc.dart';
 import 'package:port/bloc/scheduler/bloc.dart';
 import 'package:port/bloc/users/bloc.dart';
 import 'package:port/bloc/users/state.dart';
@@ -79,8 +80,13 @@ class _UsersScreenState extends State<UsersScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => BlocProvider<SchedulerBloc>(
-                        create: (context) => SchedulerBloc(),
+                      builder: (context) => MultiBlocProvider(
+                        providers: [
+                          BlocProvider<SchedulerBloc>(
+                              create: (context) => SchedulerBloc()),
+                          BlocProvider<DatePickerBloc>(
+                              create: (context) => DatePickerBloc()),
+                        ],
                         child: SchedulerScreen(),
                       ),
                     ),
