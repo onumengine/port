@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:port/bloc/date_picker/bloc.dart';
 import 'package:port/bloc/date_picker/event.dart';
 import 'package:port/bloc/date_picker/state.dart';
-import 'package:port/bloc/scheduler/state.dart';
 import 'package:port/components/atoms/calendar_bubble.dart';
 import 'package:port/utility/colors.dart';
 
@@ -48,11 +47,6 @@ class _DatePickerState extends State<DatePicker> {
     11: "Nov",
     12: "Dec",
   };
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -176,6 +170,7 @@ class _DatePickerState extends State<DatePicker> {
                         itemBuilder: (context, index) {
                           _calendarBubbleNumber =
                               (index - state.weekdayToRenderFrom) + 1;
+                          print(_calendarBubbleNumber);
                           return index < state.weekdayToRenderFrom
                               ? Container()
                               : CalendarBubble(
@@ -198,8 +193,10 @@ class _DatePickerState extends State<DatePicker> {
                                       ? appBarTitleColor
                                       : paleCircleAvatarBackground,
                                   onTap: () {
+                                    print("The selected day is ${state.selectedDay}");
+                                    print("You tapped the calendar bubble with index $index and bubble number $_calendarBubbleNumber");
                                     _datePickerBloc.add(
-                                      DaySelectionEvent(_calendarBubbleNumber),
+                                      DaySelectionEvent((index - state.weekdayToRenderFrom) + 1),
                                     );
                                   },
                                 );
