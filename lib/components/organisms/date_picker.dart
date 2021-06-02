@@ -154,12 +154,12 @@ class _DatePickerState extends State<DatePicker> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
+                      Text("S"),
                       Text("M"),
                       Text("T"),
                       Text("W"),
                       Text("T"),
                       Text("F"),
-                      Text("S"),
                       Text("S"),
                     ],
                   ),
