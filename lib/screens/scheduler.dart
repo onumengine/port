@@ -231,9 +231,9 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
                 crossAxisSpacing: 26,
                 childAspectRatio: 1.6774,
               ),
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  return Container(
+              delegate: SliverChildListDelegate(
+                [
+                  Container(
                     height: 62,
                     width: screenSize.width / 14,
                     decoration: BoxDecoration(
@@ -242,7 +242,7 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        "Time text",
+                        "30mins",
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 18,
@@ -250,9 +250,44 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
                         ),
                       ),
                     ),
-                  );
-                },
-                childCount: 3,
+                  ),
+                  Container(
+                    height: 62,
+                    width: screenSize.width / 14,
+                    decoration: BoxDecoration(
+                      color: paleChipBackground,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "1hr",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                          color: chipTextColorDisabled,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 62,
+                    width: screenSize.width / 14,
+                    decoration: BoxDecoration(
+                      color: paleChipBackground,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "2hrs",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                          color: chipTextColorDisabled,
+                        ),
+                      ),
+                    ),
+                  ),
+                ]
               ),
             ),
             SliverList(
