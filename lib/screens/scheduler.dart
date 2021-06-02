@@ -45,9 +45,9 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
           slivers: [
             SliverList(
               delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    return DatePicker();
-                  },
+                (context, index) {
+                  return DatePicker();
+                },
                 childCount: 1,
               ),
             ),
@@ -95,29 +95,116 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
                 crossAxisSpacing: 26,
                 childAspectRatio: 2 / 1,
               ),
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  return Container(
-                    height: 62,
-                    width: screenSize.width / 14,
-                    decoration: BoxDecoration(
-                      color: paleChipBackground,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Center(
-                      child: Text(
-                        "Time text",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 18,
-                          color: chipTextColorDisabled,
-                        ),
+              delegate: SliverChildListDelegate([
+                Container(
+                  height: 62,
+                  width: screenSize.width / 14,
+                  decoration: BoxDecoration(
+                    color: paleChipBackground,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Center(
+                    child: Text(
+                      "08:30",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                        color: chipTextColorDisabled,
                       ),
                     ),
-                  );
-                },
-                childCount: 6,
-              ),
+                  ),
+                ),
+                Container(
+                  height: 62,
+                  width: screenSize.width / 14,
+                  decoration: BoxDecoration(
+                    color: paleChipBackground,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Center(
+                    child: Text(
+                      "09:00",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                        color: chipTextColorDisabled,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 62,
+                  width: screenSize.width / 14,
+                  decoration: BoxDecoration(
+                    color: paleChipBackground,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Center(
+                    child: Text(
+                      "09:30",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                        color: chipTextColorDisabled,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 62,
+                  width: screenSize.width / 14,
+                  decoration: BoxDecoration(
+                    color: paleChipBackground,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Center(
+                    child: Text(
+                      "10:00",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                        color: chipTextColorDisabled,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 62,
+                  width: screenSize.width / 14,
+                  decoration: BoxDecoration(
+                    color: paleChipBackground,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Center(
+                    child: Text(
+                      "10:30",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                        color: chipTextColorDisabled,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 62,
+                  width: screenSize.width / 14,
+                  decoration: BoxDecoration(
+                    color: paleChipBackground,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Center(
+                    child: Text(
+                      "11:00",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                        color: chipTextColorDisabled,
+                      ),
+                    ),
+                  ),
+                ),
+              ]),
             ),
             SliverList(
               delegate: SliverChildListDelegate(
