@@ -12,23 +12,6 @@ class DatePicker extends StatefulWidget {
   _DatePickerState createState() => _DatePickerState();
 }
 
-///  ## How this calendar should populate the days
-///
-///  1. Switch to a new month.
-///  2. Update the [_currentMonth] variable.
-///  3. Check the first weekday of the month.
-///  4. Update the [_firstDayOfSelectedMonth] variable.
-///  5. Use the variable to calculate the number of days to skip with the method
-///     [_getNumberOfDaysToSkip].
-///  6. Store this number in a variable [_numberOfDaysToSkip].
-///  7. GridBuilder will render empty containers from index 0 to index
-///     [_numberOfDaysToSkip - 2]
-///  8. GridBuilder will render [CalendarBubble]s from index [_numberOfDaysToSkip - 2]
-///     to the number of days in the month
-///  9. Find a way to get the number of days in a month
-/// 10. Make number of [CalendarBubble]s rendered by GridBuilder equal to the number
-///     of days in a month
-
 class _DatePickerState extends State<DatePicker> {
   int _calendarBubbleNumber;
   DatePickerBloc _datePickerBloc;
@@ -170,7 +153,6 @@ class _DatePickerState extends State<DatePicker> {
                         itemBuilder: (context, index) {
                           _calendarBubbleNumber =
                               (index - state.weekdayToRenderFrom) + 1;
-                          print(_calendarBubbleNumber);
                           return index < state.weekdayToRenderFrom
                               ? Container()
                               : CalendarBubble(
@@ -193,8 +175,6 @@ class _DatePickerState extends State<DatePicker> {
                                       ? appBarTitleColor
                                       : paleCircleAvatarBackground,
                                   onTap: () {
-                                    print("The selected day is ${state.selectedDay}");
-                                    print("You tapped the calendar bubble with index $index and bubble number $_calendarBubbleNumber");
                                     _datePickerBloc.add(
                                       DaySelectionEvent((index - state.weekdayToRenderFrom) + 1),
                                     );
