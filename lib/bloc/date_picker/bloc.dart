@@ -51,9 +51,7 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
     if (event is YearIncrementEvent) {
       _incrementSelectedYear();
       firstWeekdayOfSelectedMonth = DateTime(selectedYear, selectedMonth, 1).weekday;
-      print("The first day of the selected month is $firstWeekdayOfSelectedMonth");
       numberOfDaysInSelectedMonth = DateTime(selectedYear, (selectedMonth + 1), 0).day;
-      print("The number of days in this selected month is $numberOfDaysInSelectedMonth");
       numberOfGridItemsToRender = firstWeekdayOfSelectedMonth + numberOfDaysInSelectedMonth;
       indexToRenderFrom = (DateTime(selectedYear, selectedMonth, 1).weekday);
       yield DatePickerState(
@@ -67,9 +65,7 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
     } else if (event is YearDecrementEvent) {
       _decrementSelectedYear();
       firstWeekdayOfSelectedMonth = DateTime(selectedYear, selectedMonth, 1).weekday;
-      print("The first day of the selected month is $firstWeekdayOfSelectedMonth");
       numberOfDaysInSelectedMonth = DateTime(selectedYear, (selectedMonth + 1), 0).day;
-      print("The number of days in this selected month is $numberOfDaysInSelectedMonth");
       numberOfGridItemsToRender = firstWeekdayOfSelectedMonth + numberOfDaysInSelectedMonth;
       indexToRenderFrom = (DateTime(selectedYear, selectedMonth, 1).weekday);
       yield DatePickerState(
@@ -83,9 +79,7 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
     } else if (event is MonthIncrementEvent) {
       _incrementSelectedMonth();
       firstWeekdayOfSelectedMonth = DateTime(selectedYear, selectedMonth, 1).weekday;
-      print("The first day of the selected month is $firstWeekdayOfSelectedMonth");
       numberOfDaysInSelectedMonth = DateTime(selectedYear, (selectedMonth + 1), 0).day;
-      print("The number of days in this selected month is $numberOfDaysInSelectedMonth");
       numberOfGridItemsToRender = firstWeekdayOfSelectedMonth + numberOfDaysInSelectedMonth;
       indexToRenderFrom = (DateTime(selectedYear, selectedMonth, 1).weekday);
       yield DatePickerState(
@@ -99,9 +93,7 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
     } else if (event is MonthDecrementEvent) {
       _decrementSelectedMonth();
       firstWeekdayOfSelectedMonth = DateTime(selectedYear, selectedMonth, 1).weekday;
-      print("The first day of the selected month is $firstWeekdayOfSelectedMonth");
       numberOfDaysInSelectedMonth = DateTime(selectedYear, (selectedMonth + 1), 0).day;
-      print("The number of days in this selected month is $numberOfDaysInSelectedMonth");
       numberOfGridItemsToRender = firstWeekdayOfSelectedMonth + numberOfDaysInSelectedMonth;
       indexToRenderFrom = (DateTime(selectedYear, selectedMonth, 1).weekday);
       yield DatePickerState(
@@ -114,11 +106,8 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
       );
     } else if (event is DaySelectionEvent) {
       selectedDay = event.day;
-      print("The BLoC received a tap event from calendar bubble $selectedDay");
       firstWeekdayOfSelectedMonth = DateTime(selectedYear, selectedMonth, 1).weekday;
-      print("The first day of the selected month is $firstWeekdayOfSelectedMonth");
       numberOfDaysInSelectedMonth = DateTime(selectedYear, (selectedMonth + 1), 0).day;
-      print("The number of days in this selected month is $numberOfDaysInSelectedMonth");
       numberOfGridItemsToRender = firstWeekdayOfSelectedMonth + numberOfDaysInSelectedMonth;
       indexToRenderFrom = (DateTime(selectedYear, selectedMonth, 1).weekday);
       yield DatePickerState(
