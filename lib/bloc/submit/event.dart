@@ -6,16 +6,32 @@ abstract class SubmitScreenEvent extends Equatable {
 }
 
 class SubmissionEvent extends SubmitScreenEvent {
-  @override
-  List<Object> get props => [];
-}
+  String date;
+  String time;
+  int duration;
+  String purposeId;
+  String repId;
+  String note;
+  String userId;
 
-class SubmissionSuccessEvent extends SubmitScreenEvent {
-  @override
-  List<Object> get props => [];
-}
+  SubmissionEvent({
+    this.date,
+    this.time,
+    this.duration,
+    this.purposeId,
+    this.repId,
+    this.note,
+    this.userId,
+  });
 
-class SubmissionError extends SubmitScreenEvent {
   @override
-  List<Object> get props => [];
+  List<Object> get props => [
+        this.date,
+        this.time,
+        this.duration,
+        this.purposeId,
+        this.repId,
+        this.note,
+        this.userId,
+      ];
 }
