@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:port/bloc/date_picker/bloc.dart';
 import 'package:port/bloc/scheduler/bloc.dart';
 import 'package:port/bloc/users/bloc.dart';
+import 'package:port/bloc/users/event.dart';
 import 'package:port/bloc/users/state.dart';
 import 'package:port/components/molecules/user_card.dart';
 import 'package:port/screens/scheduler.dart';
@@ -11,6 +12,8 @@ import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
 
 class UsersScreen extends StatefulWidget {
+  String userOrganizationId;
+
   @override
   _UsersScreenState createState() => _UsersScreenState();
 }
@@ -22,6 +25,7 @@ class _UsersScreenState extends State<UsersScreen> {
   void initState() {
     super.initState();
     _usersBloc = BlocProvider.of<UsersBloc>(context);
+    _usersBloc.add(UsersFetchEvent());
   }
 
   @override
