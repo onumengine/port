@@ -8,7 +8,8 @@ import 'package:port/utility/constants.dart';
 
 class OrganizationsBloc extends Bloc<OrganizationsEvent, OrganizationsState> {
   ApiClient _apiClient = ApiClient();
-  var response;
+  Map<String, dynamic> response;
+  var organizations;
 
   @override
   OrganizationsState get initialState => EmptyOrganizationsState();
@@ -18,8 +19,10 @@ class OrganizationsBloc extends Bloc<OrganizationsEvent, OrganizationsState> {
     if (event is OrganizationsFetchEvent) {
       yield OrganizationsFetchingState();
       try {
-        fetchOrganizations(event.categoryId);
-        yield OrganizationsFetchingState();
+        await fetchOrganizations(event.categoryId);
+        organizations = response["data"];
+        print("THE LIST OF ORGANIZATIONS IS $organizations");
+        yield PopulatedOrganizationsState();
       } catch (error) {
         yield OrganizationsFetchingErrorState();
       }
@@ -27,6 +30,7 @@ class OrganizationsBloc extends Bloc<OrganizationsEvent, OrganizationsState> {
   }
 
   Future<void> fetchOrganizations(String organizationId) async {
+    print("YOU'RE TRYINNG TO VISIT THE URL: ${CATEGORIES_FETCH_PATH + organizationId}");
     response = jsonDecode(await _apiClient.get(CATEGORIES_FETCH_PATH + organizationId));
     print(response);
   }

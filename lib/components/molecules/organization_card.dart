@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import 'package:port/screens/users.dart';
 import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
 
@@ -7,7 +6,7 @@ class OrganizationCard extends StatelessWidget {
   String organizationSymbol;
   String organizationName;
   double distanceFromUser;
-  void Function() onTap;
+  VoidCallback onTap;
 
   OrganizationCard({
     @required this.organizationSymbol,

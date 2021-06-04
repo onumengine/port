@@ -27,7 +27,8 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
   void initState() {
     super.initState();
     _organizationsBloc = BlocProvider.of<OrganizationsBloc>(context);
-    _organizationsBloc.add(OrganizationsFetchEvent(categoryId: widget.categoryId));
+    _organizationsBloc
+        .add(OrganizationsFetchEvent(categoryId: widget.categoryId));
   }
 
   @override
@@ -82,7 +83,7 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
       ),
       body: BlocBuilder<OrganizationsBloc, OrganizationsState>(
         builder: (context, state) {
-          if (state is PopulatedOrganizationsState) {
+          if (state is OrganizationsState) {
             return CustomScrollView(
               slivers: <Widget>[
                 SliverAppBar(
@@ -123,6 +124,15 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
             );
           } else if (state is OrganizationsFetchingState) {
             return Center(child: CircularProgressIndicator());
+          } else if (state is OrganizationsFetchingErrorState) {
+            return GestureDetector(
+              onTap: () {
+                _organizationsBloc.add(OrganizationsFetchEvent());
+              },
+              child: Center(
+                child: Text("Couldn't fetch categories. Tap to retry"),
+              ),
+            );
           } else {
             return Container();
           }

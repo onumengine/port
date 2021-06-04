@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:port/repository/user_repository.dart';
 import 'package:http/http.dart' as http;
 import '../model/generic_response.dart';
 import 'app_exceptions.dart';
