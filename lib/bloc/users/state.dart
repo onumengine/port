@@ -22,6 +22,10 @@ class PopulatedUsersState extends UsersScreenState {
 }
 
 class FetchingErrorState extends UsersScreenState {
+  String errorMessage;
+
+  FetchingErrorState({this.errorMessage});
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [this.errorMessage];
 }
