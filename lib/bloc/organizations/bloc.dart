@@ -21,7 +21,7 @@ class OrganizationsBloc extends Bloc<OrganizationsEvent, OrganizationsState> {
       try {
         await fetchOrganizations(event.categoryId);
         organizations = response["data"];
-        print("THE LIST OF ORGANIZATIONS IS $organizations");
+        print(organizations);
         yield PopulatedOrganizationsState(organizations: organizations);
       } catch (error) {
         yield OrganizationsFetchingErrorState();
@@ -30,8 +30,6 @@ class OrganizationsBloc extends Bloc<OrganizationsEvent, OrganizationsState> {
   }
 
   Future<void> fetchOrganizations(String organizationId) async {
-    print("YOU'RE TRYING TO VISIT THE URL: ${CATEGORIES_FETCH_PATH + organizationId}");
     response = jsonDecode(await _apiClient.get(CATEGORIES_FETCH_PATH + organizationId));
-    print("Your response is ${response}");
   }
 }
