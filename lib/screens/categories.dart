@@ -19,17 +19,6 @@ class CategoriesScreen extends StatefulWidget {
 class _CategoriesScreenState extends State<CategoriesScreen> {
   CategoriesBloc _categoriesBloc;
 
-  Map<String, String> _categories = {
-    "Banks": "lib/vectors/bank_icon.svg",
-    "Restaurants": "lib/vectors/restaurants_icon.svg",
-    "Hospitals": "lib/vectors/hospital_icon.svg",
-    "Gyms": "lib/vectors/gyms_icon.svg",
-    "Schools": "lib/vectors/schools_icon.svg",
-    "Churches": "lib/vectors/church_icon.svg",
-    "Shops": "lib/vectors/shop_icon.svg",
-    "Stores": "lib/vectors/store_icon.svg",
-  };
-
   @override
   void initState() {
     super.initState();
@@ -109,7 +98,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                           BlocProvider<OrganizationsBloc>(
                                         create: (context) =>
                                             OrganizationsBloc(),
-                                        child: OrganizationsScreen(),
+                                        child: OrganizationsScreen(categoryId: '/${state.categories.elementAt(index)["id"]}',),
                                       ),
                                     ),
                                   );
