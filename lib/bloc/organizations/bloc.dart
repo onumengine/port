@@ -15,17 +15,19 @@ class OrganizationsBloc extends Bloc<OrganizationsEvent, OrganizationsState> {
 
   @override
   Stream<OrganizationsState> mapEventToState(OrganizationsEvent event) async* {
-    if (event is OrganizationsFetchingEvent) {
+    if (event is OrganizationsFetchEvent) {
       yield OrganizationsFetchingState();
-    } else if (event is OrganizationsFetchingSuccessEvent) {
-      yield NonEmptyOrganizationsState();
-    } else if (event is OrganizationsFetchingErrorEvent) {
-      yield OrganizationsFetchingErrorState();
+      try {
+        fetchOrganizations(event.categoryId);
+        yield OrganizationsFetchingState();
+      } catch (error) {
+        yield OrganizationsFetchingErrorState();
+      }
     }
   }
 
   Future<void> fetchOrganizations(String organizationId) async {
-    response = jsonDecode(await _apiClient.get(CATEGORIES_FETCH_PATH));
+    response = jsonDecode(await _apiClient.get(CATEGORIES_FETCH_PATH + organizationId));
     print(response);
   }
 }
