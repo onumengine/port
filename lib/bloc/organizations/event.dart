@@ -1,23 +1,15 @@
 import 'package:equatable/equatable.dart';
 
-abstract class OrganizationsEvent extends Equatable {}
+abstract class OrganizationsEvent extends Equatable {
+  @override
+  List<Object> get props => [];
+}
 
 class OrganizationsFetchEvent extends OrganizationsEvent {
-  @override
-  List<Object> get props => [];
-}
+  String categoryId;
 
-class OrganizationsFetchingEvent extends OrganizationsEvent {
-  @override
-  List<Object> get props => [];
-}
+  OrganizationsFetchEvent({this.categoryId});
 
-class OrganizationsFetchingSuccessEvent extends OrganizationsEvent {
   @override
-  List<Object> get props => [];
-}
-
-class OrganizationsFetchingErrorEvent extends OrganizationsEvent {
-  @override
-  List<Object> get props => [];
+  List<Object> get props => [this.categoryId];
 }
