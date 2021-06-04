@@ -10,12 +10,6 @@ class UsersBloc extends Bloc<UsersScreenEvent, UsersScreenState> {
   Stream<UsersScreenState> mapEventToState(UsersScreenEvent event) async* {
     if (event is UsersFetchEvent) {
       yield FetchingUsersState();
-    } else if (event is UsersFetchingComplete) {
-      yield PopulatedUsersState();
-    } else if (event is UsersFetchingError) {
-      yield FetchingErrorState();
-    } else {
-      yield UpopulatedUsersState();
     }
   }
 }
