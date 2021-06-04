@@ -12,7 +12,7 @@ class OrganizationsFetchingState extends OrganizationsState {
   List<Object> get props => [];
 }
 
-class NonEmptyOrganizationsState extends OrganizationsState {
+class PopulatedOrganizationsState extends OrganizationsState {
   @override
   List<Object> get props => [];
 }
