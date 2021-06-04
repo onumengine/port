@@ -3,6 +3,7 @@ import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:port/bloc/organizations/bloc.dart';
+import 'package:port/bloc/organizations/event.dart';
 import 'package:port/bloc/organizations/state.dart';
 import 'package:port/bloc/users/bloc.dart';
 import 'package:port/components/atoms/searchbar.dart';
@@ -11,6 +12,10 @@ import 'package:port/screens/users.dart';
 import 'package:port/utility/colors_main.dart';
 
 class OrganizationsScreen extends StatefulWidget {
+  String categoryId;
+
+  OrganizationsScreen({this.categoryId});
+
   @override
   _OrganizationsScreenState createState() => _OrganizationsScreenState();
 }
@@ -22,12 +27,11 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
   void initState() {
     super.initState();
     _organizationsBloc = BlocProvider.of<OrganizationsBloc>(context);
+    _organizationsBloc.add(OrganizationsFetchEvent(categoryId: widget.categoryId));
   }
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -78,7 +82,7 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
       ),
       body: BlocBuilder<OrganizationsBloc, OrganizationsState>(
         builder: (context, state) {
-          if (state is NonEmptyOrganizationsState) {
+          if (state is PopulatedOrganizationsState) {
             return CustomScrollView(
               slivers: <Widget>[
                 SliverAppBar(
