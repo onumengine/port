@@ -112,7 +112,7 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
                             MaterialPageRoute(
                               builder: (context) => BlocProvider<UsersBloc>(
                                 create: (context) => UsersBloc(),
-                                child: UsersScreen(),
+                                child: UsersScreen(userOrganizationId: "/${state.organizations.elementAt(index)["id"]}",),
                               ),
                             ),
                           );
