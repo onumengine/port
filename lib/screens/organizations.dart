@@ -104,7 +104,7 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
                     (BuildContext context, int index) {
                       return OrganizationCard(
                         organizationSymbol: "B",
-                        organizationName: "Bank of America",
+                        organizationName: state.organizations.elementAt(index)["name"],
                         distanceFromUser: 2,
                         onTap: () {
                           Navigator.push(
@@ -119,7 +119,7 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
                         },
                       );
                     },
-                    childCount: 7,
+                    childCount: state.organizations.length,
                   ),
                 ),
               ],
