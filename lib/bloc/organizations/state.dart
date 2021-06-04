@@ -13,8 +13,12 @@ class OrganizationsFetchingState extends OrganizationsState {
 }
 
 class PopulatedOrganizationsState extends OrganizationsState {
+  List<dynamic> organizations;
+
+  PopulatedOrganizationsState({this.organizations});
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [this.organizations];
 }
 
 class OrganizationsFetchingErrorState extends OrganizationsState {
