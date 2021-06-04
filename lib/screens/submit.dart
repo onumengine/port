@@ -221,7 +221,7 @@ class _SubmitScreenState extends State<SubmitScreen> {
                   child: _showLoadingIndicator
                       ? CircularProgressIndicator()
                       : Text(
-                          "Edit",
+                          "Submit",
                           style: TextStyle(
                             color: opBackgroundColor,
                             fontSize: 14,
