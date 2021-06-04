@@ -4,12 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:port/bloc/categories/bloc.dart';
 import 'package:port/bloc/categories/event.dart';
 import 'package:port/bloc/categories/state.dart';
-import 'package:port/bloc/notifications/bloc.dart';
 import 'package:port/bloc/organizations/bloc.dart';
 import 'package:port/components/atoms/searchbar.dart';
 import 'package:port/components/molecules/category_card.dart';
-import 'package:port/screens/notifications.dart';
 import 'package:port/screens/organizations.dart';
+import 'package:port/utility/colors.dart';
 
 class CategoriesScreen extends StatefulWidget {
   @override
@@ -30,22 +29,11 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
     "Stores": "lib/vectors/store_icon.svg",
   };
 
-  List<String> _semanticLabels = [
-    "Bank icon",
-    "Restaurant icon",
-    "Hospital icon",
-    "Gym icon",
-    "School icon",
-    "Church icon",
-    "Shop icon",
-    "Store icon",
-  ];
-
   @override
   void initState() {
-    _categoriesBloc = BlocProvider.of<CategoriesBloc>(context);
     super.initState();
-    //_categoriesBloc.add(CategoriesFetchEvent());
+    _categoriesBloc = BlocProvider.of<CategoriesBloc>(context);
+    _categoriesBloc.add(CategoriesFetchEvent());
   }
 
   @override
@@ -68,210 +56,140 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         ),
       ),
       body: Container(
-      height: screenSize.height,
-      width: screenSize.width,
-      child: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            elevation: 0,
-            expandedHeight: 100,
-            automaticallyImplyLeading: false,
-            flexibleSpace: Padding(
-              padding: EdgeInsets.only(
-                top: 20,
-                bottom: 40,
-                left: _getHorizontalPadding(screenSize.width),
-                right: _getHorizontalPadding(screenSize.width),
-              ),
-              child: SearchBar(),
-            ),
-            floating: true,
-          ),
-          SliverGrid(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 20,
-              crossAxisSpacing: 20,
-              childAspectRatio: 4 / 5,
-            ),
-            delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                if (_isAnOddNumber(index)) {
-                  return Padding(
-                    padding: const EdgeInsets.only(right: 20),
-                    child: CategoryCard(
-                      iconPath:
-                      _categories.values.elementAt(index),
-                      semanticLabel:
-                      _semanticLabels.elementAt(index),
-                      categoryName:
-                      _categories.keys.elementAt(index),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                BlocProvider<OrganizationsBloc>(
-                                  create: (context) => OrganizationsBloc(),
-                                  child: OrganizationsScreen(),
-                                ),
-                          ),
-                        );
-                      },
-                    ),
-                  );
-                } else {
-                  return Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: CategoryCard(
-                      iconPath:
-                      _categories.values.elementAt(index),
-                      semanticLabel:
-                      _semanticLabels.elementAt(index),
-                      categoryName:
-                      _categories.keys.elementAt(index),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                BlocProvider<OrganizationsBloc>(
-                                  create: (context) => OrganizationsBloc(),
-                                  child: OrganizationsScreen(),
-                                ),
-                          ),
-                        );
-                      },
-                    ),
-                  );
-                }
-              },
-              childCount: _semanticLabels.length,
-            ),
-          ),
-          SliverList(
-            delegate: SliverChildListDelegate(
-              <Widget>[
-                SizedBox(height: 50),
-              ],
-            ),
-          ),
-        ],
-      ),
-    ),
-      /*BlocConsumer<CategoriesBloc, CategoriesState>(
-        listener: (context, state) {
-          if (state is CategoriesFetchedState) {
-            print("The list of categories has gotten to the CategoriesScreen. The list is ${state.categories}");
-          }
-        },
-        builder: (context, state) {
-          if (state is CategoriesFetchedState) {
-            return Container(
-              height: screenSize.height,
-              width: screenSize.width,
-              child: CustomScrollView(
-                slivers: [
-                  SliverAppBar(
-                    elevation: 0,
-                    expandedHeight: 100,
-                    automaticallyImplyLeading: false,
-                    flexibleSpace: Padding(
-                      padding: EdgeInsets.only(
-                        top: 20,
-                        bottom: 40,
-                        left: _getHorizontalPadding(screenSize.width),
-                        right: _getHorizontalPadding(screenSize.width),
+        height: screenSize.height,
+        width: screenSize.width,
+        child: BlocBuilder<CategoriesBloc, CategoriesState>(
+          builder: (context, state) {
+            if (state is CategoriesFetchedState) {
+              return Container(
+                height: screenSize.height,
+                width: screenSize.width,
+                child: CustomScrollView(
+                  slivers: [
+                    SliverAppBar(
+                      elevation: 0,
+                      expandedHeight: 100,
+                      automaticallyImplyLeading: false,
+                      flexibleSpace: Padding(
+                        padding: EdgeInsets.only(
+                          top: 20,
+                          bottom: 40,
+                          left: _getHorizontalPadding(screenSize.width),
+                          right: _getHorizontalPadding(screenSize.width),
+                        ),
+                        child: SearchBar(),
                       ),
-                      child: SearchBar(),
+                      floating: true,
                     ),
-                    floating: true,
-                  ),
-                  SliverGrid(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 20,
-                      crossAxisSpacing: 20,
-                      childAspectRatio: 4 / 5,
-                    ),
-                    delegate: SliverChildBuilderDelegate(
-                      (context, index) {
-                        if (_isAnOddNumber(index)) {
-                          return Padding(
-                            padding: const EdgeInsets.only(right: 20),
-                            child: CategoryCard(
-                              iconPath:
-                                  state.categories.elementAt(index)["icon"],
-                              semanticLabel:
-                                  state.categories.elementAt(index)["name"],
-                              categoryName:
-                                  state.categories.elementAt(index)["name"],
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        BlocProvider<OrganizationsBloc>(
-                                      create: (context) => OrganizationsBloc(),
-                                      child: OrganizationsScreen(),
+                    SliverGrid(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 20,
+                        crossAxisSpacing: 20,
+                        childAspectRatio: 4 / 5,
+                      ),
+                      delegate: SliverChildBuilderDelegate(
+                        (context, index) {
+                          if (_isAnOddNumber(index)) {
+                            return Padding(
+                              padding: const EdgeInsets.only(right: 20),
+                              child: CategoryCard(
+                                iconPath:
+                                    state.categories.elementAt(index)["icon"],
+                                semanticLabel:
+                                    state.categories.elementAt(index)["name"],
+                                categoryName:
+                                    state.categories.elementAt(index)["name"],
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          BlocProvider<OrganizationsBloc>(
+                                        create: (context) =>
+                                            OrganizationsBloc(),
+                                        child: OrganizationsScreen(),
+                                      ),
                                     ),
-                                  ),
-                                );
-                              },
-                            ),
-                          );
-                        } else {
-                          return Padding(
-                            padding: const EdgeInsets.only(left: 20),
-                            child: CategoryCard(
-                              iconPath:
-                                  state.categories.elementAt(index)["icon"],
-                              semanticLabel:
-                                  state.categories.elementAt(index)["name"],
-                              categoryName:
-                                  state.categories.elementAt(index)["name"],
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        BlocProvider<OrganizationsBloc>(
-                                      create: (context) => OrganizationsBloc(),
-                                      child: OrganizationsScreen(),
+                                  );
+                                },
+                              ),
+                            );
+                          } else {
+                            return Padding(
+                              padding: const EdgeInsets.only(left: 20),
+                              child: CategoryCard(
+                                iconPath:
+                                    state.categories.elementAt(index)["icon"],
+                                semanticLabel:
+                                    state.categories.elementAt(index)["name"],
+                                categoryName:
+                                    state.categories.elementAt(index)["name"],
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          BlocProvider<OrganizationsBloc>(
+                                        create: (context) =>
+                                            OrganizationsBloc(),
+                                        child: OrganizationsScreen(),
+                                      ),
                                     ),
-                                  ),
-                                );
-                              },
-                            ),
-                          );
-                        }
-                      },
-                      childCount: _semanticLabels.length,
+                                  );
+                                },
+                              ),
+                            );
+                          }
+                        },
+                        childCount: state.categories.length,
+                      ),
                     ),
-                  ),
-                  SliverList(
-                    delegate: SliverChildListDelegate(
-                      <Widget>[
-                        SizedBox(height: 50),
-                      ],
+                    SliverList(
+                      delegate: SliverChildListDelegate(
+                        <Widget>[
+                          SizedBox(height: 50),
+                        ],
+                      ),
                     ),
+                  ],
+                ),
+              );
+            } else if (state is CategoriesFetchingState) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (state is ErrorState) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  IconButton(
+                    onPressed: () {
+                      _categoriesBloc.add(CategoriesFetchEvent());
+                    },
+                    icon: Icon(Icons.assistant_direction,
+                        size: 50, color: paleTextColor),
                   ),
+                  Text(state.errorMessage),
                 ],
-              ),
-            );
-          } else if (state is CategoriesFetchingState) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (state is ErrorState) {
-            return Center(
-              child: Text(state.errorMessage),
-            );
-          } else {
-            return Center();
-          }
-        },
-      ), */
+              );
+            } else {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.assistant,
+                          size: 50, color: paleTextColor)),
+                  Text("Unable to load."),
+                ],
+              );
+            }
+          },
+        ),
+      ),
     );
   }
 
