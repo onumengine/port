@@ -29,3 +29,5 @@ const String LOGIN_STRING_REQUEST = BASE_URL + "user/login";
 const String CREATE_STUDENT_PROFILE = BASE_URL + "";
 
 const String ICON_FETCH_PATH = "http://innovativehill.com/port/api/icons/";
+
+const String USERS_FETCH_PATH = BASE_URL + "/organization/user";
