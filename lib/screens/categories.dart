@@ -9,6 +9,7 @@ import 'package:port/components/atoms/searchbar.dart';
 import 'package:port/components/molecules/category_card.dart';
 import 'package:port/screens/organizations.dart';
 import 'package:port/utility/colors.dart';
+import 'package:port/utility/constants.dart';
 
 class CategoriesScreen extends StatefulWidget {
   @override
@@ -95,7 +96,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                               padding: const EdgeInsets.only(right: 20),
                               child: CategoryCard(
                                 iconPath:
-                                    state.categories.elementAt(index)["icon"],
+                                (ICON_FETCH_PATH + state.categories.elementAt(index)["icon"]),
                                 semanticLabel:
                                     state.categories.elementAt(index)["name"],
                                 categoryName:
