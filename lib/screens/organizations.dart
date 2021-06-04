@@ -83,7 +83,9 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
       ),
       body: BlocBuilder<OrganizationsBloc, OrganizationsState>(
         builder: (context, state) {
-          if (state is OrganizationsState) {
+          if (state is OrganizationsFetchingState) {
+            return Center(child: CircularProgressIndicator());
+          } else if (state is PopulatedOrganizationsState) {
             return CustomScrollView(
               slivers: <Widget>[
                 SliverAppBar(
@@ -122,8 +124,6 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
                 ),
               ],
             );
-          } else if (state is OrganizationsFetchingState) {
-            return Center(child: CircularProgressIndicator());
           } else if (state is OrganizationsFetchingErrorState) {
             return GestureDetector(
               onTap: () {
