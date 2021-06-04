@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 
 abstract class UsersScreenState extends Equatable {}
 
-class UnfetchedUsersState extends UsersScreenState {
+class UpopulatedUsersState extends UsersScreenState {
   @override
   List<Object> get props => [];
 }

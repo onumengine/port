@@ -15,7 +15,7 @@ class UsersBloc extends Bloc<UsersScreenEvent, UsersScreenState> {
     } else if (event is UsersFetchingError) {
       yield FetchingErrorState();
     } else {
-      yield UnfetchedUsersState();
+      yield UpopulatedUsersState();
     }
   }
 }
