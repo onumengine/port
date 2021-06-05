@@ -17,10 +17,12 @@ class UserCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: ListTile(
-        leading: Image.network(
-          this.imagePath,
+        leading: Container(
           height: 64,
           width: 64,
+          child: Image.network(
+            this.imagePath,
+          ),
         ),
         title: Text(
           this.name,
