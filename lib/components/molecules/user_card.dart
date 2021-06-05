@@ -1,14 +1,12 @@
 import "package:flutter/material.dart";
-import 'package:flutter_svg/svg.dart';
 import 'package:port/utility/colors.dart';
 
 class UserCard extends StatelessWidget {
-  String imagePath, semanticLabel, name, jobTitle;
+  String imagePath, name, jobTitle;
   VoidCallback onTap;
 
   UserCard(
       {this.imagePath,
-      this.semanticLabel,
       this.name,
       this.jobTitle,
       this.onTap,});
