@@ -5,11 +5,12 @@ class UserCard extends StatelessWidget {
   String imagePath, name, jobTitle;
   VoidCallback onTap;
 
-  UserCard(
-      {this.imagePath,
-      this.name,
-      this.jobTitle,
-      this.onTap,});
+  UserCard({
+    this.imagePath,
+    this.name,
+    this.jobTitle,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {

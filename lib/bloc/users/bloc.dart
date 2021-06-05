@@ -10,6 +10,7 @@ class UsersBloc extends Bloc<UsersScreenEvent, UsersScreenState> {
   ApiClient _apiClient = ApiClient();
   Map<String, dynamic> response;
   List listOfUsers;
+  int selectedUserId;
 
   @override
   UsersScreenState get initialState => PopulatedUsersState();
@@ -26,6 +27,8 @@ class UsersBloc extends Bloc<UsersScreenEvent, UsersScreenState> {
       } catch (error) {
         yield FetchingErrorState(errorMessage: error.toString());
       }
+    } else if (event is UserSubmitEvent) {
+      selectedUserId = event.selectedUserId;
     }
   }
 

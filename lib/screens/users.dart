@@ -28,7 +28,8 @@ class _UsersScreenState extends State<UsersScreen> {
     super.initState();
     print("YOUR ORGANIZATION PATH IS ${widget.userOrganizationId}");
     _usersBloc = BlocProvider.of<UsersBloc>(context);
-    _usersBloc.add(UsersFetchEvent(usersOrganizationId: widget.userOrganizationId));
+    _usersBloc
+        .add(UsersFetchEvent(usersOrganizationId: widget.userOrganizationId));
   }
 
   @override
@@ -87,6 +88,11 @@ class _UsersScreenState extends State<UsersScreen> {
                 name: state.users.elementAt(index)["name"],
                 jobTitle: state.users.elementAt(index)["title"],
                 onTap: () {
+                  _usersBloc.add(
+                    UserSubmitEvent(
+                      selectedUserId: state.users.elementAt(index)["org_id"],
+                    ),
+                  );
                   Navigator.push(
                     context,
                     MaterialPageRoute(
