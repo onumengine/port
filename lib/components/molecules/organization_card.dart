@@ -48,7 +48,7 @@ class OrganizationCard extends StatelessWidget {
                   ),
                 ),
                 title: Text(
-                  "Bank of America",
+                  this.organizationName,
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
