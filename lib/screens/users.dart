@@ -14,6 +14,8 @@ import 'package:port/utility/colors_main.dart';
 class UsersScreen extends StatefulWidget {
   String userOrganizationId;
 
+  UsersScreen({@required this.userOrganizationId});
+
   @override
   _UsersScreenState createState() => _UsersScreenState();
 }
@@ -24,8 +26,9 @@ class _UsersScreenState extends State<UsersScreen> {
   @override
   void initState() {
     super.initState();
+    print("YOUR ORGANIZATION PATH IS ${widget.userOrganizationId}");
     _usersBloc = BlocProvider.of<UsersBloc>(context);
-    _usersBloc.add(UsersFetchEvent());
+    _usersBloc.add(UsersFetchEvent(usersOrganizationId: widget.userOrganizationId));
   }
 
   @override
@@ -72,14 +75,17 @@ class _UsersScreenState extends State<UsersScreen> {
       ),
       body: BlocBuilder<UsersBloc, UsersScreenState>(
         builder: (context, state) {
-          if (state is PopulatedUsersState) {
+          if (state is FetchingUsersState) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state is PopulatedUsersState) {
             return ListView.separated(
               padding: EdgeInsets.symmetric(vertical: 30),
               itemBuilder: (context, index) => UserCard(
                 imagePath: "images/mike.svg",
-                semanticLabel: "Label$index",
-                name: "Mike $index",
-                jobTitle: "Job $index",
+                name: state.users.elementAt(index)["name"],
+                jobTitle: state.users.elementAt(index)["title"],
                 onTap: () {
                   Navigator.push(
                     context,
@@ -104,21 +110,18 @@ class _UsersScreenState extends State<UsersScreen> {
                   endIndent: 20,
                 ),
               ),
-              itemCount: 4,
-            );
-          } else if (state is FetchingUsersState) {
-            return Center(
-              child: CircularProgressIndicator(),
+              itemCount: state.users.length,
             );
           } else if (state is FetchingErrorState) {
             return Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Icon(Icons.error),
                 SizedBox(height: 20),
                 Text(
-                  "Unable to fetch users",
+                  state.errorMessage,
                   style: TextStyle(
                     color: paleTextColor,
                     fontWeight: FontWeight.w600,
