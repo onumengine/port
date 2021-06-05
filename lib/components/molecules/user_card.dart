@@ -1,8 +1,5 @@
 import "package:flutter/material.dart";
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:port/bloc/scheduler/bloc.dart';
-import 'package:port/screens/scheduler.dart';
 import 'package:port/utility/colors.dart';
 
 class UserCard extends StatelessWidget {
@@ -14,17 +11,16 @@ class UserCard extends StatelessWidget {
       this.semanticLabel,
       this.name,
       this.jobTitle,
-      this.onTap});
+      this.onTap,});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: ListTile(
-        leading: SvgPicture.asset(
+        leading: Image.network(
           this.imagePath,
           height: 64,
           width: 64,
-          semanticsLabel: this.semanticLabel,
         ),
         title: Text(
           this.name,
