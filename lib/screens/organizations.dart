@@ -104,7 +104,8 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
                     (BuildContext context, int index) {
                       return OrganizationCard(
                         organizationSymbol: "B",
-                        organizationName: state.organizations.elementAt(index)["name"],
+                        organizationName:
+                            state.organizations.elementAt(index)["name"],
                         distanceFromUser: 2,
                         onTap: () {
                           Navigator.push(
@@ -112,7 +113,11 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
                             MaterialPageRoute(
                               builder: (context) => BlocProvider<UsersBloc>(
                                 create: (context) => UsersBloc(),
-                                child: UsersScreen(userOrganizationId: "/${state.organizations.elementAt(index)["id"]}",),
+                                child: UsersScreen(
+                                  userOrganizationId:
+                                      "/${state.organizations.elementAt(index)["id"]}",
+                                  organizationName: state.organizations.elementAt(index)["name"],
+                                ),
                               ),
                             ),
                           );
