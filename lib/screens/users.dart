@@ -13,8 +13,12 @@ import 'package:port/utility/colors_main.dart';
 
 class UsersScreen extends StatefulWidget {
   String userOrganizationId;
+  String organizationName;
 
-  UsersScreen({@required this.userOrganizationId});
+  UsersScreen({
+    @required this.userOrganizationId,
+    @required this.organizationName,
+  });
 
   @override
   _UsersScreenState createState() => _UsersScreenState();
