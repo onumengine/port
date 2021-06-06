@@ -22,7 +22,7 @@ class UsersFetchEvent extends UsersScreenEvent {
 }
 
 class UserSubmitEvent extends UsersScreenEvent {
-  int selectedUserId;
+  String selectedUserId;
 
   UserSubmitEvent({this.selectedUserId});
 

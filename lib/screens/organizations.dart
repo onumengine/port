@@ -116,7 +116,7 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
                                 child: UsersScreen(
                                   userOrganizationId:
                                       "/${state.organizations.elementAt(index)["id"]}",
-                                  organizationName: state.organizations.elementAt(index)["name"],
+                                  userOrganizationName: state.organizations.elementAt(index)["name"],
                                 ),
                               ),
                             ),
