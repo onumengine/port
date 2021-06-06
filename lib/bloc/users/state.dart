@@ -1,10 +1,11 @@
 import 'package:equatable/equatable.dart';
 
-abstract class UsersScreenState extends Equatable {}
-
-class UpopulatedUsersState extends UsersScreenState {
+abstract class UsersScreenState extends Equatable {
   @override
   List<Object> get props => [];
+}
+
+class UpopulatedUsersState extends UsersScreenState {
 }
 
 class FetchingUsersState extends UsersScreenState {
@@ -36,3 +37,5 @@ class FetchingErrorState extends UsersScreenState {
   @override
   List<Object> get props => [this.errorMessage];
 }
+
+class SubmittedState extends UsersScreenState {}
