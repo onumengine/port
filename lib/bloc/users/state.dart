@@ -38,4 +38,18 @@ class FetchingErrorState extends UsersScreenState {
   List<Object> get props => [this.errorMessage];
 }
 
-class SubmittedState extends UsersScreenState {}
+class SubmittedState extends UsersScreenState {
+  List<dynamic> users;
+  String userOrganizationName;
+
+  SubmittedState({
+    this.users,
+    this.userOrganizationName,
+  });
+
+  @override
+  List<Object> get props => [
+    this.users,
+    this.userOrganizationName,
+  ];
+}

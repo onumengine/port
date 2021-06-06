@@ -12,43 +12,54 @@ import 'package:port/utility/colors_main.dart';
 
 class UsersScreen extends StatefulWidget {
   String userOrganizationId;
-  String organizationName;
+  String userOrganizationName;
 
   UsersScreen({
     @required this.userOrganizationId,
-    @required this.organizationName,
-  }){
-    print("IN USERS_SCREEN PARENT WIDGET, YOUR ORGANIZATION NAME IS ${this.organizationName}");
-  }
+    @required this.userOrganizationName,
+  });
 
   @override
-  _UsersScreenState createState() =>
-      _UsersScreenState(orgName: organizationName);
+  _UsersScreenState createState() => _UsersScreenState();
 }
 
 class _UsersScreenState extends State<UsersScreen> {
   UsersBloc _usersBloc;
-  String orgName;
-
-  _UsersScreenState({@required this.orgName});
 
   @override
   void initState() {
     super.initState();
-    print("YOUR ORGANIZATION PATH IS ${widget.userOrganizationId}");
-    print("IN INIT_STATE, YOUR ORGANIZATION NAME IS $orgName");
     _usersBloc = BlocProvider.of<UsersBloc>(context);
     _usersBloc.add(
       UsersFetchEvent(
         usersOrganizationId: widget.userOrganizationId,
-        usersOrganizationName: orgName,
+        usersOrganizationName: widget.userOrganizationName,
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UsersBloc, UsersScreenState>(
+    return BlocConsumer<UsersBloc, UsersScreenState>(
+      listener: (context, state) {
+        if (state is SubmittedState) {
+          print("THE BLOC HAS YIELDED SUBMITTED_STATE");
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MultiBlocProvider(
+                providers: [
+                  BlocProvider<SchedulerBloc>(
+                      create: (context) => SchedulerBloc()),
+                  BlocProvider<DatePickerBloc>(
+                      create: (context) => DatePickerBloc()),
+                ],
+                child: SchedulerScreen(),
+              ),
+            ),
+          );
+        }
+      },
       builder: (context, state) {
         if (state is FetchingUsersState) {
           return Scaffold(
@@ -129,9 +140,11 @@ class _UsersScreenState extends State<UsersScreen> {
                       builder: (context) => MultiBlocProvider(
                         providers: [
                           BlocProvider<SchedulerBloc>(
-                              create: (context) => SchedulerBloc()),
+                            create: (context) => SchedulerBloc(),
+                          ),
                           BlocProvider<DatePickerBloc>(
-                              create: (context) => DatePickerBloc()),
+                            create: (context) => DatePickerBloc(),
+                          )
                         ],
                         child: SchedulerScreen(),
                       ),
