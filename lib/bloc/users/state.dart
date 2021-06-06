@@ -14,11 +14,18 @@ class FetchingUsersState extends UsersScreenState {
 
 class PopulatedUsersState extends UsersScreenState {
   List<dynamic> users;
+  String userOrganizationName;
 
-  PopulatedUsersState({this.users});
+  PopulatedUsersState({
+    this.users,
+    this.userOrganizationName,
+  });
 
   @override
-  List<Object> get props => [this.users];
+  List<Object> get props => [
+        this.users,
+        this.userOrganizationName,
+      ];
 }
 
 class FetchingErrorState extends UsersScreenState {

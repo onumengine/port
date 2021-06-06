@@ -11,6 +11,7 @@ class UsersBloc extends Bloc<UsersScreenEvent, UsersScreenState> {
   Map<String, dynamic> response;
   List listOfUsers;
   int selectedUserId;
+  String userOrganizationName;
 
   @override
   UsersScreenState get initialState => PopulatedUsersState();
@@ -23,12 +24,15 @@ class UsersBloc extends Bloc<UsersScreenEvent, UsersScreenState> {
         await _fetchUsers(event.usersOrganizationId);
         listOfUsers = response["data"];
         print("YOUR LIST OF USERS IS: $listOfUsers");
-        yield PopulatedUsersState(users: listOfUsers);
+        userOrganizationName = event.usersOrganizationName;
+        print("YOUR ORGANIZATION NAME IS $userOrganizationName");
+        yield PopulatedUsersState(users: listOfUsers, userOrganizationName: userOrganizationName,);
       } catch (error) {
         yield FetchingErrorState(errorMessage: error.toString());
       }
     } else if (event is UserSubmitEvent) {
       selectedUserId = event.selectedUserId;
+      yield PopulatedUsersState(users: listOfUsers);
     }
   }
 
