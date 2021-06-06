@@ -7,11 +7,18 @@ abstract class UsersScreenEvent extends Equatable {
 
 class UsersFetchEvent extends UsersScreenEvent {
   String usersOrganizationId;
+  String usersOrganizationName;
 
-  UsersFetchEvent({this.usersOrganizationId});
+  UsersFetchEvent({
+    this.usersOrganizationId,
+    this.usersOrganizationName,
+  });
 
   @override
-  List<Object> get props => [this.usersOrganizationId];
+  List<Object> get props => [
+        this.usersOrganizationId,
+        this.usersOrganizationName,
+      ];
 }
 
 class UserSubmitEvent extends UsersScreenEvent {
