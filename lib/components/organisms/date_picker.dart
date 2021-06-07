@@ -42,7 +42,7 @@ class _DatePickerState extends State<DatePicker> {
           return FractionallySizedBox(
             widthFactor: 1,
             child: Container(
-              height: screenSize.height / 2,
+              height: (screenSize.height / 2) + 50,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max,
