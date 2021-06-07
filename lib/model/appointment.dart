@@ -5,7 +5,7 @@ class Appointment {
   String time;
   int duration;
   String purposeId;
-  String repId; // This is the id of the organization's user that was chosen
+  String repId;
   String note;
   String userId;
 
