@@ -12,6 +12,10 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerScreenState> {
 
   @override
   Stream<SchedulerScreenState> mapEventToState(SchedulerEvent event) async* {
-    yield ScheduleState();
+    if (event is TimeSelectionEvent) {
+      yield ScheduleState();
+    } else if (event is DurationSelectionEvent) {
+      yield ScheduleState();
+    }
   }
 }

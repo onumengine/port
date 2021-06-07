@@ -2,6 +2,7 @@ import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:port/bloc/scheduler/bloc.dart';
+import 'package:port/bloc/scheduler/event.dart';
 import 'package:port/bloc/scheduler/state.dart';
 import 'package:port/bloc/submit/bloc.dart';
 import 'package:port/components/atoms/time_button.dart';
@@ -29,6 +30,7 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
   @override
   void initState() {
     super.initState();
+    _schedulerBloc = BlocProvider.of<SchedulerBloc>(context);
   }
 
   @override
@@ -112,6 +114,9 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
                           (context, index) {
                         return TimeButton(
                           label: indicesToTimes[index],
+                          onTap: () {
+                            _schedulerBloc.add(TimeSelectionEvent());
+                          },
                         );
                       },
                     childCount: indicesToTimes.keys.length,

@@ -6,7 +6,7 @@ class TimeButton extends StatefulWidget {
   String label;
   VoidCallback onTap;
 
-  TimeButton({this.label, this.isSelected = false});
+  TimeButton({this.label, this.isSelected = false, this.onTap,});
 
   _TimeButtonState createState() => _TimeButtonState();
 }
