@@ -12,8 +12,12 @@ class TimeSelectionEvent extends SchedulerEvent {
 }
 
 class DurationSelectionEvent extends SchedulerEvent {
+  int selectedButtonIndex;
+
+  DurationSelectionEvent({this.selectedButtonIndex});
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [this.selectedButtonIndex];
 }
 
 class ScheduleSubmissionEvent extends SchedulerEvent {

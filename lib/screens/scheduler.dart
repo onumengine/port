@@ -18,14 +18,6 @@ class SchedulerScreen extends StatefulWidget {
 
 class _SchedulerScreenState extends State<SchedulerScreen> {
   SchedulerBloc _schedulerBloc;
-  Map<int, String> indicesToTimes = {
-    0: "08:30",
-    1: "09:00",
-    2: "09:30",
-    3: "10:00",
-    4: "10:30",
-    5: "11:00",
-  };
 
   @override
   void initState() {
@@ -114,14 +106,14 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
                     delegate: SliverChildBuilderDelegate(
                           (context, index) {
                         return TimeButton(
-                          label: indicesToTimes[index],
+                          label: state.availableTimes.values.elementAt(index),
                           isSelected: (index == state.selectedTimeButtonIndex) ? true : false,
                           onTap: () {
                             _schedulerBloc.add(TimeSelectionEvent(selectedButtonIndex: index));
                           },
                         );
                       },
-                      childCount: indicesToTimes.keys.length,
+                      childCount: state.availableTimes.keys.length,
                     ),
                   ),
                   SliverList(
@@ -149,63 +141,17 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
                       crossAxisSpacing: 26,
                       childAspectRatio: 1.6774,
                     ),
-                    delegate: SliverChildListDelegate(
-                        [
-                          Container(
-                            height: 62,
-                            width: screenSize.width / 14,
-                            decoration: BoxDecoration(
-                              color: paleChipBackground,
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Center(
-                              child: Text(
-                                "30mins",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 18,
-                                  color: chipTextColorDisabled,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            height: 62,
-                            width: screenSize.width / 14,
-                            decoration: BoxDecoration(
-                              color: paleChipBackground,
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Center(
-                              child: Text(
-                                "1hr",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 18,
-                                  color: chipTextColorDisabled,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            height: 62,
-                            width: screenSize.width / 14,
-                            decoration: BoxDecoration(
-                              color: paleChipBackground,
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Center(
-                              child: Text(
-                                "2hrs",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 18,
-                                  color: chipTextColorDisabled,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ]
+                    delegate: SliverChildBuilderDelegate(
+                        (context, index) {
+                          return TimeButton(
+                            label: state.availableDurations.values.elementAt(index),
+                              isSelected: (index == state.selectedDurationButtonIndex) ? true : false,
+                            onTap: () {
+                              _schedulerBloc.add(DurationSelectionEvent(selectedButtonIndex: index));
+                            },
+                          );
+                        },
+                      childCount: state.availableDurations.keys.length,
                     ),
                   ),
                   SliverList(
