@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 
-abstract class SchedulerState extends Equatable {}
+abstract class SchedulerScreenState extends Equatable {}
 
-class ScheduleState extends SchedulerState {
+class ScheduleState extends SchedulerScreenState {
   @override
   List<Object> get props => [];
 }
