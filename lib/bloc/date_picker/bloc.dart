@@ -18,7 +18,6 @@ import 'package:port/bloc/date_picker/state.dart';
 ///     of days in a month
 
 class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
-
   int selectedYear;
   int selectedMonth;
   int selectedDay;
@@ -26,33 +25,54 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
   int numberOfDaysInSelectedMonth;
   int numberOfGridItemsToRender;
   int indexToRenderFrom;
+  String finalDate;
+  String postableDate;
+
+  Map<int, String> _numberToDayMap = <int, String>{
+    1: "Monday",
+    2: "Tuesday",
+    3: "Wednesday",
+    4: "Thursday",
+    5: "Friday",
+    6: "Saturday",
+    7: "Sunday",
+  };
 
   DatePickerBloc() {
     selectedYear = DateTime.now().year;
     selectedMonth = DateTime.now().month;
     selectedDay = DateTime.now().day;
     firstWeekdayOfSelectedMonth = DateTime.now().weekday;
-    numberOfDaysInSelectedMonth = DateTime(DateTime.now().year, (DateTime.now().month + 1), 0).day;
-    numberOfGridItemsToRender = DateTime.now().weekday + DateTime(DateTime.now().year, (DateTime.now().month + 1), 0).day - 1;
+    numberOfDaysInSelectedMonth =
+        DateTime(DateTime.now().year, (DateTime.now().month + 1), 0).day;
+    numberOfGridItemsToRender = DateTime.now().weekday +
+        DateTime(DateTime.now().year, (DateTime.now().month + 1), 0).day -
+        1;
   }
 
   @override
   DatePickerState get initialState => DatePickerState(
-    selectedYear: DateTime.now().year,
-    selectedMonth: DateTime.now().month,
-    selectedDay: DateTime.now().day,
-    weekdayToRenderFrom: DateTime.now().weekday - 1,
-    numberOfDaysInSelectedMonth: DateTime(DateTime.now().year, (DateTime.now().month + 1), 0).day,
-    itemCount: DateTime.now().weekday + DateTime(DateTime.now().year, (DateTime.now().month + 1), 0).day - 1,
-  );
+        selectedYear: DateTime.now().year,
+        selectedMonth: DateTime.now().month,
+        selectedDay: DateTime.now().day,
+        weekdayToRenderFrom: DateTime.now().weekday - 1,
+        numberOfDaysInSelectedMonth:
+            DateTime(DateTime.now().year, (DateTime.now().month + 1), 0).day,
+        itemCount: DateTime.now().weekday +
+            DateTime(DateTime.now().year, (DateTime.now().month + 1), 0).day -
+            1,
+      );
 
   @override
   Stream<DatePickerState> mapEventToState(DatePickerEvent event) async* {
     if (event is YearIncrementEvent) {
       _incrementSelectedYear();
-      firstWeekdayOfSelectedMonth = DateTime(selectedYear, selectedMonth, 1).weekday;
-      numberOfDaysInSelectedMonth = DateTime(selectedYear, (selectedMonth + 1), 0).day;
-      numberOfGridItemsToRender = firstWeekdayOfSelectedMonth + numberOfDaysInSelectedMonth;
+      firstWeekdayOfSelectedMonth =
+          DateTime(selectedYear, selectedMonth, 1).weekday;
+      numberOfDaysInSelectedMonth =
+          DateTime(selectedYear, (selectedMonth + 1), 0).day;
+      numberOfGridItemsToRender =
+          firstWeekdayOfSelectedMonth + numberOfDaysInSelectedMonth;
       indexToRenderFrom = (DateTime(selectedYear, selectedMonth, 1).weekday);
       yield DatePickerState(
         selectedYear: selectedYear,
@@ -64,9 +84,12 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
       );
     } else if (event is YearDecrementEvent) {
       _decrementSelectedYear();
-      firstWeekdayOfSelectedMonth = DateTime(selectedYear, selectedMonth, 1).weekday;
-      numberOfDaysInSelectedMonth = DateTime(selectedYear, (selectedMonth + 1), 0).day;
-      numberOfGridItemsToRender = firstWeekdayOfSelectedMonth + numberOfDaysInSelectedMonth;
+      firstWeekdayOfSelectedMonth =
+          DateTime(selectedYear, selectedMonth, 1).weekday;
+      numberOfDaysInSelectedMonth =
+          DateTime(selectedYear, (selectedMonth + 1), 0).day;
+      numberOfGridItemsToRender =
+          firstWeekdayOfSelectedMonth + numberOfDaysInSelectedMonth;
       indexToRenderFrom = (DateTime(selectedYear, selectedMonth, 1).weekday);
       yield DatePickerState(
         selectedYear: selectedYear,
@@ -78,9 +101,12 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
       );
     } else if (event is MonthIncrementEvent) {
       _incrementSelectedMonth();
-      firstWeekdayOfSelectedMonth = DateTime(selectedYear, selectedMonth, 1).weekday;
-      numberOfDaysInSelectedMonth = DateTime(selectedYear, (selectedMonth + 1), 0).day;
-      numberOfGridItemsToRender = firstWeekdayOfSelectedMonth + numberOfDaysInSelectedMonth;
+      firstWeekdayOfSelectedMonth =
+          DateTime(selectedYear, selectedMonth, 1).weekday;
+      numberOfDaysInSelectedMonth =
+          DateTime(selectedYear, (selectedMonth + 1), 0).day;
+      numberOfGridItemsToRender =
+          firstWeekdayOfSelectedMonth + numberOfDaysInSelectedMonth;
       indexToRenderFrom = (DateTime(selectedYear, selectedMonth, 1).weekday);
       yield DatePickerState(
         selectedYear: selectedYear,
@@ -92,9 +118,12 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
       );
     } else if (event is MonthDecrementEvent) {
       _decrementSelectedMonth();
-      firstWeekdayOfSelectedMonth = DateTime(selectedYear, selectedMonth, 1).weekday;
-      numberOfDaysInSelectedMonth = DateTime(selectedYear, (selectedMonth + 1), 0).day;
-      numberOfGridItemsToRender = firstWeekdayOfSelectedMonth + numberOfDaysInSelectedMonth;
+      firstWeekdayOfSelectedMonth =
+          DateTime(selectedYear, selectedMonth, 1).weekday;
+      numberOfDaysInSelectedMonth =
+          DateTime(selectedYear, (selectedMonth + 1), 0).day;
+      numberOfGridItemsToRender =
+          firstWeekdayOfSelectedMonth + numberOfDaysInSelectedMonth;
       indexToRenderFrom = (DateTime(selectedYear, selectedMonth, 1).weekday);
       yield DatePickerState(
         selectedYear: selectedYear,
@@ -106,10 +135,14 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
       );
     } else if (event is DaySelectionEvent) {
       selectedDay = event.day;
-      firstWeekdayOfSelectedMonth = DateTime(selectedYear, selectedMonth, 1).weekday;
-      numberOfDaysInSelectedMonth = DateTime(selectedYear, (selectedMonth + 1), 0).day;
-      numberOfGridItemsToRender = firstWeekdayOfSelectedMonth + numberOfDaysInSelectedMonth;
+      firstWeekdayOfSelectedMonth =
+          DateTime(selectedYear, selectedMonth, 1).weekday;
+      numberOfDaysInSelectedMonth =
+          DateTime(selectedYear, (selectedMonth + 1), 0).day;
+      numberOfGridItemsToRender =
+          firstWeekdayOfSelectedMonth + numberOfDaysInSelectedMonth;
       indexToRenderFrom = (DateTime(selectedYear, selectedMonth, 1).weekday);
+      setFinalDate();
       yield DatePickerState(
         selectedYear: selectedYear,
         selectedMonth: selectedMonth,
@@ -135,5 +168,9 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
 
   _decrementSelectedMonth() {
     selectedMonth--;
+  }
+
+  setFinalDate() {
+    postableDate = "$selectedYear-$selectedMonth-$selectedDay";
   }
 }

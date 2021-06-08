@@ -3,6 +3,14 @@ import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
 
 class TimestampCard extends StatefulWidget {
+  String selectedDate, selectedTime, selectedDuration;
+
+  TimestampCard({
+    this.selectedDate = "Monday, 20 July 2021",
+    this.selectedTime = "9:00AM",
+    this.selectedDuration = "30 minutes",
+  });
+
   @override
   _TimestampCardState createState() => _TimestampCardState();
 }
@@ -63,7 +71,7 @@ class _TimestampCardState extends State<TimestampCard> {
                       ),
                     ),
                     Text(
-                      "Monday, 20 July 2021",
+                      widget.selectedDate,
                       style: TextStyle(fontWeight: FontWeight.w400),
                     ),
                   ],
@@ -86,7 +94,7 @@ class _TimestampCardState extends State<TimestampCard> {
                       ),
                     ),
                     Text(
-                      "9:00 AM",
+                      widget.selectedTime,
                       style: TextStyle(fontWeight: FontWeight.w400),
                     ),
                   ],
@@ -109,7 +117,7 @@ class _TimestampCardState extends State<TimestampCard> {
                       ),
                     ),
                     Text(
-                      "30 minutes",
+                      widget.selectedDuration,
                       style: TextStyle(fontWeight: FontWeight.w400),
                     ),
                   ],

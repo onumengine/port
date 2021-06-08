@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:port/bloc/organizations/event.dart';
 import 'package:port/bloc/organizations/state.dart';
@@ -30,6 +29,7 @@ class OrganizationsBloc extends Bloc<OrganizationsEvent, OrganizationsState> {
   }
 
   Future<void> fetchOrganizations(String organizationId) async {
-    response = jsonDecode(await _apiClient.get(CATEGORIES_FETCH_PATH + organizationId));
+    response = jsonDecode(
+        await _apiClient.get(CATEGORIES_FETCH_PATH + organizationId));
   }
 }

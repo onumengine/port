@@ -113,7 +113,9 @@ class _SubmitScreenState extends State<SubmitScreen> {
               ),
             ),
             SizedBox(height: 20),
-            TimestampCard(),
+            TimestampCard(
+              selectedDate: _datePickerBloc.selectedYear.toString(),
+            ),
             SizedBox(height: 20),
             Padding(
               padding: EdgeInsets.symmetric(
