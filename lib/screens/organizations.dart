@@ -7,6 +7,7 @@ import 'package:port/bloc/organizations/event.dart';
 import 'package:port/bloc/organizations/state.dart';
 import 'package:port/bloc/users/bloc.dart';
 import 'package:port/components/atoms/searchbar.dart';
+import 'package:port/components/molecules/network_error.dart';
 import 'package:port/components/molecules/organization_card.dart';
 import 'package:port/screens/users.dart';
 import 'package:port/utility/colors_main.dart';
@@ -130,14 +131,9 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
               ],
             );
           } else if (state is OrganizationsFetchingErrorState) {
-            return GestureDetector(
-              onTap: () {
-                _organizationsBloc.add(OrganizationsFetchEvent());
-              },
-              child: Center(
-                child: Text("Couldn't fetch categories. Tap to retry"),
-              ),
-            );
+            return NetworkErrorComp(onTap: (){
+              _organizationsBloc.add(OrganizationsFetchEvent());
+            });
           } else {
             return Container();
           }
