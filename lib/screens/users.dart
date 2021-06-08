@@ -6,6 +6,7 @@ import 'package:port/bloc/scheduler/bloc.dart';
 import 'package:port/bloc/users/bloc.dart';
 import 'package:port/bloc/users/event.dart';
 import 'package:port/bloc/users/state.dart';
+import 'package:port/components/molecules/network_error.dart';
 import 'package:port/components/molecules/user_card.dart';
 import 'package:port/screens/scheduler.dart';
 import 'package:port/utility/colors_main.dart';
@@ -164,9 +165,29 @@ class _UsersScreenState extends State<UsersScreen> {
           );
         } else if (state is FetchingErrorState) {
           return Scaffold(
-              body: Center(
-            child: CircularProgressIndicator(),
-          ));
+            appBar: AppBar(
+              leading: IconButton(
+                icon: Icon(CupertinoIcons.back),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+              title: Text(
+                "Users",
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            body: NetworkErrorComp(onTap: () {
+              _usersBloc.add(
+                UsersFetchEvent(
+                  usersOrganizationId: widget.userOrganizationId,
+                  usersOrganizationName: widget.userOrganizationName,
+                ),
+              );
+            }),
+          );
         } else {
           return Scaffold(
             body: Center(
