@@ -6,9 +6,9 @@ class TimestampCard extends StatefulWidget {
   String selectedDate, selectedTime, selectedDuration;
 
   TimestampCard({
-    this.selectedDate = "Monday, 20 July 2021",
-    this.selectedTime = "9:00AM",
-    this.selectedDuration = "30 minutes",
+    this.selectedDate,
+    this.selectedTime,
+    this.selectedDuration,
   });
 
   @override

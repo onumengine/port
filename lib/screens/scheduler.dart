@@ -195,28 +195,9 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => MultiBlocProvider(
-                                    providers: [
-                                      BlocProvider<CategoriesBloc>(
-                                        create: (context) => CategoriesBloc(),
-                                      ),
-                                      BlocProvider<OrganizationsBloc>(
-                                        create: (context) =>
-                                            OrganizationsBloc(),
-                                      ),
-                                      BlocProvider<UsersBloc>(
-                                        create: (context) => UsersBloc(),
-                                      ),
-                                      BlocProvider<DatePickerBloc>(
-                                        create: (context) => DatePickerBloc(),
-                                      ),
-                                      BlocProvider<SchedulerBloc>(
-                                        create: (context) => SchedulerBloc(),
-                                      ),
+                                  builder: (context) =>
                                       BlocProvider<SubmitBloc>(
-                                        create: (context) => SubmitBloc(),
-                                      ),
-                                    ],
+                                    create: (context) => SubmitBloc(),
                                     child: SubmitScreen(),
                                   ),
                                 ),

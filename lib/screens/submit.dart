@@ -30,22 +30,12 @@ class _SubmitScreenState extends State<SubmitScreen> {
   AppointmentReasons _dropdownButtonValue;
   TextEditingController _summaryNote;
   bool _showLoadingIndicator = false;
-  CategoriesBloc _categoriesBloc;
-  OrganizationsBloc _organizationsBloc;
-  UsersBloc _usersBloc;
-  DatePickerBloc _datePickerBloc;
-  SchedulerBloc _schedulerBloc;
   SubmitBloc _submitBloc;
 
   @override
   void initState() {
     super.initState();
     _summaryNote = TextEditingController();
-    _categoriesBloc = BlocProvider.of<CategoriesBloc>(context);
-    _organizationsBloc = BlocProvider.of<OrganizationsBloc>(context);
-    _usersBloc = BlocProvider.of<UsersBloc>(context);
-    _datePickerBloc = BlocProvider.of<DatePickerBloc>(context);
-    _schedulerBloc = BlocProvider.of<SchedulerBloc>(context);
     _submitBloc = BlocProvider.of<SubmitBloc>(context);
   }
 
@@ -114,7 +104,9 @@ class _SubmitScreenState extends State<SubmitScreen> {
             ),
             SizedBox(height: 20),
             TimestampCard(
-              selectedDate: _datePickerBloc.selectedYear.toString(),
+              selectedDate: "BlocProvider.finalDate",
+              selectedTime: "hghhgh",
+              selectedDuration: "selectedDuration",
             ),
             SizedBox(height: 20),
             Padding(

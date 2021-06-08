@@ -4,6 +4,8 @@ import 'package:port/bloc/scheduler/state.dart';
 
 class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerScreenState> {
   int selectedTimeButtonIndex, selectedDurationButtonIndex;
+  String selectedTime;
+  String selectedDuration;
   Map<int, String> indicesToTimes = {
     0: "08:30",
     1: "09:00",
@@ -28,6 +30,7 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerScreenState> {
   Stream<SchedulerScreenState> mapEventToState(SchedulerEvent event) async* {
     if (event is TimeSelectionEvent) {
       selectedTimeButtonIndex = event.selectedButtonIndex;
+      selectedTime = indicesToTimes[selectedTimeButtonIndex];
       yield ScheduleState(
         selectedTimeButtonIndex: selectedTimeButtonIndex,
         selectedDurationButtonIndex: selectedDurationButtonIndex,
@@ -36,6 +39,7 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerScreenState> {
       );
     } else if (event is DurationSelectionEvent) {
       selectedDurationButtonIndex = event.selectedButtonIndex;
+      selectedDuration = indicesToDurations[selectedDurationButtonIndex];
       yield ScheduleState(
         selectedTimeButtonIndex: selectedTimeButtonIndex,
         selectedDurationButtonIndex: selectedDurationButtonIndex,

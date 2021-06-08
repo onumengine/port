@@ -26,7 +26,6 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
   int numberOfGridItemsToRender;
   int indexToRenderFrom;
   String finalDate;
-  String postableDate;
 
   Map<int, String> _numberToDayMap = <int, String>{
     1: "Monday",
@@ -134,7 +133,7 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
         itemCount: numberOfGridItemsToRender,
       );
     } else if (event is DaySelectionEvent) {
-      selectedDay = event.day;
+      _setSelectedDay(event.day);
       firstWeekdayOfSelectedMonth =
           DateTime(selectedYear, selectedMonth, 1).weekday;
       numberOfDaysInSelectedMonth =
@@ -142,7 +141,7 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
       numberOfGridItemsToRender =
           firstWeekdayOfSelectedMonth + numberOfDaysInSelectedMonth;
       indexToRenderFrom = (DateTime(selectedYear, selectedMonth, 1).weekday);
-      setFinalDate();
+      _setFinalDate();
       yield DatePickerState(
         selectedYear: selectedYear,
         selectedMonth: selectedMonth,
@@ -170,7 +169,12 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
     selectedMonth--;
   }
 
-  setFinalDate() {
-    postableDate = "$selectedYear-$selectedMonth-$selectedDay";
+  _setSelectedDay(int day) {
+    selectedDay = day;
+  }
+
+  _setFinalDate() {
+    this.finalDate = "$selectedYear-$selectedMonth-$selectedDay";
+    print("THE FINAL DATE IN THE BLOC IS $finalDate");
   }
 }
