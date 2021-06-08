@@ -1,10 +1,14 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:port/bloc/categories/bloc.dart';
+import 'package:port/bloc/date_picker/bloc.dart';
+import 'package:port/bloc/organizations/bloc.dart';
 import 'package:port/bloc/scheduler/bloc.dart';
 import 'package:port/bloc/scheduler/event.dart';
 import 'package:port/bloc/scheduler/state.dart';
 import 'package:port/bloc/submit/bloc.dart';
+import 'package:port/bloc/users/bloc.dart';
 import 'package:port/components/atoms/time_button.dart';
 import 'package:port/components/organisms/date_picker.dart';
 import 'package:port/screens/submit.dart';
@@ -53,7 +57,7 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
                 slivers: [
                   SliverList(
                     delegate: SliverChildBuilderDelegate(
-                          (context, index) {
+                      (context, index) {
                         return DatePicker();
                       },
                       childCount: 1,
@@ -66,7 +70,7 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
                           height: 50,
                           padding: EdgeInsets.all(12),
                           margin:
-                          EdgeInsets.only(bottom: 20, left: 4, right: 4),
+                              EdgeInsets.only(bottom: 20, left: 4, right: 4),
                           decoration: BoxDecoration(
                             color: colorOrangeChip,
                             borderRadius: BorderRadius.circular(12),
@@ -104,12 +108,15 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
                       childAspectRatio: 2 / 1,
                     ),
                     delegate: SliverChildBuilderDelegate(
-                          (context, index) {
+                      (context, index) {
                         return TimeButton(
                           label: state.availableTimes.values.elementAt(index),
-                          isSelected: (index == state.selectedTimeButtonIndex) ? true : false,
+                          isSelected: (index == state.selectedTimeButtonIndex)
+                              ? true
+                              : false,
                           onTap: () {
-                            _schedulerBloc.add(TimeSelectionEvent(selectedButtonIndex: index));
+                            _schedulerBloc.add(
+                                TimeSelectionEvent(selectedButtonIndex: index));
                           },
                         );
                       },
@@ -142,15 +149,20 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
                       childAspectRatio: 1.6774,
                     ),
                     delegate: SliverChildBuilderDelegate(
-                        (context, index) {
-                          return TimeButton(
-                            label: state.availableDurations.values.elementAt(index),
-                              isSelected: (index == state.selectedDurationButtonIndex) ? true : false,
-                            onTap: () {
-                              _schedulerBloc.add(DurationSelectionEvent(selectedButtonIndex: index));
-                            },
-                          );
-                        },
+                      (context, index) {
+                        return TimeButton(
+                          label:
+                              state.availableDurations.values.elementAt(index),
+                          isSelected:
+                              (index == state.selectedDurationButtonIndex)
+                                  ? true
+                                  : false,
+                          onTap: () {
+                            _schedulerBloc.add(DurationSelectionEvent(
+                                selectedButtonIndex: index));
+                          },
+                        );
+                      },
                       childCount: state.availableDurations.keys.length,
                     ),
                   ),
@@ -183,8 +195,28 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => BlocProvider<SubmitBloc>(
-                                    create: (context) => SubmitBloc(),
+                                  builder: (context) => MultiBlocProvider(
+                                    providers: [
+                                      BlocProvider<CategoriesBloc>(
+                                        create: (context) => CategoriesBloc(),
+                                      ),
+                                      BlocProvider<OrganizationsBloc>(
+                                        create: (context) =>
+                                            OrganizationsBloc(),
+                                      ),
+                                      BlocProvider<UsersBloc>(
+                                        create: (context) => UsersBloc(),
+                                      ),
+                                      BlocProvider<DatePickerBloc>(
+                                        create: (context) => DatePickerBloc(),
+                                      ),
+                                      BlocProvider<SchedulerBloc>(
+                                        create: (context) => SchedulerBloc(),
+                                      ),
+                                      BlocProvider<SubmitBloc>(
+                                        create: (context) => SubmitBloc(),
+                                      ),
+                                    ],
                                     child: SubmitScreen(),
                                   ),
                                 ),

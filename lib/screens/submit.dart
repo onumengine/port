@@ -2,10 +2,14 @@ import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:port/bloc/categories/bloc.dart';
+import 'package:port/bloc/date_picker/bloc.dart';
 import 'package:port/bloc/home/bloc.dart';
+import 'package:port/bloc/organizations/bloc.dart';
+import 'package:port/bloc/scheduler/bloc.dart';
 import 'package:port/bloc/submit/bloc.dart';
 import 'package:port/bloc/submit/event.dart';
 import 'package:port/bloc/submit/state.dart';
+import 'package:port/bloc/users/bloc.dart';
 import 'package:port/components/organisms/timestamp_card.dart';
 import 'package:port/screens/home.dart';
 import 'package:port/utility/colors.dart';
@@ -26,14 +30,22 @@ class _SubmitScreenState extends State<SubmitScreen> {
   AppointmentReasons _dropdownButtonValue;
   TextEditingController _summaryNote;
   bool _showLoadingIndicator = false;
-
   CategoriesBloc _categoriesBloc;
+  OrganizationsBloc _organizationsBloc;
+  UsersBloc _usersBloc;
+  DatePickerBloc _datePickerBloc;
+  SchedulerBloc _schedulerBloc;
   SubmitBloc _submitBloc;
 
   @override
   void initState() {
     super.initState();
     _summaryNote = TextEditingController();
+    _categoriesBloc = BlocProvider.of<CategoriesBloc>(context);
+    _organizationsBloc = BlocProvider.of<OrganizationsBloc>(context);
+    _usersBloc = BlocProvider.of<UsersBloc>(context);
+    _datePickerBloc = BlocProvider.of<DatePickerBloc>(context);
+    _schedulerBloc = BlocProvider.of<SchedulerBloc>(context);
     _submitBloc = BlocProvider.of<SubmitBloc>(context);
   }
 
