@@ -7,6 +7,7 @@ import 'package:port/bloc/categories/state.dart';
 import 'package:port/bloc/organizations/bloc.dart';
 import 'package:port/components/atoms/searchbar.dart';
 import 'package:port/components/molecules/category_card.dart';
+import 'package:port/components/molecules/network_error.dart';
 import 'package:port/screens/organizations.dart';
 import 'package:port/utility/colors.dart';
 import 'package:port/utility/constants.dart';
@@ -150,20 +151,9 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 child: CircularProgressIndicator(),
               );
             } else if (state is ErrorState) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  IconButton(
-                    onPressed: () {
-                      _categoriesBloc.add(CategoriesFetchEvent());
-                    },
-                    icon: Icon(Icons.assistant_direction,
-                        size: 50, color: paleTextColor),
-                  ),
-                  Text(state.errorMessage),
-                ],
-              );
+              return NetworkErrorComp(onTap: () {
+                _categoriesBloc.add(CategoriesFetchEvent());
+              });
             } else {
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
