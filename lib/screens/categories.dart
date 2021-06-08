@@ -85,8 +85,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                             return Padding(
                               padding: const EdgeInsets.only(right: 20),
                               child: CategoryCard(
-                                iconPath:
-                                (ICON_FETCH_PATH + state.categories.elementAt(index)["icon"]),
+                                iconPath: (ICON_FETCH_PATH +
+                                    state.categories.elementAt(index)["icon"]),
                                 semanticLabel:
                                     state.categories.elementAt(index)["name"],
                                 categoryName:
@@ -99,7 +99,10 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                           BlocProvider<OrganizationsBloc>(
                                         create: (context) =>
                                             OrganizationsBloc(),
-                                        child: OrganizationsScreen(categoryId: '/${state.categories.elementAt(index)["id"]}',),
+                                        child: OrganizationsScreen(
+                                          categoryId:
+                                              '/${state.categories.elementAt(index)["id"]}',
+                                        ),
                                       ),
                                     ),
                                   );
@@ -110,8 +113,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                             return Padding(
                               padding: const EdgeInsets.only(left: 20),
                               child: CategoryCard(
-                                iconPath:
-                                    state.categories.elementAt(index)["icon"],
+                                iconPath: (ICON_FETCH_PATH +
+                                    state.categories.elementAt(index)["icon"]),
                                 semanticLabel:
                                     state.categories.elementAt(index)["name"],
                                 categoryName:
@@ -124,7 +127,10 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                           BlocProvider<OrganizationsBloc>(
                                         create: (context) =>
                                             OrganizationsBloc(),
-                                        child: OrganizationsScreen(),
+                                        child: OrganizationsScreen(
+                                          categoryId:
+                                              '/${state.categories.elementAt(index)["id"]}',
+                                        ),
                                       ),
                                     ),
                                   );

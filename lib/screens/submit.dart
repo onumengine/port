@@ -1,6 +1,7 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:port/bloc/categories/bloc.dart';
 import 'package:port/bloc/home/bloc.dart';
 import 'package:port/bloc/submit/bloc.dart';
 import 'package:port/bloc/submit/event.dart';
@@ -24,8 +25,10 @@ class SubmitScreen extends StatefulWidget {
 class _SubmitScreenState extends State<SubmitScreen> {
   AppointmentReasons _dropdownButtonValue;
   TextEditingController _summaryNote;
-  SubmitBloc _submitBloc;
   bool _showLoadingIndicator = false;
+
+  CategoriesBloc _categoriesBloc;
+  SubmitBloc _submitBloc;
 
   @override
   void initState() {
