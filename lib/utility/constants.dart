@@ -22,17 +22,15 @@ const String SESSION_ID = "session_id";
 const String SESSION_TOKEN = "session_token";
 const String LOGGED_IN_USER = "user";
 
+// fetch paths
 const String CATEGORIES_FETCH_PATH = BASE_URL + "categories";
-
-const String LOGIN_STRING_REQUEST = BASE_URL + "user/login";
-
-const String CREATE_STUDENT_PROFILE = BASE_URL + "";
-
 const String ICON_FETCH_PATH = "http://innovativehill.com/port/api/icons/";
-
-const String USERS_FETCH_PATH = BASE_URL + "/organization/user";
-
-const String SCHEDULE_POST_PATH = BASE_URL + "schedule/create";
-
+const String LOGIN_STRING_REQUEST = BASE_URL + "user/login";
 const String PURPOSES_FETCH_PATH =
     "http://innovativehill.com/port/api/schedule/purpose";
+const String SCHEDULES_FETCH_PATH = BASE_URL + "schedule/timeline/3";
+const String USERS_FETCH_PATH = BASE_URL + "/organization/user";
+
+// post paths
+const String CREATE_STUDENT_PROFILE = BASE_URL + "";
+const String SCHEDULE_POST_PATH = BASE_URL + "schedule/create";

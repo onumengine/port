@@ -34,6 +34,7 @@ class SubmitBloc extends Bloc<SubmitScreenEvent, SubmitScreenState> {
     } else if (event is PurposesFetchEvent) {
       try {
         await _fetchPurposes();
+        _initArrayOfPurposes();
         yield DefaultState(
           purposes: arrayOfPurposes,
         );
@@ -48,6 +49,15 @@ class SubmitBloc extends Bloc<SubmitScreenEvent, SubmitScreenState> {
     }
   }
 
+  _fetchPurposes() async {
+    response = jsonDecode(await _apiClient.get(PURPOSES_FETCH_PATH));
+  }
+
+  _initArrayOfPurposes() {
+    arrayOfPurposes = response["data"];
+    arrayOfPurposes = (arrayOfPurposes.map((e) => e["purpose"])).toList();
+  }
+
   _postSchedule({String note}) async {
     await _apiClient.postForm(
       SCHEDULE_POST_PATH,
@@ -55,11 +65,5 @@ class SubmitBloc extends Bloc<SubmitScreenEvent, SubmitScreenState> {
         "note": note,
       },
     );
-  }
-
-  _fetchPurposes() async {
-    response = jsonDecode(await _apiClient.get(PURPOSES_FETCH_PATH));
-    arrayOfPurposes = response["data"];
-    arrayOfPurposes = (arrayOfPurposes.map((e) => e["purpose"])).toList();
   }
 }

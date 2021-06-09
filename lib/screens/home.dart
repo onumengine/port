@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:port/bloc/categories/bloc.dart';
 import 'package:port/bloc/home/bloc.dart';
+import 'package:port/bloc/home/event.dart';
 import 'package:port/bloc/home/state.dart';
 import 'package:port/bloc/notifications/bloc.dart';
 import 'package:port/components/organisms/appointments_list.dart';
@@ -29,7 +30,9 @@ class _MyHomePageState extends State<MyHomePage> {
         if (state is EmptyState) {
           return EmptyAppointmentsComponent();
         } else if (state is BookedState) {
-          return AppointmentsListComponent();
+          return AppointmentsListComponent(
+            listOfAppointments: state.schedules,
+          );
         }
       },
     ),
@@ -40,6 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     _homeBloc = BlocProvider.of<HomeBloc>(context);
     super.initState();
+    _homeBloc.add(SchedulesFetchEvent());
   }
 
   @override

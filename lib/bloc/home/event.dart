@@ -5,7 +5,4 @@ abstract class AppointmentEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class BookingEvent extends AppointmentEvent {
-  @override
-  List<Object> get props => [];
-}
+class SchedulesFetchEvent extends AppointmentEvent {}
