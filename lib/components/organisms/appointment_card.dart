@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:port/utility/colors_main.dart';
 
 enum ApprovalStatus {
   Approved,
@@ -26,7 +27,7 @@ class _AppointmentCardState extends State<AppointmentCard> {
   Widget build(BuildContext context) {
     return PhysicalModel(
       color: Colors.white,
-      shadowColor: Colors.green,
+      shadowColor: colorCardShadow,
       borderRadius: BorderRadius.circular(8),
       elevation: 5.0,
       child: Container(

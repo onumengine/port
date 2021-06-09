@@ -46,12 +46,16 @@ class _AppointmentsListComponentState extends State<AppointmentsListComponent> {
                   ),
                 ),
               ),
+              SizedBox(height: 19),
             ]),
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
-                return Container();
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: AppointmentCard(),
+                );
               },
               childCount: widget.todaysAppointments.length,
             ),
@@ -68,6 +72,7 @@ class _AppointmentsListComponentState extends State<AppointmentsListComponent> {
                   ),
                 ),
               ),
+              SizedBox(height: 19),
             ]),
           ),
           SliverList(
