@@ -18,9 +18,13 @@ class HomeBloc extends Bloc<AppointmentEvent, AppointmentState> {
     if (event is SchedulesFetchEvent) {
       try {
         await _fetchSchedules();
-        yield BookedState(schedules: response["data"]);
+        yield BookedState(
+          todaysSchedules: response["today"],
+          otherSchedules: response["others"],
+        );
       } catch (e) {
         print("SCHEDULE FETCH ENDED WITH AN ERROR: $e");
+        yield FetchingErrorState();
       }
     }
   }

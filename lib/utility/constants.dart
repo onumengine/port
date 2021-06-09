@@ -28,7 +28,7 @@ const String ICON_FETCH_PATH = "http://innovativehill.com/port/api/icons/";
 const String LOGIN_STRING_REQUEST = BASE_URL + "user/login";
 const String PURPOSES_FETCH_PATH =
     "http://innovativehill.com/port/api/schedule/purpose";
-const String SCHEDULES_FETCH_PATH = BASE_URL + "schedule/timeline/3";
+const String SCHEDULES_FETCH_PATH = BASE_URL + "user/schedule/3";
 const String USERS_FETCH_PATH = BASE_URL + "/organization/user";
 
 // post paths

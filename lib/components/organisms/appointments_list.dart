@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:port/components/organisms/appointment_card.dart';
 
 class AppointmentsListComponent extends StatefulWidget {
-  List listOfAppointments;
+  List todaysAppointments, otherAppointments;
 
-  AppointmentsListComponent({@required this.listOfAppointments});
+  AppointmentsListComponent({
+    @required this.todaysAppointments,
+    @required this.otherAppointments,
+  });
 
   @override
   _AppointmentsListComponentState createState() =>
@@ -29,6 +32,44 @@ class _AppointmentsListComponentState extends State<AppointmentsListComponent> {
         horizontal: _getHorizontalPadding(screenSize.width),
       ),
       width: screenSize.width,
+      child: CustomScrollView(
+        slivers: [
+          SliverList(
+            delegate: SliverChildListDelegate([
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Today",
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ]),
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return Container();
+              },
+              childCount: widget.todaysAppointments.length,
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildListDelegate([
+              Text(
+                "Others",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ]),
+          ),
+        ],
+      ),
+      /*
       child: ListView.separated(
         itemBuilder: (context, index) => AppointmentCard(
           organizationName:
@@ -36,7 +77,7 @@ class _AppointmentsListComponentState extends State<AppointmentsListComponent> {
         ),
         separatorBuilder: (context, index) => SizedBox(height: 10),
         itemCount: widget.listOfAppointments.length,
-      ),
+      ), */
     );
   }
 }

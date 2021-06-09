@@ -9,13 +9,19 @@ abstract class AppointmentState extends Equatable {
 class EmptyState extends AppointmentState {}
 
 class BookedState extends AppointmentState {
-  List schedules;
+  List todaysSchedules, otherSchedules;
 
-  BookedState({@required this.schedules});
+  BookedState({
+    @required this.todaysSchedules,
+    @required this.otherSchedules,
+  });
 
-  List<Object> get props => [];
+  List<Object> get props => [
+        this.todaysSchedules,
+        this.otherSchedules,
+      ];
 }
 
 class BookingInProgressState extends AppointmentState {}
 
-class BookingError extends AppointmentState {}
+class FetchingErrorState extends AppointmentState {}

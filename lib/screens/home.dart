@@ -5,6 +5,7 @@ import 'package:port/bloc/home/bloc.dart';
 import 'package:port/bloc/home/event.dart';
 import 'package:port/bloc/home/state.dart';
 import 'package:port/bloc/notifications/bloc.dart';
+import 'package:port/components/molecules/network_error.dart';
 import 'package:port/components/organisms/appointments_list.dart';
 import 'package:port/components/organisms/empty_appointments.dart';
 import 'package:port/components/organisms/more.dart';
@@ -23,21 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _navbarIndex = 0;
   String title;
   HomeBloc _homeBloc;
-
-  final _tabs = [
-    BlocBuilder<HomeBloc, AppointmentState>(
-      builder: (context, state) {
-        if (state is EmptyState) {
-          return EmptyAppointmentsComponent();
-        } else if (state is BookedState) {
-          return AppointmentsListComponent(
-            listOfAppointments: state.schedules,
-          );
-        }
-      },
-    ),
-    MoreComponent(),
-  ];
+  List _tabs;
 
   @override
   void initState() {
@@ -48,6 +35,26 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    _tabs = [
+      BlocBuilder<HomeBloc, AppointmentState>(
+        builder: (context, state) {
+          if (state is EmptyState) {
+            return EmptyAppointmentsComponent();
+          } else if (state is BookedState) {
+            return AppointmentsListComponent(
+              todaysAppointments: state.todaysSchedules,
+              otherAppointments: state.otherSchedules,
+            );
+          } else if (state is FetchingErrorState) {
+            return NetworkErrorComp(onTap: () {
+              _homeBloc.add(SchedulesFetchEvent());
+            });
+          }
+        },
+      ),
+      MoreComponent(),
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -104,7 +111,6 @@ class _MyHomePageState extends State<MyHomePage> {
           setState(() {
             _navbarIndex = selectedIndex;
           });
-          print(_navbarIndex);
         },
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
