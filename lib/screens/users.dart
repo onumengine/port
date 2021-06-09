@@ -1,6 +1,7 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:port/bloc/date_picker/bloc.dart';
 import 'package:port/bloc/scheduler/bloc.dart';
 import 'package:port/bloc/users/bloc.dart';
@@ -9,6 +10,7 @@ import 'package:port/bloc/users/state.dart';
 import 'package:port/components/molecules/network_error.dart';
 import 'package:port/components/molecules/user_card.dart';
 import 'package:port/screens/scheduler.dart';
+import 'package:port/singletons/appointment_data.dart';
 import 'package:port/utility/colors_main.dart';
 
 class UsersScreen extends StatefulWidget {
@@ -41,26 +43,7 @@ class _UsersScreenState extends State<UsersScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<UsersBloc, UsersScreenState>(
-      listener: (context, state) {
-        if (state is SubmittedState) {
-          print("THE BLOC HAS YIELDED SUBMITTED_STATE");
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => MultiBlocProvider(
-                providers: [
-                  BlocProvider<SchedulerBloc>(
-                      create: (context) => SchedulerBloc()),
-                  BlocProvider<DatePickerBloc>(
-                      create: (context) => DatePickerBloc()),
-                ],
-                child: SchedulerScreen(),
-              ),
-            ),
-          );
-        }
-      },
+    return BlocBuilder<UsersBloc, UsersScreenState>(
       builder: (context, state) {
         if (state is FetchingUsersState) {
           return Scaffold(
@@ -126,7 +109,7 @@ class _UsersScreenState extends State<UsersScreen> {
             body: ListView.separated(
               padding: EdgeInsets.symmetric(vertical: 30),
               itemBuilder: (context, index) => UserCard(
-                imagePath: "images/mike.svg",
+                imagePath: state.users.elementAt(index)["photo"],
                 name: state.users.elementAt(index)["name"],
                 jobTitle: state.users.elementAt(index)["title"],
                 onTap: () {

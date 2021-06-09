@@ -1,9 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:port/bloc/users/event.dart';
 import 'package:port/bloc/users/state.dart';
 import 'package:port/repository/api_client.dart';
+import 'package:port/singletons/appointment_data.dart';
 import 'package:port/utility/constants.dart';
 
 class UsersBloc extends Bloc<UsersScreenEvent, UsersScreenState> {
@@ -24,7 +26,10 @@ class UsersBloc extends Bloc<UsersScreenEvent, UsersScreenState> {
         await _fetchUsers(event.usersOrganizationId);
         listOfUsers = response["data"];
         userOrganizationName = event.usersOrganizationName;
-        yield PopulatedUsersState(users: listOfUsers, userOrganizationName: userOrganizationName,);
+        yield PopulatedUsersState(
+          users: listOfUsers,
+          userOrganizationName: userOrganizationName,
+        );
       } catch (error) {
         yield FetchingErrorState(errorMessage: error.toString());
       }
@@ -34,6 +39,7 @@ class UsersBloc extends Bloc<UsersScreenEvent, UsersScreenState> {
   }
 
   Future<void> _fetchUsers(String usersOrganizationId) async {
-    response = jsonDecode(await _apiClient.get(USERS_FETCH_PATH + usersOrganizationId));
+    response = jsonDecode(
+        await _apiClient.get(USERS_FETCH_PATH + usersOrganizationId));
   }
 }
