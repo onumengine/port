@@ -24,7 +24,7 @@ class HomeBloc extends Bloc<AppointmentEvent, AppointmentState> {
   }
 
   _fetchSchedules() async {
-    response = await _apiClient.get(CATEGORIES_FETCH_PATH);
+    response = await _apiClient.get(SCHEDULES_FETCH_PATH);
     print("YOUR SCHEDULES ARE: $response");
   }
 }
