@@ -7,6 +7,17 @@ abstract class SubmitScreenEvent extends Equatable {
 
 class PurposesFetchEvent extends SubmitScreenEvent {}
 
+class PurposeSelectionEvent extends SubmitScreenEvent {
+  String selectedPurpose;
+
+  PurposeSelectionEvent({this.selectedPurpose});
+
+  @override
+  List<Object> get props => [
+        this.selectedPurpose,
+      ];
+}
+
 class SubmissionEvent extends SubmitScreenEvent {
   String date;
   String time;
