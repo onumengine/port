@@ -1,15 +1,10 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:port/bloc/categories/bloc.dart';
-import 'package:port/bloc/date_picker/bloc.dart';
 import 'package:port/bloc/home/bloc.dart';
-import 'package:port/bloc/organizations/bloc.dart';
-import 'package:port/bloc/scheduler/bloc.dart';
 import 'package:port/bloc/submit/bloc.dart';
 import 'package:port/bloc/submit/event.dart';
 import 'package:port/bloc/submit/state.dart';
-import 'package:port/bloc/users/bloc.dart';
 import 'package:port/components/organisms/timestamp_card.dart';
 import 'package:port/screens/home.dart';
 import 'package:port/utility/colors.dart';
@@ -37,6 +32,7 @@ class _SubmitScreenState extends State<SubmitScreen> {
     super.initState();
     _summaryNoteController = TextEditingController();
     _submitBloc = BlocProvider.of<SubmitBloc>(context);
+    _submitBloc.add(PurposesFetchEvent());
   }
 
   @override

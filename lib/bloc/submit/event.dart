@@ -5,6 +5,8 @@ abstract class SubmitScreenEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class PurposesFetchEvent extends SubmitScreenEvent {}
+
 class SubmissionEvent extends SubmitScreenEvent {
   String date;
   String time;

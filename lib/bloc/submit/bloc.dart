@@ -18,6 +18,8 @@ class SubmitBloc extends Bloc<SubmitScreenEvent, SubmitScreenState> {
       } catch (e) {
         print(e.toString());
       }
+    } else if (event is PurposesFetchEvent) {
+      _fetchAppointmentReasons();
     }
     yield SuccessfulSubmissionState();
   }
@@ -29,5 +31,10 @@ class SubmitBloc extends Bloc<SubmitScreenEvent, SubmitScreenState> {
         "note": note,
       },
     );
+  }
+
+  _fetchAppointmentReasons() async {
+    var purposes = await _apiClient.get(PURPOSES_FETCH_PATH);
+    print("THE PURPOSES THAT HAVE BEEN FETCHED ARE: $purposes");
   }
 }

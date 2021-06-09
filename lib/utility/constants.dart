@@ -33,3 +33,6 @@ const String ICON_FETCH_PATH = "http://innovativehill.com/port/api/icons/";
 const String USERS_FETCH_PATH = BASE_URL + "/organization/user";
 
 const String SCHEDULE_POST_PATH = BASE_URL + "schedule/create";
+
+const String PURPOSES_FETCH_PATH =
+    "http://innovativehill.com/port/api/schedule/purpose";
