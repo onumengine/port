@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
 
 enum ApprovalStatus {
@@ -40,12 +41,34 @@ class _AppointmentCardState extends State<AppointmentCard> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(widget.organizationName),
+                Text(
+                  widget.organizationName,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Icon(Icons.timer_3),
-                    Text("${widget.startTime} - ${widget.expirationTime}"),
+                    Icon(
+                      Icons.watch_later,
+                      color: paleTextColor,
+                      size: 14,
+                    ),
+                    SizedBox(
+                      width: 6,
+                    ),
+                    Text(
+                      "${widget.startTime} - ${widget.expirationTime}",
+                      style: TextStyle(
+                        color: paleTextColor,
+                        fontSize: 16,
+                      ),
+                    ),
                   ],
                 ),
               ],
