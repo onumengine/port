@@ -32,6 +32,7 @@ class _AppointmentCardState extends State<AppointmentCard> {
       elevation: 5.0,
       child: Container(
         height: 100,
+        padding: EdgeInsets.fromLTRB(24, 18, 12, 26),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
         ),
