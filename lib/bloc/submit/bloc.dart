@@ -61,6 +61,5 @@ class SubmitBloc extends Bloc<SubmitScreenEvent, SubmitScreenState> {
     response = jsonDecode(await _apiClient.get(PURPOSES_FETCH_PATH));
     arrayOfPurposes = response["data"];
     arrayOfPurposes = (arrayOfPurposes.map((e) => e["purpose"])).toList();
-    print("THE NEW ARRAY OF PURPOSES IS: $arrayOfPurposes");
   }
 }
