@@ -36,8 +36,8 @@ class _AppointmentsListComponentState extends State<AppointmentsListComponent> {
         slivers: [
           SliverList(
             delegate: SliverChildListDelegate([
-              Align(
-                alignment: Alignment.centerLeft,
+              Padding(
+                padding: const EdgeInsets.only(left: 7),
                 child: Text(
                   "Today",
                   style: TextStyle(
@@ -58,15 +58,29 @@ class _AppointmentsListComponentState extends State<AppointmentsListComponent> {
           ),
           SliverList(
             delegate: SliverChildListDelegate([
-              Text(
-                "Others",
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
+              Padding(
+                padding: const EdgeInsets.only(left: 7),
+                child: Text(
+                  "Others",
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
             ]),
           ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: AppointmentCard(),
+                );
+              },
+              childCount: widget.otherAppointments.length,
+            ),
+          )
         ],
       ),
       /*

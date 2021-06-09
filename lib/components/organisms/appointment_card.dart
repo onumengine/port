@@ -27,12 +27,12 @@ class _AppointmentCardState extends State<AppointmentCard> {
     return PhysicalModel(
       color: Colors.white,
       shadowColor: Colors.green,
-      borderRadius: BorderRadius.circular(18),
+      borderRadius: BorderRadius.circular(8),
       elevation: 5.0,
       child: Container(
         height: 100,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(8),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
