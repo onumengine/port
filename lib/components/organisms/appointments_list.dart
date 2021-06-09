@@ -14,7 +14,7 @@ class AppointmentsListComponent extends StatefulWidget {
 class _AppointmentsListComponentState extends State<AppointmentsListComponent> {
   double _getHorizontalPadding(double screenWidth) {
     if (screenWidth < 592)
-      return 20;
+      return 12;
     else if (screenWidth > 592 && screenWidth < 1000)
       return 40;
     else if (screenWidth > 1000) return 3;
@@ -31,10 +31,11 @@ class _AppointmentsListComponentState extends State<AppointmentsListComponent> {
       width: screenSize.width,
       child: ListView.separated(
         itemBuilder: (context, index) => AppointmentCard(
-          organizationName: widget.listOfAppointments.elementAt(index),
+          organizationName:
+              widget.listOfAppointments.elementAt(index)["rep_id"],
         ),
         separatorBuilder: (context, index) => SizedBox(height: 10),
-        itemCount: 10,
+        itemCount: widget.listOfAppointments.length,
       ),
     );
   }

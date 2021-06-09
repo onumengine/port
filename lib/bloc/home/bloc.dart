@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:port/bloc/home/event.dart';
 import 'package:port/bloc/home/state.dart';
@@ -24,7 +26,7 @@ class HomeBloc extends Bloc<AppointmentEvent, AppointmentState> {
   }
 
   _fetchSchedules() async {
-    response = await _apiClient.get(SCHEDULES_FETCH_PATH);
+    response = jsonDecode(await _apiClient.get(SCHEDULES_FETCH_PATH));
     print("YOUR SCHEDULES ARE: $response");
   }
 }
