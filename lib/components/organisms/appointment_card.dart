@@ -39,6 +39,7 @@ class _AppointmentCardState extends State<AppointmentCard> {
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
