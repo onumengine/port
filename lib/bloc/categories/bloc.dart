@@ -24,7 +24,7 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
         yield CategoriesFetchedState(categories: listOfCategories);
       } catch (e) {
         errorMessage = e.toString();
-        yield ErrorState(errorMessage: errorMessage);
+        yield CategoriesErrorState(errorMessage: errorMessage);
       }
     }
   }

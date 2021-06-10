@@ -5,8 +5,7 @@ abstract class CategoriesState extends Equatable {
   List<Object> get props => [];
 }
 
-class CategoriesInitialState extends CategoriesState {
-}
+class CategoriesInitialState extends CategoriesState {}
 
 class CategoriesFetchingState extends CategoriesState {}
 
@@ -19,10 +18,10 @@ class CategoriesFetchedState extends CategoriesState {
   List<Object> get props => [categories];
 }
 
-class ErrorState extends CategoriesState {
+class CategoriesErrorState extends CategoriesState {
   String errorMessage;
 
-  ErrorState({this.errorMessage});
+  CategoriesErrorState({this.errorMessage});
 
   @override
   List<Object> get props => [errorMessage];

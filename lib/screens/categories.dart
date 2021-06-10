@@ -57,6 +57,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 width: screenSize.width,
                 child: CustomScrollView(
                   slivers: [
+                    /*
                     SliverAppBar(
                       elevation: 0,
                       expandedHeight: 100,
@@ -71,6 +72,11 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                         child: SearchBar(),
                       ),
                       floating: true,
+                    ), */
+                    SliverList(
+                      delegate: SliverChildListDelegate([
+                        SizedBox(height: 40),
+                      ]),
                     ),
                     SliverGrid(
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -156,7 +162,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               return Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (state is ErrorState) {
+            } else if (state is CategoriesErrorState) {
               return NetworkErrorComp(onTap: () {
                 _categoriesBloc.add(CategoriesFetchEvent());
               });
