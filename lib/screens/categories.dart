@@ -5,7 +5,7 @@ import 'package:port/bloc/categories/bloc.dart';
 import 'package:port/bloc/categories/event.dart';
 import 'package:port/bloc/categories/state.dart';
 import 'package:port/bloc/organizations/bloc.dart';
-import 'package:port/components/atoms/searchbar.dart';
+//import 'package:port/components/atoms/searchbar.dart';
 import 'package:port/components/molecules/category_card.dart';
 import 'package:port/components/molecules/network_error.dart';
 import 'package:port/screens/organizations.dart';
