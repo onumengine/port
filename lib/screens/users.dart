@@ -1,7 +1,6 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 import 'package:port/bloc/date_picker/bloc.dart';
 import 'package:port/bloc/scheduler/bloc.dart';
 import 'package:port/bloc/users/bloc.dart';
@@ -10,7 +9,6 @@ import 'package:port/bloc/users/state.dart';
 import 'package:port/components/molecules/network_error.dart';
 import 'package:port/components/molecules/user_card.dart';
 import 'package:port/screens/scheduler.dart';
-import 'package:port/singletons/appointment_data.dart';
 import 'package:port/utility/colors_main.dart';
 
 class UsersScreen extends StatefulWidget {

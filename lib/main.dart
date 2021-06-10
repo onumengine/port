@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:port/screens/splash_screen.dart';
-import 'package:port/singletons/appointment_data.dart';
 import 'package:port/utility/colors.dart';
 import 'utility/colors_main.dart';
 
 void main() {
-  GetIt.instance.registerSingleton<AppointmentData>(AppointmentData());
   runApp(MyApp());
 }
 

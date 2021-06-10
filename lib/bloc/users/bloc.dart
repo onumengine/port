@@ -1,11 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 import 'package:port/bloc/users/event.dart';
 import 'package:port/bloc/users/state.dart';
 import 'package:port/repository/api_client.dart';
-import 'package:port/singletons/appointment_data.dart';
 import 'package:port/utility/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
