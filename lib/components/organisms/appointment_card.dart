@@ -10,12 +10,12 @@ enum ApprovalStatus {
 
 class AppointmentCard extends StatefulWidget {
   String organizationName;
-  ApprovalStatus approvalStatus;
+  String approvalStatus;
   String startTime, expirationTime;
 
   AppointmentCard({
     @required this.organizationName,
-    this.approvalStatus = ApprovalStatus.Approved,
+    this.approvalStatus,
     this.startTime,
     this.expirationTime,
   });
@@ -74,7 +74,7 @@ class _AppointmentCardState extends State<AppointmentCard> {
                 ),
               ],
             ),
-            (widget.approvalStatus == ApprovalStatus.Approved)
+            (widget.approvalStatus == "0")
                 ? Container(
                     decoration: BoxDecoration(color: Color(0x1AB3B6C0)),
                     padding: EdgeInsets.symmetric(vertical: 1, horizontal: 11),
@@ -85,14 +85,14 @@ class _AppointmentCardState extends State<AppointmentCard> {
                       ],
                     ),
                   )
-                : (widget.approvalStatus == ApprovalStatus.Pending)
+                : (widget.approvalStatus == "1")
                     ? Container(
                         decoration: BoxDecoration(color: paleOrangeChipColor),
                         padding:
                             EdgeInsets.symmetric(vertical: 1, horizontal: 11),
                         child: Row(
                           children: <Widget>[
-                            Icon(Icons.check),
+                            Icon(Icons.check, color: orangeChipTextColor),
                             Text(
                               "Pending",
                               style: TextStyle(
@@ -102,14 +102,14 @@ class _AppointmentCardState extends State<AppointmentCard> {
                           ],
                         ),
                       )
-                    : (widget.approvalStatus == ApprovalStatus.Active)
+                    : (widget.approvalStatus == "2")
                         ? Container(
                             decoration: BoxDecoration(color: paleBlueChipColor),
                             padding: EdgeInsets.symmetric(
                                 vertical: 1, horizontal: 11),
                             child: Row(
                               children: <Widget>[
-                                Icon(Icons.check),
+                                Icon(Icons.check, color: blueChipTextColor),
                                 Text(
                                   "Active",
                                   style: TextStyle(color: blueChipTextColor),
@@ -117,7 +117,23 @@ class _AppointmentCardState extends State<AppointmentCard> {
                               ],
                             ),
                           )
-                        : Container(),
+                        : Container(
+                            decoration:
+                                BoxDecoration(color: paleOrangeChipColor),
+                            padding: EdgeInsets.symmetric(
+                                vertical: 1, horizontal: 11),
+                            child: Row(
+                              children: <Widget>[
+                                Icon(Icons.check, color: orangeChipTextColor),
+                                Text(
+                                  "Pending",
+                                  style: TextStyle(
+                                    color: orangeChipTextColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
           ],
         ),
       ),
