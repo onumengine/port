@@ -188,6 +188,7 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
                               ),
                             ),
                             onPressed: () {
+                              _schedulerBloc.add(ScheduleSubmissionEvent());
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(

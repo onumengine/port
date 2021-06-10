@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:port/bloc/date_picker/event.dart';
 import 'package:port/bloc/date_picker/state.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 ///  ## HOW THIS DATE_PICKER POPULATES ITS DAYS
 ///
@@ -26,6 +27,7 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
   int numberOfGridItemsToRender;
   int indexToRenderFrom;
   String finalDate;
+  SharedPreferences _preferences;
 
   Map<int, String> _numberToDayMap = <int, String>{
     1: "Monday",
@@ -142,6 +144,7 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
           firstWeekdayOfSelectedMonth + numberOfDaysInSelectedMonth;
       indexToRenderFrom = (DateTime(selectedYear, selectedMonth, 1).weekday);
       _setFinalDate();
+      await _saveDateToSharedPreferences();
       yield DatePickerState(
         selectedYear: selectedYear,
         selectedMonth: selectedMonth,
@@ -176,5 +179,17 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
   _setFinalDate() {
     this.finalDate = "$selectedYear-$selectedMonth-$selectedDay";
     print("THE FINAL DATE IN THE BLOC IS $finalDate");
+  }
+
+  Future<void> _saveDateToSharedPreferences() async {
+    try {
+      _preferences = await SharedPreferences.getInstance();
+      print(
+          "YOUR PREFERENCES BEFORE ASSIGNMENT ARE: ${_preferences.getKeys()}");
+      _preferences.setString("date", "$selectedYear-$selectedMonth-$selectedDay");
+      print("YOUR PREFERENCE KEYS ARE NOW: ${_preferences.getKeys()}");
+    } catch (e) {
+      print("SHARED_PREFERENCES ASSIGNMENT FAILED WITH AN EXCEPTION: $e");
+    }
   }
 }
