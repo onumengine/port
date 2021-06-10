@@ -54,7 +54,10 @@ class _AppointmentsListComponentState extends State<AppointmentsListComponent> {
               (BuildContext context, int index) {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 10),
-                  child: AppointmentCard(),
+                  child: AppointmentCard(
+                    organizationName:
+                        widget.todaysAppointments.elementAt(index)["org_name"],
+                  ),
                 );
               },
               childCount: widget.todaysAppointments.length,
@@ -80,7 +83,12 @@ class _AppointmentsListComponentState extends State<AppointmentsListComponent> {
               (BuildContext context, int index) {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 10),
-                  child: AppointmentCard(),
+                  child: AppointmentCard(
+                    organizationName:
+                        widget.otherAppointments.elementAt(index)["org_name"],
+                    startTime:
+                        widget.otherAppointments.elementAt(index)["time"],
+                  ),
                 );
               },
               childCount: widget.otherAppointments.length,
@@ -88,15 +96,6 @@ class _AppointmentsListComponentState extends State<AppointmentsListComponent> {
           )
         ],
       ),
-      /*
-      child: ListView.separated(
-        itemBuilder: (context, index) => AppointmentCard(
-          organizationName:
-              widget.listOfAppointments.elementAt(index)["rep_id"],
-        ),
-        separatorBuilder: (context, index) => SizedBox(height: 10),
-        itemCount: widget.listOfAppointments.length,
-      ), */
     );
   }
 }

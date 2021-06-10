@@ -11,10 +11,10 @@ enum ApprovalStatus {
 class AppointmentCard extends StatefulWidget {
   String organizationName;
   ApprovalStatus approvalStatus;
-  DateTime startTime, expirationTime;
+  String startTime, expirationTime;
 
   AppointmentCard({
-    this.organizationName = "Access Bank",
+    @required this.organizationName,
     this.approvalStatus = ApprovalStatus.Approved,
     this.startTime,
     this.expirationTime,
