@@ -74,15 +74,50 @@ class _AppointmentCardState extends State<AppointmentCard> {
                 ),
               ],
             ),
-            Container(
-              decoration: BoxDecoration(color: Color(0x1AB3B6C0)),
-              child: Row(
-                children: <Widget>[
-                  Icon(Icons.check),
-                  Text("Approved"),
-                ],
-              ),
-            ),
+            (widget.approvalStatus == ApprovalStatus.Approved)
+                ? Container(
+                    decoration: BoxDecoration(color: Color(0x1AB3B6C0)),
+                    padding: EdgeInsets.symmetric(vertical: 1, horizontal: 11),
+                    child: Row(
+                      children: <Widget>[
+                        Icon(Icons.check),
+                        Text("Approved"),
+                      ],
+                    ),
+                  )
+                : (widget.approvalStatus == ApprovalStatus.Pending)
+                    ? Container(
+                        decoration: BoxDecoration(color: paleOrangeChipColor),
+                        padding:
+                            EdgeInsets.symmetric(vertical: 1, horizontal: 11),
+                        child: Row(
+                          children: <Widget>[
+                            Icon(Icons.check),
+                            Text(
+                              "Pending",
+                              style: TextStyle(
+                                color: orangeChipTextColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    : (widget.approvalStatus == ApprovalStatus.Active)
+                        ? Container(
+                            decoration: BoxDecoration(color: paleBlueChipColor),
+                            padding: EdgeInsets.symmetric(
+                                vertical: 1, horizontal: 11),
+                            child: Row(
+                              children: <Widget>[
+                                Icon(Icons.check),
+                                Text(
+                                  "Active",
+                                  style: TextStyle(color: blueChipTextColor),
+                                ),
+                              ],
+                            ),
+                          )
+                        : Container(),
           ],
         ),
       ),
