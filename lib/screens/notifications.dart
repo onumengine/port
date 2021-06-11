@@ -64,7 +64,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                 ),
               ],
             );
-          } else if (state is NonEmptyNotificationsState) {
+          } else if (state is PopulatedNotificationsState) {
             return Container(
               padding: EdgeInsets.symmetric(
                 horizontal: _getHorizontalPadding(screenSize.width),

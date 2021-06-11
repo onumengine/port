@@ -12,7 +12,7 @@ class NotificationsRefreshingState extends NotificationsState {
   List<Object> get props => [];
 }
 
-class NonEmptyNotificationsState extends NotificationsState {
+class PopulatedNotificationsState extends NotificationsState {
   @override
   List<Object> get props => [];
 }
