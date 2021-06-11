@@ -35,9 +35,25 @@ class SuccessfulSubmissionState extends SubmitScreenState {}
 
 class SubmissionErrorState extends SubmitScreenState {
   final String errorMessage;
+  String date, time, duration, selectedPurpose;
+  List purposes;
 
-  SubmissionErrorState({@required this.errorMessage});
+  SubmissionErrorState({
+    @required this.errorMessage,
+    this.date,
+    this.time,
+    this.duration,
+    this.purposes = const [],
+    this.selectedPurpose,
+  });
 
   @override
-  List<Object> get props => [this.errorMessage];
+  List<Object> get props => [
+        this.errorMessage,
+        this.date,
+        this.time,
+        this.duration,
+        this.purposes,
+        this.selectedPurpose,
+      ];
 }
