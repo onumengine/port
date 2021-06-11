@@ -59,6 +59,12 @@ class _SubmitScreenState extends State<SubmitScreen> {
               ),
               (route) => false,
             );
+          } else if (state is SubmissionErrorState) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.errorMessage),
+              ),
+            );
           }
         },
         builder: (context, state) {
@@ -236,8 +242,6 @@ class _SubmitScreenState extends State<SubmitScreen> {
                 SizedBox(height: 40),
               ],
             );
-          } else {
-            return Center();
           }
         },
       ),
