@@ -38,7 +38,12 @@ class SubmitBloc extends Bloc<SubmitScreenEvent, SubmitScreenState> {
         yield SubmissionErrorState(errorMessage: e.toString());
       }
     } else if (event is FetchPreferencesDataEvent) {
-      await _initStateFromPrefs();
+      try {
+        await _initStateFromPrefs();
+      } catch (e) {
+        print("THE FOLLOWING ERROR HAS BEEN THROWN: $e");
+        yield SubmissionErrorState(errorMessage: e.toString());
+      }
     } else if (event is PurposesFetchEvent) {
       try {
         await _fetchPurposes();
