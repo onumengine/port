@@ -8,11 +8,11 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
 
   @override
   Stream<NotificationsState> mapEventToState(NotificationsEvent event) async* {
-    if (event is NotificationsRefreshEvent) {
+    if (event is NotificationsFetchEvent) {
       yield NotificationsRefreshingState();
-    } else if (event is NotificationsRefreshSuccessEvent) {
+    } else if (event is NotificationsFetchSuccessEvent) {
       yield NonEmptyNotificationsState();
-    } else if (event is NotificationsRefreshErrorEvent) {
+    } else if (event is NotificationsFetchErrorEvent) {
       yield NotificationsFetchUnsuccessfulState();
     }
   }
