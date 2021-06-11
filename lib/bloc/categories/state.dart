@@ -10,7 +10,7 @@ class CategoriesInitialState extends CategoriesState {}
 class CategoriesFetchingState extends CategoriesState {}
 
 class CategoriesFetchedState extends CategoriesState {
-  List<dynamic> categories;
+  final List<dynamic> categories;
 
   CategoriesFetchedState({this.categories});
 
@@ -19,7 +19,7 @@ class CategoriesFetchedState extends CategoriesState {
 }
 
 class CategoriesErrorState extends CategoriesState {
-  String errorMessage;
+  final String errorMessage;
 
   CategoriesErrorState({this.errorMessage});
 
