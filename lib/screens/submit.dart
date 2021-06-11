@@ -10,12 +10,6 @@ import 'package:port/screens/home.dart';
 import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
 
-enum AppointmentReasons {
-  reason1,
-  reason2,
-  reason3,
-}
-
 class SubmitScreen extends StatefulWidget {
   @override
   _SubmitScreenState createState() => _SubmitScreenState();
@@ -30,8 +24,9 @@ class _SubmitScreenState extends State<SubmitScreen> {
   void initState() {
     super.initState();
     _summaryNoteController = TextEditingController();
-    _submitBloc = BlocProvider.of<SubmitBloc>(context);
-    _submitBloc.add(PurposesFetchEvent());
+    _submitBloc = BlocProvider.of<SubmitBloc>(context)
+      ..add(FetchPreferencesDataEvent())
+      ..add(PurposesFetchEvent());
   }
 
   @override
@@ -99,9 +94,9 @@ class _SubmitScreenState extends State<SubmitScreen> {
                 ),
                 SizedBox(height: 20),
                 TimestampCard(
-                  selectedDate: "BlocProvider.finalDate",
-                  selectedTime: "hghhgh",
-                  selectedDuration: "selectedDuration",
+                  selectedDate: state.date,
+                  selectedTime: state.time,
+                  selectedDuration: state.duration,
                 ),
                 SizedBox(height: 20),
                 Padding(
