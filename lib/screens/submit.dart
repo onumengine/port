@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,6 +7,7 @@ import 'package:port/bloc/home/bloc.dart';
 import 'package:port/bloc/submit/bloc.dart';
 import 'package:port/bloc/submit/event.dart';
 import 'package:port/bloc/submit/state.dart';
+import 'package:port/components/molecules/network_error.dart';
 import 'package:port/components/organisms/timestamp_card.dart';
 import 'package:port/screens/home.dart';
 import 'package:port/utility/colors.dart';
@@ -60,11 +63,14 @@ class _SubmitScreenState extends State<SubmitScreen> {
               (route) => false,
             );
           } else if (state is SubmissionErrorState) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(state.errorMessage),
-              ),
-            );
+            return Timer(Duration(milliseconds: 10000), () {
+              Navigator.pop(context);
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(state.errorMessage),
+                ),
+              );
+            });
           }
         },
         builder: (context, state) {
@@ -240,6 +246,24 @@ class _SubmitScreenState extends State<SubmitScreen> {
                   ),
                 ),
                 SizedBox(height: 40),
+              ],
+            );
+          } else if (state is InitialSubmitScreenState) {
+            return Container();
+          } else if (state is SubmissionErrorState) {
+            return Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  "${state.errorMessage}",
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  "You will be redirected to the previous page soon",
+                  textAlign: TextAlign.center,
+                ),
               ],
             );
           }
