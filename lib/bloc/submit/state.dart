@@ -5,6 +5,8 @@ abstract class SubmitScreenState extends Equatable {
   List<Object> get props => [];
 }
 
+class InitialSubmitScreenState extends SubmitScreenState{}
+
 class DefaultState extends SubmitScreenState {
   String date, time, duration, selectedPurpose;
   List purposes;
