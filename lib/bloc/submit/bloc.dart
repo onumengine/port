@@ -33,15 +33,29 @@ class SubmitBloc extends Bloc<SubmitScreenEvent, SubmitScreenState> {
         );
         yield SuccessfulSubmissionState();
       } catch (e) {
-        print("THE FOLLOWING ERROR HAS BEEN THROWN: $e");
-        yield SubmissionErrorState(errorMessage: e.toString());
+        print("THE FOLLOWING ERROR HAS BEEN THROWN IN POSTING: $e");
+        yield SubmissionErrorState(
+          errorMessage: e.toString(),
+          selectedPurpose: selectedPurpose,
+          purposes: arrayOfPurposes,
+          date: date,
+          time: time,
+          duration: duration,
+        );
       }
     } else if (event is FetchPreferencesDataEvent) {
       try {
         await _initStateFromPrefs();
       } catch (e) {
         print("THE FOLLOWING ERROR HAS BEEN THROWN: $e");
-        yield SubmissionErrorState(errorMessage: e.toString());
+        yield SubmissionErrorState(
+          errorMessage: e.toString(),
+          selectedPurpose: selectedPurpose,
+          purposes: arrayOfPurposes,
+          date: date,
+          time: time,
+          duration: duration,
+        );
       }
     } else if (event is PurposesFetchEvent) {
       try {
@@ -93,9 +107,9 @@ class SubmitBloc extends Bloc<SubmitScreenEvent, SubmitScreenState> {
         "date": date,
         "time": time,
         "duration": duration,
-        "purposeId": purposeId,
-        "repId": repId,
-        "userId": userId,
+        "purpose_id": purposeId,
+        "rep_id": repId,
+        "user_id": userId,
       },
     );
   }
