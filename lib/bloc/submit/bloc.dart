@@ -12,8 +12,7 @@ class SubmitBloc extends Bloc<SubmitScreenEvent, SubmitScreenState> {
   ApiClient _apiClient = ApiClient();
   Map<String, dynamic> response;
   List arrayOfPurposes;
-  String date, time, duration, selectedPurpose, repId;
-  var user;
+  String date, time, duration, selectedPurpose, repId, userId;
   SharedPreferences _preferences;
 
   @override
@@ -30,7 +29,7 @@ class SubmitBloc extends Bloc<SubmitScreenEvent, SubmitScreenState> {
           purposeId: selectedPurpose,
           repId: repId,
           note: event.note,
-          userId: user["id"].toString(),
+          userId: userId,
         );
         yield SuccessfulSubmissionState();
       } catch (e) {
@@ -108,10 +107,8 @@ class SubmitBloc extends Bloc<SubmitScreenEvent, SubmitScreenState> {
     date = _preferences.getString("date");
     time = _preferences.getString("time");
     duration = _preferences.getString("duration");
-    repId = _preferences.getString("repId");
-    user = _preferences.get("user");
-    print(
-        "THE SHARED PREFERENCES YOU FETCHED ARE: \n DATE: $date \n TIME: $time \n DURATION: $duration");
-    print("THE USER THAT YOU SAVED TO PREFERENCES IS: ${user["id"]}");
+    repId = (_preferences.getString("repId"));
+    userId = jsonDecode(_preferences.get("user"))["id"];
+    print("YOUR USER PREFERENCE IS $userId");
   }
 }
