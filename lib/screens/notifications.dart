@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:port/bloc/notifications/bloc.dart';
+import 'package:port/bloc/notifications/event.dart';
 import 'package:port/bloc/notifications/state.dart';
 import 'package:port/components/molecules/notification_card.dart';
 import 'package:port/utility/colors.dart';
@@ -18,6 +19,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   void initState() {
     _notificationBloc = BlocProvider.of<NotificationsBloc>(context);
     super.initState();
+    _notificationBloc.add(NotificationsFetchEvent());
   }
 
   @override
