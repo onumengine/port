@@ -26,6 +26,7 @@ const String LOGGED_IN_USER = "user";
 const String CATEGORIES_FETCH_PATH = BASE_URL + "categories";
 const String ICON_FETCH_PATH = "http://innovativehill.com/port/api/icons/";
 const String LOGIN_STRING_REQUEST = BASE_URL + "user/login";
+const String NOTIFICATIONS_FETCH_PATH = BASE_URL + "user/notification/1";
 const String PURPOSES_FETCH_PATH =
     "http://innovativehill.com/port/api/schedule/purpose";
 const String SCHEDULES_FETCH_PATH = BASE_URL + "user/schedule/3";
