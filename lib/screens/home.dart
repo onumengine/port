@@ -38,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _tabs = [
       BlocBuilder<HomeBloc, AppointmentState>(
         builder: (context, state) {
-          if (state is EmptyState) {
+          if (state is EmptyAppoinmentsState) {
             return EmptyAppointmentsComponent();
           } else if (state is BookedState) {
             return AppointmentsListComponent(
@@ -49,6 +49,10 @@ class _MyHomePageState extends State<MyHomePage> {
             return NetworkErrorComp(onTap: () {
               _homeBloc.add(SchedulesFetchEvent());
             });
+          } else if (state is AppointmentsFetchingState) {
+            return Center(child: CircularProgressIndicator());
+          } else {
+            return Center();
           }
         },
       ),

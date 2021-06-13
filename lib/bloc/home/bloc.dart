@@ -11,11 +11,12 @@ class HomeBloc extends Bloc<AppointmentEvent, AppointmentState> {
   var response;
 
   @override
-  get initialState => EmptyState();
+  get initialState => AppointmentsFetchingState();
 
   @override
   Stream<AppointmentState> mapEventToState(AppointmentEvent event) async* {
     if (event is SchedulesFetchEvent) {
+      yield AppointmentsFetchingState();
       try {
         await _fetchSchedules();
         yield BookedState(

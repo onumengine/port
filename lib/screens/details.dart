@@ -1,11 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:port/components/atoms/appointment_status_tile.dart';
-import 'package:port/components/organisms/timestamp_card.dart';
+import 'package:port/components/organisms/editable_timestamp_card.dart';
 import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
 
 class DetailsScreen extends StatefulWidget {
+  Map<String, dynamic> appointment;
+
+  DetailsScreen({this.appointment});
+
   _DetailsScreenState createState() => _DetailsScreenState();
 }
 
@@ -64,7 +68,11 @@ class _DetailsScreenState extends State<DetailsScreen> {
             ),
           ),
           SizedBox(height: 20),
-          TimestampCard(),
+          EditableTimestampCard(
+            selectedDate: widget.appointment["date"],
+            selectedTime: widget.appointment["time"],
+            selectedDuration: widget.appointment["duration"],
+          ),
           SizedBox(height: 20),
           Padding(
             padding: EdgeInsets.symmetric(

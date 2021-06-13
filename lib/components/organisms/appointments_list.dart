@@ -92,10 +92,14 @@ class _AppointmentsListComponentState extends State<AppointmentsListComponent> {
                     approvalStatus: widget.otherAppointments
                         .elementAt(index)["status"]
                         .toString(),
-                    onTap: (){
+                    onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context)=> DetailsScreen()),
+                        MaterialPageRoute(
+                          builder: (context) => DetailsScreen(
+                            appointment: widget.otherAppointments.elementAt(index),
+                          ),
+                        ),
                       );
                     },
                   ),
