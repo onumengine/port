@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 abstract class NotificationsState extends Equatable {}
 
@@ -13,8 +14,12 @@ class NotificationsRefreshingState extends NotificationsState {
 }
 
 class PopulatedNotificationsState extends NotificationsState {
+  final List notifications;
+
+  PopulatedNotificationsState({@required this.notifications});
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [this.notifications];
 }
 
 class NotificationsFetchUnsuccessfulState extends NotificationsState {
