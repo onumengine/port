@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:port/components/organisms/appointment_card.dart';
+import 'package:port/components/molecules/appointment_card.dart';
+import 'package:port/screens/details.dart';
 
 class AppointmentsListComponent extends StatefulWidget {
   List todaysAppointments, otherAppointments;
@@ -91,6 +92,12 @@ class _AppointmentsListComponentState extends State<AppointmentsListComponent> {
                     approvalStatus: widget.otherAppointments
                         .elementAt(index)["status"]
                         .toString(),
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context)=> DetailsScreen()),
+                      );
+                    },
                   ),
                 );
               },
