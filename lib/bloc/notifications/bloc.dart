@@ -40,5 +40,6 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
 
   _initializeNotificationsWithData(Map<String, dynamic> data) {
     notifications = data["data"];
+    print("YOUR NOTIFICATIONS ARE: $notifications");
   }
 }

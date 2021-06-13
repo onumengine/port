@@ -72,14 +72,13 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               height: screenSize.height,
               width: screenSize.width,
               child: ListView.separated(
-                itemCount: 5,
+                itemCount: state.notifications.length,
                 itemBuilder: (context, index) => Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: NotificationCard(
-                    title: "Request Approved",
-                    body:
-                        "Your request to meet with Citi bank has been approved and is scheduled for 9:00AM, 20th april, 2021",
-                    timeStamp: "24, April 2021",
+                    title: state.notifications.elementAt(index)["title"],
+                    body: state.notifications.elementAt(index)["message"],
+                    timeStamp: state.notifications.elementAt(index)["time"],
                   ),
                 ),
                 separatorBuilder: (context, index) => SizedBox(height: 10),
