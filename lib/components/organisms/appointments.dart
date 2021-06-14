@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:port/components/molecules/appointment_card.dart';
 import 'package:port/screens/details.dart';
 
-class AppointmentsListComponent extends StatefulWidget {
+class AppointmentsComponent extends StatefulWidget {
   List todaysAppointments, otherAppointments;
 
-  AppointmentsListComponent({
+  AppointmentsComponent({
     @required this.todaysAppointments,
     @required this.otherAppointments,
   });
 
   @override
-  _AppointmentsListComponentState createState() =>
-      _AppointmentsListComponentState();
+  _AppointmentsComponentState createState() =>
+      _AppointmentsComponentState();
 }
 
-class _AppointmentsListComponentState extends State<AppointmentsListComponent> {
+class _AppointmentsComponentState extends State<AppointmentsComponent> {
   double _getHorizontalPadding(double screenWidth) {
     if (screenWidth < 592)
       return 12;
