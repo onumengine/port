@@ -23,6 +23,9 @@ const appBarTitleColor = Color(0xFF171D33);
 const colorLightCardShadow = Color(0xD663E33);
 const lightIconColor = Color(0xFF9597A1);
 
+const tabSelectedTextColor = Color(0xFF3B414B);
+const tabUnselectedTextColor = Color(0xFFA6AAB4);
+
 const fontRegular = 'Regular';
 const fontMedium = 'Medium';
 const fontSemibold = 'Semibold';

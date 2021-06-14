@@ -6,7 +6,7 @@ import 'package:port/bloc/home/event.dart';
 import 'package:port/bloc/home/state.dart';
 import 'package:port/bloc/notifications/bloc.dart';
 import 'package:port/components/molecules/network_error.dart';
-import 'package:port/components/organisms/appointments_list.dart';
+import 'package:port/components/organisms/appointments.dart';
 import 'package:port/components/organisms/empty_appointments.dart';
 import 'package:port/components/organisms/more.dart';
 import 'package:port/screens/categories.dart';
@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
           if (state is EmptyAppoinmentsState) {
             return EmptyAppointmentsComponent();
           } else if (state is BookedState) {
-            return AppointmentsListComponent(
+            return AppointmentsComponent(
               todaysAppointments: state.todaysSchedules,
               otherAppointments: state.otherSchedules,
             );
