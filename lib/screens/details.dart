@@ -108,7 +108,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       child: Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          "Business Discussion",
+                          widget.appointment["purpose"],
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
@@ -139,9 +139,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       width: double.infinity,
                       padding:
                           EdgeInsets.symmetric(horizontal: 17, vertical: 17),
-                      child: Center(
+                      child: Align(
+                        alignment: Alignment.centerLeft,
                         child: Text(
-                          "Went to present a proposal on a solution that can help your business improve and skyrocket your business to the next level",
+                        widget.appointment["note"],
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
