@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:port/bloc/home/bloc.dart';
 import 'package:port/screens/schedules.dart';
 import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
@@ -105,7 +107,10 @@ class _MoreComponentState extends State<MoreComponent> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => SchedulesScreen(),
+                    builder: (context) => BlocProvider<HomeBloc>(
+                      create: (context) => HomeBloc(),
+                      child: SchedulesScreen(),
+                    ),
                   ),
                 );
               },
