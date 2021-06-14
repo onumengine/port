@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:port/bloc/home/bloc.dart';
 import 'package:port/components/molecules/appointment_card.dart';
 import 'package:port/components/organisms/appointments.dart';
 import 'package:port/utility/colors.dart';
@@ -11,6 +13,15 @@ class SchedulesScreen extends StatefulWidget {
 }
 
 class _SchedulesScreenState extends State<SchedulesScreen> {
+  HomeBloc _homeBloc;
+
+
+  @override
+  void initState() {
+    super.initState();
+    _homeBloc = BlocProvider.of<HomeBloc>(context);
+  }
+
   double _getHorizontalPadding(double screenWidth) {
     if (screenWidth < 592)
       return 8;
