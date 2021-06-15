@@ -88,7 +88,9 @@ class _SchedulesScreenState extends State<SchedulesScreen> {
               return TabBarView(
                 children: [
                   Center(
-                    child: ListView.separated(
+                    child: (state.todaysSchedules.length == 0) ? EmptyAppointmentsComponent(
+                      instructionalText: "You don't have any appointments for today"
+                    ) : ListView.separated(
                       padding: EdgeInsets.symmetric(
                         horizontal: _getHorizontalPadding(screenSize.width),
                         vertical: 24,
@@ -120,7 +122,9 @@ class _SchedulesScreenState extends State<SchedulesScreen> {
                     ),
                   ),
                   Center(
-                    child: ListView.separated(
+                    child: (state.otherSchedules.length == 0) ? EmptyAppointmentsComponent(
+                      instructionalText: "You dont have any appointments for other days",
+                    ) : ListView.separated(
                       padding: EdgeInsets.symmetric(
                         horizontal: _getHorizontalPadding(screenSize.width),
                         vertical: 24,

@@ -8,12 +8,19 @@ import 'package:flutter_svg/flutter_svg.dart';
 /// I hard-coded the onTap handler of this component because it is rendered in the UI
 /// before its [BlocProvider] is initialized.
 class EmptyAppointmentsComponent extends StatelessWidget {
+  final String instructionalText;
+  VoidCallback onTap;
+
+  EmptyAppointmentsComponent({
+    this.instructionalText =
+        "You have not added any appointments yet.\nClick the add button below to get\nstarted",
+    this.onTap,
+  });
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        BlocProvider.of<HomeBloc>(context).add(SchedulesFetchEvent());
-      },
+      onTap: this.onTap,
       child: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -46,7 +53,7 @@ class EmptyAppointmentsComponent extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Text(
-              "You have not added any appointments yet.\nClick the add button below to get\nstarted",
+              this.instructionalText,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.w600,
