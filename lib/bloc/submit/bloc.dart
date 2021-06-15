@@ -79,19 +79,25 @@ class SubmitBloc extends Bloc<SubmitScreenEvent, SubmitScreenState> {
         time: time,
         duration: duration,
       );
+    } else if (event is ClearSubmissionDataEvent) {
+      _preferences.remove("date");
+      _preferences.remove("time");
+      _preferences.remove("duration");
+      _preferences.remove("repId");
+      print("AFTER CLEARING PREFS, YOUR PREFS ARE: ${_preferences.getKeys()}");
     }
   }
 
-  _fetchPurposes() async {
+  Future<void> _fetchPurposes() async {
     response = jsonDecode(await _apiClient.get(PURPOSES_FETCH_PATH));
   }
 
-  _initArrayOfPurposes() {
+  void _initArrayOfPurposes() {
     arrayOfPurposes = response["data"];
     arrayOfPurposes = (arrayOfPurposes.map((e) => e["purpose"])).toList();
   }
 
-  _postSchedule({
+  Future<void> _postSchedule({
     @required String date,
     @required String time,
     @required String duration,

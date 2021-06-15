@@ -50,3 +50,5 @@ class SubmissionEvent extends SubmitScreenEvent {
         this.userId,
       ];
 }
+
+class ClearSubmissionDataEvent extends SubmitScreenEvent {}

@@ -52,6 +52,7 @@ class _SubmitScreenState extends State<SubmitScreen> {
       body: BlocConsumer<SubmitBloc, SubmitScreenState>(
         listener: (context, state) {
           if (state is SuccessfulSubmissionState) {
+            _submitBloc.add(ClearSubmissionDataEvent());
             Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(
