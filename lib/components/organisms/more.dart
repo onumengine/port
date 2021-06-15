@@ -24,96 +24,117 @@ class _MoreComponentState extends State<MoreComponent> {
   Widget build(BuildContext context) {
     var _screenSize = MediaQuery.of(context).size;
 
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: _getHorizontalPadding(_screenSize.width),
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(bottom: 25.0),
-            child: PhysicalModel(
-              color: opBackgroundColor,
-              shadowColor: colorCardShadow,
-              elevation: 10,
-              borderRadius: BorderRadius.circular(8),
-              child: Container(
-                padding: EdgeInsets.symmetric(vertical: 20),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    ListTile(
-                      leading: SvgPicture.asset(
-                        "lib/vectors/default_avatar.svg",
-                        semanticsLabel: "Avatar",
-                        height: 72,
-                        width: 72,
-                      ),
-                      title: Text(
-                        "Neelesh Chaudhary",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 21,
-                          color: opPrimaryColor,
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: _getHorizontalPadding(_screenSize.width),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(bottom: 25.0),
+              child: PhysicalModel(
+                color: opBackgroundColor,
+                shadowColor: colorCardShadow,
+                elevation: 10,
+                borderRadius: BorderRadius.circular(8),
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      ListTile(
+                        leading: SvgPicture.asset(
+                          "lib/vectors/default_avatar.svg",
+                          semanticsLabel: "Avatar",
+                          height: 72,
+                          width: 72,
+                        ),
+                        title: Text(
+                          "Neelesh Chaudhary",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 21,
+                            color: opPrimaryColor,
+                          ),
+                        ),
+                        subtitle: Text(
+                          "UI/UX Designer",
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
                         ),
                       ),
-                      subtitle: Text(
-                        "UI/UX Designer",
-                        style: TextStyle(
-                          fontSize: 18,
-                        ),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        print("Clicked edit profile");
-                      },
-                      child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 6),
-                        width: _screenSize.width / 2,
-                        child: Center(
-                          child: Text(
-                            "Edit Profile",
-                            style: TextStyle(
-                              color: opTextPrimaryColor,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16,
+                      InkWell(
+                        onTap: () {
+                          print("Clicked edit profile");
+                        },
+                        child: Container(
+                          padding: EdgeInsets.symmetric(vertical: 6),
+                          width: _screenSize.width / 2,
+                          child: Center(
+                            child: Text(
+                              "Edit Profile",
+                              style: TextStyle(
+                                color: opTextPrimaryColor,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
+                              ),
                             ),
                           ),
-                        ),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: opTextPrimaryColor,
-                            width: 2,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: opTextPrimaryColor,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
                           ),
-                          borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 25.0),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => BlocProvider<HomeBloc>(
-                      create: (context) => HomeBloc(),
-                      child: SchedulesScreen(),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 25.0),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BlocProvider<HomeBloc>(
+                        create: (context) => HomeBloc(),
+                        child: SchedulesScreen(),
+                      ),
+                    ),
+                  );
+                },
+                child: PhysicalModel(
+                  color: opBackgroundColor,
+                  shadowColor: colorCardShadow,
+                  elevation: 10,
+                  borderRadius: BorderRadius.circular(8),
+                  child: ListTile(
+                    leading: SvgPicture.asset(
+                      "lib/vectors/appointments_icon.svg",
+                      semanticsLabel: "Appointments icon",
+                    ),
+                    title: Text(
+                      "Appointments",
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
-                );
-              },
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 25.0),
               child: PhysicalModel(
                 color: opBackgroundColor,
                 shadowColor: colorCardShadow,
@@ -121,94 +142,75 @@ class _MoreComponentState extends State<MoreComponent> {
                 borderRadius: BorderRadius.circular(8),
                 child: ListTile(
                   leading: SvgPicture.asset(
-                    "lib/vectors/appointments_icon.svg",
-                    semanticsLabel: "Appointments icon",
+                    "lib/vectors/settings_icon.svg",
+                    semanticsLabel: "Settings icon",
                   ),
                   title: Text(
-                    "Appointments",
+                    "Settings",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 25.0),
-            child: PhysicalModel(
-              color: opBackgroundColor,
-              shadowColor: colorCardShadow,
-              elevation: 10,
-              borderRadius: BorderRadius.circular(8),
-              child: ListTile(
-                leading: SvgPicture.asset(
-                  "lib/vectors/settings_icon.svg",
-                  semanticsLabel: "Settings icon",
-                ),
-                title: Text(
-                  "Settings",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 25.0),
-            child: PhysicalModel(
-              color: opBackgroundColor,
-              shadowColor: colorCardShadow,
-              elevation: 10,
-              borderRadius: BorderRadius.circular(8),
-              child: ListTile(
-                leading: SvgPicture.asset(
-                  "lib/vectors/share_icon.svg",
-                  semanticsLabel: "Share icon",
-                ),
-                title: Text(
-                  "Share",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 25.0),
+              child: PhysicalModel(
+                color: opBackgroundColor,
+                shadowColor: colorCardShadow,
+                elevation: 10,
+                borderRadius: BorderRadius.circular(8),
+                child: ListTile(
+                  leading: SvgPicture.asset(
+                    "lib/vectors/share_icon.svg",
+                    semanticsLabel: "Share icon",
+                  ),
+                  title: Text(
+                    "Share",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 25.0),
-            child: PhysicalModel(
-              color: opBackgroundColor,
-              shadowColor: colorCardShadow,
-              elevation: 10,
-              borderRadius: BorderRadius.circular(8),
-              child: ListTile(
-                leading: SvgPicture.asset(
-                  "lib/vectors/about_icon.svg",
-                  semanticsLabel: "About icon",
-                ),
-                title: Text(
-                  "About",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 25.0),
-            child: PhysicalModel(
-              color: opBackgroundColor,
-              shadowColor: colorCardShadow,
-              elevation: 10,
-              borderRadius: BorderRadius.circular(8),
-              child: ListTile(
-                leading: SvgPicture.asset(
-                  "lib/vectors/logout_icon.svg",
-                  semanticsLabel: "Logout icon",
-                ),
-                title: Text(
-                  "Logout",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 25.0),
+              child: PhysicalModel(
+                color: opBackgroundColor,
+                shadowColor: colorCardShadow,
+                elevation: 10,
+                borderRadius: BorderRadius.circular(8),
+                child: ListTile(
+                  leading: SvgPicture.asset(
+                    "lib/vectors/about_icon.svg",
+                    semanticsLabel: "About icon",
+                  ),
+                  title: Text(
+                    "About",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.only(bottom: 25.0),
+              child: PhysicalModel(
+                color: opBackgroundColor,
+                shadowColor: colorCardShadow,
+                elevation: 10,
+                borderRadius: BorderRadius.circular(8),
+                child: ListTile(
+                  leading: SvgPicture.asset(
+                    "lib/vectors/logout_icon.svg",
+                    semanticsLabel: "Logout icon",
+                  ),
+                  title: Text(
+                    "Logout",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
