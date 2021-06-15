@@ -71,7 +71,7 @@ class _SubmitScreenState extends State<SubmitScreen> {
                     ErrorComponent(errorMessage: state.errorMessage),
               ),
             );
-            return Timer(Duration(milliseconds: 10000), () {
+            return Timer(Duration(milliseconds: 500), () {
               Navigator.pop(context);
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(

@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:port/bloc/home/event.dart';
 import 'package:port/bloc/home/state.dart';
 import 'package:port/repository/api_client.dart';
+import 'package:port/repository/user_repository.dart';
 import 'package:port/utility/constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeBloc extends Bloc<AppointmentEvent, AppointmentState> {
   ApiClient _apiClient = ApiClient();

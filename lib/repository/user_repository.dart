@@ -140,4 +140,11 @@ class UserRepository extends UserService {
     User user = User.fromJson(data);
     return user;
   }
+
+  @override
+  Future<bool> signOut() async {
+    await openCache();
+    prefs.clear();
+    return (prefs.containsKey(Constants.LOGGED_IN_USER) || prefs.containsKey(Constants.CHECK_LOGIN_STATUS));
+  }
 }

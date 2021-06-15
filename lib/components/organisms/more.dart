@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:port/bloc/home/bloc.dart';
+import 'package:port/repository/user_repository.dart';
 import 'package:port/screens/schedules.dart';
+import 'package:port/screens/splash_screen.dart';
 import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MoreComponent extends StatefulWidget {
   @override
@@ -206,6 +209,14 @@ class _MoreComponentState extends State<MoreComponent> {
                     "Logout",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
+                  onTap: () async {
+                    try {
+                      await UserRepository().signOut();
+                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => SplashScreen()), (route) => false);
+                    } catch (e) {
+                      print("SIGN OUT ENDED WITH AN ERROR");
+                    }
+                  },
                 ),
               ),
             ),
