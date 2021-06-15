@@ -2,23 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
 
-enum ApprovalStatus {
-  Approved,
-  Pending,
-  Active,
-}
-
 class AppointmentCard extends StatefulWidget {
   String organizationName;
   String approvalStatus;
-  String startTime, expirationTime;
+  String startTime, duration;
   VoidCallback onTap;
 
   AppointmentCard({
     @required this.organizationName,
     this.approvalStatus,
     this.startTime,
-    this.expirationTime,
+    this.duration,
     this.onTap,
   });
 
@@ -68,7 +62,7 @@ class _AppointmentCardState extends State<AppointmentCard> {
                         width: 6,
                       ),
                       Text(
-                        "${widget.startTime} - ${widget.expirationTime}",
+                        "${widget.startTime} | ${widget.duration}mins",
                         style: TextStyle(
                           color: paleTextColor,
                           fontSize: 16,

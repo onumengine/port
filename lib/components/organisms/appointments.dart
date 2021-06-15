@@ -89,6 +89,7 @@ class _AppointmentsComponentState extends State<AppointmentsComponent> {
                         widget.otherAppointments.elementAt(index)["org_name"],
                     startTime:
                         widget.otherAppointments.elementAt(index)["time"],
+                    duration: widget.otherAppointments.elementAt(index)["duration"],
                     approvalStatus: widget.otherAppointments
                         .elementAt(index)["status"]
                         .toString(),
