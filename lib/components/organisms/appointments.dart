@@ -3,7 +3,7 @@ import 'package:port/components/molecules/appointment_card.dart';
 import 'package:port/screens/details.dart';
 
 class AppointmentsComponent extends StatefulWidget {
-  List todaysAppointments, otherAppointments;
+  final List todaysAppointments, otherAppointments;
 
   AppointmentsComponent({
     @required this.todaysAppointments,
@@ -28,93 +28,87 @@ class _AppointmentsComponentState extends State<AppointmentsComponent> {
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
 
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: _getHorizontalPadding(screenSize.width),
-      ),
-      width: screenSize.width,
-      child: CustomScrollView(
-        slivers: [
-          SliverList(
-            delegate: SliverChildListDelegate([
-              Padding(
-                padding: const EdgeInsets.only(left: 7),
-                child: Text(
-                  "Today",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                  ),
+    return CustomScrollView(
+      slivers: [
+        SliverList(
+          delegate: SliverChildListDelegate([
+            Padding(
+              padding: const EdgeInsets.only(left: 19),
+              child: Text(
+                "Today",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
-              SizedBox(height: 19),
-            ]),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: AppointmentCard(
-                    organizationName: widget.todaysAppointments.elementAt(index)["org_name"],
-                    startTime: widget.todaysAppointments.elementAt(index)["time"],
-                    duration: widget.todaysAppointments.elementAt(index)["duration"],
-                    approvalStatus: widget.todaysAppointments
-                        .elementAt(index)["status"]
-                        .toString(),
-                  ),
-                );
-              },
-              childCount: widget.todaysAppointments.length,
             ),
+            SizedBox(height: 19),
+          ]),
+        ),
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (BuildContext context, int index) {
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 10, left: 12, right: 12),
+                child: AppointmentCard(
+                  organizationName: widget.todaysAppointments.elementAt(index)["org_name"],
+                  startTime: widget.todaysAppointments.elementAt(index)["time"],
+                  duration: widget.todaysAppointments.elementAt(index)["duration"],
+                  approvalStatus: widget.todaysAppointments
+                      .elementAt(index)["status"]
+                      .toString(),
+                ),
+              );
+            },
+            childCount: widget.todaysAppointments.length,
           ),
-          SliverList(
-            delegate: SliverChildListDelegate([
-              Padding(
-                padding: const EdgeInsets.only(left: 7),
-                child: Text(
-                  "Others",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                  ),
+        ),
+        SliverList(
+          delegate: SliverChildListDelegate([
+            Padding(
+              padding: const EdgeInsets.only(left: 19),
+              child: Text(
+                "Others",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
-              SizedBox(height: 19),
-            ]),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: AppointmentCard(
-                    organizationName:
-                        widget.otherAppointments.elementAt(index)["org_name"],
-                    startTime:
-                        widget.otherAppointments.elementAt(index)["time"],
-                    duration: widget.otherAppointments.elementAt(index)["duration"],
-                    approvalStatus: widget.otherAppointments
-                        .elementAt(index)["status"]
-                        .toString(),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DetailsScreen(
-                            appointment: widget.otherAppointments.elementAt(index),
-                          ),
+            ),
+            SizedBox(height: 19),
+          ]),
+        ),
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (BuildContext context, int index) {
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 10, left: 12, right: 12),
+                child: AppointmentCard(
+                  organizationName:
+                      widget.otherAppointments.elementAt(index)["org_name"],
+                  startTime:
+                      widget.otherAppointments.elementAt(index)["time"],
+                  duration: widget.otherAppointments.elementAt(index)["duration"],
+                  approvalStatus: widget.otherAppointments
+                      .elementAt(index)["status"]
+                      .toString(),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailsScreen(
+                          appointment: widget.otherAppointments.elementAt(index),
                         ),
-                      );
-                    },
-                  ),
-                );
-              },
-              childCount: widget.otherAppointments.length,
-            ),
-          )
-        ],
-      ),
+                      ),
+                    );
+                  },
+                ),
+              );
+            },
+            childCount: widget.otherAppointments.length,
+          ),
+        )
+      ],
     );
   }
 }
