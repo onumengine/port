@@ -39,7 +39,11 @@ class _MyHomePageState extends State<MyHomePage> {
       BlocBuilder<HomeBloc, AppointmentState>(
         builder: (context, state) {
           if (state is EmptyAppoinmentsState) {
-            return EmptyAppointmentsComponent();
+            return EmptyAppointmentsComponent(
+              onTap: () {
+                _homeBloc.add(SchedulesFetchEvent());
+              },
+            );
           } else if (state is BookedState) {
             return AppointmentsComponent(
               todaysAppointments: state.todaysSchedules,

@@ -89,7 +89,7 @@ class _SchedulesScreenState extends State<SchedulesScreen> {
                 children: [
                   Center(
                     child: (state.todaysSchedules.length == 0) ? EmptyAppointmentsComponent(
-                      instructionalText: "You don't have any appointments for today"
+                      instructionalText: "You don't have any appointments for today",
                     ) : ListView.separated(
                       padding: EdgeInsets.symmetric(
                         horizontal: _getHorizontalPadding(screenSize.width),
@@ -122,7 +122,7 @@ class _SchedulesScreenState extends State<SchedulesScreen> {
                     ),
                   ),
                   Center(
-                    child: (state.otherSchedules.length == 0) ? EmptyAppointmentsComponent(
+                    child: (approvedAppointments.length == 0) ? EmptyAppointmentsComponent(
                       instructionalText: "You dont have any appointments for other days",
                     ) : ListView.separated(
                       padding: EdgeInsets.symmetric(
