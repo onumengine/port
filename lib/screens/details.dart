@@ -56,7 +56,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ),
                 child: Center(
                   child: Text(
-                    "Bank of America",
+                    widget.appointment["org_name"],
                     style: TextStyle(
                       color: Color(0xFFFD9453),
                       fontSize: 18,
