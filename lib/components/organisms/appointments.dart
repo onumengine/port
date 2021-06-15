@@ -56,8 +56,12 @@ class _AppointmentsComponentState extends State<AppointmentsComponent> {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 10),
                   child: AppointmentCard(
-                    organizationName:
-                        widget.todaysAppointments.elementAt(index)["org_name"],
+                    organizationName: widget.todaysAppointments.elementAt(index)["org_name"],
+                    startTime: widget.todaysAppointments.elementAt(index)["time"],
+                    duration: widget.todaysAppointments.elementAt(index)["duration"],
+                    approvalStatus: widget.todaysAppointments
+                        .elementAt(index)["status"]
+                        .toString(),
                   ),
                 );
               },
