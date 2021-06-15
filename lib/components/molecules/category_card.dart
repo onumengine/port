@@ -3,8 +3,8 @@ import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
 
 class CategoryCard extends StatefulWidget {
-  String iconPath, semanticLabel, categoryName;
-  VoidCallback onTap;
+  final String iconPath, semanticLabel, categoryName;
+  final VoidCallback onTap;
 
   CategoryCard({
     this.iconPath,

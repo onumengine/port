@@ -13,9 +13,9 @@ import 'package:port/screens/users.dart';
 import 'package:port/utility/colors_main.dart';
 
 class OrganizationsScreen extends StatefulWidget {
-  String categoryId;
+  String categoryId, organizationType;
 
-  OrganizationsScreen({this.categoryId});
+  OrganizationsScreen({this.categoryId, this.organizationType,});
 
   @override
   _OrganizationsScreenState createState() => _OrganizationsScreenState();
@@ -70,7 +70,7 @@ class _OrganizationsScreenState extends State<OrganizationsScreen> {
               ),
               child: Center(
                 child: Text(
-                  "Bank of America",
+                  widget.organizationType,
                   style: TextStyle(
                     color: Color(0xFFFD9453),
                     fontSize: 18,

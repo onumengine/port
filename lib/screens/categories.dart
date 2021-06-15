@@ -108,6 +108,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                         child: OrganizationsScreen(
                                           categoryId:
                                               '/${state.categories.elementAt(index)["id"]}',
+                                          organizationType: state.categories.elementAt(index)["name"],
                                         ),
                                       ),
                                     ),
