@@ -4,11 +4,11 @@ import 'package:port/bloc/scheduler/state.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerScreenState> {
-  int selectedTimeButtonIndex, selectedDurationButtonIndex;
-  String selectedTime;
-  String selectedDuration;
+  int _selectedTimeButtonIndex, _selectedDurationButtonIndex;
+  String _selectedTime;
+  String _selectedDuration;
   SharedPreferences _preferences;
-  Map<int, String> indicesToTimes = {
+  Map<int, String> _indicesToTimes = {
     0: "08:30",
     1: "09:00",
     2: "09:30",
@@ -16,7 +16,7 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerScreenState> {
     4: "10:30",
     5: "11:00",
   };
-  Map<int, String> indicesToDurations = {
+  Map<int, String> _indicesToDurations = {
     0: "30mins",
     1: "1hr",
     2: "2hrs",
@@ -24,45 +24,57 @@ class SchedulerBloc extends Bloc<SchedulerEvent, SchedulerScreenState> {
 
   @override
   SchedulerScreenState get initialState => ScheduleState(
-        availableTimes: indicesToTimes,
-        availableDurations: indicesToDurations,
+        availableTimes: _indicesToTimes,
+        availableDurations: _indicesToDurations,
       );
 
   @override
   Stream<SchedulerScreenState> mapEventToState(SchedulerEvent event) async* {
     if (event is TimeSelectionEvent) {
-      selectedTimeButtonIndex = event.selectedButtonIndex;
-      selectedTime = indicesToTimes[selectedTimeButtonIndex];
+      _selectedTimeButtonIndex = event.selectedButtonIndex;
+      _selectedTime = _indicesToTimes[_selectedTimeButtonIndex];
       yield ScheduleState(
-        selectedTimeButtonIndex: selectedTimeButtonIndex,
-        selectedDurationButtonIndex: selectedDurationButtonIndex,
-        availableTimes: indicesToTimes,
-        availableDurations: indicesToDurations,
+        selectedTimeButtonIndex: _selectedTimeButtonIndex,
+        selectedDurationButtonIndex: _selectedDurationButtonIndex,
+        availableTimes: _indicesToTimes,
+        availableDurations: _indicesToDurations,
       );
     } else if (event is DurationSelectionEvent) {
-      selectedDurationButtonIndex = event.selectedButtonIndex;
-      selectedDuration =
-          indicesToDurations[selectedDurationButtonIndex];
+      _selectedDurationButtonIndex = event.selectedButtonIndex;
+      _selectedDuration = _indicesToDurations[_selectedDurationButtonIndex];
       yield ScheduleState(
-        selectedTimeButtonIndex: selectedTimeButtonIndex,
-        selectedDurationButtonIndex: selectedDurationButtonIndex,
-        availableTimes: indicesToTimes,
-        availableDurations: indicesToDurations,
+        selectedTimeButtonIndex: _selectedTimeButtonIndex,
+        selectedDurationButtonIndex: _selectedDurationButtonIndex,
+        availableTimes: _indicesToTimes,
+        availableDurations: _indicesToDurations,
       );
     } else if (event is ScheduleSubmissionEvent) {
-      if (selectedTime != null && selectedDuration != null) {
+      if (_selectedTime != null && _selectedDuration != null) {
         try {
           _preferences = await SharedPreferences.getInstance();
           print(
               "YOUR PREFERENCES BEFORE ASSIGNMENT ARE: ${_preferences.getKeys()}");
-          _preferences.setString("time", selectedTime);
-          _preferences.setString("duration", selectedDuration);
+          _preferences.setString("time", _selectedTime);
+          _preferences.setString("duration", _selectedDuration);
           print("YOUR PREFERENCE KEYS ARE NOW: ${_preferences.getKeys()}");
+          yield ScheduleClearForSubmissionState(
+            selectedTimeButtonIndex: _selectedTimeButtonIndex,
+            selectedDurationButtonIndex: _selectedDurationButtonIndex,
+            availableTimes: _indicesToTimes,
+            availableDurations: _indicesToDurations,
+            proceedToSubmission: true,
+          );
         } catch (e) {
           print("SHARED_PREFERENCES ASSIGNMENT FAILED WITH AN EXCEPTION: $e");
         }
       } else {
         print("YOU HAVE TO SET BOTH YOUR TIME AND DURATION FIRST");
+        yield ScheduleClearForSubmissionState(
+          selectedTimeButtonIndex: _selectedTimeButtonIndex,
+          selectedDurationButtonIndex: _selectedDurationButtonIndex,
+          availableTimes: _indicesToTimes,
+          availableDurations: _indicesToDurations,
+        );
       }
     }
   }

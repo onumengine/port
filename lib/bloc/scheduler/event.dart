@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 abstract class SchedulerEvent extends Equatable {}
 
 class TimeSelectionEvent extends SchedulerEvent {
-  int selectedButtonIndex;
+  final int selectedButtonIndex;
 
   TimeSelectionEvent({this.selectedButtonIndex});
 
@@ -12,7 +12,7 @@ class TimeSelectionEvent extends SchedulerEvent {
 }
 
 class DurationSelectionEvent extends SchedulerEvent {
-  int selectedButtonIndex;
+  final int selectedButtonIndex;
 
   DurationSelectionEvent({this.selectedButtonIndex});
 

@@ -32,7 +32,7 @@ class ScheduleClearForSubmissionState extends ScheduleState {
     this.selectedDurationButtonIndex,
     this.availableTimes,
     this.availableDurations,
-    this.proceedToSubmission,
+    this.proceedToSubmission = false,
   });
 
   @override

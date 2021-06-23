@@ -27,8 +27,6 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -44,7 +42,29 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
           ),
         ),
       ),
-      body: BlocBuilder<SchedulerBloc, SchedulerScreenState>(
+      body: BlocConsumer<SchedulerBloc, SchedulerScreenState>(
+        listener: (context, state) {
+          if (state is ScheduleClearForSubmissionState) {
+            if (state.proceedToSubmission) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => BlocProvider<SubmitBloc>(
+                    create: (context) => SubmitBloc(),
+                    child: SubmitScreen(),
+                  ),
+                ),
+              );
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content:
+                      Text("Please select a time and a duration to proceed"),
+                ),
+              );
+            }
+          }
+        },
         builder: (context, state) {
           if (state is ScheduleState) {
             return Padding(
@@ -189,16 +209,6 @@ class _SchedulerScreenState extends State<SchedulerScreen> {
                             ),
                             onPressed: () {
                               _schedulerBloc.add(ScheduleSubmissionEvent());
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      BlocProvider<SubmitBloc>(
-                                    create: (context) => SubmitBloc(),
-                                    child: SubmitScreen(),
-                                  ),
-                                ),
-                              );
                             },
                           ),
                         ),
