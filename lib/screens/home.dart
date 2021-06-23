@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:port/bloc/categories/bloc.dart';
+import 'package:port/bloc/date_picker/bloc.dart';
 import 'package:port/bloc/home/bloc.dart';
 import 'package:port/bloc/home/event.dart';
 import 'package:port/bloc/home/state.dart';
 import 'package:port/bloc/notifications/bloc.dart';
+import 'package:port/bloc/scheduler/bloc.dart';
 import 'package:port/components/molecules/network_error.dart';
 import 'package:port/components/organisms/appointments.dart';
 import 'package:port/components/organisms/empty_appointments.dart';
 import 'package:port/components/organisms/more.dart';
 import 'package:port/screens/categories.dart';
 import 'package:port/screens/notifications.dart';
+import 'package:port/screens/scheduler.dart';
 import 'package:port/utility/colors.dart';
 import 'package:port/utility/colors_main.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -101,12 +104,30 @@ class _MyHomePageState extends State<MyHomePage> {
         foregroundColor: white,
         child: Icon(Icons.add),
         onPressed: () {
+          /*
           Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => BlocProvider<CategoriesBloc>(
                 create: (context) => CategoriesBloc(),
                 child: CategoriesScreen(),
+              ),
+            ),
+          );
+          */
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MultiBlocProvider(
+                providers: [
+                  BlocProvider<SchedulerBloc>(
+                    create: (context) => SchedulerBloc(),
+                  ),
+                  BlocProvider<DatePickerBloc>(
+                    create: (context) => DatePickerBloc(),
+                  ),
+                ],
+                child: SchedulerScreen(),
               ),
             ),
           );
