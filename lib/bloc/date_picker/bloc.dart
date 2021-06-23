@@ -42,7 +42,6 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
   DatePickerBloc() {
     selectedYear = DateTime.now().year;
     selectedMonth = DateTime.now().month;
-    selectedDay = DateTime.now().day;
     firstWeekdayOfSelectedMonth = DateTime.now().weekday;
     numberOfDaysInSelectedMonth =
         DateTime(DateTime.now().year, (DateTime.now().month + 1), 0).day;
@@ -55,7 +54,6 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
   DatePickerState get initialState => DatePickerState(
         selectedYear: DateTime.now().year,
         selectedMonth: DateTime.now().month,
-        selectedDay: DateTime.now().day,
         weekdayToRenderFrom: DateTime.now().weekday - 1,
         numberOfDaysInSelectedMonth:
             DateTime(DateTime.now().year, (DateTime.now().month + 1), 0).day,
@@ -186,7 +184,8 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
       _preferences = await SharedPreferences.getInstance();
       print(
           "YOUR PREFERENCES BEFORE ASSIGNMENT ARE: ${_preferences.getKeys()}");
-      _preferences.setString("date", "$selectedYear-$selectedMonth-$selectedDay");
+      _preferences.setString(
+          "date", "$selectedYear-$selectedMonth-$selectedDay");
       print("YOUR PREFERENCE KEYS ARE NOW: ${_preferences.getKeys()}");
     } catch (e) {
       print("SHARED_PREFERENCES ASSIGNMENT FAILED WITH AN EXCEPTION: $e");

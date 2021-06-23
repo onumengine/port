@@ -19,5 +19,5 @@ class DaySelectionEvent extends DatePickerEvent {
   DaySelectionEvent(this.day);
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [this.day];
 }
