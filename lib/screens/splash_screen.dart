@@ -46,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
       );
     } else {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) => BlocProvider<HomeBloc>(
