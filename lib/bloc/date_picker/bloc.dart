@@ -20,13 +20,43 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
   int _selectedYear;
+
+  _incrementSelectedYear() {
+    _selectedYear++;
+  }
+
+  _decrementSelectedYear() {
+    _selectedYear--;
+  }
+
   int _selectedMonth;
+
+  _incrementSelectedMonth() {
+    _selectedMonth++;
+  }
+
+  _decrementSelectedMonth() {
+    _selectedMonth--;
+  }
+
   int _selectedDay;
+
+  void _setSelectedDay(int day) {
+    _selectedDay = day;
+  }
+
   int _firstWeekdayOfSelectedMonth;
   int _numberOfDaysInSelectedMonth;
   int _numberOfGridItemsToRender;
   int _indexToRenderFrom;
+
   String _finalDate;
+
+  _setFinalDate() {
+    this._finalDate = "$_selectedYear-$_selectedMonth-$_selectedDay";
+    print("THE FINAL DATE IN THE BLOC IS $_finalDate");
+  }
+
   SharedPreferences _preferences;
 
   Map<int, String> _numberToDayMap = <int, String>{
@@ -66,13 +96,7 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
   Stream<DatePickerState> mapEventToState(DatePickerEvent event) async* {
     if (event is YearIncrementEvent) {
       _incrementSelectedYear();
-      _firstWeekdayOfSelectedMonth =
-          DateTime(_selectedYear, _selectedMonth, 1).weekday;
-      _numberOfDaysInSelectedMonth =
-          DateTime(_selectedYear, (_selectedMonth + 1), 0).day;
-      _numberOfGridItemsToRender =
-          _firstWeekdayOfSelectedMonth + _numberOfDaysInSelectedMonth;
-      _indexToRenderFrom = (DateTime(_selectedYear, _selectedMonth, 1).weekday);
+      _updateRemainingFields();
       yield DatePickerState(
         selectedYear: _selectedYear,
         selectedMonth: _selectedMonth,
@@ -83,13 +107,7 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
       );
     } else if (event is YearDecrementEvent) {
       _decrementSelectedYear();
-      _firstWeekdayOfSelectedMonth =
-          DateTime(_selectedYear, _selectedMonth, 1).weekday;
-      _numberOfDaysInSelectedMonth =
-          DateTime(_selectedYear, (_selectedMonth + 1), 0).day;
-      _numberOfGridItemsToRender =
-          _firstWeekdayOfSelectedMonth + _numberOfDaysInSelectedMonth;
-      _indexToRenderFrom = (DateTime(_selectedYear, _selectedMonth, 1).weekday);
+      _updateRemainingFields();
       yield DatePickerState(
         selectedYear: _selectedYear,
         selectedMonth: _selectedMonth,
@@ -100,13 +118,7 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
       );
     } else if (event is MonthIncrementEvent) {
       _incrementSelectedMonth();
-      _firstWeekdayOfSelectedMonth =
-          DateTime(_selectedYear, _selectedMonth, 1).weekday;
-      _numberOfDaysInSelectedMonth =
-          DateTime(_selectedYear, (_selectedMonth + 1), 0).day;
-      _numberOfGridItemsToRender =
-          _firstWeekdayOfSelectedMonth + _numberOfDaysInSelectedMonth;
-      _indexToRenderFrom = (DateTime(_selectedYear, _selectedMonth, 1).weekday);
+      _updateRemainingFields();
       yield DatePickerState(
         selectedYear: _selectedYear,
         selectedMonth: _selectedMonth,
@@ -117,13 +129,7 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
       );
     } else if (event is MonthDecrementEvent) {
       _decrementSelectedMonth();
-      _firstWeekdayOfSelectedMonth =
-          DateTime(_selectedYear, _selectedMonth, 1).weekday;
-      _numberOfDaysInSelectedMonth =
-          DateTime(_selectedYear, (_selectedMonth + 1), 0).day;
-      _numberOfGridItemsToRender =
-          _firstWeekdayOfSelectedMonth + _numberOfDaysInSelectedMonth;
-      _indexToRenderFrom = (DateTime(_selectedYear, _selectedMonth, 1).weekday);
+      _updateRemainingFields();
       yield DatePickerState(
         selectedYear: _selectedYear,
         selectedMonth: _selectedMonth,
@@ -134,14 +140,7 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
       );
     } else if (event is DaySelectionEvent) {
       _setSelectedDay(event.day);
-      _firstWeekdayOfSelectedMonth =
-          DateTime(_selectedYear, _selectedMonth, 1).weekday;
-      _numberOfDaysInSelectedMonth =
-          DateTime(_selectedYear, (_selectedMonth + 1), 0).day;
-      _numberOfGridItemsToRender =
-          _firstWeekdayOfSelectedMonth + _numberOfDaysInSelectedMonth;
-      _indexToRenderFrom = (DateTime(_selectedYear, _selectedMonth, 1).weekday);
-      _setFinalDate();
+      _updateRemainingFields();
       await _saveDateToSharedPreferences();
       yield DatePickerState(
         selectedYear: _selectedYear,
@@ -152,31 +151,6 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
         itemCount: _numberOfGridItemsToRender,
       );
     }
-  }
-
-  _incrementSelectedYear() {
-    _selectedYear++;
-  }
-
-  _decrementSelectedYear() {
-    _selectedYear--;
-  }
-
-  _incrementSelectedMonth() {
-    _selectedMonth++;
-  }
-
-  _decrementSelectedMonth() {
-    _selectedMonth--;
-  }
-
-  _setSelectedDay(int day) {
-    _selectedDay = day;
-  }
-
-  _setFinalDate() {
-    this._finalDate = "$_selectedYear-$_selectedMonth-$_selectedDay";
-    print("THE FINAL DATE IN THE BLOC IS $_finalDate");
   }
 
   Future<void> _saveDateToSharedPreferences() async {
@@ -190,5 +164,15 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
     } catch (e) {
       print("SHARED_PREFERENCES ASSIGNMENT FAILED WITH AN EXCEPTION: $e");
     }
+  }
+
+  void _updateRemainingFields() {
+    _firstWeekdayOfSelectedMonth =
+        DateTime(_selectedYear, _selectedMonth, 1).weekday;
+    _numberOfDaysInSelectedMonth =
+        DateTime(_selectedYear, (_selectedMonth + 1), 0).day;
+    _numberOfGridItemsToRender =
+        _firstWeekdayOfSelectedMonth + _numberOfDaysInSelectedMonth;
+    _indexToRenderFrom = (DateTime(_selectedYear, _selectedMonth, 1).weekday);
   }
 }
