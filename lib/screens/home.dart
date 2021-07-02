@@ -5,6 +5,8 @@ import 'package:port/bloc/date_picker/bloc.dart';
 import 'package:port/bloc/home/bloc.dart';
 import 'package:port/bloc/home/event.dart';
 import 'package:port/bloc/home/state.dart';
+import 'package:port/bloc/more/bloc.dart';
+import 'package:port/bloc/more/state.dart';
 import 'package:port/bloc/notifications/bloc.dart';
 import 'package:port/bloc/scheduler/bloc.dart';
 import 'package:port/components/molecules/network_error.dart';
@@ -63,7 +65,11 @@ class _MyHomePageState extends State<MyHomePage> {
           }
         },
       ),
-      MoreComponent(),
+      BlocBuilder<MoreBloc, MoreState>(
+        builder: (context, state) {
+          return MoreComponent();
+        }
+      )
     ];
 
     return Scaffold(

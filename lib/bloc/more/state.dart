@@ -6,6 +6,8 @@ abstract class MoreState extends Equatable {
   List<Object> get props => [];
 }
 
+class UserFetchingState extends MoreState {}
+
 class UserFetchedState extends MoreState {
   String userName;
 
@@ -15,11 +17,4 @@ class UserFetchedState extends MoreState {
   List<Object> get props => [this.userName];
 }
 
-class UserFetchingErrorState extends MoreState {
-  String userName;
-
-  UserFetchingErrorState({@required this.userName});
-
-  @override
-  List<Object> get props => [this.userName];
-}
+class UserFetchingErrorState extends MoreState {}

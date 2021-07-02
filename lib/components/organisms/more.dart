@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:port/bloc/home/bloc.dart';
+import 'package:port/bloc/more/bloc.dart';
+import 'package:port/bloc/more/event.dart';
 import 'package:port/repository/user_repository.dart';
 import 'package:port/screens/schedules.dart';
 import 'package:port/screens/splash_screen.dart';
@@ -15,6 +17,15 @@ class MoreComponent extends StatefulWidget {
 }
 
 class _MoreComponentState extends State<MoreComponent> {
+  MoreBloc _moreBloc;
+
+  @override
+  void initState() {
+    super.initState();
+    _moreBloc = BlocProvider.of<MoreBloc>(context);
+    _moreBloc.add(UserFetchEvent());
+  }
+
   double _getHorizontalPadding(double screenWidth) {
     if (screenWidth < 592)
       return 20;

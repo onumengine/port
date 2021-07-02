@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:port/bloc/home/bloc.dart';
+import 'package:port/bloc/more/bloc.dart';
 import 'package:port/screens/sign_in.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:async';
@@ -46,11 +47,29 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
       );
     } else {
+      /*
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) => BlocProvider<HomeBloc>(
             create: (context) => HomeBloc(),
+            child: MyHomePage(),
+          ),
+        ),
+      );
+      */
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => HomeBloc(),
+              ),
+              BlocProvider(
+                create: (context) => MoreBloc(),
+              ),
+            ],
             child: MyHomePage(),
           ),
         ),

@@ -11,6 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class HomeBloc extends Bloc<AppointmentEvent, AppointmentState> {
   ApiClient _apiClient = ApiClient();
   var response;
+  SharedPreferences prefs;
 
   @override
   get initialState => AppointmentsFetchingState();
