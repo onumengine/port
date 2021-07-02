@@ -172,7 +172,9 @@ class _SchedulesScreenState extends State<SchedulesScreen> {
             } else if (state is EmptyAppoinmentsState) {
               return EmptyAppointmentsComponent();
             } else {
-              return NetworkErrorComp(onTap: () {});
+              return NetworkErrorComp(onTap: () {
+                _homeBloc.add(SchedulesFetchEvent());
+              });
             }
           }),
         ),
