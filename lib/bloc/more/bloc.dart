@@ -1,23 +1,29 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:port/bloc/more/event.dart';
 import 'package:port/bloc/more/state.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:port/model/user.dart';
+import 'package:port/repository/user_repository.dart';
 
 class MoreBloc extends Bloc<MoreEvent, MoreState> {
-  String userName;
-
   @override
   MoreState get initialState => UserFetchingState();
 
   @override
   Stream<MoreState> mapEventToState(MoreEvent event) async* {
     if (event is UserFetchEvent) {
-      userName = await _getUserNameFromPrefs();
+      try {
+        String userName = await _fetchUser();
+        yield UserFetchedState(userName: userName);
+      } catch (error) {
+        print("FETCHING USERS ENDED WITH AN ERROR: ${error.toString()}");
+        yield UserFetchingErrorState();
+      }
     }
   }
 
-  Future<String> _getUserNameFromPrefs() async {
-    SharedPreferences _prefs = await SharedPreferences.getInstance();
-    print("YOUR PREFERENCES ARE: $_prefs");
+  Future<String> _fetchUser() async {
+    User user = await UserRepository().getCurrentUser();
+    String fullName = "${user.firstname} ${user.lastname}";
+    return fullName;
   }
 }
