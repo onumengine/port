@@ -120,33 +120,31 @@ class _MoreComponentState extends State<MoreComponent> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 25.0),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => BlocProvider<HomeBloc>(
-                            create: (context) => HomeBloc(),
-                            child: SchedulesScreen(),
-                          ),
-                        ),
-                      );
-                    },
-                    child: PhysicalModel(
-                      color: opBackgroundColor,
-                      shadowColor: colorCardShadow,
-                      elevation: 10,
-                      borderRadius: BorderRadius.circular(8),
-                      child: ListTile(
-                        leading: SvgPicture.asset(
-                          "lib/vectors/appointments_icon.svg",
-                          semanticsLabel: "Appointments icon",
-                        ),
-                        title: Text(
-                          "Appointments",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
+                  child: PhysicalModel(
+                    color: opBackgroundColor,
+                    shadowColor: colorCardShadow,
+                    elevation: 10,
+                    borderRadius: BorderRadius.circular(8),
+                    child: ListTile(
+                      leading: SvgPicture.asset(
+                        "lib/vectors/appointments_icon.svg",
+                        semanticsLabel: "Appointments icon",
                       ),
+                      title: Text(
+                        "Appointments",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BlocProvider<HomeBloc>(
+                              create: (context) => HomeBloc(),
+                              child: SchedulesScreen(),
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ),
