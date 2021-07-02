@@ -49,20 +49,23 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               child: CircularProgressIndicator(),
             );
           } else if (state is NotificationsFetchUnsuccessfulState) {
-            return Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Icon(Icons.error, size: 50),
-                SizedBox(height: 40),
-                Text(
-                  "Oops. Couldn't fetch Notifications",
-                  style: TextStyle(
-                    color: paleTextColor,
-                    fontWeight: FontWeight.w600,
+            return Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Icon(Icons.error, size: 50),
+                  SizedBox(height: 40),
+                  Text(
+                    "Oops. Couldn't fetch Notifications",
+                    style: TextStyle(
+                      color: paleTextColor,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             );
           } else if (state is PopulatedNotificationsState) {
             return Container(
