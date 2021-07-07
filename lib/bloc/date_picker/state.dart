@@ -17,6 +17,17 @@ class DatePickerState extends Equatable {
     this.itemCount,
   });
 
+  DatePickerState.fromDateObject(
+    DateTime dateObject, {
+    this.numberOfDaysInSelectedMonth,
+    this.weekdayToRenderFrom,
+    this.itemCount,
+  }) {
+    this.selectedYear = dateObject.year;
+    this.selectedMonth = dateObject.month;
+    this.selectedDay = dateObject.day;
+  }
+
   @override
   List<Object> get props => [
         selectedYear,

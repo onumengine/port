@@ -116,20 +116,20 @@ class _MyHomePageState extends State<MyHomePage> {
           );
           */
           Navigator.push(
-          context,
-          MaterialPageRoute(
-          builder: (context) => MultiBlocProvider(
-          providers: [
-          BlocProvider<SchedulerBloc>(
-          create: (context) => SchedulerBloc(),
-          ),
-          BlocProvider<DatePickerBloc>(
-          create: (context) => DatePickerBloc(),
-          )
-          ],
-          child: SchedulerScreen(),
-          ),
-          ),
+            context,
+            MaterialPageRoute(
+              builder: (context) => MultiBlocProvider(
+                providers: [
+                  BlocProvider<SchedulerBloc>(
+                    create: (context) => SchedulerBloc(),
+                  ),
+                  BlocProvider<DatePickerBloc>(
+                    create: (context) => DatePickerBloc(),
+                  )
+                ],
+                child: SchedulerScreen(),
+              ),
+            ),
           );
         },
       ),

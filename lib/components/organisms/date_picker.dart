@@ -78,9 +78,11 @@ class _DatePickerState extends State<DatePicker> {
                         fillColor: paleChipBackground,
                         constraints:
                             BoxConstraints(minWidth: 36, minHeight: 36),
-                        onPressed: (_isInCurrentYear(state)) ? null : () {
-                          _datePickerBloc.add(YearDecrementEvent());
-                        },
+                        onPressed: (_isInCurrentYear(state))
+                            ? null
+                            : () {
+                                _datePickerBloc.add(YearDecrementEvent());
+                              },
                       ),
                       RawMaterialButton(
                         child: Icon(
@@ -93,9 +95,12 @@ class _DatePickerState extends State<DatePicker> {
                         fillColor: paleChipBackground,
                         constraints:
                             BoxConstraints(minWidth: 36, minHeight: 28),
-                        onPressed: (_isInCurrentMonth(state) && _isInCurrentYear(state)) ? null : () {
-                          _datePickerBloc.add(MonthDecrementEvent());
-                        },
+                        onPressed: (_isInCurrentMonth(state) &&
+                                _isInCurrentYear(state))
+                            ? null
+                            : () {
+                                _datePickerBloc.add(MonthDecrementEvent());
+                              },
                       ),
                       Column(
                         children: <Widget>[
@@ -166,9 +171,7 @@ class _DatePickerState extends State<DatePicker> {
                           crossAxisSpacing: 12,
                         ),
                         itemBuilder: (context, indexOfCalendarBubble) {
-                          _calendarBubbleNumber = (indexOfCalendarBubble -
-                                  state.weekdayToRenderFrom) +
-                              1;
+                          _calendarBubbleNumber = (indexOfCalendarBubble - state.weekdayToRenderFrom) + 1;
                           return indexOfCalendarBubble <
                                   state.weekdayToRenderFrom
                               ? Container()
@@ -185,22 +188,20 @@ class _DatePickerState extends State<DatePicker> {
                                           "$_calendarBubbleNumber",
                                           style: TextStyle(
                                             color: (indexOfCalendarBubble <
-                                                    (DateTime.now().day +
-                                                        state
-                                                            .weekdayToRenderFrom -
-                                                        1))
+                                                        (DateTime.now().day +
+                                                            state
+                                                                .weekdayToRenderFrom -
+                                                            1) &&
+                                                    _isInCurrentMonth(state) &&
+                                                    _isInCurrentYear(state))
                                                 ? Colors.white
                                                 : primaryTextColor,
                                           ),
                                         ),
-                                  color: (_calendarBubbleNumber ==
-                                          state.selectedDay)
+                                  color: (_calendarBubbleNumber == state.selectedDay)
                                       ? appBarTitleColor
                                       : paleCircleAvatarBackground,
-                                  onTap: (indexOfCalendarBubble <
-                                          (DateTime.now().day +
-                                              state.weekdayToRenderFrom -
-                                              1))
+                                  onTap: (indexOfCalendarBubble < (DateTime.now().day + state.weekdayToRenderFrom - 1))
                                       ? () {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
@@ -211,13 +212,7 @@ class _DatePickerState extends State<DatePicker> {
                                           );
                                         }
                                       : () {
-                                          _datePickerBloc.add(
-                                            DaySelectionEvent(
-                                                (indexOfCalendarBubble -
-                                                        state
-                                                            .weekdayToRenderFrom) +
-                                                    1),
-                                          );
+                                          _datePickerBloc.add(DaySelectionEvent((indexOfCalendarBubble - state .weekdayToRenderFrom) + 1));
                                         },
                                 );
                         },

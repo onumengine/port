@@ -108,7 +108,14 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
       );
     } else if (event is YearDecrementEvent) {
       _decrementSelectedYear();
-      _updateRemainingFields();
+      if (_selectedMonth <= DateTime.now().month && _selectedYear <= DateTime.now().year) {
+        _selectedYear = DateTime.now().year;
+        _selectedMonth = DateTime.now().month;
+        _setSelectedDay(DateTime.now().day);
+        _updateRemainingFields();
+      } else {
+        _updateRemainingFields();
+      }
       yield DatePickerState(
         selectedYear: _selectedYear,
         selectedMonth: _selectedMonth,
