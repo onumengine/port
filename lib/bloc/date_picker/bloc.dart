@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 ///  ## HOW THIS DATE_PICKER POPULATES ITS DAYS
 ///
-///  1. Switch to a new month.
+///  1. Select or switch to a new month.
 ///  2. Update the [_selectedMonth] variable.
 ///  3. Check the first weekday of the month.
 ///  4. Update the [_firstWeekdayOfSelectedMonth] variable.
@@ -13,7 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 ///  6. Store this value in a variable [_indexToRenderFrom].
 ///  7. GridBuilder will render empty containers from index 0 to index [_indexToRenderFrom] - 1.
 ///  8. GridBuilder will render [CalendarBubble]s from index [_indexToRenderFrom] to
-///     the [numberOfDaysInSelectedMonth].
+///     the [_numberOfDaysInSelectedMonth].
 ///  9. Find a way to get the number of days in a month.
 /// 10. Make number of [CalendarBubble]s rendered by GridBuilder equal to the number
 ///     of days in a month
@@ -78,6 +78,7 @@ class DatePickerBloc extends Bloc<DatePickerEvent, DatePickerState> {
     _numberOfGridItemsToRender = DateTime.now().weekday +
         DateTime(DateTime.now().year, (DateTime.now().month + 1), 0).day -
         1;
+    add(DaySelectionEvent(DateTime.now().day));
   }
 
   @override

@@ -104,6 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
         foregroundColor: white,
         child: Icon(Icons.add),
         onPressed: () {
+          /*
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -112,6 +113,23 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: CategoriesScreen(),
               ),
             ),
+          );
+          */
+          Navigator.push(
+          context,
+          MaterialPageRoute(
+          builder: (context) => MultiBlocProvider(
+          providers: [
+          BlocProvider<SchedulerBloc>(
+          create: (context) => SchedulerBloc(),
+          ),
+          BlocProvider<DatePickerBloc>(
+          create: (context) => DatePickerBloc(),
+          )
+          ],
+          child: SchedulerScreen(),
+          ),
+          ),
           );
         },
       ),

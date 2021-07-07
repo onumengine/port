@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:port/bloc/home/bloc.dart';
-import 'package:port/bloc/home/event.dart';
 import 'package:port/utility/colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-/// I hard-coded the onTap handler of this component because it is rendered in the UI
-/// before its [BlocProvider] is initialized.
 class EmptyAppointmentsComponent extends StatelessWidget {
   final String instructionalText;
   VoidCallback onTap;

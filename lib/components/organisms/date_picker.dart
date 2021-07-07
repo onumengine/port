@@ -7,6 +7,15 @@ import 'package:port/bloc/date_picker/state.dart';
 import 'package:port/components/atoms/calendar_bubble.dart';
 import 'package:port/utility/colors.dart';
 
+/// NEW FEATURE:
+/// Make it impossible to select a date that comes before the current date
+///
+/// HOW:
+/// Load the current date in initState
+/// Disable the decrement buttons
+/// Disable the date bubbles before the current day bubble
+/// That way, it will be impossible to decrement the date below the current date
+
 class DatePicker extends StatefulWidget {
   @override
   _DatePickerState createState() => _DatePickerState();
@@ -36,7 +45,13 @@ class _DatePickerState extends State<DatePicker> {
     var screenSize = MediaQuery.of(context).size;
     _datePickerBloc = BlocProvider.of<DatePickerBloc>(context);
 
-    return BlocBuilder<DatePickerBloc, DatePickerState>(
+    return BlocConsumer<DatePickerBloc, DatePickerState>(
+      listener: (context, state) {
+        // TODO
+      },
+      buildWhen: (previous, current) {
+        // TODO: Implement buildWhen
+      },
       builder: (context, state) {
         if (state is DatePickerState) {
           return FractionallySizedBox(
@@ -63,7 +78,7 @@ class _DatePickerState extends State<DatePicker> {
                         fillColor: paleChipBackground,
                         constraints:
                             BoxConstraints(minWidth: 36, minHeight: 36),
-                        onPressed: () {
+                        onPressed: (_isInCurrentYear(state)) ? null : () {
                           _datePickerBloc.add(YearDecrementEvent());
                         },
                       ),
@@ -78,7 +93,7 @@ class _DatePickerState extends State<DatePicker> {
                         fillColor: paleChipBackground,
                         constraints:
                             BoxConstraints(minWidth: 36, minHeight: 28),
-                        onPressed: () {
+                        onPressed: (_isInCurrentMonth(state) && _isInCurrentYear(state)) ? null : () {
                           _datePickerBloc.add(MonthDecrementEvent());
                         },
                       ),
@@ -150,10 +165,12 @@ class _DatePickerState extends State<DatePicker> {
                           mainAxisSpacing: 12,
                           crossAxisSpacing: 12,
                         ),
-                        itemBuilder: (context, index) {
-                          _calendarBubbleNumber =
-                              (index - state.weekdayToRenderFrom) + 1;
-                          return index < state.weekdayToRenderFrom
+                        itemBuilder: (context, indexOfCalendarBubble) {
+                          _calendarBubbleNumber = (indexOfCalendarBubble -
+                                  state.weekdayToRenderFrom) +
+                              1;
+                          return indexOfCalendarBubble <
+                                  state.weekdayToRenderFrom
                               ? Container()
                               : CalendarBubble(
                                   child: (_calendarBubbleNumber ==
@@ -167,18 +184,41 @@ class _DatePickerState extends State<DatePicker> {
                                       : Text(
                                           "$_calendarBubbleNumber",
                                           style: TextStyle(
-                                            color: primaryTextColor,
+                                            color: (indexOfCalendarBubble <
+                                                    (DateTime.now().day +
+                                                        state
+                                                            .weekdayToRenderFrom -
+                                                        1))
+                                                ? Colors.white
+                                                : primaryTextColor,
                                           ),
                                         ),
                                   color: (_calendarBubbleNumber ==
                                           state.selectedDay)
                                       ? appBarTitleColor
                                       : paleCircleAvatarBackground,
-                                  onTap: () {
-                                    _datePickerBloc.add(
-                                      DaySelectionEvent((index - state.weekdayToRenderFrom) + 1),
-                                    );
-                                  },
+                                  onTap: (indexOfCalendarBubble <
+                                          (DateTime.now().day +
+                                              state.weekdayToRenderFrom -
+                                              1))
+                                      ? () {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                  "Sorry. You can only fix an appointment today or after today"),
+                                            ),
+                                          );
+                                        }
+                                      : () {
+                                          _datePickerBloc.add(
+                                            DaySelectionEvent(
+                                                (indexOfCalendarBubble -
+                                                        state
+                                                            .weekdayToRenderFrom) +
+                                                    1),
+                                          );
+                                        },
                                 );
                         },
                         itemCount: (state.itemCount),
@@ -194,5 +234,13 @@ class _DatePickerState extends State<DatePicker> {
         }
       },
     );
+  }
+
+  bool _isInCurrentMonth(DatePickerState state) {
+    return (state.selectedMonth == DateTime.now().month);
+  }
+
+  bool _isInCurrentYear(DatePickerState state) {
+    return (state.selectedYear == DateTime.now().year);
   }
 }
